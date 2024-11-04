@@ -11,9 +11,10 @@ public class BarSpoonController : MonoBehaviour
     [SerializeField] private float touchSensitivity = 1f;
     
     [Header("흔들기 설정")]
-    [SerializeField] private float shakeThreshold = 0.2f;
+    [SerializeField] private float shakeThreshold = 0.15f;
     [SerializeField] private float shakePower = 1f;
     [SerializeField] private Ease shakeEase = Ease.OutQuad;
+    [SerializeField] private float shakeDetectionInterval = 0.05f;
     
     [Header("효과 설정")]
     [SerializeField] private AudioSource audioSource;
@@ -23,22 +24,30 @@ public class BarSpoonController : MonoBehaviour
     [SerializeField] private float effectCooldown = 0.1f;
 
     [Header("씬 전환 설정")]
-    [SerializeField] private float requiredStirTime = 1.5f;     // 필요한 저어야 하는 시간
-    [SerializeField] private float touchHoldTime = 2f;          // 터치 홀드 시간
+    [SerializeField] private float requiredStirTime = 1.5f;     
+    [SerializeField] private float touchHoldTime = 2f;          
     [SerializeField] private string nextSceneName = "GameScene";
-    [SerializeField] private bool showDebugInfo = true;         // 디버그 정보 표시
+    [SerializeField] private bool showDebugInfo = true;         
 
     private Vector3 originalPosition;
     private Vector3 lastAcceleration;
     private float lastEffectTime;
+    private float lastShakeCheckTime;
     private Camera mainCamera;
     private Vector2 lastTouchPosition;
     private Tween currentShakeTween;
     private bool isDragging = false;
-    private float currentStirTime = 0f;     // 현재 저은 시간
-    private float currentTouchTime = 0f;    // 현재 터치 홀드 시간
-    private bool isStirring = false;        // 저어지고 있는지 여부
+    private float currentStirTime = 0f;     
+    private float currentTouchTime = 0f;    
+    private bool isStirring = false;        
     private SceneController sceneController;
+    
+    private Vector3[] accelerationBuffer = new Vector3[10];
+    private int bufferIndex = 0;
+    private int validMovementCount = 0;
+    private const int REQUIRED_MOVEMENT_COUNT = 3;
+    private const float MOVEMENT_RESET_TIME = 0.5f;
+    private Vector3 prevFilteredAcceleration;
 
     private void Start()
     {
@@ -55,6 +64,13 @@ public class BarSpoonController : MonoBehaviour
         originalPosition = transform.position;
         lastAcceleration = Input.acceleration;
         lastEffectTime = Time.time;
+        lastShakeCheckTime = Time.time;
+        
+        for (int i = 0; i < accelerationBuffer.Length; i++)
+        {
+            accelerationBuffer[i] = Input.acceleration;
+        }
+        prevFilteredAcceleration = Input.acceleration;
     }
 
     private void InitializeSceneController()
@@ -86,15 +102,14 @@ public class BarSpoonController : MonoBehaviour
         HandleTouchInput();
         if (!isDragging)
         {
-            CheckShakeInput();
+            CheckStirMovement();
         }
 
-        // 디버그 정보 표시
         if (showDebugInfo)
         {
             if (isStirring)
             {
-                Debug.Log($"저어지는 진행도: {currentStirTime:F2}/{requiredStirTime:F2}");
+                Debug.Log($"저어지는 진행도: {currentStirTime:F2}/{requiredStirTime:F2}, 움직임 카운트: {validMovementCount}/{REQUIRED_MOVEMENT_COUNT}");
             }
             if (isDragging)
             {
@@ -125,7 +140,6 @@ public class BarSpoonController : MonoBehaviour
                 case TouchPhase.Moved:
                     if (isDragging)
                     {
-                        // 터치 홀드 시간 체크
                         currentTouchTime += Time.deltaTime;
                         if (currentTouchTime >= touchHoldTime)
                         {
@@ -134,7 +148,7 @@ public class BarSpoonController : MonoBehaviour
                         }
 
                         float deltaX = touchWorldPos.x - lastTouchPosition.x;
-                        if (Mathf.Abs(deltaX) > 0.1f) // 최소 이동 거리 체크
+                        if (Mathf.Abs(deltaX) > 0.1f)
                         {
                             MoveSpoon(deltaX * touchSensitivity);
                             lastTouchPosition = touchWorldPos;
@@ -169,38 +183,71 @@ public class BarSpoonController : MonoBehaviour
         }
     }
 
-    private void CheckShakeInput()
+    private void CheckStirMovement()
     {
-        Vector3 acceleration = Input.acceleration;
-        Vector3 accelerationDelta = acceleration - lastAcceleration;
-        float shakeMagnitude = accelerationDelta.magnitude;
+        if (Time.time - lastShakeCheckTime < shakeDetectionInterval) return;
 
-        if (shakeMagnitude > shakeThreshold)
+        accelerationBuffer[bufferIndex] = Input.acceleration;
+        bufferIndex = (bufferIndex + 1) % accelerationBuffer.Length;
+
+        Vector3 filteredAcceleration = Vector3.zero;
+        foreach (Vector3 acc in accelerationBuffer)
         {
-            float shakeDirection = Mathf.Sign(accelerationDelta.x);
-            ApplyShake(shakeDirection);
+            filteredAcceleration += acc;
+        }
+        filteredAcceleration /= accelerationBuffer.Length;
+
+        Vector2 horizontalMovement = new Vector2(
+            filteredAcceleration.x - prevFilteredAcceleration.x,
+            filteredAcceleration.z - prevFilteredAcceleration.z
+        );
+
+        float movementMagnitude = horizontalMovement.magnitude;
+
+        if (showDebugInfo)
+        {
+            // Debug.Log($"Movement: {movementMagnitude:F3}, X: {horizontalMovement.x:F3}, Z: {horizontalMovement.z:F3}");
+        }
+
+        if (movementMagnitude > shakeThreshold)
+        {
+            if (Time.time - lastEffectTime > MOVEMENT_RESET_TIME)
+            {
+                validMovementCount = 0;
+            }
+
+            validMovementCount++;
+            
+            float moveDirection = Mathf.Sign(horizontalMovement.x);
+            ApplyShake(moveDirection);
             
             if (useVibration && Time.time - lastEffectTime > effectCooldown)
             {
                 TriggerVibration();
                 PlayStirEffect();
-                lastEffectTime = Time.time;
             }
-
-            UpdateStirProgress();
+            
+            if (validMovementCount >= REQUIRED_MOVEMENT_COUNT)
+            {
+                UpdateStirProgress();
+            }
+            
+            lastEffectTime = Time.time;
         }
-        else
-        {
-            ResetStirProgress();
-        }
 
-        lastAcceleration = acceleration;
+        prevFilteredAcceleration = filteredAcceleration;
+        lastShakeCheckTime = Time.time;
     }
 
     private void UpdateStirProgress()
     {
         isStirring = true;
-        currentStirTime += Time.deltaTime;
+        currentStirTime += Time.deltaTime * 1.5f;
+        
+        if (showDebugInfo)
+        {
+            Debug.Log($"UpdateStirProgress - Current Time: {currentStirTime:F2}");
+        }
         
         if (currentStirTime >= requiredStirTime)
         {
@@ -210,12 +257,13 @@ public class BarSpoonController : MonoBehaviour
 
     private void ResetStirProgress()
     {
-        if (isStirring)
+        if (isStirring && Time.time - lastEffectTime > MOVEMENT_RESET_TIME)
         {
             currentStirTime = Mathf.Max(0, currentStirTime - (Time.deltaTime * 0.5f));
-            if (currentStirTime == 0)
+            if (currentStirTime <= 0)
             {
                 isStirring = false;
+                validMovementCount = 0;
             }
         }
     }

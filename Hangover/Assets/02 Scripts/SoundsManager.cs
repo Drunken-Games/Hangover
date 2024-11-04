@@ -1,32 +1,29 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class SoundsManager : MonoBehaviour
 {
-    // 토글 키 등록
-    public Toggle BGMVolumeToggle;
-    public Toggle SFXVolumeToggle;
-    
-    // 싱글톤 인스턴스
     public static SoundsManager instance { get; private set; }
 
-    // 오디오 소스 컴포넌트들
     private AudioSource bgmSource;
     private List<AudioSource> sfxSources;
-    
-    // 오디오 클립들을 저장할 딕셔너리
+
     [SerializeField] private Dictionary<string, AudioClip> bgmClips;
     [SerializeField] private Dictionary<string, AudioClip> sfxClips;
-
-    // 볼륨 설정
+    
+    private const string VolumeKey = "AudioVolume"; // 저장할 키
+    public AudioListener audioListener;
     private float bgmVolume = 1f;
     private float sfxVolume = 1f;
+    private float masterVolume;
 
     private const int MAX_SFX_SOURCES = 5;
+    private List<AudioClip> bgmList; // BGM 리스트
+    private int currentBGMIndex = 0; // 현재 재생 중인 BGM 인덱스
 
     private void Awake()
     {
+        masterVolume = AudioListener.volume;
         if (instance == null)
         {
             instance = this;
@@ -39,11 +36,27 @@ public class SoundsManager : MonoBehaviour
             return;
         }
     }
+    
+    public float GetMasterVolume()
+    {
+        return masterVolume; // 현재 BGM 볼륨 반환
+    }
+    
+    public float GetBGMVolume()
+    {
+        return bgmVolume; // 현재 BGM 볼륨 반환
+    }
+
+    public float GetSFXVolume()
+    {
+        return sfxVolume; // 현재 SFX 볼륨 반환
+    }
+
 
     private void InitializeSoundManager()
     {
         bgmSource = gameObject.AddComponent<AudioSource>();
-        bgmSource.loop = true;
+        bgmSource.loop = false; // BGM이 끝나면 자동으로 루프하지 않도록 설정
 
         sfxSources = new List<AudioSource>();
         for (int i = 0; i < MAX_SFX_SOURCES; i++)
@@ -57,77 +70,86 @@ public class SoundsManager : MonoBehaviour
         sfxClips = new Dictionary<string, AudioClip>();
 
         LoadAudioClips();
-
-        // 각 토글에 이벤트 리스너 등록
-        BGMVolumeToggle.onValueChanged.AddListener(OnBGMToggleChanged);
-        SFXVolumeToggle.onValueChanged.AddListener(OnSFXToggleChanged);
-
-        // 초기 토글 상태 반영
-        OnBGMToggleChanged(BGMVolumeToggle.isOn);
-        OnSFXToggleChanged(SFXVolumeToggle.isOn);
-
-        Debug.Log("SoundsManager 초기화 완료");
+        bgmList = new List<AudioClip>(bgmClips.Values); // BGM 클립 목록 초기화
+        PlayNextBGM(); // 첫 번째 BGM 재생
     }
 
     private void LoadAudioClips()
     {
-        AudioClip[] loadedBGMs = Resources.LoadAll<AudioClip>("Sounds/BGM");
+        AudioClip[] loadedBGMs = Resources.LoadAll<AudioClip>("Audios/BGM");
         foreach (AudioClip clip in loadedBGMs)
         {
             bgmClips.Add(clip.name, clip);
-            Debug.Log($"BGM 로드됨: {clip.name}");
         }
 
-        AudioClip[] loadedSFXs = Resources.LoadAll<AudioClip>("Sounds/SFX");
+        AudioClip[] loadedSFXs = Resources.LoadAll<AudioClip>("Audios/SFX");
         foreach (AudioClip clip in loadedSFXs)
         {
             sfxClips.Add(clip.name, clip);
-            Debug.Log($"SFX 로드됨: {clip.name}");
         }
     }
 
+
+    public void SetMasterVolume(float volume)
+    {
+        masterVolume = Mathf.Clamp01(volume);
+        UpdateVolumes();
+    }
+    
+    
     public void SetBGMVolume(float volume)
     {
         bgmVolume = Mathf.Clamp01(volume);
         UpdateVolumes();
-        Debug.Log($"BGM Volume 설정: {bgmVolume}");
     }
 
     public void SetSFXVolume(float volume)
     {
         sfxVolume = Mathf.Clamp01(volume);
         UpdateVolumes();
-        Debug.Log($"SFX Volume 설정: {sfxVolume}");
     }
 
     private void UpdateVolumes()
     {
+        AudioListener.volume = masterVolume;
         bgmSource.volume = bgmVolume;
         foreach (AudioSource sfxSource in sfxSources)
         {
             sfxSource.volume = sfxVolume;
         }
-        Debug.Log("볼륨 업데이트 완료");
     }
 
-    public void PlayBGM(string bgmName)
+    public void PlayNextBGM()
     {
-        if (bgmClips.TryGetValue(bgmName, out AudioClip clip))
+        if (bgmList.Count > 0)
         {
-            bgmSource.clip = clip;
+            // 현재 인덱스에 해당하는 BGM 클립 재생
+            bgmSource.clip = bgmList[currentBGMIndex];
             bgmSource.Play();
-            Debug.Log($"BGM 재생 시작: {bgmName}");
+            Debug.Log($"BGM 재생 시작: {bgmList[currentBGMIndex].name}");
+
+            // 인덱스를 증가시키고 리스트의 길이로 모듈로 연산
+            currentBGMIndex = (currentBGMIndex + 1) % bgmList.Count;
+
+            // BGM이 끝날 때 다음 BGM을 재생하는 코루틴 호출
+            StartCoroutine(WaitForBGMToEnd());
         }
         else
         {
-            Debug.LogWarning($"BGM을 찾을 수 없음: {bgmName}");
+            Debug.LogWarning("BGM 목록이 비어 있습니다.");
         }
+    }
+
+    private System.Collections.IEnumerator WaitForBGMToEnd()
+    {
+        // 현재 BGM이 재생 중인지 확인
+        yield return new WaitUntil(() => !bgmSource.isPlaying);
+        PlayNextBGM(); // 다음 BGM 재생
     }
 
     public void StopBGM()
     {
         bgmSource.Stop();
-        Debug.Log("BGM 정지");
     }
 
     public void PlaySFX(string sfxName)
@@ -151,48 +173,33 @@ public class SoundsManager : MonoBehaviour
             Debug.LogWarning($"효과음을 찾을 수 없음: {sfxName}");
         }
     }
+    
+    public void StopSFX(string sfxName)
+    {
+        if (sfxClips.TryGetValue(sfxName, out AudioClip clip))
+        {
+            AudioSource sourceToStop = sfxSources.Find(source => source.clip == clip && source.isPlaying);
+            if (sourceToStop != null)
+            {
+                sourceToStop.Stop();
+                Debug.Log($"효과음 정지: {sfxName}");
+            }
+            else
+            {
+                Debug.LogWarning($"정지할 수 있는 효과음이 없습니다: {sfxName}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"효과음을 찾을 수 없음: {sfxName}");
+        }
+    }
 
     public void StopAllSFX()
     {
         foreach (AudioSource sfxSource in sfxSources)
         {
             sfxSource.Stop();
-        }
-        Debug.Log("모든 효과음 정지");
-    }
-
-    public void StopAllSounds()
-    {
-        StopBGM();
-        StopAllSFX();
-        Debug.Log("모든 사운드 정지");
-    }
-
-    private void OnBGMToggleChanged(bool isOn)
-    {
-        if (isOn)
-        {
-            PlayBGM("배경음악_클립_이름");  // 실제 BGM 클립 이름으로 대체 필요
-            Debug.Log("BGM Toggle On - 배경음악 재생 시작");
-        }
-        else
-        {
-            StopBGM();
-            Debug.Log("BGM Toggle Off - 배경음악 정지");
-        }
-    }
-
-    private void OnSFXToggleChanged(bool isOn)
-    {
-        if (isOn)
-        {
-            SetSFXVolume(1f);
-            Debug.Log("SFX Toggle On - 효과음 볼륨 활성화");
-        }
-        else
-        {
-            SetSFXVolume(0f);
-            Debug.Log("SFX Toggle Off - 효과음 볼륨 비활성화");
         }
     }
 }

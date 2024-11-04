@@ -36,8 +36,14 @@ public class CreditManager : MonoBehaviour
         
         creditsByScene.Add(3, new string[]
         {
-            "정비는 예술이다!",
-            "정비의 정상화!"
+            "정비의 정상화!",
+            "장비가 생명을 얻는 순간, \n 그 기쁨은 표현할 수 없지!"
+        });
+        
+        creditsByScene.Add(4, new string[]
+        {
+            "손님이 없어도 \n 너무 없군.....",
+            "그 망할 로봇이 \n 인플루언서일 줄이야.."
         });
         
     }

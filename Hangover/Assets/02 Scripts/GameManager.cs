@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     // 씬 매니저들
     private string previousSceneName = ""; // 이전 씬 이름을 저장할 변수
     public bool GameSceneNeedsProceed { get; set; } = false; // GameScene에서 진행 여부 플래그
+    public bool DayResultProceed { get; set; } = false; // DayResultScene에서 진행 여부 플래그
     private DayResultManager dayResultManager;
     private BuildManager buildManager;
     public List<DialogueEntry> dialogues;
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
     //전역 관리 데이터
     public DayResultData dayResultData;
 
+    public string playerName; // 유저 이름 저장 변수 추가
+    public GameObject nameInputPanel;         // NameInput UI 오브젝트 참조
 
     // 대화 상태 저장 변수
     public int currentDialogueIndex; // 현재 대화 인덱스
@@ -33,6 +36,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<int> foundCocktailIds = new List<int>();
     private int completedRecipeId = -1; // -1은 실패하거나 없을 경우
+
+    // 엔딩 분기 배열
+    public List<int> EndList;
 
     private void Awake()
     {
@@ -63,7 +69,23 @@ public class GameManager : MonoBehaviour
         dayResultData = new DayResultData();
         cocktailCheck = gameObject.AddComponent<CocktailCheck>();  // CocktailCheck 추가
     }
-    
+    // 유저 이름을 설정하는 메서드 추가
+    public void SetPlayerName(string name)
+    {
+        playerName = name;
+        Debug.Log($"Player name set to: {playerName}");
+    }
+
+    // 대화 인덱스 확인 후 이름 입력 패널 활성화
+    public void CheckDialogueForNameInput()
+    {
+        if (currentDialogueIndex == 2 && nameInputPanel != null)
+        {
+            nameInputPanel.SetActive(true);  // 특정 인덱스에 도달하면 패널 활성화
+        }
+    }
+
+
     // 씬 전환 전에 데이터 저장
     private void SaveCurrentSceneData()
     {
@@ -90,10 +112,14 @@ public class GameManager : MonoBehaviour
         {
             int currentRecipeId = GetRecipeId();
             Debug.Log($"BuildScene에서 GameScene으로 돌아왔습니다. 현재 칵테일 ID: {currentRecipeId}");
-
+            
             // GameScene에서 대화 진행 플래그 설정
             GameSceneNeedsProceed = true;
         }
+        //if(previousSceneName == "DayResultScene" && scene.name == "GameScene")
+        //{
+        //    DayResultProceed = true;
+        //}
         previousSceneName = scene.name; // 현재 씬 이름을 이전 씬 이름으로 저장
 
         // 씬이 DayResult 씬인 경우에만 매니저 찾기
@@ -135,6 +161,7 @@ public class GameManager : MonoBehaviour
         dayResultManager.dayResultData = dayResultData;
 
         //  테스트 더미
+        /*
         dayResultManager.dayResultData = new DayResultData 
         {
             dayNum = 1,

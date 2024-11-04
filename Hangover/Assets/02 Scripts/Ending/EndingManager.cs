@@ -12,7 +12,7 @@ public class EndingManager : MonoBehaviour
     public CreditManager creditManager; // CreditManager 스크립트의 참조
 
     [SerializeField]
-    private int endingIndex = 0; // 표시할 엔딩 번호 (외부에서 설정 가능하도록 SerializeField 사용)
+    private int endingIndex = 5; // 표시할 엔딩 번호 (외부에서 설정 가능하도록 SerializeField 사용)
 
     public Image fadeImage; // 화면 전체를 덮을 투명한 이미지 (검은색)
     public Image fadeImage2; // 페이드 아웃 전용 이미지
@@ -85,21 +85,31 @@ public class EndingManager : MonoBehaviour
         });
 
         finalMessagesByScene.Add(2, new string[]
-        {
+        { 
             "요리사의 길을 \n 꾸준히 걸은 \n 안재성은 \n 결국 우주적으로 \n 알아주는 쉐프가 \n 되었습니다.",
-            "최근에는 \n '컬러요리사' \n 라는 요리쇼에 \n 심사위원으로 \n 초대까지 받았더군요.",
-            "꾸준한 노력과 \n 열정은 꿈을 \n 현실로 만들어줍니다!" ,
-            "항상 순탄하지는 \n 않겠지만 \n 당당하게 나아가세요!",
-            "<color=#00A2FF>Ending C: 쉐프</color>"
+            "최근에는 인기 \n 요리 프로그램 \n '컬러요리사'에서 \n 심사위원으로 \n 초대받을 정도로 \n 명성을 쌓았습니다.",
+            "그의 꾸준한 노력과 \n 열정이 마침내 \n 꿈을 현실로 \n 만들어낸 것입니다!",
+            "앞으로의 길이 항상 \n 순탄하지는 않겠지만, \n 당신도 당당히 \n 나아갈 수 \n 있을 겁니다. \n \n 꿈을 향해 \n 힘차게 전진하세요!",
+            "<color=#6666FF>Ending C: 쉐프</color>"
         });
 
         finalMessagesByScene.Add(3, new string[]
         {
-            "요리사의 꿈을 \n 떠난 안재성은 \n 지금은 수많은 장비를 \n 살리는 정비병이 \n 되었습니다",
-            "요리사 준비가 \n 시간낭비가 \n 아닐까라는 \n 걱정과 달리",
-            "요리 기술의 \n 섬세함은 \n 정비병으로 일하는 \n 안재성에게 \n 강점이 되었습니다",
-            "지금까지의 삶이 \n 낭비라고 \n 생각하지 마세요. \n \n 모든 경험은 \n 가치가 있어요!",
+            "요리사의 꿈을 \n 내려놓은 안재성은 \n 이제 수많은 장비를 \n 되살리는 뛰어난 \n 정비병이 되었습니다.",
+            "요리사 준비가 \n 시간 낭비가 \n 아니었을까 걱정했지만, \n \n 그 섬세함은 \n 정비 작업에서 \n 엄청난 강점이 되었죠.",
+            "지금까지의 \n 삶을 낭비라고 \n 생각하지 마세요. \n 모든 경험은 \n 가치 있는 \n 자산입니다",
+            "각 경험이 쌓여 \n 당신의 길을 \n 더욱 빛나게 \n 할 것입니다!",
             "<color=#6666FF>Ending D: 장교</color>"
+            
+        });
+        
+        finalMessagesByScene.Add(4, new string[]
+        {
+            "당신은 로봇이 \n 작성한 평가가 \n 이런 결과를 \n 불러올지 몰랐습니다.",
+            "한 사람.. \n 아니 로봇의 \n 평가에 이렇게 \n 좌지우지 하다니..",
+            "세상은 이제 \n 로봇의 말 한마디로 \n 변해가는 시대가 \n 되어버린 걸까요...?",
+            "정말 인간시대의 \n 끝이 도래할지도 \n 모르겠군요",
+            "<color=#D55200>Ending E: SNS</color>"
             
         });
     }
