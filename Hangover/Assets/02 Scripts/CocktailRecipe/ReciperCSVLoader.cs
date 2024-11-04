@@ -52,7 +52,7 @@ public class ReciperCSVLoader : MonoBehaviour
             string alcoholContent = columns[7];
             string taste = columns[8];
             string description = columns[9];
-            string creaftingType = columns[10];
+            string method = columns[10];
 
             try
             {
@@ -66,7 +66,7 @@ public class ReciperCSVLoader : MonoBehaviour
                     continue;
                 }
 
-                recipeItem.SetData(IconSprite, name, sweet, sour, bitter, spice, spirit, alcoholContent, taste, description);
+                recipeItem.SetData(IconSprite, name, sweet, sour, bitter, spice, spirit, alcoholContent, taste, description, method);
 
                 // 생성 확인을 위한 로그
                 // Debug.Log($"RecipeItem 생성 완료: {name}");
