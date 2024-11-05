@@ -1,0 +1,5484 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9210587774998668954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_116
+  m_EditorClassIdentifier: 
+  id: 116
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC548\uB155\uD558\uC138\uC694. \uC5C7!"
+  cocktailId: -1
+  nextDialogueIds: 75000000
+--- !u!114 &-9177383631395937254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_120
+  m_EditorClassIdentifier: 
+  id: 120
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC820\uC7A5 \uC624\uB298\uC740 \uBA3C\uC800 \uAC00\uBCF4\uACA0\uB124"
+  cocktailId: -1
+  nextDialogueIds: 79000000
+--- !u!114 &-9133111574278345427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_67
+  m_EditorClassIdentifier: 
+  id: 67
+  day: 2
+  character: "\uC0BC\uC218\uC0DD"
+  text: "\uC88B\uC544\uC694! \uAE30\uB300\uD588\uB358 \uADF8 \uB290\uB08C\uC774\uC5D0\uC694!"
+  cocktailId: -1
+  nextDialogueIds: 44000000
+--- !u!114 &-9051462613736550250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_81
+  m_EditorClassIdentifier: 
+  id: 81
+  day: 2
+  character: "\uB098\uC77C\uB860\uBA38\uC2A4\uD06C"
+  text: "\uC5B8\uC820\uAC00\uB294 \uD48D\uC120\uC774 \uC544\uB2C8\uB77C \uC9C1\uC811
+    \uBB34\uC911\uB825\uC744 \uB290\uAF08\uC73C\uBA74 \uC88B\uACA0\uB124\uC694"
+  cocktailId: -1
+  nextDialogueIds: 53000000
+--- !u!114 &-9002338111236722533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_66
+  m_EditorClassIdentifier: 
+  id: 66
+  day: 2
+  character: "\uC0BC\uC218\uC0DD"
+  text: "\uC74C, \uC774\uAC8C \uC544\uB2CC\uAC00..."
+  cocktailId: -1
+  nextDialogueIds: 44000000
+--- !u!114 &-8919465282925996482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_139
+  m_EditorClassIdentifier: 
+  id: 139
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uD639\uC2DC \uC5EC\uAE30 '\uB780\uB780\uB8E8' \uAC70\uB9AC\uB294 \uC774\uC0C1\uD55C
+    \uAD11\uB300\uB294 \uC5C6\uC9C0?"
+  cocktailId: -1
+  nextDialogueIds: 8c000000
+--- !u!114 &-8918391347361554762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_83
+  m_EditorClassIdentifier: 
+  id: 83
+  day: 2
+  character: "\uBE45\uBB35_11"
+  text: "\uC548\uB155!!!"
+  cocktailId: -1
+  nextDialogueIds: 54000000
+--- !u!114 &-8907365848694623818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_53
+  m_EditorClassIdentifier: 
+  id: 53
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uB0B4\uAC00 \uADF8 \uC598\uAE30 \uD588\uB098\uC694? \uC0AC\uC2E4 \uAE30\uBD84\uC774
+    \uC6B0\uC6B8\uD560 \uB54C\uB9C8\uB2E4 \uC220\uC744 \uB9C8\uC154\uC694. \uC54C\uCF54\uC62C
+    \uC911\uB3C5\uC774\uC9C0."
+  cocktailId: -1
+  nextDialogueIds: 36000000
+--- !u!114 &-8704543269012115895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_29
+  m_EditorClassIdentifier: 
+  id: 29
+  day: 1
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 6\uC774 \uC544\uB2C8\uBA74
+    30 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 6\uC774 \uB9DE\uC73C\uBA74 31 (\uC131\uACF5)
+    */"
+  cocktailId: 6
+  nextDialogueIds: 1e0000001f000000
+--- !u!114 &-8684861355607402843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_32
+  m_EditorClassIdentifier: 
+  id: 32
+  day: 1
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC5EC\uD2BC, \uC774\uACF3\uC744 \uC88B\uC544\uD574\uC694. \uB9DB\uC788\uAC8C
+    \uB9C8\uC2E4 \uC218 \uC788\uACE0, \uBD84\uC704\uAE30\uAC00 \uC88B\uAC70\uB4E0."
+  cocktailId: -1
+  nextDialogueIds: 21000000
+--- !u!114 &-8626701808767618995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_13
+  m_EditorClassIdentifier: 
+  id: 13
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC74C....\uC62C\uB4DC \uD328\uC158\uB4DC\uC5D0\uB294 \uC2A4\uC704\uD2B8
+    \uC2DC\uB7FD 2\uBC88, \uBE44\uD130 \uC5D1\uAE30\uC2A4 3\uBC88, \uC2A4\uD30C\uC774\uC2A4
+    \uBE14\uB80C\uB4DC 2\uBC88,  \uC2A4\uD53C\uB9AC\uCE20 4\uBC88\uC774 \uB4E4\uC5B4\uAC00\uB294\uAD70"
+  cocktailId: -1
+  nextDialogueIds: 0e000000
+--- !u!114 &-8544903273702200874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_204
+  m_EditorClassIdentifier: 
+  id: 204
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC548\uB155\uD558\uC138\uC694."
+  cocktailId: -1
+  nextDialogueIds: cd000000
+--- !u!114 &-8535580820171573656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_181
+  m_EditorClassIdentifier: 
+  id: 181
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uC774\uBD10!"
+  cocktailId: -1
+  nextDialogueIds: b6000000
+--- !u!114 &-8521768716772585980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_82
+  m_EditorClassIdentifier: 
+  id: 82
+  day: 2
+  character: "\uB098\uC77C\uB860\uBA38\uC2A4\uD06C"
+  text: "\uC6B0\uC640, \uC774\uAC74 \uC815\uB9D0 \uAC15\uB82C\uD558\uB124\uC694!
+    \uC6B0\uC8FC\uCC98\uB7FC \uBB35\uC9C1\uD558\uACE0, \uC5B4\uB518\uAC00 \uB0B4
+    \uB9C8\uC74C\uC18D \uAE4A\uC740 \uACF3\uC744 \uAC74\uB4DC\uB9AC\uB294 \uB9DB\uC774\uC5D0\uC694.
+    \uC2A4\uD2B8\uB808\uC2A4 \uD574\uC18C\uC5D0 \uB531\uC774\uB124\uC694! "
+  cocktailId: -1
+  nextDialogueIds: 53000000
+--- !u!114 &-8457830989827108358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_140
+  m_EditorClassIdentifier: 
+  id: 140
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uB2E4\uD589\uC774\uB2E4! \uD639\uC2DC\uB77C\uB3C4 \uBCF4\uAC8C \uB41C\uB2E4\uBA74
+    \uB098\uB97C \uBAA8\uB978\uB2E4\uACE0 \uD574\uC918!"
+  cocktailId: -1
+  nextDialogueIds: 8d000000
+--- !u!114 &-8401885481589383882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_236
+  m_EditorClassIdentifier: 
+  id: 236
+  day: -1
+  character: "\uB098\uB808\uC774\uC158"
+  text: "\uB2F9\uC2E0\uC740 \uCE75\uD14C\uC77C\uC744 \uB9CC\uB4DC\uB294\uB370 \uC18C\uC9C8\uC774
+    \uC5C6\uC5C8\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: ed000000
+--- !u!114 &-8325245662604756067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_19
+  m_EditorClassIdentifier: 
+  id: 19
+  day: 1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC77C\uB2E8 \uBE14\uB799 \uB7EC\uC2DC\uC548 \uD55C\uC794 \uBD80\uD0C1 \uD560\uAC8C\uC694"
+  cocktailId: -1
+  nextDialogueIds: 14000000
+--- !u!114 &-8233816835853879668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_92
+  m_EditorClassIdentifier: 
+  id: 92
+  day: 2
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC774\uC81C \uD1F4\uADFC \uC2DC\uAC04\uC774\uB124. \uACE0\uC0DD\uD588\uC5B4.
+    \uB2E4\uC74C \uADFC\uBB34\uC77C\uC5D0 \uBCF4\uC790\uACE0."
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-8108144594639910867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_254
+  m_EditorClassIdentifier: 
+  id: 254
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uC694\uB9AC\uC0AC\uC758 \uAFC8\uC744 \uB5A0\uB09C \uC548\uC7AC\uC131\uC740
+    \uC9C0\uAE08\uC740 \uC218\uB9CE\uC740 \uC7A5\uBE44\uB97C \uC0B4\uB9AC\uB294 \uC815\uBE44\uBCD1\uC774
+    \uB418\uC5C8\uC2B5\uB2C8\uB2E4"
+  cocktailId: -1
+  nextDialogueIds: ff000000
+--- !u!114 &-8010868789645538603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_77
+  m_EditorClassIdentifier: 
+  id: 77
+  day: 2
+  character: "\uC8FC\uC778\uACF5"
+  text: " (\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 1, 15, 9\uAC00 \uC544\uB2C8\uBA74{else}
+    78 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 9\uAC00 \uB9DE\uC73C\uBA74 82 (\uC131\uACF5)
+    , \uACB0\uACFC \uC220\uC774 1 or 15\uBA74 79 (\uD2B9\uC218)*/"
+  cocktailId: 9
+  nextDialogueIds: 4e0000004f00000052000000
+--- !u!114 &-7798287831205980923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-7790339299246041921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_246
+  m_EditorClassIdentifier: 
+  id: 246
+  day: -1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC800\uB294 \uC2A4\uD14C\uC774\uD06C\uC758 \uAD7D\uAE30 \uC815\uB3C4\uB97C
+    \uC911\uC694\uC2DC \uC5EC\uAE30\uAC70\uB4E0\uC694."
+  cocktailId: -1
+  nextDialogueIds: f7000000
+--- !u!114 &-7766669791176396178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_149
+  m_EditorClassIdentifier: 
+  id: 149
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC548\uADF8\uB798\uB3C4 \uACC4\uC18D \uACE0\uBBFC\uC911\uC774\uC5C8\uB294\uB370,
+    \uADF8 \uB54C \uC774\uD6C4\uB85C \uC9C0\uAE08 \uB0B4\uAC00 \uD558\uACE0 \uC788\uB294\uAC8C
+    \uC798 \uD558\uACE0 \uC788\uB294\uC9C0 \uBAA8\uB974\uACA0\uC5B4\uC694."
+  cocktailId: -1
+  nextDialogueIds: 96000000
+--- !u!114 &-7700189012566161371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-7585333329548621839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_105
+  m_EditorClassIdentifier: 
+  id: 105
+  day: 3
+  character: V-07-TR-0N
+  text: "\uACBD\uACE0! \uACBD\uACE0! \uC704\uD5D8\uC778\uBB3C \uC2DD\uBCC4! \uBE44\uC0C1
+    \uB300\uD53C \uC808\uCC28 \uAC00\uB3D9 \uC900\uBE44 \uC911!"
+  cocktailId: -1
+  nextDialogueIds: 6a000000
+--- !u!114 &-7469813911795370592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_70
+  m_EditorClassIdentifier: 
+  id: 70
+  day: 2
+  character: "Ms. \uC2A4\uD1A4\uBE0C\uB8E8"
+  text: "\uC5EC\uAE30, \uC2F1\uAC00\uD3EC\uB974 \uC2AC\uB9C1 \uC8FC\uBB38\uD560\uAC8C\uC694."
+  cocktailId: -1
+  nextDialogueIds: 47000000
+--- !u!114 &-7456330743115690547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_222
+  m_EditorClassIdentifier: 
+  id: 222
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "(\uC694\uB9AC\uC0AC \uC5D4\uB529)"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-7425518524309265591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_255
+  m_EditorClassIdentifier: 
+  id: 255
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uC694\uB9AC\uC0AC \uC900\uBE44\uAC00 \uC2DC\uAC04\uB0AD\uBE44\uAC00 \uC544\uB2D0\uAE4C\uB77C\uB294
+    \uAC71\uC815\uACFC \uB2EC\uB9AC"
+  cocktailId: -1
+  nextDialogueIds: 00010000
+--- !u!114 &-7332738632187244009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-7266640966456555712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_94
+  m_EditorClassIdentifier: 
+  id: 94
+  day: 3
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uADF8\uB7FC \uB2E4\uC2DC \uC0C8\uB85C\uC6B4 \uC81C\uC791 \uAE30\uBC95\uC744
+    \uC18C\uAC1C\uD574\uBCF4\uB3C4\uB85D \uD560\uAE4C. \uC774\uBC88\uC5D4 '\uC800\uC5B4\uC11C
+    \uC11E\uB294' \uC220\uC744 \uB9CC\uB4E4\uC5B4\uBCF4\uC790\uACE0."
+  cocktailId: -1
+  nextDialogueIds: 5f000000
+--- !u!114 &-7205712051981423437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_171
+  m_EditorClassIdentifier: 
+  id: 171
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uADF8\uB798\uB3C4 \uC9C0\uAE08\uC774\uB77C\uB3C4 \uC548\uBD80\uB044\uB7EC\uC6CC\uC9C0\uB824\uBA74,
+    \uC5F4\uC2EC\uD788 \uD574\uC57C\uC9C0\uC694. \uADF8\uAC8C \uB9DE\uC9C0\uC694."
+  cocktailId: -1
+  nextDialogueIds: ac000000
+--- !u!114 &-7040271563376980021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_23
+  m_EditorClassIdentifier: 
+  id: 23
+  day: 1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC800\uB294 \"\"{\uC548\uC7AC\uC131}\"\" \uB77C\uACE0 \uD558\uB294\uB370
+    \uC131\uD568\uC774.....\"\"{playerName}\"\"\uC774\uC2DC\uAD70\uC694"
+  cocktailId: -1
+  nextDialogueIds: 18000000
+--- !u!114 &-7039276827605095381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_203
+  m_EditorClassIdentifier: 
+  id: 203
+  day: 5
+  character: V-07-TR-0N
+  text: "\uADF8\uB7FC \uB2E4\uC74C \uBC29\uBB38\uC744 \uAE30\uB300 \uD558\uACA0\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: cc000000ffffffff
+--- !u!114 &-7012242944289739547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_7
+  m_EditorClassIdentifier: 
+  id: 7
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uCE75\uD14C\uC77C\uC5D0 \uB4E4\uC5B4\uAC00\uB294 \uC7AC\uB8CC\uB97C \uBA3C\uC800
+    \uC124\uBA85\uD574 \uC8FC\uACA0\uB124"
+  cocktailId: -1
+  nextDialogueIds: 08000000
+--- !u!114 &-6942883345560426449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_195
+  m_EditorClassIdentifier: 
+  id: 195
+  day: 5
+  character: V-07-TR-0N
+  text: "\uBC14\uC758 \uD3C9\uAC00 \uC885\uD569 \uACB0\uACFC\uB97C \uCD9C\uB825 \uD569\uB2C8\uB2E4...98%
+    99% /*  \uBC30\uC5F4\uC5D0 \uC788\uB294\uAC8C FF\uBA74 196, TT\uBA74 199, \uB098\uBA38\uC9C0
+    201 */"
+  cocktailId: -1
+  nextDialogueIds: c4000000c7000000
+--- !u!114 &-6913781249513309819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_35
+  m_EditorClassIdentifier: 
+  id: 35
+  day: 1
+  character: V-07-TR-0N
+  text: "\uC548\uB155\uD558\uC2ED\uB2C8\uAE4C? \uC62C\uB4DC\uD328\uC158\uB4DC 1\uC794\uC744
+    \uC8FC\uBB38\uD558\uACA0\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 24000000
+--- !u!114 &-6878251891889562516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_89
+  m_EditorClassIdentifier: 
+  id: 89
+  day: 2
+  character: "\uBE45\uBB35_11"
+  text: "\uBB35\uB3C4\uB110\uB3C4\"\"\uB77C\uACE0 \uC54C\uC544? \uAC70\uAE30\uC11C
+    \uBE60\uC838\uB098\uC654\uC5B4! \uB3C8\uB3C4 \uAC70\uAE30\uC11C \uC880 \uCC59\uACBC\uACE0!"
+  cocktailId: -1
+  nextDialogueIds: 5a000000
+--- !u!114 &-6818116278020111560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_63
+  m_EditorClassIdentifier: 
+  id: 63
+  day: 2
+  character: "\uC0BC\uC218\uC0DD"
+  text: "\uC548\uB155\uD558\uC138\uC694!"
+  cocktailId: -1
+  nextDialogueIds: 40000000
+--- !u!114 &-6801538658806791995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_152
+  m_EditorClassIdentifier: 
+  id: 152
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uB4E3\uC790\uD558\uB2C8 \uB3C4\uC800\uD788 \uBABB\uBD10\uC8FC\uACA0\uAD70."
+  cocktailId: -1
+  nextDialogueIds: 99000000
+--- !u!114 &-6747736070401628613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_64
+  m_EditorClassIdentifier: 
+  id: 64
+  day: 2
+  character: "\uC0BC\uC218\uC0DD"
+  text: "\uBB50\uAC00 \uC88B\uC744\uAE4C... \uC74C, \uCF54\uC2A4\uBAA8\uD3F4\uB9AC\uD0C4?"
+  cocktailId: -1
+  nextDialogueIds: 41000000
+--- !u!114 &-6681205669546710596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_226
+  m_EditorClassIdentifier: 
+  id: 226
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uB9C8\uC74C\uC5D0 \uB4DC\uB124\uC694 \uAC10\uC0AC\uD569\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: e3000000
+--- !u!114 &-6668912554545958009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_190
+  m_EditorClassIdentifier: 
+  id: 190
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uAC10\uC0AC\uD569\uB2C8\uB2E4. \uC774\uC81C \uC0DD\uAC01\uC774 \uC880 \uC815\uB9AC\uAC00
+    \uB418\uB124\uC694"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-6598949871323113239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_262
+  m_EditorClassIdentifier: 
+  id: 262
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uC138\uC0C1\uC740 \uC774\uC81C \uB85C\uBD07\uC758 \uB9D0 \uD55C\uB9C8\uB514\uB85C
+    \uBCC0\uD574\uAC00\uB294 \uC2DC\uB300\uAC00 \uB418\uC5B4\uBC84\uB9B0 \uAC78\uAE4C\uC694...?"
+  cocktailId: -1
+  nextDialogueIds: 07010000
+--- !u!114 &-6468757046222022865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_167
+  m_EditorClassIdentifier: 
+  id: 167
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uADF8\uB798. \uADF8\uB7AC\uC5C8\uC8E0."
+  cocktailId: -1
+  nextDialogueIds: a8000000
+--- !u!114 &-6465793332290243346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_40
+  m_EditorClassIdentifier: 
+  id: 40
+  day: 1
+  character: V-07-TR-0N
+  text: "\uC138\uBD80 \uC815\uBCF4\uB294 \uC54C\uB9DE\uC740 \uAD8C\uD55C\uC744 \uBCF4\uC720\uD558\uACE0
+    \uC788\uB2E4\uACE0 \uD310\uB2E8\uB418\uAE30\uC804\uAE4C\uC9C0 \uC54C\uB9B4 \uC218
+    \uC5C6\uC2B5\uB2C8\uB2E4. \uB2E4\uC74C \uBC29\uBB38\uC744 \uD1B5\uD574\uC11C
+    \uAD8C\uD55C \uD310\uB2E8\uC744 \uC2EC\uC0AC\uD560 \uC218 \uC788\uC744 \uAC83\uC774\uB77C\uACE0
+    \uAE30\uB300\uD569\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 29000000
+--- !u!114 &-6452646034847803681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_172
+  m_EditorClassIdentifier: 
+  id: 172
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC5B8\uC820\uAC00 \uB2F9\uB2F9\uD558\uAC8C \uC2DD\uC0AC\uB97C \uB300\uC811\uD558\uACE0
+    \uC2F6\uB124\uC694. \uADF8 \uB140\uC11D\uB3C4 {playerName}\uC528\uB3C4\uC694."
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-6360547910855085421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_235
+  m_EditorClassIdentifier: 
+  id: 235
+  day: -1
+  character: "Lee.j.\uB4DC\uB798\uACE4"
+  text: "\uBC14\uB85C \uC9D0 \uC2F8\uC11C \uB0B4\uC77C\uBD80\uD130\uB294 \uB098\uC624\uC9C0
+    \uB9D0\uAC8C!"
+  cocktailId: -1
+  nextDialogueIds: ec000000
+--- !u!114 &-6319458917877465688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_107
+  m_EditorClassIdentifier: 
+  id: 107
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC5D0\uC789. \uC7A5\uB09C\uC77C\uC138 \uC7A5\uB09C\uC774\uC57C. \uB098
+    \uC6D0  \uCC38. \uC220\uC774\uB098 \uC8FC\uBB38\uD574\uC57C\uC9C0"
+  cocktailId: -1
+  nextDialogueIds: 6b000000
+--- !u!114 &-6308845891874678651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_57
+  m_EditorClassIdentifier: 
+  id: 57
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uADF8\uB9AC\uACE0 \uAC19\uC774 \uC77C\uC744 \uD558\uC790\uACE0 \uC57D\uC18D\uC744
+    \uD588\uC5B4. \uC0AC\uC5C5\uC744 \uD558\uC790\uACE0 \uB9D0\uC774\uC57C."
+  cocktailId: -1
+  nextDialogueIds: 3a000000
+--- !u!114 &-6305415282821920289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_62
+  m_EditorClassIdentifier: 
+  id: 62
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC624\uB298\uC740 \uBE68\uB9AC \uCDE8\uD558\uB098... \uC774\uC57C\uAE30
+    \uB4E4\uC5B4\uC918\uC11C \uACE0\uB9C8\uC6CC\uC694. \uD301\uB3C4 \uB450\uB451\uD788
+    \uB123\uC5B4\uB458\uAC8C\uC694."
+  cocktailId: -1
+  nextDialogueIds: 3f000000
+--- !u!114 &-6165426366560220902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_218
+  m_EditorClassIdentifier: 
+  id: 218
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "{playerName}\uC528, \uB2E4\uC74C\uC5D0\uB294 \uC774\uCABD\uC73C\uB85C \uBA39\uC73C\uB7EC
+    \uC640\uC694."
+  cocktailId: -1
+  nextDialogueIds: db000000
+--- !u!114 &-6029278578916596117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_56
+  m_EditorClassIdentifier: 
+  id: 56
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uCE5C\uAD6C\uAC00 \uD55C \uBA85 \uC788\uC5C8\uC5B4\uC694. \uCC98\uC74C
+    \uB9CC\uB0AC\uC744 \uB54C\uBD80\uD130 \uCE5C\uD588\uC9C0."
+  cocktailId: -1
+  nextDialogueIds: 39000000
+--- !u!114 &-5811050502244254989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_250
+  m_EditorClassIdentifier: 
+  id: 250
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uAFB8\uC900\uD55C \uB178\uB825\uACFC \uC5F4\uC815\uC740 \uAFC8\uC744 \uD604\uC2E4\uB85C
+    \uB9CC\uB4E4\uC5B4\uC90D\uB2C8\uB2E4!"
+  cocktailId: -1
+  nextDialogueIds: fb000000
+--- !u!114 &-5741253654984392738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_3
+  m_EditorClassIdentifier: 
+  id: 3
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "{playerName}\"\" \uC774 \uC790\uB124\uC758 \uC774\uB984\uC774\uB85C\uAD70...\uB9CC\uB098\uC11C
+    \uBC18\uAC11\uB124. \uB098\uB294 \uC774\uACF3 \"\"\uD589\uC624\uBC84(\uAC00\uBA85)\"\"\uC758
+    \uC8FC\uC778\uC778 \"\"Lee.J.\uB4DC\uB798\uACE4\"\" \uC774\uB77C\uACE0 \uD558\uB124"
+  cocktailId: -1
+  nextDialogueIds: 04000000
+--- !u!114 &-5681771879039197250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_192
+  m_EditorClassIdentifier: 
+  id: 192
+  day: 5
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 2\uAC00 \uC544\uB2C8\uBA74 
+    \uBC30\uC5F4\uC5D0 F \uCD94\uAC00\uD558\uACE0 193 (\uC2E4\uD328), \uACB0\uACFC
+    \uC220\uC774 2\uAC00 \uB9DE\uC73C\uBA74 \uBC30\uC5F4\uC5D0 T \uCD94\uAC00\uD558\uACE0
+    194 (\uC131\uACF5) */"
+  cocktailId: 2
+  nextDialogueIds: c1000000c2000000
+--- !u!114 &-5601866969931980040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_0
+  m_EditorClassIdentifier: 
+  id: 0
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC548\uB155\uD558\uC2E0\uAC00 \uC790\uB124\uAC00 \uC624\uB298\uBD80\uD130
+    \"\"\uD589\uC624\uBC84(\uAC00\uBA85)\"\" \uC5D0\uC11C \uC77C\uD558\uAE30\uB85C
+    \uD55C...\uC54C\uBC14\uC0DD\uC778\uAC00?"
+  cocktailId: -1
+  nextDialogueIds: 01000000
+--- !u!114 &-5578780365393207881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-5519490274667662947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_18
+  m_EditorClassIdentifier: 
+  id: 18
+  day: 1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC548\uB155\uD558\uC138\uC694, \uCC98\uC74C \uBD59\uB294 \uBD84\uC774\uB124\uC694"
+  cocktailId: -1
+  nextDialogueIds: 13000000
+--- !u!114 &-5512892951892277851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_175
+  m_EditorClassIdentifier: 
+  id: 175
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC0AC\uC774\uB4DC\uCE74 \uD55C\uC794 \uC8FC\uC138\uC694."
+  cocktailId: -1
+  nextDialogueIds: b0000000
+--- !u!114 &-5494427431431030175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_103
+  m_EditorClassIdentifier: 
+  id: 103
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "V-07-TR-0N\uC774\uC796\uC544, \uC624\uB79C\uB9CC\uC5D0 \uBCF4\uB294 \uAD6C
+    \uBAA8\uB378\uC778\uB370, \uC5B4\uB514 \uD55C\uBC88 \uB0B4\uAC00 \uBD84\uD574\uD574
+    \uBD10\uB3C4 \uB418\uACA0\uB098?"
+  cocktailId: -1
+  nextDialogueIds: 68000000
+--- !u!114 &-5472389043252491408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_168
+  m_EditorClassIdentifier: 
+  id: 168
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uAC89\uBA4B\uC774\uC5C8\uC9C0\uB9CC \uB108\uBB34 \uBA4B\uC838\uBCF4\uC600\uC5B4\uC694.
+    \uD558\uC597\uACE0 \uAC80\uC740 \uC694\uB9AC\uBCF5, \uADF8 \uC0AC\uB78C\uB4E4\uC774
+    \uB9CC\uB4E4\uC5B4\uB0B8 \uC74C\uC2DD, \uADF8\uB9AC\uACE0 \uADF8\uAC78 \uBA39\uACE0
+    \uC815\uB9D0 \uD589\uBCF5\uD574\uC9C4 \uB290\uB08C..."
+  cocktailId: -1
+  nextDialogueIds: a9000000
+--- !u!114 &-5439531320247795150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_179
+  m_EditorClassIdentifier: 
+  id: 179
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC0AC\uC2E4... \uC774\uBBF8 \uC9C4\uB85C\uB97C \uBCC0\uACBD\uD560 \uB9C8\uC74C\uC744
+    \uC815\uD588\uC5B4\uC694."
+  cocktailId: -1
+  nextDialogueIds: b4000000
+--- !u!114 &-5345207727809012462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_252
+  m_EditorClassIdentifier: 
+  id: 252
+  day: -1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC815\uBE44\uB294 \uC608\uC220\uC774\uB2E4!"
+  cocktailId: -1
+  nextDialogueIds: fd000000
+--- !u!114 &-5210025360309617972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_230
+  m_EditorClassIdentifier: 
+  id: 230
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "{playerName}\"\" \uB2D8\uB3C4 \uC800\uC640 \uBE44\uC2B7\uD55C \uC77C\uC744
+    \uACA9\uAC8C\uB41C\uB2E4\uBA74 \uD6C4\uD68C\uB294 \uD558\uC9C0 \uB9D0\uACE0,
+    \uADF8 \uC120\uD0DD\uC744 \uC18C\uC911\uD558\uAC8C \uC5EC\uAE30\uC138\uC694."
+  cocktailId: -1
+  nextDialogueIds: e7000000
+--- !u!114 &-5157345529409515915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_214
+  m_EditorClassIdentifier: 
+  id: 214
+  day: 5
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC774\uC81C \uADF8\uAC74 \uB124 \uAC00\uAC8C\uC5D0\uC11C \uC678\uCCD0\uC57C\uC9C0."
+  cocktailId: -1
+  nextDialogueIds: d7000000
+--- !u!114 &-5048415461171151788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_90
+  m_EditorClassIdentifier: 
+  id: 90
+  day: 2
+  character: "\uBE45\uBB35_11"
+  text: "\uC774\uAC70 \uB9C8\uC2E4\uB9CC \uD55C \uAC70 \uAC19\uC740\uB370! \uB2E4\uC74C\uC5D0
+    \uB610 \uC640\uB3C4 \uB420\uAE4C!!"
+  cocktailId: -1
+  nextDialogueIds: 5b000000
+--- !u!114 &-5030614631730639470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_28
+  m_EditorClassIdentifier: 
+  id: 28
+  day: 1
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC800, \uB871 \uC544\uC77C\uB79C\uB4DC \uC544\uC774\uC2A4\uD2F0 \uD558\uB098
+    \uC8FC\uC138\uC694."
+  cocktailId: -1
+  nextDialogueIds: 1d000000
+--- !u!114 &-5017713669371738123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_189
+  m_EditorClassIdentifier: 
+  id: 189
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uBAA8\uB4E0 \uACBD\uD5D8\uC740 \uC758\uBBF8\uAC00 \uC788\uC5B4. \uB124\uAC00
+    \uADF8\uAC83\uC744 \uC5B4\uB5BB\uAC8C \uD65C\uC6A9\uD558\uB290\uB0D0\uC5D0 \uB2EC\uB838\uC744
+    \uBFD0\uC774\uC57C."
+  cocktailId: -1
+  nextDialogueIds: be000000
+--- !u!114 &-4976687846676371171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_178
+  m_EditorClassIdentifier: 
+  id: 178
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "(\uC131\uACF5) \uC138\uB828\uB41C \uB9DB\uC774\uAD70\uC694"
+  cocktailId: -1
+  nextDialogueIds: b3000000
+--- !u!114 &-4969235983571307814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_34
+  m_EditorClassIdentifier: 
+  id: 34
+  day: 1
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC77C \uD798\uB4E4\uACA0\uC9C0\uB9CC \uD798\uB0B4\uBD10\uC694. \uB2E4\uC74C\uC5D0
+    \uB610 \uC62C\uAC8C\uC694."
+  cocktailId: -1
+  nextDialogueIds: 23000000
+--- !u!114 &-4916764034721961969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_71
+  m_EditorClassIdentifier: 
+  id: 71
+  day: 2
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 2\uAC00 \uC544\uB2C8\uBA74
+    72 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 2\uAC00 \uB9DE\uC73C\uBA74 73 (\uC131\uACF5)
+    */"
+  cocktailId: 2
+  nextDialogueIds: 4800000049000000
+--- !u!114 &-4803588045865592098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_122
+  m_EditorClassIdentifier: 
+  id: 122
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC77C\uB2E8 \uBD88\uBC14\uB514\uC5D0 \uD55C\uC794 \uBD80\uD0C1 \uD560\uAC8C\uC694"
+  cocktailId: -1
+  nextDialogueIds: 7b000000
+--- !u!114 &-4768349410716510038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_185
+  m_EditorClassIdentifier: 
+  id: 185
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uC798\uBD10! \uB098\uB294 \uD584\uBC84\uAC70\uB85C \uD0DC\uC5B4\uB0AC\uC9C0\uB9CC
+    \uD0C8\uCD9C\uC774\uB77C\uB294 \uAE38\uC744 \uD0DD\uD588\uACE0 \uC9C0\uAE08 \uC774
+    \uC790\uB9AC\uC5D0\uC11C \uC220\uC794\uC744 \uAE30\uC6B8\uC774\uACE0 \uC788\uC796\uC544!"
+  cocktailId: -1
+  nextDialogueIds: ba000000
+--- !u!114 &-4652882241813500536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_101
+  m_EditorClassIdentifier: 
+  id: 101
+  day: 3
+  character: V-07-TR-0N
+  text: "[\uACC4\uC0B0 \uC911] \uD574\uB2F9 \uC785\uB825\uC740 99.995% \uCFE0\uBC14
+    \uB9AC\uBE0C\uB808\uAC00 \uB9DE\uB2E4\uACE0 \uD310\uB2E8\uB429\uB2C8\uB2E4. \uB370\uC774\uD130
+    \uBCA0\uC774\uC2A4\uC5D0 \uD574\uB2F9 \uBC14\uC758 \uD3C9\uAC00\uB97C \uAC31\uC2E0\uD569\uB2C8\uB2E4
+    /*\uB85C\uBD07 \uD3C9\uAC00 \uBC30\uC5F4\uC5D0 T \uC800\uC7A5* (99\uC5D0\uC11C
+    \uB3D9\uC791)/"
+  cocktailId: -1
+  nextDialogueIds: 66000000
+--- !u!114 &-4510212806952329325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_6
+  m_EditorClassIdentifier: 
+  id: 6
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC5ED\uC2DC \uC2E4\uC2B5\uC744 \uD574\uC57C \uC2B5\uB4DD\uC774 \uBE60\uB974\uC9C0.
+    \uBC14\uB85C \uC2DC\uC791\uD574\uBCFC\uAE4C?"
+  cocktailId: -1
+  nextDialogueIds: 07000000
+--- !u!114 &-4384771846183262041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-4253640068176403470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_65
+  m_EditorClassIdentifier: 
+  id: 65
+  day: 2
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 13\uC774 \uC544\uB2C8\uBA74
+    66 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 13\uC774 \uB9DE\uC73C\uBA74 67 (\uC131\uACF5)
+    */"
+  cocktailId: 13
+  nextDialogueIds: 4200000043000000
+--- !u!114 &-4225022035848463476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_177
+  m_EditorClassIdentifier: 
+  id: 177
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "(\uC2E4\uD328) \uC774\uAC74 \uB2E4\uB978 \uC74C\uB8CC \uAC19\uAD70\uC694"
+  cocktailId: -1
+  nextDialogueIds: b3000000
+--- !u!114 &-4106309947183876436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_201
+  m_EditorClassIdentifier: 
+  id: 201
+  day: 5
+  character: V-07-TR-0N
+  text: "\uC8FC\uBB38 \uC77C\uCE58\uC728: 50%, \uB3C5\uCC3D\uC131: \uC6B0\uC218, 
+    \uB9DB: \uC6B0\uC218...."
+  cocktailId: -1
+  nextDialogueIds: ca000000
+--- !u!114 &-4051573681720837364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_164
+  m_EditorClassIdentifier: 
+  id: 164
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "... \uACE0\uB9D9\uB2E4"
+  cocktailId: -1
+  nextDialogueIds: a5000000
+--- !u!114 &-4036150486960631624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_184
+  m_EditorClassIdentifier: 
+  id: 184
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uADF8\uB9AC\uACE0 \uC9C4\uB85C\uB97C \uBC14\uAFB8\uB294\uAC74 \uC720\uC720\uBD80\uB2E8\uD558\uC9C0
+    \uC54A\uC544!"
+  cocktailId: -1
+  nextDialogueIds: b9000000
+--- !u!114 &-3916969794778372368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_157
+  m_EditorClassIdentifier: 
+  id: 157
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "(\uC2E4\uD328) \uAE30\uBD84 \uC804\uD658 \uD558\uB77C\uB294 \uAC74\uAC00?
+    \uBB50 \uB098\uC058\uC9C0\uB294 \uC54A\uC2B5\uB2C8\uB2E4\uB9CC."
+  cocktailId: -1
+  nextDialogueIds: 9f000000
+--- !u!114 &-3831719708051601434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_87
+  m_EditorClassIdentifier: 
+  id: 87
+  day: 2
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791)"
+  cocktailId: 0
+  nextDialogueIds: 58000000
+--- !u!114 &-3826359772060183911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_74
+  m_EditorClassIdentifier: 
+  id: 74
+  day: 2
+  character: "\uB098\uC77C\uB860\uBA38\uC2A4\uD06C"
+  text: "\uC190\uB2D8\uC654\uC2B5\uB2C8\uB2E4~~! \uB9DB\uC788\uB294 \uC220\uC744
+    \uB9C8\uC2DC\uB7EC \uC654\uC5B4\uC694~!"
+  cocktailId: -1
+  nextDialogueIds: 4b000000
+--- !u!114 &-3794007440228541386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_174
+  m_EditorClassIdentifier: 
+  id: 174
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC9C0\uB09C \uBC88\uC5D4 \uBBF8\uC548\uD588\uC5B4\uC694. \uAD1C\uD788 \uD070
+    \uC18C\uB780\uC744 \uC77C\uC73C\uCF30\uB124\uC694."
+  cocktailId: -1
+  nextDialogueIds: af000000
+--- !u!114 &-3542288298433661599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_188
+  m_EditorClassIdentifier: 
+  id: 188
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uC544\uB2C8, \uB108\uB294 \uB9CE\uC740 \uAC78 \uBC30\uC6E0\uC5B4. \uADF8
+    \uACBD\uD5D8\uB4E4\uC774 \uC55E\uC73C\uB85C \uB124\uAC00 \uAC00\uB294 \uAE38\uC5D0
+    \uBD84\uBA85\uD788 \uD070 \uB3C4\uC6C0\uC774 \uB420 \uAC70\uC57C. "
+  cocktailId: -1
+  nextDialogueIds: bd000000
+--- !u!114 &-3532319907305741910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_229
+  m_EditorClassIdentifier: 
+  id: 229
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uD558\uC9C0\uB9CC... \uC81C \uC120\uD0DD\uB4E4\uC774 \uC800\uB97C \uB354
+    \uB098\uC740 \uBC29\uD5A5\uC73C\uB85C \uC774\uB04C\uACE0 \uC788\uB2E4\uACE0 \uBBFF\uC73C\uB824\uACE0
+    \uD574\uC694."
+  cocktailId: -1
+  nextDialogueIds: e6000000
+--- !u!114 &-3453306170577241723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_261
+  m_EditorClassIdentifier: 
+  id: 261
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uD55C \uC0AC\uB78C..\uC544\uB2C8 \uB85C\uBD07\uC758 \uD3C9\uAC00\uC5D0
+    \uC774\uB807\uAC8C \uC88C\uC9C0\uC6B0\uC9C0 \uD558\uB2E4\uB2C8.."
+  cocktailId: -1
+  nextDialogueIds: 06010000
+--- !u!114 &-3244091647681639962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_109
+  m_EditorClassIdentifier: 
+  id: 109
+  day: 3
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 20\uAC00 \uC544\uB2C8\uBA74
+    110 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 20\uAC00 \uB9DE\uC73C\uBA74 111
+    (\uC131\uACF5) */"
+  cocktailId: 20
+  nextDialogueIds: 6e0000006f000000
+--- !u!114 &-3197085642105735368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_159
+  m_EditorClassIdentifier: 
+  id: 159
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC798 \uB4E4\uC5B4 {\uC548\uC7AC\uC131 \uC774\uB984}. \uB124\uAC00 \uC798\uD588\uB2E4\uACE0\uB294
+    \uACB0\uCF54 \uC0DD\uAC01\uD558\uC9C0 \uC54A\uC544."
+  cocktailId: -1
+  nextDialogueIds: a0000000
+--- !u!114 &-3188036849765079422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_80
+  m_EditorClassIdentifier: 
+  id: 80
+  day: 2
+  character: "\uB098\uC77C\uB860\uBA38\uC2A4\uD06C"
+  text: "\uADF8\uB798\uB3C4 \uB0AE\uC124\uC9C0\uB294 \uC54A\uB124\uC694.. \uC0AC\uC2E4
+    \uC800\uB294 \uC9D1\uC5D0\uC11C \uBC1C\uC5D0 \uD48D\uC120\uC744 \uBB36\uACE0
+    \uBB34\uC911\uB825 \uC0C1\uD0DC\uB97C \uD749\uB0B4 \uB0B4\uBA74\uC11C \uC2A4\uD2B8\uB808\uC2A4\uB97C
+    \uD480\uAC70\uB4E0\uC694.."
+  cocktailId: -1
+  nextDialogueIds: 51000000
+--- !u!114 &-3091315006303703758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_88
+  m_EditorClassIdentifier: 
+  id: 88
+  day: 2
+  character: "\uBE45\uBB35_11"
+  text: "\uC0AC\uC2E4 \uC774\uB7F0\uAC70 \uCC98\uC74C \uB9C8\uC154\uBD10! \uC774\uB9AC\uC800\uB9AC
+    \uB5A0\uB3CC\uACE0 \uC788\uAC70\uB4E0."
+  cocktailId: -1
+  nextDialogueIds: 59000000
+--- !u!114 &-3041007750494720964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_241
+  m_EditorClassIdentifier: 
+  id: 241
+  day: -1
+  character: "Lee.j.\uB4DC\uB798\uACE4"
+  text: "\uC790\uB124\uB294 \uB300\uCCB4 \uC7A5\uC0AC\uB97C \uC5B4\uB5BB\uAC8C \uD588\uC73C\uBA74
+    \uC218\uC775\uB960\uC774 \uB9C8\uC774\uB108\uC2A4\uC778\uAC00!?"
+  cocktailId: -1
+  nextDialogueIds: f2000000
+--- !u!114 &-3035600452027379098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_196
+  m_EditorClassIdentifier: 
+  id: 196
+  day: 5
+  character: V-07-TR-0N
+  text: "\uC8FC\uBB38 \uC77C\uCE58\uC728: 0%,  \uC628\uB3C4: \uBD80\uC801\uACA9,
+    \uD5A5\uBBF8: \uBD80\uC801\uACA9..."
+  cocktailId: -1
+  nextDialogueIds: c5000000
+--- !u!114 &-2913890160949091289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_263
+  m_EditorClassIdentifier: 
+  id: 263
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uC815\uB9D0 \uC778\uAC04\uC2DC\uB300\uC758 \uB05D\uC774 \uB3C4\uB798\uD560\uC9C0\uB3C4
+    \uBAA8\uB974\uACA0\uAD70\uC694"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-2847079160744981734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_117
+  m_EditorClassIdentifier: 
+  id: 117
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC557! \uB108\uB294! \uC5B4\uB51C \uBED4\uBED4\uD558\uAC8C \uB0B4 \uC55E\uC5D0
+    \uB2E4\uC2DC \uB098\uD0C0\uB098!"
+  cocktailId: -1
+  nextDialogueIds: 76000000
+--- !u!114 &-2797227618218364749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_68
+  m_EditorClassIdentifier: 
+  id: 68
+  day: 2
+  character: "Ms. \uC2A4\uD1A4\uBE0C\uB8E8"
+  text: "\uC544, \uC548\uB155\uD558\uC138\uC694.."
+  cocktailId: -1
+  nextDialogueIds: 45000000
+--- !u!114 &-2769068973422079594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_232
+  m_EditorClassIdentifier: 
+  id: 232
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC55E\uC73C\uB85C\uB3C4 \uC5EC\uAE30 \uC790\uC8FC \uC62C \uC218 \uC788\uC73C\uBA74
+    \uC88B\uACA0\uC5B4\uC694."
+  cocktailId: -1
+  nextDialogueIds: e9000000
+--- !u!114 &-2761743096441781024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_131
+  m_EditorClassIdentifier: 
+  id: 131
+  day: 3
+  character: V-07-TR-0N
+  text: "\uAC70\uC9D3 \uAC70\uC9D3"
+  cocktailId: -1
+  nextDialogueIds: 84000000
+--- !u!114 &-2615011764294563700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_31
+  m_EditorClassIdentifier: 
+  id: 31
+  day: 1
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC74C, \uC774 \uB9DB\uC774\uC8E0. \uC0AC\uB78C\uC774 \uBC14\uB00C\uC5B4\uB3C4
+    \uC220\uB9DB\uC740 \uBCC0\uD558\uC9C0 \uC54A\uB124\uC694."
+  cocktailId: -1
+  nextDialogueIds: 20000000
+--- !u!114 &-2556232838080227243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_30
+  m_EditorClassIdentifier: 
+  id: 30
+  day: 1
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC5B4.. \uC774\uAC74 \uC544\uB2CC \uAC83 \uAC19\uC740\uB370, \uCC98\uC74C
+    \uC628 \uC0AC\uB78C\uB4E4\uC740 \uAC00\uB054 \uADF8\uB7EC\uB354\uB77C\uACE0\uC694."
+  cocktailId: -1
+  nextDialogueIds: 20000000
+--- !u!114 &-2429066472559017922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_242
+  m_EditorClassIdentifier: 
+  id: 242
+  day: -1
+  character: "\uB098\uB808\uC774\uC158"
+  text: "\uB2F9\uC2E0\uC758 \uC2E4\uC218\uC640 \uB109\uB109\uD55C \uC778\uC2EC\uC740
+    \uD589\uC624\uBC84\uC758 \uC794\uACE0\uB97C \uAC70\uB35C \uB0C8\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: f3000000
+--- !u!114 &-2372249987537878075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_111
+  m_EditorClassIdentifier: 
+  id: 111
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC774 \uB9DB\uC744 \uB2E4\uC2DC \uBCF4\uAC8C \uB420 \uC904\uC740 \uBAB0\uB790\uAD70"
+  cocktailId: -1
+  nextDialogueIds: 70000000
+--- !u!114 &-2342794566449964873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_170
+  m_EditorClassIdentifier: 
+  id: 170
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC774\uAC74 \uBA85\uBC31\uD788 \uB0B4 \uC798\uBABB\uC774 \uB9DE\uC544\uC694."
+  cocktailId: -1
+  nextDialogueIds: ab000000
+--- !u!114 &-2161711638396482212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_260
+  m_EditorClassIdentifier: 
+  id: 260
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uB2F9\uC2E0\uC740 \uB85C\uBD07\uC774 \uC791\uC131\uD55C \uC791\uC740 \uD3C9\uAC00\uAC00
+    \uC774\uB7F0 \uACB0\uACFC\uB97C \uBD88\uB7EC\uC62C\uC9C0 \uBAB0\uB790\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 05010000
+--- !u!114 &-2084759051797229202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_38
+  m_EditorClassIdentifier: 
+  id: 38
+  day: 1
+  character: V-07-TR-0N
+  text: "[\uACC4\uC0B0 \uC911] \uD574\uB2F9 \uC785\uB825\uC740 99.995% \uC62C\uB4DC\uD328\uC158\uB4DC\uAC00
+    \uB9DE\uB2E4\uACE0 \uD310\uB2E8\uB429\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 27000000
+--- !u!114 &-1981071044840309112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_114
+  m_EditorClassIdentifier: 
+  id: 114
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uBD84\uD558\uC9C0\uB9CC \uADF8\uB54C \uB9C8\uC168\uB358 \uADF8 \uC220\uB9DB\uC774
+    \uAC00\uB054 \uADF8\uB9AC\uC6CC"
+  cocktailId: -1
+  nextDialogueIds: 73000000
+--- !u!114 &-1968276480164532644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_8
+  m_EditorClassIdentifier: 
+  id: 8
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC7AC\uB8CC\uC758 \uC885\uB958\uB85C\uB294 \uC2A4\uC704\uD2B8 \uC2DC\uB7FD, 
+    \uC0AC\uC6CC \uBBF9\uC2A4, \uBE44\uD130 \uC5D1\uAE30\uC2A4, \uC2A4\uD30C\uC774\uC2A4
+    \uBE14\uB80C\uB4DC, \uC2A4\uD53C\uB9AC\uCE20\uAC00 \uC788\uB2E4\uB124"
+  cocktailId: -1
+  nextDialogueIds: 09000000
+--- !u!114 &-1877909712542317745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_78
+  m_EditorClassIdentifier: 
+  id: 78
+  day: 2
+  character: "\uB098\uC77C\uB860\uBA38\uC2A4\uD06C"
+  text: "\uC557, \uC774\uAC74 \uC2E4\uD328\uB124\uC694... \uB9C8\uCE58 \uC6B0\uC8FC
+    \uBBF8\uC544\uAC00 \uB41C \uAE30\uBD84\uC774\uC5D0\uC694.."
+  cocktailId: -1
+  nextDialogueIds: 53000000
+--- !u!114 &-1690049647526792604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_20
+  m_EditorClassIdentifier: 
+  id: 20
+  day: 1
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 9\uAC00 \uC544\uB2C8\uBA74
+    21 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 9\uAC00 \uB9DE\uC73C\uBA74 22 (\uC131\uACF5)
+    */"
+  cocktailId: 9
+  nextDialogueIds: 1500000016000000
+--- !u!114 &-1568220024234374358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_200
+  m_EditorClassIdentifier: 
+  id: 200
+  day: 5
+  character: V-07-TR-0N
+  text: "\uC774\uB7F0 \uBC14\uC5D0, \uB2F9\uC2E0\uAC19\uC740 \uBC14\uD150\uB354\uB294..\uCC9C\uAD6D\uC5D0\uC11C
+    \uC601\uC5C5\uC744 \uD574\uC57C \uD569\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: cb000000
+--- !u!114 &-1558701974097792663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_173
+  m_EditorClassIdentifier: 
+  id: 173
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC548\uB155\uD558\uC138\uC694, \uB610 \uC654\uC5B4\uC694."
+  cocktailId: -1
+  nextDialogueIds: ae000000
+--- !u!114 &-1543839112996266730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_259
+  m_EditorClassIdentifier: 
+  id: 259
+  day: -1
+  character: "\uC810\uC7A5"
+  text: "\uADF8 \uB9DD\uD560 \uB85C\uBD07\uC774 \uC288\uD37C \uC778\uD50C\uB8E8\uC5B8\uC11C\uC77C
+    \uC904\uC774\uC57C..."
+  cocktailId: -1
+  nextDialogueIds: 04010000
+--- !u!114 &-1525345655967168789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_60
+  m_EditorClassIdentifier: 
+  id: 60
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uD6C4... \uBBF8\uC548\uD569\uB2C8\uB2E4. \uADF8 \uC0DD\uAC01\uB9CC \uD558\uBA74
+    \uD654\uAC00 \uB098\uC11C\uC694."
+  cocktailId: -1
+  nextDialogueIds: 3d000000
+--- !u!114 &-1486025501763914888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_220
+  m_EditorClassIdentifier: 
+  id: 220
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uAC01\uC790 \uAC08 \uAE38\uC744 \uAC00\uACA0\uC9C0\uB9CC, \uCD5C\uC120\uC758
+    \uAE38\uC774\uB2C8\uAE4C\uC694."
+  cocktailId: -1
+  nextDialogueIds: dd000000
+--- !u!114 &-1413928190605230855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_228
+  m_EditorClassIdentifier: 
+  id: 228
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC81C\uAC00 \uB0B4\uB9B0 \uBAA8\uB4E0 \uC120\uD0DD\uC774 \uCD5C\uC120\uC774\uC5C8\uB2E4\uACE0\uB294
+    \uC0DD\uAC01\uD558\uC9C0 \uC54A\uC544\uC694. \uAC00\uB054 \uD6C4\uD68C\uB3C4
+    \uB4E4\uACE0\uC694."
+  cocktailId: -1
+  nextDialogueIds: e5000000
+--- !u!114 &-1306151484855277132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_2
+  m_EditorClassIdentifier: 
+  id: 2
+  day: 1
+  character: "\uC8FC\uC778\uACF5"
+  text: "- \uC774\uB984 \uC9C1\uC811 \uC785\uB825 -  /*\uD0A4\uBCF4\uB4DC \uD31D\uC5C5*/"
+  cocktailId: -1
+  nextDialogueIds: 03000000
+--- !u!114 &-1083466525077962059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_144
+  m_EditorClassIdentifier: 
+  id: 144
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uC544\uAE4C \uB0B4\uAC00 \uB9D0\uD55C \uAD11\uB300\uAC00 \uAD81\uAE08\uD558\uACA0\uAD6C\uB098!"
+  cocktailId: -1
+  nextDialogueIds: 91000000
+--- !u!114 &-1039605900643912234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-912485549220218257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_98
+  m_EditorClassIdentifier: 
+  id: 98
+  day: 3
+  character: V-07-TR-0N
+  text: "\uC548\uB155\uD558\uC2ED\uB2C8\uAE4C?  \uCFE0\uBC14 \uB9AC\uBE0C\uB808 1\uC794\uC744
+    \uC8FC\uBB38\uD558\uACA0\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 63000000
+--- !u!114 &-904201234651160103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_118
+  m_EditorClassIdentifier: 
+  id: 118
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC544\uB2C8. \uC5EC\uAE30 \uACC4\uC2E0\uC904 \uC54C\uC558\uB2E4\uBA74 \uC624\uC9C0
+    \uC54A\uC558\uC744 \uAEBC\uC5D0\uC694."
+  cocktailId: -1
+  nextDialogueIds: 77000000
+--- !u!114 &-820803830313498576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_223
+  m_EditorClassIdentifier: 
+  id: 223
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC548\uB155\uD558\uC138\uC694. \uD558\uD558"
+  cocktailId: -1
+  nextDialogueIds: e0000000
+--- !u!114 &-779390371145293937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_44
+  m_EditorClassIdentifier: 
+  id: 44
+  day: 2
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uD754\uB4E4\uC5B4\uC11C \uB9CC\uB4E4 \uC218 \uC788\uB294 '\uBE0C\uB79C\uB514\uC54C\uB809\uC0B0\uB354'\uBD80\uD130
+    \uB3C4\uC804\uD574\uBCF4\uC790\uACE0."
+  cocktailId: -1
+  nextDialogueIds: 2d000000
+--- !u!114 &-765789883284804922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_253
+  m_EditorClassIdentifier: 
+  id: 253
+  day: -1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC815\uBE44\uC758 \uC815\uC0C1\uD654!"
+  cocktailId: -1
+  nextDialogueIds: fe000000
+--- !u!114 &-693814752230400505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_86
+  m_EditorClassIdentifier: 
+  id: 86
+  day: 2
+  character: "\uBE45\uBB35_11"
+  text: "\uADF8\uB7FC \uC544\uBB34\uAC70\uB098 \uD558\uB098 \uB9D0\uC544\uC918! \uB3C8\uC740
+    \uC788\uC73C\uB2C8\uAE4C!!"
+  cocktailId: -1
+  nextDialogueIds: 57000000
+--- !u!114 &-686504932974051287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_12
+  m_EditorClassIdentifier: 
+  id: 12
+  day: 1
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uB808\uC2DC\uD53C\uBD81\uC744 \uC5F4\uC5B4\uBD04) /* \uB808\uC2DC\uD53C
+    \uBD81 \uC810\uB4F1, \uB808\uC2DC\uD53C \uBD81\uC744 \uC5F4\uC5B4\uC57C \uB118\uC5B4\uAC00\uC57C
+    \uD560 \uB4EF */"
+  cocktailId: -1
+  nextDialogueIds: 0d000000
+--- !u!114 &-666297874926827836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_99
+  m_EditorClassIdentifier: 
+  id: 99
+  day: 3
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 8\uAC00 \uC544\uB2C8\uBA74
+    100 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 8\uAC00 \uB9DE\uC73C\uBA74 101
+    (\uC131\uACF5) */"
+  cocktailId: 8
+  nextDialogueIds: 6400000065000000
+--- !u!114 &-660935120968896708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_93
+  m_EditorClassIdentifier: 
+  id: 93
+  day: 3
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC5B4\uC11C\uC624\uAC8C. \uC774\uC820 \uB9CE\uC774 \uC775\uC219\uD574\uC9C4
+    \uBAA8\uC591\uC774\uAD70."
+  cocktailId: -1
+  nextDialogueIds: 5e000000
+--- !u!114 &-654279148724911789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_119
+  m_EditorClassIdentifier: 
+  id: 119
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "(\uC794\uC744 \uD0C1\uC790\uC5D0 \uB0B4\uB9AC\uCE5C\uB2E4)"
+  cocktailId: -1
+  nextDialogueIds: 78000000
+--- !u!114 &-624532563920077532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_4
+  m_EditorClassIdentifier: 
+  id: 4
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC77C\uB2E8 \uAC04\uB2E8\uD558\uAC8C \uC790\uB124\uAC00 \uD574\uC57C \uD560
+    \uC77C\uC744 \uC54C\uB824\uC8FC\uACA0\uB124"
+  cocktailId: -1
+  nextDialogueIds: 05000000
+--- !u!114 &-601603244775388467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_46
+  m_EditorClassIdentifier: 
+  id: 46
+  day: 2
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uD558\uC9C0\uB9CC \uC9C4\uC9DC\uB294 \uC774 \uC644\uC131\uB2E8\uACC4\uC9C0.
+    \uC9C1\uC811 \uD754\uB4E4\uC5B4\uC11C \uC220\uC744 \uC644\uC131\uD558\uBA74 \uB41C\uB2E4!"
+  cocktailId: -1
+  nextDialogueIds: 2f000000
+--- !u!114 &-583034744842758816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_215
+  m_EditorClassIdentifier: 
+  id: 215
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC74C! \uADF8\uB807\uC9C0."
+  cocktailId: -1
+  nextDialogueIds: d8000000
+--- !u!114 &-454426402422239358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_198
+  m_EditorClassIdentifier: 
+  id: 198
+  day: 5
+  character: V-07-TR-0N
+  text: "(\uCD5C\uC545\uC758 \uBC14 \uC5D4\uB529)"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-307929813568342505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_233
+  m_EditorClassIdentifier: 
+  id: 233
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "(\uB610 \uB2E4\uB978 \uAE38 \uC5D4\uB529)"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &-292962900196082069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_113
+  m_EditorClassIdentifier: 
+  id: 113
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uB124.. \uC804\uC5D0 \uB9D0\uD55C \uADF8 \uB140\uC11D! \"\"\uC6B0\uB9AC\uC758
+    \uBBF8\uB798\uB97C \uC704\uD558\uC5EC\"\" \uB77C\uBA70 \uAC74\uBC30\uC0AC \uAE4C\uC9C0
+    \uD574\uB193\uACE0 \uBC30\uC2E0\uD55C \uB140\uC11D!"
+  cocktailId: -1
+  nextDialogueIds: 72000000
+--- !u!114 &-274792826114102336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_45
+  m_EditorClassIdentifier: 
+  id: 45
+  day: 2
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uB2E4\uB978 \uCE75\uD14C\uC77C\uB4E4\uACFC \uD06C\uAC8C \uB2E4\uB974\uC9C0
+    \uC54A\uC544! \uC7AC\uB8CC\uB97C \uC11E\uB294 \uB2E8\uACC4\uB294 \uB611\uAC19\uC9C0.
+    \uB808\uC2DC\uD53C \uBD81\uC5D0 \uC801\uD600\uC788\uB294\uB300\uB85C \uC9C0\uB09C\uBC88\uACFC
+    \uB611\uAC19\uC774 \uB2F4\uC73C\uBA74 \uB41C\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 2e000000
+--- !u!114 &-202128011181666823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_216
+  m_EditorClassIdentifier: 
+  id: 216
+  day: 5
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC544\uC9C1 \uBA40\uC5C8\uC9C0\uB9CC, \uADF8\uB798\uB3C4 \uC7A5\uC0AC \uD574\uBCFC\uB9CC
+    \uD55C \uC19C\uC528\uB124."
+  cocktailId: -1
+  nextDialogueIds: d9000000
+--- !u!114 &-144211183719682908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_128
+  m_EditorClassIdentifier: 
+  id: 128
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uADF8\uB7F0\uB370 \uC5B4\uB290 \uB0A0, \uC815\uB9D0 \uC6B4\uBA85\uCC98\uB7FC
+    \uC170\uD504\uBCF5\uC744 \uC785\uACE0 \uC5B4\uB514\uB860\uAC00 \uD5A5\uD558\uB294
+    \uC0AC\uB78C\uB4E4\uC744 \uBD24\uC5B4\uC694. \uBB50\uB784\uAE4C, \uADF8 \uBAA8\uC2B5\uC774
+    \uB108\uBB34 \uAC15\uB82C\uD574\uC11C, \uC800\uB3C4 \uBAA8\uB974\uAC8C \uADF8
+    \uC0AC\uB78C\uB4E4\uC744 \uB530\uB77C\uAC14\uC8E0."
+  cocktailId: -1
+  nextDialogueIds: 81000000
+--- !u!114 &-60992144617719134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_213
+  m_EditorClassIdentifier: 
+  id: 213
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC5B4\uC11C \uC640."
+  cocktailId: -1
+  nextDialogueIds: d6000000
+--- !u!114 &-21025333223802447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_248
+  m_EditorClassIdentifier: 
+  id: 248
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uC694\uB9AC\uC0AC\uC758 \uAE38\uC744 \uAFB8\uC900\uD788 \uAC78\uC740 \uC548\uC7AC\uC131\uC740
+    \uACB0\uAD6D \uC6B0\uC8FC\uC801\uC73C\uB85C \uC54C\uC544\uC8FC\uB294 \uC250\uD504\uAC00
+    \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: f9000000
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91432a9669efc8d4685c39c5612d07f4, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  dialogues:
+  - {fileID: 7638363772706448670}
+  - {fileID: -5601866969931980040}
+  - {fileID: 5716437659518913260}
+  - {fileID: -1306151484855277132}
+  - {fileID: -5741253654984392738}
+  - {fileID: -624532563920077532}
+  - {fileID: 5173317817948050874}
+  - {fileID: -4510212806952329325}
+  - {fileID: -7012242944289739547}
+  - {fileID: -1968276480164532644}
+  - {fileID: 1530758923898495535}
+  - {fileID: 4027306737335505132}
+  - {fileID: 3996350958730423591}
+  - {fileID: -686504932974051287}
+  - {fileID: -8626701808767618995}
+  - {fileID: 7272364207258802949}
+  - {fileID: 8782176412813784711}
+  - {fileID: 7142452335540044978}
+  - {fileID: 8140989049420885902}
+  - {fileID: -5519490274667662947}
+  - {fileID: -8325245662604756067}
+  - {fileID: -1690049647526792604}
+  - {fileID: 837879121737459240}
+  - {fileID: 2081952397007169827}
+  - {fileID: -7040271563376980021}
+  - {fileID: 3104481505511976419}
+  - {fileID: 8193090349632412284}
+  - {fileID: 584503508122179352}
+  - {fileID: 1464565826827776109}
+  - {fileID: -5030614631730639470}
+  - {fileID: -8704543269012115895}
+  - {fileID: -2556232838080227243}
+  - {fileID: -2615011764294563700}
+  - {fileID: -8684861355607402843}
+  - {fileID: 3013412796413060871}
+  - {fileID: -4969235983571307814}
+  - {fileID: -6913781249513309819}
+  - {fileID: 1608263464965586685}
+  - {fileID: 8178664023382992931}
+  - {fileID: -2084759051797229202}
+  - {fileID: 2253006188650855505}
+  - {fileID: -6465793332290243346}
+  - {fileID: 8159104053214094928}
+  - {fileID: -5578780365393207881}
+  - {fileID: 6297074646200729577}
+  - {fileID: 3057061696856263050}
+  - {fileID: -779390371145293937}
+  - {fileID: -274792826114102336}
+  - {fileID: -601603244775388467}
+  - {fileID: 8011170798955871742}
+  - {fileID: 5147096649708011788}
+  - {fileID: 3417788093823918664}
+  - {fileID: 7934707407247850876}
+  - {fileID: 9216411759686371355}
+  - {fileID: 4596180649185220614}
+  - {fileID: -8907365848694623818}
+  - {fileID: 4585609893405218738}
+  - {fileID: 4887900665428106049}
+  - {fileID: -6029278578916596117}
+  - {fileID: -6308845891874678651}
+  - {fileID: 3248990036148668220}
+  - {fileID: 4014907821461904609}
+  - {fileID: -1525345655967168789}
+  - {fileID: 5424477900746406425}
+  - {fileID: -6305415282821920289}
+  - {fileID: -6818116278020111560}
+  - {fileID: -6747736070401628613}
+  - {fileID: -4253640068176403470}
+  - {fileID: -9002338111236722533}
+  - {fileID: -9133111574278345427}
+  - {fileID: -2797227618218364749}
+  - {fileID: 8633901772030402174}
+  - {fileID: -7469813911795370592}
+  - {fileID: -4916764034721961969}
+  - {fileID: 4491975032098255221}
+  - {fileID: 6382829293720583244}
+  - {fileID: -3826359772060183911}
+  - {fileID: 4582970289955413649}
+  - {fileID: 7640639151365233940}
+  - {fileID: -8010868789645538603}
+  - {fileID: -1877909712542317745}
+  - {fileID: 7415596968040856780}
+  - {fileID: -3188036849765079422}
+  - {fileID: -9051462613736550250}
+  - {fileID: -8521768716772585980}
+  - {fileID: -8918391347361554762}
+  - {fileID: 8427323380022220868}
+  - {fileID: 4326043041016330294}
+  - {fileID: -693814752230400505}
+  - {fileID: -3831719708051601434}
+  - {fileID: -3091315006303703758}
+  - {fileID: -6878251891889562516}
+  - {fileID: -5048415461171151788}
+  - {fileID: 7134123021501880709}
+  - {fileID: -8233816835853879668}
+  - {fileID: 1769512310838289992}
+  - {fileID: -660935120968896708}
+  - {fileID: -7266640966456555712}
+  - {fileID: 2774874549716608428}
+  - {fileID: 8117095378489271212}
+  - {fileID: 5323998459055568159}
+  - {fileID: -912485549220218257}
+  - {fileID: -666297874926827836}
+  - {fileID: 1364596379893698539}
+  - {fileID: -4652882241813500536}
+  - {fileID: 9044895292410878161}
+  - {fileID: -5494427431431030175}
+  - {fileID: 3259370180978922835}
+  - {fileID: -7585333329548621839}
+  - {fileID: -6319458917877465688}
+  - {fileID: 3563029237893258144}
+  - {fileID: -3244091647681639962}
+  - {fileID: 6124850635306336840}
+  - {fileID: -2372249987537878075}
+  - {fileID: 8025062488331055427}
+  - {fileID: -292962900196082069}
+  - {fileID: -1981071044840309112}
+  - {fileID: 4461182971377504431}
+  - {fileID: -9210587774998668954}
+  - {fileID: -2847079160744981734}
+  - {fileID: -904201234651160103}
+  - {fileID: -654279148724911789}
+  - {fileID: -9177383631395937254}
+  - {fileID: 2262728007496726060}
+  - {fileID: -4803588045865592098}
+  - {fileID: 6229044959177402223}
+  - {fileID: 88394965357747572}
+  - {fileID: 8390966380200762116}
+  - {fileID: 6126675640399556084}
+  - {fileID: 8752593368093969394}
+  - {fileID: -144211183719682908}
+  - {fileID: 4599136467657429086}
+  - {fileID: 2552222064059548127}
+  - {fileID: -2761743096441781024}
+  - {fileID: 2002824888124602359}
+  - {fileID: 9214378440278848824}
+  - {fileID: 2272609296606802741}
+  - {fileID: 5377335521480973904}
+  - {fileID: 39832091394640177}
+  - {fileID: 5242373548932679550}
+  - {fileID: 3016740314606752818}
+  - {fileID: 5889553919491446651}
+  - {fileID: -8919465282925996482}
+  - {fileID: -8457830989827108358}
+  - {fileID: 6601280881667308010}
+  - {fileID: 4873581892865309272}
+  - {fileID: 7463818784391233086}
+  - {fileID: -1083466525077962059}
+  - {fileID: 9163812582669725996}
+  - {fileID: 1442060090577522159}
+  - {fileID: -4384771846183262041}
+  - {fileID: 2179934831869528892}
+  - {fileID: 1288264413569687691}
+  - {fileID: -7766669791176396178}
+  - {fileID: 7793722391346726940}
+  - {fileID: 654654268830297132}
+  - {fileID: -6801538658806791995}
+  - {fileID: 7472544402456351054}
+  - {fileID: 7993168092271230569}
+  - {fileID: 6560159336156335749}
+  - {fileID: 7693805594984061939}
+  - {fileID: -3916969794778372368}
+  - {fileID: 2831637456968890835}
+  - {fileID: -3197085642105735368}
+  - {fileID: 6979683765050162578}
+  - {fileID: 3812180304884727014}
+  - {fileID: 5526669500017216035}
+  - {fileID: 3070202961915802845}
+  - {fileID: -4051573681720837364}
+  - {fileID: 8360889741826129333}
+  - {fileID: 1894602654232748915}
+  - {fileID: -6468757046222022865}
+  - {fileID: -5472389043252491408}
+  - {fileID: 655846623917148792}
+  - {fileID: -2342794566449964873}
+  - {fileID: -7205712051981423437}
+  - {fileID: -6452646034847803681}
+  - {fileID: 6293508586468327194}
+  - {fileID: -1558701974097792663}
+  - {fileID: -3794007440228541386}
+  - {fileID: -5512892951892277851}
+  - {fileID: 663240013768892261}
+  - {fileID: -4225022035848463476}
+  - {fileID: -4976687846676371171}
+  - {fileID: -5439531320247795150}
+  - {fileID: 1399944960443065936}
+  - {fileID: -8535580820171573656}
+  - {fileID: 5974485639099854221}
+  - {fileID: 1636977920764018738}
+  - {fileID: -4036150486960631624}
+  - {fileID: -4768349410716510038}
+  - {fileID: 7579039239854995499}
+  - {fileID: 8406236456922008513}
+  - {fileID: -3542288298433661599}
+  - {fileID: -5017713669371738123}
+  - {fileID: -6668912554545958009}
+  - {fileID: -7332738632187244009}
+  - {fileID: 1666287748206404904}
+  - {fileID: -5681771879039197250}
+  - {fileID: 540805850879197847}
+  - {fileID: 8941447253802722690}
+  - {fileID: -6942883345560426449}
+  - {fileID: -3035600452027379098}
+  - {fileID: 5477703994794462971}
+  - {fileID: -454426402422239358}
+  - {fileID: 2906470109697732581}
+  - {fileID: -1568220024234374358}
+  - {fileID: -4106309947183876436}
+  - {fileID: 4209673081911480849}
+  - {fileID: -7039276827605095381}
+  - {fileID: -1039605900643912234}
+  - {fileID: -8544903273702200874}
+  - {fileID: 4379413297498920321}
+  - {fileID: 397276237960120133}
+  - {fileID: 6590818010539201280}
+  - {fileID: 68809900091186358}
+  - {fileID: 190401123697463627}
+  - {fileID: 1051412127632749498}
+  - {fileID: 1795371949202624583}
+  - {fileID: 3016618522541929571}
+  - {fileID: -60992144617719134}
+  - {fileID: -5157345529409515915}
+  - {fileID: -583034744842758816}
+  - {fileID: -202128011181666823}
+  - {fileID: 3088952007409373070}
+  - {fileID: -6165426366560220902}
+  - {fileID: 4003045982377091735}
+  - {fileID: -1486025501763914888}
+  - {fileID: 3886071728760979536}
+  - {fileID: -7456330743115690547}
+  - {fileID: -7798287831205980923}
+  - {fileID: -820803830313498576}
+  - {fileID: 4128785575910070079}
+  - {fileID: 8202041885094224764}
+  - {fileID: -6681205669546710596}
+  - {fileID: 8910547864796542462}
+  - {fileID: -1413928190605230855}
+  - {fileID: -3532319907305741910}
+  - {fileID: -5210025360309617972}
+  - {fileID: 7918058139005985037}
+  - {fileID: -2769068973422079594}
+  - {fileID: -307929813568342505}
+  - {fileID: -7700189012566161371}
+  - {fileID: 7392456135870006718}
+  - {fileID: -6360547910855085421}
+  - {fileID: -8401885481589383882}
+  - {fileID: 7198300164789044272}
+  - {fileID: 4666462041888899519}
+  - {fileID: 3455942009935114059}
+  - {fileID: 6620488257425172060}
+  - {fileID: -3041007750494720964}
+  - {fileID: -2429066472559017922}
+  - {fileID: 2033079310117021004}
+  - {fileID: 4166150558198436218}
+  - {fileID: 8201006081586274425}
+  - {fileID: -7790339299246041921}
+  - {fileID: 6648719854199151346}
+  - {fileID: -21025333223802447}
+  - {fileID: 4809798580120553784}
+  - {fileID: -5811050502244254989}
+  - {fileID: 4288019557554977560}
+  - {fileID: -5345207727809012462}
+  - {fileID: -765789883284804922}
+  - {fileID: -8108144594639910867}
+  - {fileID: -7425518524309265591}
+  - {fileID: 6408732063949444226}
+  - {fileID: 1704603668661215278}
+  - {fileID: 8481662295920518352}
+  - {fileID: -1543839112996266730}
+  - {fileID: -2161711638396482212}
+  - {fileID: -3453306170577241723}
+  - {fileID: -6598949871323113239}
+  - {fileID: -2913890160949091289}
+--- !u!114 &39832091394640177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_136
+  m_EditorClassIdentifier: 
+  id: 136
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC800\uB294...\uC798\uD558\uACE0 \uC788\uB294 \uAC78 \uAE4C\uC694?"
+  cocktailId: -1
+  nextDialogueIds: 89000000
+--- !u!114 &68809900091186358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_208
+  m_EditorClassIdentifier: 
+  id: 208
+  day: 5
+  character: "\uC8FC\uC778\uACF5"
+  text: "\uB9DB\uC788\uB124\uC694. \uADF8\uB7FC \uC774\uAC78 \uAC19\uC774 \uACC1\uB4E4\uC5EC\uC57C\uC8E0."
+  cocktailId: -1
+  nextDialogueIds: d1000000
+--- !u!114 &88394965357747572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_124
+  m_EditorClassIdentifier: 
+  id: 124
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uD734...\uC624\uB298\uC740 \uB0A0\uC774 \uC544\uB2CC\uAC00 \uBCF4\uB124\uC694.
+    \uC774\uB9CC \uC77C\uC5B4\uB098 \uBCF4\uACA0\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &190401123697463627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_209
+  m_EditorClassIdentifier: 
+  id: 209
+  day: 5
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC544\uBB34\uAC70\uB098 \uC81C\uC870)"
+  cocktailId: -1
+  nextDialogueIds: d2000000
+--- !u!114 &397276237960120133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_206
+  m_EditorClassIdentifier: 
+  id: 206
+  day: 5
+  character: "\uC8FC\uC778\uACF5"
+  text: "\uADF8\uB7FC\uC694."
+  cocktailId: -1
+  nextDialogueIds: cf000000
+--- !u!114 &540805850879197847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_193
+  m_EditorClassIdentifier: 
+  id: 193
+  day: 5
+  character: V-07-TR-0N
+  text: "[\uACC4\uC0B0 \uC911] \uD574\uB2F9 \uC785\uB825\uC740 \uC2F1\uAC00\uD3EC\uB974
+    \uC2AC\uB9C1\uC774 \uC544\uB2C8\uB77C\uACE0 \uD310\uB2E8\uB429\uB2C8\uB2E4. 
+    \uBC14\uC758 \uD3C9\uAC00\uAC00 \uAC31\uC2E0\uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: c3000000
+--- !u!114 &584503508122179352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_26
+  m_EditorClassIdentifier: 
+  id: 26
+  day: 1
+  character: "\uC548\uC7AC\uC131"
+  text: "{playerName}\"\" \uB2D8\uB3C4 \uC774\uACF3\uC5D0\uC11C \uC77C\uC744 \uC2DC\uC791\uD558\uC2E0
+    \uC9C0 \uC5BC\uB9C8 \uC548 \uB418\uC2E0\uAC70 \uAC19\uC740\uB370, \uCC98\uC74C\uC5D4
+    \uB0AF\uC124\uACA0\uC9C0\uB9CC, \uACE7 \uC775\uC219\uD574\uC9C0\uC2E4 \uAC81\uB2C8\uB2E4.
+    \uC800\uB3C4 \uADF8\uB807\uAC8C \uC801\uC751\uD588\uC73C\uB2C8\uAE4C\uC694. \uC751\uC6D0\uD558\uACA0\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 1b000000
+--- !u!114 &654654268830297132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_151
+  m_EditorClassIdentifier: 
+  id: 151
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC774\uC815\uB3C4\uAE4C\uC9C0 \uB5A8\uCCD0\uB0B4\uC9C0 \uBABB\uD560 \uAC70\uB77C\uBA74
+    \uC5ED\uC2DC \uADF8\uB9CC\uD558\uB294 \uAC83\uC774 \uB9DE\uC744\uC9C0\uB3C4 \uBAA8\uB974\uACA0\uB124\uC694."
+  cocktailId: -1
+  nextDialogueIds: 98000000
+--- !u!114 &655846623917148792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_169
+  m_EditorClassIdentifier: 
+  id: 169
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uADF8\uAC78 \uB9CC\uB4E4\uACE0 \uC2F6\uC5C8\uC5B4\uC694. \uADF8 \uAE38\uB85C
+    \uB4A4\uB3C4 \uB3CC\uC544\uBCF4\uC9C0 \uC54A\uACE0 \uB530\uB77C\uAC14\uC5B4\uC694."
+  cocktailId: -1
+  nextDialogueIds: aa000000
+--- !u!114 &663240013768892261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_176
+  m_EditorClassIdentifier: 
+  id: 176
+  day: 4
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791)"
+  cocktailId: 15
+  nextDialogueIds: b1000000b2000000
+--- !u!114 &837879121737459240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_21
+  m_EditorClassIdentifier: 
+  id: 21
+  day: 1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uBE14\uB799 \uB7EC\uC2DC\uC548\uC774 \uC544\uB2CC\uAC70 \uAC19\uC740\uB370...
+    \uCC98\uC74C\uC740 \uB2E4 \uD63C\uB780\uC2A4\uB7EC\uC6B4 \uBC95\uC774\uC8E0.
+    \uC774\uD574\uD574\uC694."
+  cocktailId: -1
+  nextDialogueIds: 17000000
+--- !u!114 &1051412127632749498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_210
+  m_EditorClassIdentifier: 
+  id: 210
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uAC19\uC740 \uAC78\uB85C \uD558\uB098 \uB354 \uC8FC\uC138\uC694. \uD55C
+    \uBA85 \uB354 \uC62C\uAC70\uAC70\uB4E0\uC694."
+  cocktailId: -1
+  nextDialogueIds: d3000000
+--- !u!114 &1288264413569687691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_148
+  m_EditorClassIdentifier: 
+  id: 148
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC9C0\uB09C \uBC88\uC5D4 \uBBF8\uC548\uD588\uC5B4\uC694. \uAD1C\uD788 \uD070
+    \uC18C\uB780\uC744 \uC77C\uC73C\uCF30\uB124\uC694."
+  cocktailId: -1
+  nextDialogueIds: 95000000
+--- !u!114 &1364596379893698539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_100
+  m_EditorClassIdentifier: 
+  id: 100
+  day: 3
+  character: V-07-TR-0N
+  text: "[\uACC4\uC0B0 \uC911] \uD574\uB2F9 \uC785\uB825\uC740 \uCFE0\uBC14 \uB9AC\uBE0C\uB808\uAC00
+    \uC544\uB2C8\uB77C\uACE0 \uD310\uB2E8\uB429\uB2C8\uB2E4. \uB370\uC774\uD130 \uBCA0\uC774\uC2A4\uC5D0
+    \uD574\uB2F9 \uBC14\uC758 \uD3C9\uAC00\uB97C \uAC31\uC2E0\uD569\uB2C8\uB2E4 /*\uB85C\uBD07
+    \uD3C9\uAC00 \uBC30\uC5F4\uC5D0 F \uC800\uC7A5* (99\uC5D0\uC11C \uB3D9\uC791)
+    /"
+  cocktailId: -1
+  nextDialogueIds: 66000000
+--- !u!114 &1399944960443065936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_180
+  m_EditorClassIdentifier: 
+  id: 180
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uD558\uC9C0\uB9CC \uB610\uB2E4\uC2DC \uC9C4\uB85C\uB97C \uBC14\uAFB8\uB294
+    \uC81C\uAC00 \uC720\uC720\uBD80\uB2E8\uD558\uACE0, \uACB0\uB2E8\uB825\uC774 \uC5C6\uACE0,
+    \uAC81\uC7C1\uC774\uCC98\uB7FC \uB290\uAEF4\uC838\uC11C \uB9DD\uC124\uC774\uACE0
+    \uC788\uB294 \uAC70\uC608\uC694. "
+  cocktailId: -1
+  nextDialogueIds: b5000000
+--- !u!114 &1442060090577522159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_146
+  m_EditorClassIdentifier: 
+  id: 146
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uC5EC\uAE30 \uC785\uB9C9\uC74C \uBE44\uC6A9\uC774\uC57C! \uC55E\uC73C\uB85C\uB3C4
+    \uBE44\uBC00 \uC720\uC9C0 \uBD80\uD0C1\uD560\uAC8C!"
+  cocktailId: -1
+  nextDialogueIds: 93000000ffffffff
+--- !u!114 &1464565826827776109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_27
+  m_EditorClassIdentifier: 
+  id: 27
+  day: 1
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC5B4.... \uC548\uB155\uD558\uC138\uC694"
+  cocktailId: -1
+  nextDialogueIds: 1c000000
+--- !u!114 &1530758923898495535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_9
+  m_EditorClassIdentifier: 
+  id: 9
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uAC01\uAC01 \uB2E8\uB9DB, \uC2E0\uB9DB, \uC4F4\uB9DB, \uD5A5\uBBF8, \uADF8\uB9AC\uACE0
+    \uB3C4\uC218\uB97C \uC815\uD558\uB294 \uC911\uC694\uD55C \uC7AC\uB8CC\uC77C\uC138"
+  cocktailId: -1
+  nextDialogueIds: 0a000000
+--- !u!114 &1608263464965586685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_36
+  m_EditorClassIdentifier: 
+  id: 36
+  day: 1
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 9\uAC00 \uC544\uB2C8\uBA74
+    37 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 9\uAC00 \uB9DE\uC73C\uBA74 38 (\uC131\uACF5)
+    */"
+  cocktailId: 9
+  nextDialogueIds: 2500000026000000
+--- !u!114 &1636977920764018738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_183
+  m_EditorClassIdentifier: 
+  id: 183
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uD3EC\uAE30\uB294 \uAC81\uC7C1\uC774\uAC00 \uD558\uB294 \uAC8C \uC544\uB2C8\uC57C.
+    \uC624\uD788\uB824 \uD070 \uC6A9\uAE30\uAC00 \uD544\uC694\uD55C \uC120\uD0DD\uC774\uC57C!"
+  cocktailId: -1
+  nextDialogueIds: b8000000
+--- !u!114 &1666287748206404904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_191
+  m_EditorClassIdentifier: 
+  id: 191
+  day: 5
+  character: V-07-TR-0N
+  text: "\uC548\uB155\uD558\uC2ED\uB2C8\uAE4C?  \uC2F1\uAC00\uD3EC\uB974 \uC2AC\uB9C11\uC794\uC744
+    \uC8FC\uBB38\uD558\uACA0\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: c0000000
+--- !u!114 &1704603668661215278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_257
+  m_EditorClassIdentifier: 
+  id: 257
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uC9C0\uAE08\uAE4C\uC9C0\uC758 \uC0B6\uC774 \uB0AD\uBE44\uB77C\uACE0 \uC0DD\uAC01\uD558\uC9C0
+    \uB9C8\uC138\uC694. \uBAA8\uB4E0 \uACBD\uD5D8\uC740 \uAC00\uCE58\uAC00 \uC788\uC5B4\uC694!"
+  cocktailId: -1
+  nextDialogueIds: 02010000
+--- !u!114 &1769512310838289992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &1795371949202624583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_211
+  m_EditorClassIdentifier: 
+  id: 211
+  day: 5
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC548\uB155\uD558\uC138\uC694."
+  cocktailId: -1
+  nextDialogueIds: d4000000
+--- !u!114 &1894602654232748915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_166
+  m_EditorClassIdentifier: 
+  id: 166
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "(\uD37C\uAC70\uC2A4 \uD1F4\uC7A5)"
+  cocktailId: -1
+  nextDialogueIds: a7000000
+--- !u!114 &2002824888124602359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_132
+  m_EditorClassIdentifier: 
+  id: 132
+  day: 3
+  character: V-07-TR-0N
+  text: "\uBD84\uC11D \uACB0\uACFC \uC8C4\uCC45\uAC10 30% \uB450\uB824\uC6C0 15%
+    \uD6C4\uD68C 20% \uB85C \uB098\uD0C0\uB0A9\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 85000000
+--- !u!114 &2033079310117021004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_243
+  m_EditorClassIdentifier: 
+  id: 243
+  day: -1
+  character: "\uB098\uB808\uC774\uC158"
+  text: "\uACC4\uC18D\uB418\uB294 \uC801\uC790\uC5D0 \uC2DC\uB2EC\uB9AC\uB358 \uD589\uC624\uBC84\uB294
+    \uACB0\uAD6D \uD3D0\uC5C5 \uC808\uCC28\uB97C \uBC1F\uC558\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: f4000000
+--- !u!114 &2081952397007169827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_22
+  m_EditorClassIdentifier: 
+  id: 22
+  day: 1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC74C... \uB9DB\uC788\uB294 \uBE14\uB799 \uB7EC\uC2DC\uC548\uC774\uB124\uC694.
+    \uBB35\uC9C1\uD558\uBA74\uC11C\uB3C4 \uB2EC\uCF64\uD55C \uB05D\uB9DB\uC774 \uC778\uC0C1\uC801\uC774\uB124\uC694."
+  cocktailId: -1
+  nextDialogueIds: 17000000
+--- !u!114 &2179934831869528892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_147
+  m_EditorClassIdentifier: 
+  id: 147
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC548\uB155\uD558\uC138\uC694, \uB610 \uC654\uC5B4\uC694."
+  cocktailId: -1
+  nextDialogueIds: 94000000
+--- !u!114 &2253006188650855505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_39
+  m_EditorClassIdentifier: 
+  id: 39
+  day: 1
+  character: V-07-TR-0N
+  text: "\uC800\uB294 \uACE0\uC131\uB2A5 \uAE30\uB2A5 \uAD6C\uD604\uC744 \uC704\uD574\uC11C
+    \uC77C\uBD80 \uC0DD\uCCB4 \uAE30\uB2A5\uC774 \uD0D1\uC7AC\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4.
+    \uC774\uB97C \uD1A0\uB300\uB85C \uBBF8\uAC01 \uC815\uBCF4\uB97C \uD310\uB2E8\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 28000000
+--- !u!114 &2262728007496726060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_121
+  m_EditorClassIdentifier: 
+  id: 121
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC8C4\uC1A1\uD569\uB2C8\uB2E4.. \uBCF8\uC758 \uC544\uB2C8\uAC8C \uC18C\uB780\uC744
+    \uC77C\uC73C\uCF30\uB124\uC694..."
+  cocktailId: -1
+  nextDialogueIds: 7a000000
+--- !u!114 &2272609296606802741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_134
+  m_EditorClassIdentifier: 
+  id: 134
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uB9DE\uC544\uC694..\uC0AC\uC2E4\uC740 \uC9C0\uAE08 \uC81C \uC120\uD0DD\uC774
+    \uC633\uC740\uAC74\uC9C0 \uB0B4\uAC00 \uC131\uACF5\uD560 \uC218 \uC788\uC744
+    \uC9C0 \uBAA8\uB974\uACA0\uC5B4\uC694"
+  cocktailId: -1
+  nextDialogueIds: 87000000
+--- !u!114 &2552222064059548127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_130
+  m_EditorClassIdentifier: 
+  id: 130
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC800\uB294 \uC81C \uC120\uD0DD\uC5D0 \uD6C4\uD68C\uD558\uC9C0 \uC54A\uC544\uC694."
+  cocktailId: -1
+  nextDialogueIds: 83000000
+--- !u!114 &2774874549716608428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_95
+  m_EditorClassIdentifier: 
+  id: 95
+  day: 3
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uB808\uC2DC\uD53C \uBD81\uC5D0\uC11C '\uB4DC\uB77C\uC774 \uB9C8\uD2F0\uB2C8'
+    \uB97C \uB9CC\uB4E4\uC5B4\uBCF4\uC790."
+  cocktailId: -1
+  nextDialogueIds: 60000000
+--- !u!114 &2831637456968890835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_158
+  m_EditorClassIdentifier: 
+  id: 158
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "(\uC131\uACF5) \uD6C4..."
+  cocktailId: -1
+  nextDialogueIds: 9f000000
+--- !u!114 &2906470109697732581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_199
+  m_EditorClassIdentifier: 
+  id: 199
+  day: 5
+  character: V-07-TR-0N
+  text: "\uC815\uB9D0 \uC544\uB984\uB2E4\uC6B4 \uBC14\uC785\uB2C8\uB2E4, \uC74C\uC545\uC740
+    \uC794\uC794\uD558\uACE0,  \uC74C\uB8CC\uB294 \uB3C5\uD2B9\uD558\uACE0.."
+  cocktailId: -1
+  nextDialogueIds: c8000000
+--- !u!114 &3013412796413060871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_33
+  m_EditorClassIdentifier: 
+  id: 33
+  day: 1
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uD798\uB4E4 \uB54C \uC640\uC11C \uC6D0\uD558\uB294\uAC78 \uB9C8\uC2DC\uB358,
+    \uBC14\uD150\uB354\uC5D0\uAC8C \uCD94\uCC9C\uBC1B\uC544 \uB9C8\uC2DC\uB358, \uC5EC\uAE30
+    \uC640\uC11C \uB9C8\uC2DC\uBA74 \uAE30\uBD84\uC774 \uC88B\uC544\uC9C0\uC8E0."
+  cocktailId: -1
+  nextDialogueIds: 22000000
+--- !u!114 &3016618522541929571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_212
+  m_EditorClassIdentifier: 
+  id: 212
+  day: 5
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC544, \uC624\uB298\uC740 \uB0B4\uAC00 \uC8FC\uBB38\uD560 \uD544\uC694\uAC00
+    \uC5C6\uACA0\uAD70."
+  cocktailId: -1
+  nextDialogueIds: d5000000
+--- !u!114 &3016740314606752818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &3057061696856263050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_43
+  m_EditorClassIdentifier: 
+  id: 43
+  day: 2
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uADF8\uB098\uC800\uB098 {playerName}, \uC9C0\uB09C \uC8FC\uBB38 \uAE30\uB85D\uB4E4\uC744
+    \uBCF4\uB2C8\uAE4C \uB2E8\uC21C\uD55C\uAC70\uB9CC \uB9CC\uB4E4\uC5C8\uB358\uB370.
+    \uC0C8\uB85C\uC6B4 \uC81C\uC870\uBC95\uC5D0 \uB3C4\uC804\uD574\uBD10\uC57C\uC9C0?"
+  cocktailId: -1
+  nextDialogueIds: 2c000000
+--- !u!114 &3070202961915802845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_163
+  m_EditorClassIdentifier: 
+  id: 163
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "(\uC131\uACF5) \uC73C... \uC774\uB7F0 \uB9DB\uC774\uC5C8\uAD70."
+  cocktailId: -1
+  nextDialogueIds: a4000000
+--- !u!114 &3088952007409373070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_217
+  m_EditorClassIdentifier: 
+  id: 217
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uADF8\uB7F0\uAC00. \uB2E4\uD589\uC774\uC57C."
+  cocktailId: -1
+  nextDialogueIds: da000000
+--- !u!114 &3104481505511976419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_24
+  m_EditorClassIdentifier: 
+  id: 24
+  day: 1
+  character: "\uC548\uC7AC\uC131"
+  text: "{playerName}\"\" \uB2D8\uC740 \uBA3C\uACF3\uC73C\uB85C \uB5A0\uB098\uBCF4\uC2E0
+    \uACBD\uD5D8\uC774 \uC788\uC73C\uC2E0\uAC00\uC694?"
+  cocktailId: -1
+  nextDialogueIds: 19000000
+--- !u!114 &3248990036148668220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_58
+  m_EditorClassIdentifier: 
+  id: 58
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uBE48 \uB9D0\uC774 \uC544\uB2C8\uC600\uC9C0. \uC774\uBBF8 \uAE30\uD68D\uC548\uC744
+    \uB2E4 \uC9DC\uB193\uACE0, \uC2E4\uD589\uB9CC \uD558\uBA74 \uB410\uC5B4. \uC11C\uB958\uC5D0
+    \uC774\uB984\uB9CC \uC801\uC73C\uBA74 \uB410\uC5C8\uB294\uB370,"
+  cocktailId: -1
+  nextDialogueIds: 3b000000
+--- !u!114 &3259370180978922835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_104
+  m_EditorClassIdentifier: 
+  id: 104
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uAC71\uC815 \uB9D0\uAC8C \uB2E4\uC2DC \uC870\uB9BD\uC740 \uD574\uB193\uB3C4\uB85D
+    \uD558\uC9C0"
+  cocktailId: -1
+  nextDialogueIds: 69000000
+--- !u!114 &3417788093823918664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_49
+  m_EditorClassIdentifier: 
+  id: 49
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC624\uB298\uC740 \uB2EC\uB2EC\uD55C\uAC8C \uB2F9\uAE30\uB124, \uADF8\uB798\uC2A4
+    \uD638\uD37C \uD55C \uC794\uC73C\uB85C \uC8FC\uC138\uC694."
+  cocktailId: -1
+  nextDialogueIds: 32000000
+--- !u!114 &3455942009935114059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_239
+  m_EditorClassIdentifier: 
+  id: 239
+  day: -1
+  character: "\uB098\uB808\uC774\uC158"
+  text: "...\uD639\uC2DC \uC77C\uBD80\uB7EC \uB2E4 \uD2C0\uB9B0\uAC70 \uC544\uB2C8\uC8E0?"
+  cocktailId: -1
+  nextDialogueIds: f0000000
+--- !u!114 &3563029237893258144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_108
+  m_EditorClassIdentifier: 
+  id: 108
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC608\uC804\uC5D0 \uBA39\uC5C8\uB358 \uC220\uC778\uB370 \uC774\uB984\uC774
+    \uAE30\uC5B5\uC774 \uC548\uB098\uB124. \uBCF5\uBD84..\uBB50\uAC00 \uC7AC\uB8CC\uB77C\uACE0
+    \uD588\uB294\uB370. \uD639\uC2DC \uC544\uB294\uAC70 \uC788\uC73C\uBA74 \uD558\uB098
+    \uB9CC\uB4E4\uC5B4 \uC8FC\uC138\uC694."
+  cocktailId: -1
+  nextDialogueIds: 6c000000
+--- !u!114 &3812180304884727014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_161
+  m_EditorClassIdentifier: 
+  id: 161
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "{playerName}\uC528, \uC800 \uC0C8\uB07C \uC4F0\uB514\uC4F4 \uAC70\uB098
+    \uD558\uB098 \uBA39\uC5EC\uC8FC\uC2DC\uC8E0. \uC544, \uB0B4 \uC601\uC218\uC99D\uC5D0
+    \uB2EC\uC9C0\uB294 \uB9C8\uC694. \uC800\uB7F0 \uB188 \uC0AC\uC904 \uB3C8 \uC5C6\uC5B4."
+  cocktailId: -1
+  nextDialogueIds: a2000000a3000000
+--- !u!114 &3886071728760979536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_221
+  m_EditorClassIdentifier: 
+  id: 221
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC55E\uC73C\uB85C\uB3C4 \uC5EC\uAE30 \uC790\uC8FC \uC62C \uC218 \uC788\uC73C\uBA74
+    \uC88B\uACA0\uC5B4\uC694."
+  cocktailId: -1
+  nextDialogueIds: de000000
+--- !u!114 &3996350958730423591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_11
+  m_EditorClassIdentifier: 
+  id: 11
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC62C\uB4DC \uD328\uC158\uB4DC\uBD80\uD130 \uB9CC\uB4E4\uC5B4\uBCF4\uC790.
+    \uB808\uC2DC\uD53C\uBD81\uC5D0\uC11C \uC62C\uB4DC \uD328\uC158\uB4DC\uC758 \uC81C\uC870\uBC95\uC744
+    \uCC3E\uC544\uBCF4\uC790\uACE0"
+  cocktailId: -1
+  nextDialogueIds: 0c000000
+--- !u!114 &4003045982377091735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_219
+  m_EditorClassIdentifier: 
+  id: 219
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uB355\uBD84\uC5D0 \uC798 \uD574\uACB0\uC774 \uB41C \uAC83 \uAC19\uB124\uC694.
+    \uC88B\uC740 \uBD84\uC704\uAE30, \uB9DB\uC788\uB294 \uC220, \uC774\uAC70\uBA74
+    \uC808\uBC18\uC740 \uAC00\uB354\uB77C\uACE0\uC694."
+  cocktailId: -1
+  nextDialogueIds: dc000000
+--- !u!114 &4014907821461904609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_59
+  m_EditorClassIdentifier: 
+  id: 59
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uB0B4 \uB4A4\uD1B5\uC218\uB97C \uCCE4\uC9C0!! \uB2E4\uB978 \uACF3\uC5D0\uC11C
+    \uC0B0\uC5C5 \uC2A4\uD30C\uC774\uB97C \uBCF4\uB0B4 \uB140\uC11D\uC744 \uAF80\uC5B4\uB0C8\uB294\uB370
+    \uAC70\uAE30\uC5D0 \uC751\uD574\uC11C \uB098\uAC04\uAC70\uC57C!"
+  cocktailId: -1
+  nextDialogueIds: 3c000000
+--- !u!114 &4027306737335505132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_10
+  m_EditorClassIdentifier: 
+  id: 10
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uAC01 \uC7AC\uB8CC\uB97C \uC5BC\uB9C8\uB098 \uB123\uB294\uAC00\uC5D0 \uB530\uB77C
+    \uC804\uD600 \uB2E4\uB978 \uCE75\uD14C\uC77C\uC774 \uC644\uC131\uC774 \uB41C\uB2E4\uB124"
+  cocktailId: -1
+  nextDialogueIds: 0b000000
+--- !u!114 &4128785575910070079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_224
+  m_EditorClassIdentifier: 
+  id: 224
+  day: 5
+  character: "\uC8FC\uC778\uACF5"
+  text: "\uC624\uB298\uC740 \uD45C\uC815\uC774 \uC88B\uC73C\uC2DC\uB124\uC694, \uD55C\uC794
+    \uC81C\uAC00 \uB4DC\uB9AC\uACA0\uC2B5\uB2C8\uB2E4"
+  cocktailId: -1
+  nextDialogueIds: e1000000
+--- !u!114 &4166150558198436218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_244
+  m_EditorClassIdentifier: 
+  id: 244
+  day: -1
+  character: "\uB098\uB808\uC774\uC158"
+  text: "\uC790\uC601\uC5C5\uC774 \uC6D0\uB798 \uC27D\uC9C0 \uC54A\uAE30\uB294 \uD558\uC8E0.
+    \uB108\uBB34 \uB099\uC2EC\uD558\uC9C0 \uB9D9\uC2DC\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: f5000000
+--- !u!114 &4209673081911480849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_202
+  m_EditorClassIdentifier: 
+  id: 202
+  day: 5
+  character: V-07-TR-0N
+  text: "\uC55E\uC73C\uB85C \uAC00\uB2A5\uC131\uC774 \uAE30\uB300\uAC00 \uB418\uB294
+    \uBC14 \uC785\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: cb000000
+--- !u!114 &4288019557554977560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_251
+  m_EditorClassIdentifier: 
+  id: 251
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uD56D\uC0C1 \uC21C\uD0C4\uD558\uC9C0\uB294 \uC54A\uACA0\uC9C0\uB9CC, \uB2F9\uB2F9\uD558\uAC8C
+    \uB098\uC544\uAC00\uC138\uC694!"
+  cocktailId: -1
+  nextDialogueIds: fc000000
+--- !u!114 &4326043041016330294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_85
+  m_EditorClassIdentifier: 
+  id: 85
+  day: 2
+  character: "\uBE45\uBB35_11"
+  text: "\uBB50\uC57C! \uB9D0\uC774 \uB4E4\uB9AC\uB294\uAC70\uC57C?"
+  cocktailId: -1
+  nextDialogueIds: 56000000
+--- !u!114 &4379413297498920321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_205
+  m_EditorClassIdentifier: 
+  id: 205
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uD639\uC2DC \uC678\uBD80 \uC74C\uC2DD \uBC18\uC785 \uB418\uB098\uC694?"
+  cocktailId: -1
+  nextDialogueIds: ce000000
+--- !u!114 &4461182971377504431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_115
+  m_EditorClassIdentifier: 
+  id: 115
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC624\uB298\uC740 \uC880 \uCDE8\uD574\uC57C\uACA0\uAD70"
+  cocktailId: -1
+  nextDialogueIds: 74000000
+--- !u!114 &4491975032098255221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_72
+  m_EditorClassIdentifier: 
+  id: 72
+  day: 2
+  character: "Ms. \uC2A4\uD1A4\uBE0C\uB8E8"
+  text: "\uC800\uAE30\uC694! \uC774\uAC74 \uC544\uB2C8\uC796\uC544\uC694! \uB098\uB97C
+    \uBB58\uB85C \uBCF4\uACE0! \uCC38\uB098..."
+  cocktailId: -1
+  nextDialogueIds: 4a000000
+--- !u!114 &4582970289955413649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_75
+  m_EditorClassIdentifier: 
+  id: 75
+  day: 2
+  character: "\uB098\uC77C\uB860\uBA38\uC2A4\uD06C"
+  text: "\uD558\uD558 \uC6B0\uC8FC\uBCF5\uC744 \uC785\uC740 \uC190\uB2D8\uC744 \uCC98\uC74C\uC774\uC2E0\uAC00
+    \uBCF4\uB124\uC694 ~"
+  cocktailId: -1
+  nextDialogueIds: 4c000000
+--- !u!114 &4585609893405218738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_54
+  m_EditorClassIdentifier: 
+  id: 54
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC911\uC99D\uC778\uC9C0 \uC544\uB2CC\uC9C0\uB294 \uBAA8\uB974\uACA0\uC5B4\uC694.
+    \uADF8\uB7F0\uB370 \uADF8\uB0E5 \uC0AC\uB294\uAC70\uC9C0. \uBB50 \uBCC4 \uAC70
+    \uC788\uB098."
+  cocktailId: -1
+  nextDialogueIds: 37000000
+--- !u!114 &4596180649185220614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_52
+  m_EditorClassIdentifier: 
+  id: 52
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC5ED\uC2DC, \uC774\uAC70\uC9C0."
+  cocktailId: -1
+  nextDialogueIds: 35000000
+--- !u!114 &4599136467657429086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_129
+  m_EditorClassIdentifier: 
+  id: 129
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uADF8\uB9AC\uACE0 \uACB0\uAD6D... \uADF8 \uAE38\uB85C \uC694\uB9AC \uD559\uAD50\uC5D0
+    \uC785\uD559 \uC2E0\uCCAD\uC744 \uD588\uC5B4\uC694."
+  cocktailId: -1
+  nextDialogueIds: 82000000
+--- !u!114 &4666462041888899519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_238
+  m_EditorClassIdentifier: 
+  id: 238
+  day: -1
+  character: "\uB098\uB808\uC774\uC158"
+  text: "\uBB50...\uAC01\uC790 \uC798\uD558\uB294\uAC8C \uC788\uB294\uAC70\uB2C8\uAE4C\uC694.
+    \uB108\uBB34 \uB099\uC2EC\uD558\uC9C0 \uB9D9\uC2DC\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: ef000000
+--- !u!114 &4809798580120553784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_249
+  m_EditorClassIdentifier: 
+  id: 249
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uCD5C\uADFC\uC5D0\uB294 '\uCEEC\uB7EC\uC694\uB9AC\uC0AC'\uB77C\uB294 \uC694\uB9AC\uC1FC\uC5D0
+    \uC2EC\uC0AC\uC704\uC6D0\uC73C\uB85C \uCD08\uB300\uAE4C\uC9C0 \uBC1B\uC558\uB354\uAD70\uC694."
+  cocktailId: -1
+  nextDialogueIds: fa000000
+--- !u!114 &4873581892865309272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_142
+  m_EditorClassIdentifier: 
+  id: 142
+  day: 4
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791)"
+  cocktailId: 0
+  nextDialogueIds: 8f000000
+--- !u!114 &4887900665428106049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_55
+  m_EditorClassIdentifier: 
+  id: 55
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uCC98\uC74C\uBD80\uD130 \uC774\uB7F0 \uC0AC\uB78C\uC774 \uC788\uC744\uAE4C\uC694?
+    \uADF8\uB7F4\uB9AC\uAC00 \uC788\uB098."
+  cocktailId: -1
+  nextDialogueIds: 38000000
+--- !u!114 &5147096649708011788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_48
+  m_EditorClassIdentifier: 
+  id: 48
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC544, \uC548\uB155\uD558\uC138\uC694."
+  cocktailId: -1
+  nextDialogueIds: 31000000
+--- !u!114 &5173317817948050874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_5
+  m_EditorClassIdentifier: 
+  id: 5
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC6B0\uB9AC\uB294 \uC190\uB2D8\uC5D0\uAC8C \uC220\uC744 \uC81C\uACF5\uD574\uC57C
+    \uD574. \uC8FC\uBB38\uC774 \uC628 \uB300\uB85C \uC220\uC744 \uB9CC\uB4E4\uC5B4\uC918\uC57C
+    \uD558\uC9C0."
+  cocktailId: -1
+  nextDialogueIds: 06000000
+--- !u!114 &5242373548932679550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_137
+  m_EditorClassIdentifier: 
+  id: 137
+  day: 3
+  character: "\uC8FC\uC778\uACF5"
+  text: "select 1: \"\"\uB108\uC758 \uBBF8\uB798\uB294 \uB124\uAC00 \uC120\uD0DD\uD558\uB294
+    \uAC83\uC774\uB2E4. \uC798 \uD558\uACE0 \uC788\uB2E4\"\",  2: \"\"\uBCF8\uC778\uC758
+    \uC120\uD0DD\uC5D0 \uD655\uC2E0\uC774 \uC5C6\uB2E4\uBA74 \uBB54\uAC00 \uC798
+    \uBABB \uB41C\uAC70\uB2E4. \uC880 \uB354 \uC2E0\uC911\uD560 \uD544\uC694\uAC00
+    \uC788\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: ffffffff04000000
+--- !u!114 &5323998459055568159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_97
+  m_EditorClassIdentifier: 
+  id: 97
+  day: 3
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC88B\uC544. \uAC70\uC758 \uB2E4 \uAC00\uB974\uCE5C \uAC83 \uAC19\uB124.
+    \uADF8\uB7FC \uC624\uB298\uB3C4 \uAC1C\uC810\uD55C\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 62000000
+--- !u!114 &5377335521480973904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_135
+  m_EditorClassIdentifier: 
+  id: 135
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uADF8\uB9AC\uACE0... {\uD37C\uAC70\uC2A4}\uC5D0\uAC8C\uB3C4 \uBBF8\uC548\uD55C
+    \uB9C8\uC74C\uC774 \uC788\uC5B4\uC694. \uC6B0\uB9AC\uAC00 \uD568\uAED8 \uD070
+    \uAFC8\uC744 \uAFB8\uC5C8\uB294\uB370,  \uADF8\uB97C \uB0A8\uACA8\uB450\uACE0
+    \uB5A0\uB098\uBC84\uB838\uC8E0."
+  cocktailId: -1
+  nextDialogueIds: 88000000
+--- !u!114 &5424477900746406425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_61
+  m_EditorClassIdentifier: 
+  id: 61
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uADF8\uB798\uB3C4 \uB098\uC911\uC5D0 \uB2E4\uB978 \uC0AC\uC5C5 \uD30C\uD2B8\uB108\uB97C
+    \uB9CC\uB0AC\uACE0, \uC9C0\uAE08\uC740 \uC815\uC0C1\uADA4\uB3C4\uC5D0 \uC624\uB974\uACE0
+    \uC788\uC8E0. \uADF8 \uB140\uC11D\uC744 \uD070 \uCF54 \uB2E4\uCE58\uAC8C \uD558\uACE0
+    \uC788\uACE0, \uC55E\uC73C\uB85C\uB294 \uC544\uC608 \uBB49\uAC1C\uBC84\uB9B4
+    \uAC81\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 3e000000
+--- !u!114 &5477703994794462971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_197
+  m_EditorClassIdentifier: 
+  id: 197
+  day: 5
+  character: V-07-TR-0N
+  text: "\uD574\uB2F9 \uBC14\uB294 \uC874\uC7AC\uD574\uC11C\uB294 \uC548\uB418\uB294
+    \uBC14 \uC785\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: c6000000
+--- !u!114 &5526669500017216035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_162
+  m_EditorClassIdentifier: 
+  id: 162
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "(\uC2E4\uD328) \uC4F0\uB2E4\uACE0 \uD588\uB294\uB370, \uC774\uC820 \uB0B4\uAC00
+    \uBBF8\uCCE4\uB098?"
+  cocktailId: -1
+  nextDialogueIds: a4000000
+--- !u!114 &5716437659518913260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_1
+  m_EditorClassIdentifier: 
+  id: 1
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC790\uB124\uC758 \uC774\uB984\uC740 \uBB54\uAC00?"
+  cocktailId: -1
+  nextDialogueIds: 02000000
+--- !u!114 &5889553919491446651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_138
+  m_EditorClassIdentifier: 
+  id: 138
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uC548\uB155! \uC624\uB79C\uB9CC\uC774\uC57C!"
+  cocktailId: -1
+  nextDialogueIds: 8b000000
+--- !u!114 &5974485639099854221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_182
+  m_EditorClassIdentifier: 
+  id: 182
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: '!?'
+  cocktailId: -1
+  nextDialogueIds: b7000000
+--- !u!114 &6124850635306336840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_110
+  m_EditorClassIdentifier: 
+  id: 110
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC74C..\uC774\uAC8C \uC544\uB2CC\uAC70 \uAC19\uC740\uB370..."
+  cocktailId: -1
+  nextDialogueIds: 70000000
+--- !u!114 &6126675640399556084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_126
+  m_EditorClassIdentifier: 
+  id: 126
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC800\uBD84\uC758 \uC81C\uAC00 \uACE0\uD5A5\uC5D0 \uC788\uB358 \uC2DC\uC808
+    \uAC19\uC774 \uC0AC\uC5C5\uC744 \uC900\uBE44\uD558\uB358 \uBD84\uC774\uC5D0\uC694"
+  cocktailId: -1
+  nextDialogueIds: 7f000000
+--- !u!114 &6229044959177402223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_123
+  m_EditorClassIdentifier: 
+  id: 123
+  day: 3
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 28\uAC00 \uC544\uB2C8\uBA74
+    124 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 28\uAC00 \uB9DE\uC73C\uBA74 125
+    (\uC131\uACF5) */"
+  cocktailId: 28
+  nextDialogueIds: 7c0000007d000000
+--- !u!114 &6293508586468327194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &6297074646200729577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_42
+  m_EditorClassIdentifier: 
+  id: 42
+  day: 2
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC790, \uC774\uC81C \uC77C \uD574\uC57C\uC9C0."
+  cocktailId: -1
+  nextDialogueIds: 2b000000
+--- !u!114 &6382829293720583244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_73
+  m_EditorClassIdentifier: 
+  id: 73
+  day: 2
+  character: "Ms. \uC2A4\uD1A4\uBE0C\uB8E8"
+  text: "\uC74C! \uAD1C\uCC2E\uB124\uC694."
+  cocktailId: -1
+  nextDialogueIds: 4a000000
+--- !u!114 &6408732063949444226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_256
+  m_EditorClassIdentifier: 
+  id: 256
+  day: -1
+  character: "\uB098\uB798\uC774\uC158"
+  text: "\uC694\uB9AC \uAE30\uC220\uC758 \uC12C\uC138\uD568\uC740 \uC815\uBE44\uBCD1\uC73C\uB85C
+    \uC77C\uD558\uB294 \uC548\uC7AC\uC131\uC5D0\uAC8C \uC5C4\uCCAD\uB09C \uAC15\uC810\uC774
+    \uB418\uC5C8\uC2B5\uB2C8\uB2E4"
+  cocktailId: -1
+  nextDialogueIds: 01010000
+--- !u!114 &6560159336156335749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_155
+  m_EditorClassIdentifier: 
+  id: 155
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uB098\uB294 \uB3C4\uB9DD\uCE5C \uC0AC\uB78C\uC774 \uC2F8\uB193\uC740 \uB625
+    \uCE58\uC6CC\uAC00\uBA74\uC11C \uAE30\uC6B8\uC5B4\uAC00\uB358 \uC77C\uC744 \uC0B4\uB824\uB193\uACE0
+    \uB124\uB188 \uCF54\uB97C \uAEBE\uC5B4\uB193\uC744 \uB0A0\uB9CC \uAE30\uB2E4\uB838\uB294\uB370,
+    \uB610 \uBA4B\uB300\uB85C \uD3EC\uAE30\uD560 \uC0DD\uAC01\uC774\uB098 \uD574?"
+  cocktailId: -1
+  nextDialogueIds: 9c000000
+--- !u!114 &6590818010539201280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_207
+  m_EditorClassIdentifier: 
+  id: 207
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC88B\uC740 \uC548\uC8FC\uAC70\uB9AC\uC5D0\uC694. \uB0B4\uAC00 \uC9C1\uC811
+    \uB9CC\uB4E4\uC5C8\uAC70\uB4E0\uC694."
+  cocktailId: -1
+  nextDialogueIds: d0000000
+--- !u!114 &6601280881667308010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_141
+  m_EditorClassIdentifier: 
+  id: 141
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uADF8\uB7FC \uC774\uBC88\uC5D0\uB3C4 \uC544\uBB34\uAC70\uB098 \uD55C\uC794
+    \uB9D0\uC544\uC918!"
+  cocktailId: -1
+  nextDialogueIds: 8e000000
+--- !u!114 &6620488257425172060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_240
+  m_EditorClassIdentifier: 
+  id: 240
+  day: -1
+  character: "Lee.j.\uB4DC\uB798\uACE4"
+  text: "\uC5B8\uC820\uAC04 \uC774\uB7F0\uB0A0\uC774 \uC62C \uC904 \uC54C\uC558\uC9C0\uB9CC...\uADF8\uAC8C
+    \uC624\uB298\uC77C \uC904\uC774\uC57C...."
+  cocktailId: -1
+  nextDialogueIds: f1000000
+--- !u!114 &6648719854199151346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_247
+  m_EditorClassIdentifier: 
+  id: 247
+  day: -1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC74C...\uC774 \uC2A4\uD14C\uC774\uD06C\uB294 \uC774\uBE10\uD558\uAC8C
+    \uC775\uC5C8\uAD70\uC694"
+  cocktailId: -1
+  nextDialogueIds: f8000000
+--- !u!114 &6979683765050162578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_160
+  m_EditorClassIdentifier: 
+  id: 160
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uADF8\uB7F0\uB370, \uADF8\uC815\uB3C4\uB85C \uC57D\uD574 \uBE60\uC84C\uC73C\uB2C8,
+    \uACB0\uAD6D \uC6B0\uB9AC\uC758 \uC77C\uC774 \uC131\uC0AC\uB418\uC5C8\uC5B4\uB3C4
+    \uBB34\uB108\uC84C\uACA0\uC9C0."
+  cocktailId: -1
+  nextDialogueIds: a1000000
+--- !u!114 &7134123021501880709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_91
+  m_EditorClassIdentifier: 
+  id: 91
+  day: 2
+  character: "\uBE45\uBB35_11"
+  text: "\uC751! \uADF8\uB7EC\uBA74 \uB610 \uBCF4\uC790!! \uC548\uB155!!"
+  cocktailId: -1
+  nextDialogueIds: 5c000000
+--- !u!114 &7142452335540044978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_16
+  m_EditorClassIdentifier: 
+  id: 16
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uBB54\uAC00 \uC2E4\uC218 \uD55C\uAC70 \uAC19\uC740\uB370 \uB2E4\uC2DC\uD55C\uBC88
+    \uB808\uC2DC\uD53C\uB97C \uBCF4\uACE0 \uB9CC\uB4E4\uC5B4 \uBCF4\uAC8C\uB098"
+  cocktailId: -1
+  nextDialogueIds: 0d000000
+--- !u!114 &7198300164789044272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_237
+  m_EditorClassIdentifier: 
+  id: 237
+  day: -1
+  character: "\uB098\uB808\uC774\uC158"
+  text: "\uBAA8\uB4E0 \uC8FC\uBB38\uC744 \uD2C0\uB9B0 \uB2F9\uC2E0\uC740 \uACB0\uAD6D
+    \uD574\uACE0 \uB2F9\uD588\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: ee000000
+--- !u!114 &7272364207258802949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_14
+  m_EditorClassIdentifier: 
+  id: 14
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC790 \uD55C\uBC88 \uB808\uC2DC\uD53C\uC5D0 \uB9DE\uCDB0\uC11C \uC7AC\uB8CC\uB97C
+    \uC794\uC5D0 \uB2F4\uC544\uBCF4\uAC8C"
+  cocktailId: -1
+  nextDialogueIds: 0f000000
+--- !u!114 &7392456135870006718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_234
+  m_EditorClassIdentifier: 
+  id: 234
+  day: -1
+  character: "Lee.j.\uB4DC\uB798\uACE4"
+  text: "\uC5B4\uB5BB\uAC8C \uC8FC\uBB38\uC744 \uD55C\uBC88\uC744 \uC131\uACF5\uC744
+    \uBABB\uD558\uB0D0!"
+  cocktailId: -1
+  nextDialogueIds: eb000000
+--- !u!114 &7415596968040856780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_79
+  m_EditorClassIdentifier: 
+  id: 79
+  day: 2
+  character: "\uB098\uC77C\uB860\uBA38\uC2A4\uD06C"
+  text: "\uC73C...\uC774\uAC74..\uC880 \uB3C5\uD558\uB124\uC694... \uB9C8\uCE58 
+    \uBE14\uB799\uD640 \uAC19\uC774 \uBA38\uB9AC\uAC00 \uBB34\uAC70\uC6CC \uC9C0\uB294
+    \uB290\uB08C\uC774\uC5D0\uC694..."
+  cocktailId: -1
+  nextDialogueIds: 50000000
+--- !u!114 &7463818784391233086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_143
+  m_EditorClassIdentifier: 
+  id: 143
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uC774\uC57C!  \uC774\uAC83\uB3C4 \uB9DB\uC788\uB2E4!!"
+  cocktailId: -1
+  nextDialogueIds: 90000000
+--- !u!114 &7472544402456351054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_153
+  m_EditorClassIdentifier: 
+  id: 153
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: ?!
+  cocktailId: -1
+  nextDialogueIds: 9a000000
+--- !u!114 &7579039239854995499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_186
+  m_EditorClassIdentifier: 
+  id: 186
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uADF8\uCE58\uB9CC \uC800\uB294 \uB108\uBB34 \uB2A6\uC740\uAC8C \uC544\uB2D0\uAE4C\uC694?"
+  cocktailId: -1
+  nextDialogueIds: bb000000
+--- !u!114 &7638363772706448670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_-1
+  m_EditorClassIdentifier: 
+  id: -1
+  day: -1
+  character: Unknown
+  text: "\uB0B4\uC6A9 \uC5C6\uC74C"
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &7640639151365233940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_76
+  m_EditorClassIdentifier: 
+  id: 76
+  day: 2
+  character: "\uB098\uC77C\uB860\uBA38\uC2A4\uD06C"
+  text: "\uBE14\uB799 \uB7EC\uC2DC\uC548 \uD558\uB098 \uBD80\uD0C1\uD574\uC694. \uB85C\uCF13\uB9CC\uD07C
+    \uAC15\uD558\uAC8C!"
+  cocktailId: -1
+  nextDialogueIds: 4d000000
+--- !u!114 &7693805594984061939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_156
+  m_EditorClassIdentifier: 
+  id: 156
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uD558... \uC9C4\uB4DD\uD558\uAC8C \uB9C8\uC2DC\uB824\uACE0 \uD588\uB294\uB370
+    \uADF8\uB7EC\uC9C0\uB294 \uBABB\uD558\uACA0\uAD70. \uBE14\uB799 \uB7EC\uC2DC\uC548
+    \uD55C \uC794\uB9CC \uC8FC\uC2DC\uC8E0."
+  cocktailId: 9
+  nextDialogueIds: 9d0000009e000000
+--- !u!114 &7793722391346726940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_150
+  m_EditorClassIdentifier: 
+  id: 150
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC6D0\uB798 \uD558\uB358\uAC78 \uBD99\uC7A1\uB294\uAC8C \uB9DE\uC558\uB098
+    \uD558\uB294 \uBBF8\uB828\uC774\uB098 \uD6C4\uD68C\uAC00 \uACC4\uC18D \uB0A8\uC544\uC788\uC5B4\uC694."
+  cocktailId: -1
+  nextDialogueIds: 97000000
+--- !u!114 &7918058139005985037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_231
+  m_EditorClassIdentifier: 
+  id: 231
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC6B0\uB9AC \uBAA8\uB450\uB294 \uCDA9\uBD84\uD788 \uC798 \uD558\uACE0 \uC788\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: e8000000
+--- !u!114 &7934707407247850876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_50
+  m_EditorClassIdentifier: 
+  id: 50
+  day: 2
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 5\uAC00 \uC544\uB2C8\uBA74
+    51 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 5\uAC00 \uB9DE\uC73C\uBA74 52 (\uC131\uACF5)
+    */"
+  cocktailId: 5
+  nextDialogueIds: 3300000034000000
+--- !u!114 &7993168092271230569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_154
+  m_EditorClassIdentifier: 
+  id: 154
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uACE0\uC791 \uADF8\uC815\uB3C4 \uACE0\uBBFC\uC73C\uB85C \uB193\uC544\uBC84\uB9B4
+    \uAFC8\uC774\uC5C8\uC73C\uBA74, \uC560\uCD08\uC5D0 \uADF8\uC815\uB3C4 \uAFC8\uC774
+    \uC544\uB2C8\uC5C8\uC744\uAC70\uB2E4. \uC774 \uCAC4\uBCF4 \uC0C8\uB07C."
+  cocktailId: -1
+  nextDialogueIds: 9b000000
+--- !u!114 &8011170798955871742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_47
+  m_EditorClassIdentifier: 
+  id: 47
+  day: 2
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC790, \uADF8\uB7EC\uBA74 \uC624\uB298\uB3C4 \uC2DC\uC791\uD574\uBCFC\uAE4C.
+    \uAC1C\uC810\uD55C\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 30000000
+--- !u!114 &8025062488331055427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_112
+  m_EditorClassIdentifier: 
+  id: 112
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC0AC\uC2E4, \uC774 \uC220\uC744 \uCC98\uC74C \uB9DB\uBCF8 \uAC74 \uADF8
+    \uB140\uC11D\uC774 \uB9CC\uB4E4\uC5B4 \uC900 \uAC70\uC600\uC5B4\uC694..."
+  cocktailId: -1
+  nextDialogueIds: 71000000
+--- !u!114 &8117095378489271212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_96
+  m_EditorClassIdentifier: 
+  id: 96
+  day: 3
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC7AC\uB8CC\uB97C \uB123\uB294 \uACFC\uC815\uC740 \uC774\uC804\uACFC \uB611\uAC19\uC544!
+    \uB300\uC2E0 \uB9C8\uC9C0\uB9C9\uC5D0\uC11C \uC7AC\uB8CC\uB4E4\uC744 \uC800\uC5B4\uC11C
+    \uC11E\uC73C\uBA74 \uB418\uC9C0!"
+  cocktailId: -1
+  nextDialogueIds: 61000000
+--- !u!114 &8140989049420885902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_17
+  m_EditorClassIdentifier: 
+  id: 17
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC88B\uC544 \uC798\uD588\uB124! \uC774\uB9CC\uD558\uBA74 \uC624\uB298 \uC601\uC5C5\uC744
+    \uC2DC\uC791\uD574\uB3C4 \uB418\uACA0\uAD70"
+  cocktailId: -1
+  nextDialogueIds: 12000000
+--- !u!114 &8159104053214094928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_41
+  m_EditorClassIdentifier: 
+  id: 41
+  day: 1
+  character: "Lee.J.\uB4DC\uB798\uACE4"
+  text: "\uC88B\uC544! \uC624\uB298\uC740 \uC5EC\uAE30\uAE4C\uC9C0. \uACE0\uC0DD\uD588\uB124."
+  cocktailId: -1
+  nextDialogueIds: ffffffff
+--- !u!114 &8178664023382992931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_37
+  m_EditorClassIdentifier: 
+  id: 37
+  day: 1
+  character: V-07-TR-0N
+  text: "[\uACC4\uC0B0 \uC911] \uD574\uB2F9 \uC785\uB825\uC740 \uC62C\uB4DC\uD328\uC158\uB4DC\uAC00
+    \uC544\uB2C8\uB77C\uACE0 \uD310\uB2E8\uB429\uB2C8\uB2E4. \uD558\uC9C0\uB9CC,
+    \uD604\uC7AC\uB294 \uBD88\uC774\uC775 \uD310\uC815\uC744 \uB0B4\uB9B4 \uC774\uC720\uAC00
+    \uC5C6\uC2B5\uB2C8\uB2E4. \uB2E4\uC74C \uBC29\uBB38\uC5D0 \uB354 \uC815\uD655\uD55C
+    \uC81C\uC791\uC744 \uAE30\uB300\uD569\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: 27000000
+--- !u!114 &8193090349632412284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_25
+  m_EditorClassIdentifier: 
+  id: 25
+  day: 1
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC800\uB294 \uC5B4\uB838\uC744 \uB54C \uACE0\uD5A5\uC744 \uB5A0\uB098 \uBA3C\uACF3\uC73C\uB85C
+    \uC774\uBBFC\uC744 \uC654\uC5B4\uC694. \uC0C8\uB85C\uC6B4 \uD658\uACBD\uC5D0\uC11C
+    \uC815\uCC29\uD558\uB294 \uAC8C \uC27D\uC9C0\uB9CC\uC740 \uC54A\uB354\uAD70\uC694."
+  cocktailId: -1
+  nextDialogueIds: 1a000000
+--- !u!114 &8201006081586274425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_245
+  m_EditorClassIdentifier: 
+  id: 245
+  day: -1
+  character: "\uB098\uB808\uC774\uC158"
+  text: "\uBB50...\uC544\uB974\uBC14\uC774\uD2B8\uC0DD\uC778 \uB2F9\uC2E0\uC5D0\uAC8C\uB294
+    \uD06C\uAC8C \uC0C1\uAD00 \uC5C6\uC744\uC9C0 \uBAA8\uB974\uACA0\uC9C0\uB9CC\uC694."
+  cocktailId: -1
+  nextDialogueIds: f6000000
+--- !u!114 &8202041885094224764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_225
+  m_EditorClassIdentifier: 
+  id: 225
+  day: 5
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC544\uBB34\uAC70\uB098 \uC81C\uC870)"
+  cocktailId: -1
+  nextDialogueIds: e2000000
+--- !u!114 &8360889741826129333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_165
+  m_EditorClassIdentifier: 
+  id: 165
+  day: 4
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uB410\uC5B4."
+  cocktailId: -1
+  nextDialogueIds: a6000000
+--- !u!114 &8390966380200762116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_125
+  m_EditorClassIdentifier: 
+  id: 125
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC81C\uAC00 \uC804\uC5D0 \uACE0\uD5A5\uC744 \uB5A0\uB0AC\uB2E4\uACE0 \uD588\uB358
+    \uC774\uC57C\uAE30 \uAE30\uC5B5 \uD558\uC2DC\uB098\uC694?"
+  cocktailId: -1
+  nextDialogueIds: 7e000000
+--- !u!114 &8406236456922008513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_187
+  m_EditorClassIdentifier: 
+  id: 187
+  day: 4
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC9C0\uAE08\uAE4C\uC9C0 \uC3DF\uC544\uC628 \uB0B4 \uB178\uB825\uACFC \uC2DC\uAC04\uC774
+    \uC804\uBD80 \uBB3C\uAC70\uD488\uC774 \uB418\uB294 \uAC74 \uC544\uB2D0\uAE4C?
+    \uACB0\uAD6D \uC2DC\uAC04\uB9CC \uB0AD\uBE44\uD55C \uAC74 \uC544\uB2D0\uAE4C
+    \uAC71\uC815\uB3FC\uC694."
+  cocktailId: -1
+  nextDialogueIds: bc000000
+--- !u!114 &8427323380022220868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_84
+  m_EditorClassIdentifier: 
+  id: 84
+  day: 2
+  character: "\uC8FC\uC778\uACF5"
+  text: ?!
+  cocktailId: -1
+  nextDialogueIds: 55000000
+--- !u!114 &8481662295920518352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_258
+  m_EditorClassIdentifier: 
+  id: 258
+  day: -1
+  character: "\uC810\uC7A5"
+  text: "\uC190\uB2D8\uC774 \uC5C6\uC5B4\uB3C4 \uB108\uBB34 \uC5C6\uAD70....."
+  cocktailId: -1
+  nextDialogueIds: 03010000
+--- !u!114 &8633901772030402174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_69
+  m_EditorClassIdentifier: 
+  id: 69
+  day: 2
+  character: "Ms. \uC2A4\uD1A4\uBE0C\uB8E8"
+  text: "\uC7A0\uAE50 \uBA54\uB274\uC880 \uBCF4\uACE0 \uC8FC\uBB38\uD560\uAC8C\uC694.."
+  cocktailId: -1
+  nextDialogueIds: 46000000
+--- !u!114 &8752593368093969394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_127
+  m_EditorClassIdentifier: 
+  id: 127
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC0AC\uC2E4, \uC548\uC7AC\uC131\uC758 \uAFC8\uC744 \uAFB8\uAE30 \uC804\uC5D0
+    \uC800\uB294 \uC815\uBE44 \uC77C\uC744 \uD558\uACE0 \uC788\uC5C8\uC5B4\uC694"
+  cocktailId: -1
+  nextDialogueIds: 80000000
+--- !u!114 &8782176412813784711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_15
+  m_EditorClassIdentifier: 
+  id: 15
+  day: 1
+  character: "\uC8FC\uC778\uACF5"
+  text: "(\uC81C\uC791\uC52C) /* \uACB0\uACFC \uC220\uC774 12\uAC00 \uC544\uB2C8\uBA74
+    16 (\uC2E4\uD328), \uACB0\uACFC \uC220\uC774 12\uAC00 \uB9DE\uC73C\uBA74 17 (\uC131\uACF5)
+    */"
+  cocktailId: 12
+  nextDialogueIds: 1000000011000000
+--- !u!114 &8910547864796542462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_227
+  m_EditorClassIdentifier: 
+  id: 227
+  day: 5
+  character: "\uC548\uC7AC\uC131"
+  text: "\uC0AC\uC2E4, \uC624\uB298\uAE38\uC5D0 \uC694\uB9AC\uD559\uAD50\uC5D0 \uC790\uD1F4
+    \uC2E0\uCCAD\uC11C\uB97C \uC81C\uCD9C\uD558\uACE0 \uC654\uC2B5\uB2C8\uB2E4. \uB9C9\uC0C1
+    \uACB0\uC2EC\uD558\uB2C8\uAE4C \uD6C4\uB828\uD558\uB124\uC694."
+  cocktailId: -1
+  nextDialogueIds: e4000000
+--- !u!114 &8941447253802722690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_194
+  m_EditorClassIdentifier: 
+  id: 194
+  day: 5
+  character: V-07-TR-0N
+  text: "[\uACC4\uC0B0 \uC911] \uD574\uB2F9 \uC785\uB825\uC740 \uC2F1\uAC00\uD3EC\uB974
+    \uC2AC\uB9C1\uC774 \uB9DE\uB2E4\uACE0 \uD310\uB2E8\uB429\uB2C8\uB2E4.  \uBC14\uC758
+    \uD3C9\uAC00\uAC00 \uAC31\uC2E0\uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+  cocktailId: -1
+  nextDialogueIds: c3000000
+--- !u!114 &9044895292410878161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_102
+  m_EditorClassIdentifier: 
+  id: 102
+  day: 3
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC5B4...\uB610 \uC654\uC5B4\uC694"
+  cocktailId: -1
+  nextDialogueIds: 67000000
+--- !u!114 &9163812582669725996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_145
+  m_EditorClassIdentifier: 
+  id: 145
+  day: 4
+  character: "\uBE45\uBB35_11"
+  text: "\uBB35\uB3C4\uB110\uB3C4\uC5D0\uC11C \uB0A0 \uC7A1\uAE30 \uC704\uD574 \uC628
+    \uCD94\uACA9\uC790\uC57C!! \uC0AC\uC2E4 \uB3C8\uC744 \uC880 \uB9CE\uC774 \uAC00\uC9C0\uACE0
+    \uC654\uAC70\uB4E0!"
+  cocktailId: -1
+  nextDialogueIds: 92000000
+--- !u!114 &9214378440278848824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_133
+  m_EditorClassIdentifier: 
+  id: 133
+  day: 3
+  character: "\uC548\uC7AC\uC131"
+  text: "\uD734...{V-07-TR-0N}\uC744 \uC18D\uC77C \uC218\uB294 \uC5C6\uB124\uC694."
+  cocktailId: -1
+  nextDialogueIds: 86000000
+--- !u!114 &9216411759686371355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970bd0e5e6831664bb4970775c0e1f02, type: 3}
+  m_Name: Dialogue_51
+  m_EditorClassIdentifier: 
+  id: 51
+  day: 2
+  character: "\uD37C\uAC70\uC2A4"
+  text: "\uC870\uAE08 \uBD80\uC8FC\uC758\uD558\uB124\uC694."
+  cocktailId: -1
+  nextDialogueIds: 35000000

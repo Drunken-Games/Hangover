@@ -29,13 +29,19 @@ public class Shaker : MonoBehaviour
     [SerializeField] private float soundCheckInterval = 0.2f;
     [SerializeField] private float lastSoundTime = 0f;
     [SerializeField] private float soundInterval = 0.1f; // 소리 재생 간격
-    [SerializeField] private bool isSoundPlaying = false;
+    // [SerializeField] private bool isSoundPlaying = false;
 
     [Header("Scene Change Settings")]
     [SerializeField] private float requiredShakeTime = 1.5f;
     [SerializeField] private float touchHoldTime = 2f;
     [SerializeField] private string nextSceneName = "GameScene";
     [SerializeField] private bool showDebugInfo = true;
+    
+    [Header("Sound Settings")]
+    [SerializeField] private float soundFadeInDuration = 0.2f;
+    [SerializeField] private float soundFadeOutDuration = 0.3f;
+    private bool isPlayingSound = false;
+    private Tween currentSoundFade;
 
     private Vector3 originalPosition;
     private Vector3 lastAcceleration;
@@ -156,71 +162,71 @@ public class Shaker : MonoBehaviour
     
 
     private void ProcessShakeInput()
-{
-    if (!isInitialized || isBeingTouched) return;
-
-    Vector3 currentAcceleration = Input.acceleration;
-    float timeSinceLastCheck = Time.time - lastShakeCheckTime;
-
-    // 필터링된 가속도
-    Vector3 filteredAcceleration = Vector3.Lerp(lastAcceleration, currentAcceleration, 0.5f); // 부드러운 변화를 위해 Lerp 사용
-    Vector3 accelerationDelta = (filteredAcceleration - lastAcceleration) / timeSinceLastCheck;
-
-    // 흔들림 강도 계산
-    float shakeMagnitude = accelerationDelta.magnitude;
-
-    // 디버깅 로그
-    Debug.Log($"Current Acc: {filteredAcceleration}, Delta: {accelerationDelta}, Magnitude: {shakeMagnitude}");
-
-    if (shakeMagnitude > shakeThreshold)
     {
-        if (!isShaking)
+        if (!isInitialized || isBeingTouched) return;
+
+        Vector3 currentAcceleration = Input.acceleration;
+        float timeSinceLastCheck = Time.time - lastShakeCheckTime;
+
+        Vector3 filteredAcceleration = Vector3.Lerp(lastAcceleration, currentAcceleration, 0.5f);
+        Vector3 accelerationDelta = (filteredAcceleration - lastAcceleration) / timeSinceLastCheck;
+        float shakeMagnitude = accelerationDelta.magnitude;
+
+        Debug.Log($"Current Acc: {filteredAcceleration}, Delta: {accelerationDelta}, Magnitude: {shakeMagnitude}");
+
+        if (shakeMagnitude > shakeThreshold)
         {
-            isShaking = true;
-            currentShakeTime = 0f;
-            Debug.Log($"Shake started! Magnitude: {shakeMagnitude:F3}");
-        }
-
-        currentShakeTime += timeSinceLastCheck;
-
-        if (currentShakeTime >= requiredShakeTime)
-        {
-            Debug.Log("Required shake time reached!");
-            LoadNextScene();
-            return;
-        }
-
-        // Movement and shake application only if the shake magnitude is sufficient
-        if (shakeMagnitude > someMovementThreshold) // Replace 'someMovementThreshold' with your desired value
-        {
-            UpdateMovement();
-            Vector3 shakeDirection = new Vector3(accelerationDelta.x, accelerationDelta.y * verticalMultiplier, 0).normalized;
-            ApplyShake(shakeDirection);
-
-            if (useVibration && Time.time - lastEffectTime > effectCooldown)
+            if (!isShaking)
             {
-                TriggerVibration();
-                lastEffectTime = Time.time;
+                isShaking = true;
+                currentShakeTime = 0f;
+                Debug.Log($"Shake started! Magnitude: {shakeMagnitude:F3}");
+            }
+
+            currentShakeTime += timeSinceLastCheck;
+
+            if (currentShakeTime >= requiredShakeTime)
+            {
+                Debug.Log("Required shake time reached!");
+                LoadNextScene();
+                return;
+            }
+
+            if (shakeMagnitude > someMovementThreshold) 
+            {
+                UpdateMovement();
+                Vector3 shakeDirection = new Vector3(accelerationDelta.x, accelerationDelta.y * verticalMultiplier, 0).normalized;
+                ApplyShake(shakeDirection);
+
+                // 특정 임계값 이상일 때만 소리 재생
+                if (shakeMagnitude > shakeThreshold && Time.time - lastSoundTime > soundInterval)
+                {
+                    PlaySoundWithFade();
+                }
+
+                if (useVibration && Time.time - lastEffectTime > effectCooldown)
+                {
+                    TriggerVibration();
+                    lastEffectTime = Time.time;
+                }
             }
         }
-    }
-    else
-    {
-        if (isShaking)
+        else
         {
-            currentShakeTime = Mathf.Max(0, currentShakeTime - (timeSinceLastCheck * 0.5f));
-            if (currentShakeTime == 0)
+            if (isShaking)
             {
-                isShaking = false;
-                Debug.Log("Shake ended!");
+                currentShakeTime = Mathf.Max(0, currentShakeTime - (timeSinceLastCheck * 0.5f));
+                if (currentShakeTime == 0)
+                {
+                    isShaking = false;
+                    Debug.Log("Shake ended!");
+                }
             }
         }
-    }
 
-    // 이전 가속도 업데이트
-    lastAcceleration = filteredAcceleration;
-    lastShakeCheckTime = Time.time;
-}
+        lastAcceleration = filteredAcceleration;
+        lastShakeCheckTime = Time.time;
+    }
 
 
 
@@ -241,7 +247,7 @@ public class Shaker : MonoBehaviour
         if (isMoving && Time.time - lastMovementTime > soundCheckInterval)
         {
             isMoving = false;
-            StopSound();
+            StopSoundWithFade();
         }
     }
 
@@ -317,25 +323,42 @@ public class Shaker : MonoBehaviour
     {
         isMoving = true;
         lastMovementTime = Time.time;
-        PlaySound();
+        PlaySoundWithFade();
     }
     
     private void StopSound()
     {
-        if (isSoundPlaying)
+        if (isPlayingSound)
         {
-            SoundsManager.instance.StopSFX("shaker");
-            isSoundPlaying = false;
+            StopSoundWithFade();
+            isPlayingSound = false;
         }
     }
     
-    private void PlaySound()
+    private void StopSoundWithFade()
     {
-        if (!isSoundPlaying || Time.time - lastSoundTime >= soundInterval)
+        if (isPlayingSound)
         {
-            SoundsManager.instance.PlaySFX("shaker");
+            SoundsManager.instance.StopSFXWithFade("shaker", soundFadeOutDuration);
+            isPlayingSound = false;
+        }
+    }
+    
+    private void PlaySoundWithFade()
+    {
+        if (!isPlayingSound || Time.time - lastSoundTime >= soundInterval)
+        {
+            // 이전 페이드 트윈이 있다면 제거
+            currentSoundFade?.Kill();
+
+            // 소리가 이미 재생 중이 아니라면 새로 재생
+            if (!isPlayingSound)
+            {
+                SoundsManager.instance.PlaySFXWithFade("shaker", soundFadeInDuration);
+            }
+            
             lastSoundTime = Time.time;
-            isSoundPlaying = true;
+            isPlayingSound = true;
         }
     }
     
@@ -366,12 +389,11 @@ public class Shaker : MonoBehaviour
         {
             isMoving = true;
             lastMovementTime = Time.time;
-            PlaySound();
+            PlaySoundWithFade();
         }
         else
         {
             lastMovementTime = Time.time;
-            PlaySound();
         }
     }
 
@@ -412,21 +434,22 @@ public class Shaker : MonoBehaviour
     {
         currentMoveTween?.Kill();
         currentShakeTween?.Kill();
+        currentSoundFade?.Kill();
     
         if (killSound)
         {
-            StopSound();
+            StopSoundWithFade();
         }
+    }
+
+    private void OnDisable()
+    {
+        StopSoundWithFade();
+        isInitialized = false;
     }
 
     private void OnDestroy()
     {
         KillTweens(true);
-    }
-
-    private void OnDisable()
-    {
-        StopSound();
-        isInitialized = false;
     }
 }

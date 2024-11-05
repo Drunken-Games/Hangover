@@ -158,6 +158,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6331894789475378821, guid: 529a30caba8c5ca458b19242b5740ee2, type: 3}
+      propertyPath: cocktailDatabase
+      value: 
+      objectReference: {fileID: 11400000, guid: 7877ac5d6204dea4c9b8c981b205d743, type: 2}
     - target: {fileID: 7345830959186604557, guid: 529a30caba8c5ca458b19242b5740ee2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 6

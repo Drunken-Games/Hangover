@@ -11,14 +11,16 @@ public struct DialogueEntry
     public int day;                 // 현재 Day
     public string character;        // 캐릭터 이름
     public string text;             // 대화 텍스트
+    public int cocktailId;          // 칵테일 ID
     public List<int> nextDialogueIds; // 다음 대화 ID 리스트 (선택지 포함)
 
-    public DialogueEntry(int id, int day, string character, string text, List<int> nextDialogueIds)
+    public DialogueEntry(int id, int day, string character, string text, int cocktailId,  List<int> nextDialogueIds)
     {
         this.id = id;
         this.day = day;
         this.character = character;
         this.text = text;
+        this.cocktailId = cocktailId;
         this.nextDialogueIds = nextDialogueIds;
     }
 }
@@ -48,7 +50,7 @@ public class DialogueLoader
                 }
 
                 // 최소 7개의 열이 필요
-                if (columns.Length >= 7)
+                if (columns.Length >= 8)
                 {
                     // ID와 Day 필드가 유효한지 확인
                     if (int.TryParse(columns[0].Trim(), out int id) &&
@@ -56,6 +58,17 @@ public class DialogueLoader
                     {
                         string character = columns[2].Trim();
                         string text = columns[6].Trim();
+
+                        // 칵테일 ID 파싱
+                        int cocktailId = 0;
+                        if (!string.IsNullOrEmpty(columns[7].Trim()) && int.TryParse(columns[7].Trim(), out int parsedCocktailId))
+                        {
+                            cocktailId = parsedCocktailId;
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"유효하지 않은 칵테일 ID: '{columns[7].Trim()}' at line {i + 1}");
+                        }
 
                         // 다음 대화 ID 처리
                         List<int> nextDialogueIds = new List<int>();
@@ -77,7 +90,7 @@ public class DialogueLoader
                             }
                         }
 
-                        loadedDialogues.Add(new DialogueEntry(id, day, character, text, nextDialogueIds));
+                        loadedDialogues.Add(new DialogueEntry(id, day, character, text, cocktailId, nextDialogueIds));
                     }
                     else
                     {
@@ -86,7 +99,7 @@ public class DialogueLoader
                 }
                 else
                 {
-                    Debug.LogWarning($"데이터 형식이 올바르지 않습니다. 최소 7개의 열이 필요합니다. at line {i + 1}");
+                    Debug.LogWarning($"데이터 형식이 올바르지 않습니다. 최소 8개의 열이 필요합니다. at line {i + 1}");
                 }
             }
         }
@@ -98,7 +111,7 @@ public class DialogueLoader
         // 로드된 대화 로그 확인용
         foreach (var dialogue in loadedDialogues)
         {
-            Debug.Log($"ID: {dialogue.id}, Day: {dialogue.day}, Character: {dialogue.character}, Text: {dialogue.text}, Next IDs: {string.Join(", ", dialogue.nextDialogueIds)}");
+            Debug.Log($"ID: {dialogue.id}, Day: {dialogue.day}, Character: {dialogue.character}, Text: {dialogue.text}, Cocktail ID: {dialogue.cocktailId}, Next IDs: {string.Join(", ", dialogue.nextDialogueIds)}");
         }
 
         return loadedDialogues;

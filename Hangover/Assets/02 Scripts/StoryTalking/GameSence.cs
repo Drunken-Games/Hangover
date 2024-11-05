@@ -19,6 +19,7 @@ public class GameSence : MonoBehaviour
 
     public ChoiceHandler choiceHandler;
     private GameObject notificationPanel; // NotificationPanel 오브젝트
+
     void Start()
     {
         Canvas canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
@@ -102,7 +103,7 @@ public class GameSence : MonoBehaviour
                 int secondNextDialogueId = currentDialogue.nextDialogueIds[1];
 
                 // 현재 대사의 칵테일 ID와 현재 선택된 칵테일 ID가 일치하는지 확인
-                if (currentRecipeId == currentDialogue.id)
+                if (currentRecipeId != currentDialogue.cocktailId)
                 {
                     int nextDialogueIndex = dialogues.FindIndex(d => d.id == firstNextDialogueId);
                     if (nextDialogueIndex != -1)
@@ -110,9 +111,7 @@ public class GameSence : MonoBehaviour
                         GameManager.instance.currentDialogueIndex = nextDialogueIndex;
                         Debug.Log($"첫 번째 다음 대사로 이동합니다. 다음 대사 ID: {firstNextDialogueId}");
 
-                        // 성공 시 Total Profit에 특정 가격 추가
-                        GameManager.instance.dayResultData.totalProfit += 100; // 예시로 100 추가
-                        Debug.Log("성공하여 Total Profit이 증가했습니다.");
+                        
                     }
                 }
                 else
@@ -122,13 +121,17 @@ public class GameSence : MonoBehaviour
                     {
                         GameManager.instance.currentDialogueIndex = nextDialogueIndex;
                         Debug.Log($"두 번째 다음 대사로 이동합니다. 다음 대사 ID: {secondNextDialogueId}");
+
+                        // 성공 시 Total Profit에 특정 가격 추가
+                        GameManager.instance.dayResultData.totalProfit += 100; // 예시로 100 추가
+                        Debug.Log("성공하여 Total Profit이 증가했습니다.");
                     }
                 }
                 // 돌아왔을 때 해당 대화 ID와 칵테일 ID 비교하여, 성공여부 판정, 성공시 Total Profit 에 특정 가격을 올리기
                 // 성공 여부와 관계없이 materials에 재료 비용 추가
                 int materialCost = CalculateMaterialCost();
                 GameManager.instance.dayResultData.materials += materialCost;
-                Debug.Log($"재료 비용 {materialCost}이 materials에 추가되었습니다.");
+                Debug.Log($"재료 비용 {materialCost}이 materials에 추가되었습니다.{currentRecipeId}{currentDialogue.cocktailId}");
                 DisplayDialogue(GetCurrentDialogueEntry());
             }
         }
@@ -195,6 +198,10 @@ public class GameSence : MonoBehaviour
             // DayResultScene으로 이동 후 돌아온 후에
             // 그 다음 MoveToDialogueOrNextDay(); 실행
             //MoveToDialogueOrNextDay();
+            
+            // 현재 대사의 day 값을 GameManager의 DayNum에 저장
+            GameManager.instance.dayResultData.dayNum = currentDialogue.day;
+            Debug.LogError("{currentDialogue.day}");
             // 다음 대화로 이동하기 위해 플래그 설정
             GameManager.instance.DayResultProceed = true;
             SceneManager.LoadScene("DayResultScene");

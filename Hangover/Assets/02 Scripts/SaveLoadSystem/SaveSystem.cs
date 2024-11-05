@@ -2,16 +2,20 @@ using System.IO; // 파일 입출력을 위한 네임스페이스
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement; // SceneManager를 사용하기 위한 네임스페이스 추가
+
 
 public class SaveSystem : MonoBehaviour
 {
     private string saveFilePath; // 저장할 파일 경로
     [SerializeField] private TMP_Text resultText; // 테스트 확인 텍스트
 
+
     private void Awake() {
         // 저장 파일 경로 초기화    
         saveFilePath = Path.Combine(Application.persistentDataPath, "saveFile.json");
         Debug.Log(saveFilePath);    
+
     }
 
 
@@ -60,6 +64,12 @@ public class SaveSystem : MonoBehaviour
             // JSON 문자열을 SaveData 객체로 변환
             SaveData saveData = JsonUtility.FromJson<SaveData>(json);
             Debug.Log("게임 로드 완료: " + saveFilePath);
+
+            GameManager.instance.dayResultData.dayNum = saveData.dayNum + 1;
+            GameManager.instance.dayResultData.beforeMoney = saveData.nowMoney;
+            GameManager.instance.dayResultData.playerName = saveData.playerName;
+            GameManager.instance.dayResultData.branchIdx = saveData.branchIdx;
+
             return saveData;
         }
         else
@@ -89,6 +99,8 @@ public class SaveSystem : MonoBehaviour
             
             // ResultText 테스트 출력
             resultText.text = result;
+            // GameScene으로 전환
+            SceneManager.LoadScene("GameScene");
         }
         else
         {

@@ -72,7 +72,6 @@ public class EndingManager : MonoBehaviour
             "뭐..각자 잘하는게 \n 있는거니까요.. \n \n 너무 낙심하지 \n 맙시다.",
             "...혹시 일부러 \n 다 틀린거 아니죠?",
             "<color=#D55200>Ending A: 해고</color>"
-            
         });
 
         finalMessagesByScene.Add(1, new string[]
@@ -85,7 +84,7 @@ public class EndingManager : MonoBehaviour
         });
 
         finalMessagesByScene.Add(2, new string[]
-        { 
+        {
             "요리사의 길을 \n 꾸준히 걸은 \n 안재성은 \n 결국 우주적으로 \n 알아주는 쉐프가 \n 되었습니다.",
             "최근에는 인기 \n 요리 프로그램 \n '컬러요리사'에서 \n 심사위원으로 \n 초대받을 정도로 \n 명성을 쌓았습니다.",
             "그의 꾸준한 노력과 \n 열정이 마침내 \n 꿈을 현실로 \n 만들어낸 것입니다!",
@@ -100,9 +99,8 @@ public class EndingManager : MonoBehaviour
             "지금까지의 \n 삶을 낭비라고 \n 생각하지 마세요. \n 모든 경험은 \n 가치 있는 \n 자산입니다",
             "각 경험이 쌓여 \n 당신의 길을 \n 더욱 빛나게 \n 할 것입니다!",
             "<color=#6666FF>Ending D: 장교</color>"
-            
         });
-        
+
         finalMessagesByScene.Add(4, new string[]
         {
             "당신은 로봇이 \n 작성한 평가가 \n 이런 결과를 \n 불러올지 몰랐습니다.",
@@ -110,7 +108,6 @@ public class EndingManager : MonoBehaviour
             "세상은 이제 \n 로봇의 말 한마디로 \n 변해가는 시대가 \n 되어버린 걸까요...?",
             "정말 인간시대의 \n 끝이 도래할지도 \n 모르겠군요",
             "<color=#D55200>Ending E: SNS</color>"
-            
         });
     }
 
@@ -118,6 +115,7 @@ public class EndingManager : MonoBehaviour
     public void SetEndingIndex(int index)
     {
         endingIndex = index;
+        ShowEnding(endingIndex); // 설정된 번호에 맞는 엔딩을 즉시 표시
     }
 
     // 특정 엔딩 이미지를 활성화하고 크레딧을 표시하는 함수
@@ -271,6 +269,6 @@ public class EndingManager : MonoBehaviour
         }
 
         // 페이드 아웃이 완료된 후 씬 전환
-        SceneManager.LoadScene("IntroScene"); 
+        SceneManager.LoadScene("IntroScene");
     }
 }

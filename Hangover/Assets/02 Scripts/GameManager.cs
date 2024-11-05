@@ -37,8 +37,14 @@ public class GameManager : MonoBehaviour
     private List<int> foundCocktailIds = new List<int>();
     private int completedRecipeId = -1; // -1은 실패하거나 없을 경우
 
+    private SaveSystem saveSystem;
+    private int[] dialogueIndices = { 0, 43, 94, 138, 192 }; // 일차별 대사 인덱스
+
     // 엔딩 분기 배열
-    public List<int> EndList;
+    public int endingTrigger;
+    public int fireCount;
+    public int robotCount;
+    //
 
     private void Awake()
     {
@@ -63,12 +69,47 @@ public class GameManager : MonoBehaviour
         currentDialogueIndex = PlayerPrefs.GetInt("SavedDialogueIndex", 1);
 
         // 대화 데이터 초기화(여기서 데이터를 로드하거나 초기화)
-        dialogues = DialogueLoader.LoadDialogues(Application.dataPath + "/04 Resources/Dialogues.csv");
+        //dialogues = DialogueLoader.LoadDialogues(Application.dataPath + "/04 Resources/Dialogues.csv");
+
+        LoadDialogueDatabase();
 
         // 전역 관리 데이터 기본값 초기화
         dayResultData = new DayResultData();
         cocktailCheck = gameObject.AddComponent<CocktailCheck>();  // CocktailCheck 추가
+        saveSystem = gameObject.AddComponent<SaveSystem>(); 
     }
+
+    // DialogueDatabase.asset 파일에서 데이터를 로드하여 dialogues 리스트에 할당하는 메서드
+    private void LoadDialogueDatabase()
+    {
+        DialogueDatabase database = Resources.Load<DialogueDatabase>("DialogueDataAssets/DialogueDatabase");
+
+        if (database != null)
+        {
+            dialogues = new List<DialogueEntry>();
+
+            foreach (var dialogueData in database.dialogues)
+            {
+                DialogueEntry dialogueEntry = new DialogueEntry(
+                    dialogueData.Id,
+                    dialogueData.Day,
+                    dialogueData.Character,
+                    dialogueData.Text,
+                    dialogueData.CocktailId,
+                    dialogueData.NextDialogueIds
+                );
+                dialogues.Add(dialogueEntry);
+            }
+
+            Debug.Log("DialogueDatabase에서 대화 데이터가 성공적으로 로드되었습니다.");
+        }
+        else
+        {
+            Debug.LogError("DialogueDatabase.asset 파일을 찾을 수 없습니다. 경로와 파일 이름을 확인해주세요.");
+        }
+    }
+
+
     // 유저 이름을 설정하는 메서드 추가
     public void SetPlayerName(string name)
     {
@@ -225,5 +266,32 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void LoadSaveDataAndSetDialogueIndex()
+    {
+        // SaveData 불러오기
+        SaveData saveData = saveSystem.LoadGame();
+
+        if (saveData != null)
+        {
+            int dayNum = saveData.dayNum + 1;
+
+            if (dayNum >= 0 && dayNum < dialogueIndices.Length)
+            {
+                currentDialogueIndex = dialogueIndices[dayNum];
+                Debug.Log($"대사 인덱스 설정됨: Day {dayNum}, Index {currentDialogueIndex}");
+            }
+            else
+            {
+                Debug.LogWarning("잘못된 dayNum입니다.");
+                currentDialogueIndex = 0; // 기본값으로 초기화
+            }
+        }
+        else
+        {
+            Debug.LogWarning("저장 데이터를 찾을 수 없습니다.");
+            currentDialogueIndex = 0; // 기본값으로 초기화
+        }
     }
 }

@@ -3,59 +3,19 @@ using UnityEngine;
 
 public class ReciperCSVLoader : MonoBehaviour
 {
-    [SerializeField] private List<Sprite> spriteList = new List<Sprite>(); // 스프라이트 목록을 저장할 리스트
-    [SerializeField] private TextAsset csvFile; // Resources에 있는 CSV 파일을 할당
-    [SerializeField] private GameObject recipeItemPrefab; // RecipeItem 프리팹
-    [SerializeField] private Transform recipeContainer; // RecipeItem 프리팹을 담을 부모 오브젝트
-    
+    [SerializeField] private CocktailDatabase cocktailDatabase; // ScriptableObject 참조
+    [SerializeField] private GameObject recipeItemPrefab;
+    [SerializeField] private Transform recipeContainer;
 
     void Start()
     {
-        LoadSprites();
-        LoadCSVData();
+        LoadRecipeData();
     }
-    
-    // Resources/Sprites 폴더의 스프라이트를 리스트에 로드
-    private void LoadSprites()
-    {
-        Sprite[] sprites = Resources.LoadAll<Sprite>("Icons");
-        spriteList.AddRange(sprites);
-        Debug.Log("Loaded " + spriteList.Count + " sprites.");
-    }
-    
-    private void LoadCSVData()
-    {
-        string[] rows = csvFile.text.Split('\n');
 
-        for (int i = 0; i < rows.Length; i++) // 0부터 시작하여 헤더 건너뜀
+    private void LoadRecipeData()
+    {
+        foreach (var cocktailData in cocktailDatabase.cocktails)
         {
-            string row = rows[i].Trim();
-            if (string.IsNullOrEmpty(row)) continue;
-
-            string[] columns = row.Split(',');
-
-            if (columns.Length < 11)
-            {
-                Debug.LogWarning($"행 {i + 1}의 데이터가 누락되었습니다.");
-                continue;
-            }
-
-            // CSV 데이터 구성에 맞게 데이터 추출
-            string iconIdx = columns[0];
-            Sprite IconSprite = spriteList[int.Parse(iconIdx)-1];
-            string name = columns[1];
-            string sweet = columns[2];
-            string sour = columns[3];
-            string bitter = columns[4];
-            string spice = columns[5];
-            string spirit = columns[6];
-            string alcoholContent = columns[7];
-            string taste = columns[8];
-            string description = columns[9];
-            
-            string method = columns[10];
-            //string creaftingType = columns[10];
-
             try
             {
                 // RecipeItem 인스턴스 생성 및 설정
@@ -68,16 +28,28 @@ public class ReciperCSVLoader : MonoBehaviour
                     continue;
                 }
 
-                recipeItem.SetData(IconSprite, name, sweet, sour, bitter, spice, spirit, alcoholContent, taste, description, method);
+                // ScriptableObject의 데이터를 사용하여 RecipeItem 설정
+                recipeItem.SetData(
+                    cocktailData.icon,
+                    cocktailData.cocktailName,
+                    cocktailData.sweet.ToString(),
+                    cocktailData.sour.ToString(),
+                    cocktailData.bitter.ToString(),
+                    cocktailData.spice.ToString(),
+                    cocktailData.spirit.ToString(),
+                    cocktailData.alcoholContent,
+                    cocktailData.taste,
+                    cocktailData.description,
+                    cocktailData.method.ToString()
+                );
 
                 // 생성 확인을 위한 로그
-                // Debug.Log($"RecipeItem 생성 완료: {name}");
+                // Debug.Log($"RecipeItem 생성 완료: {cocktailData.cocktailName}");
             }
             catch (System.Exception ex)
             {
-                Debug.LogError($"RecipeItem 생성 중 오류 발생 - 행 {i + 1}: {ex.Message}");
+                Debug.LogError($"RecipeItem 생성 중 오류 발생: {ex.Message}");
             }
         }
     }
-    
 }

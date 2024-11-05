@@ -13,6 +13,7 @@ public class RankManager : MonoBehaviour
     [SerializeField] private TMP_Text rankText; // Unity에서 설정할 Text UI 요소
     [SerializeField] private GameObject textPrefab; // UI 텍스트 Prefab
     [SerializeField] private Transform content; // Grid Layout Group의 Content
+    [SerializeField] private GameObject itemPrefab;
 
     private void Start() 
     {
@@ -122,23 +123,31 @@ public class RankManager : MonoBehaviour
 
     private void DisplayRanks(RankDto[] userRanks)
     {
-        // 기존 텍스트 제거
+        // 기존 아이템 제거
         foreach (Transform child in content)
         {
-            Destroy(child.gameObject);
+            Destroy(child.gameObject); // Content의 자식 요소를 모두 제거하여 초기화
         }
 
-        // 헤더 추가
-        CreateText("닉네임");
-        CreateText("최종 금액");
-        CreateText("최종 일수");
-
         // 데이터 추가
-        foreach (RankDto rank in userRanks)
+        for(int i = 0; i < userRanks.Length; i++)
         {
-            CreateText(rank.userNickname);
-            CreateText(rank.finalMoney.ToString());
-            CreateText(rank.finalDay.ToString());
+            RankDto rank = userRanks[i];
+
+            // Item prefab을 클론하여 새로운 아이템 생성
+            GameObject item = Instantiate(itemPrefab, content); // content의 자식으로 설정하면서 클론 생성
+
+            // 아이템 내의 텍스트 설정
+             TMP_Text[] texts = item.GetComponentsInChildren<TMP_Text>(); // 아이템 내의 모든 Text 컴포넌트 가져오기
+             
+            // 각각의 텍스트에 값 설정
+            if (texts.Length >= 4)
+            {
+                texts[0].text = "#" + (i + 1).ToString(); // 등수
+                texts[1].text = rank.userNickname; // 닉네임 설정
+                texts[2].text = rank.finalMoney.ToString(); // 최종 금액 설정
+                texts[3].text = rank.finalDay.ToString(); // 최종 일수 설정
+            }
         }
     }
 
