@@ -295,7 +295,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 30
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -425,7 +425,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -2}
+  m_AnchoredPosition: {x: 75, y: -2}
   m_SizeDelta: {x: 15, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3419828809307947985
@@ -622,7 +622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: -80}
+  m_AnchoredPosition: {x: 110, y: -25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2836885917821921992
@@ -659,7 +659,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 30}
+  m_AnchoredPosition: {x: 300, y: -25}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2865886023800397669
@@ -692,11 +692,11 @@ RectTransform:
   m_Children:
   - {fileID: 6102444250454062777}
   - {fileID: 4473046668592284710}
-  m_Father: {fileID: 4333339561463654541}
+  m_Father: {fileID: 1280499348305735683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: -25}
+  m_AnchoredPosition: {x: 110, y: -80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3765398635186822478
@@ -1008,8 +1008,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8134081477771889273}
   - {fileID: 2087490380223837730}
-  - {fileID: 34224629795915132}
   - {fileID: 594800307074553004}
   m_Father: {fileID: 530027907065896682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1048,11 +1048,11 @@ RectTransform:
   m_Children:
   - {fileID: 3568941816777922471}
   - {fileID: 5791090295879660492}
-  m_Father: {fileID: 1280499348305735683}
+  m_Father: {fileID: 4333339561463654541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: -25}
+  m_AnchoredPosition: {x: 350, y: 30}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5557238465315528951
@@ -1485,15 +1485,15 @@ MonoBehaviour:
   CocktailTaste: 
   CocktailDescription: 
   CocktailDesctiptionPrefab: {fileID: 8060334046647976701, guid: f1d0a5e8b2e77274485f3d59742ec0b4, type: 3}
-  OrangeGageItemPrefab: {fileID: 204440302140032703, guid: 0a609e0e578a4054e856980fc83b63b4, type: 3}
+  OrangeGageItemPrefab: {fileID: 204440302140032703, guid: e46bfdcc78c5ab544b4e680ec33b1b06, type: 3}
   OrangeGageContainer: {fileID: 2105771438730154400}
-  LightGreenGageItemPrefab: {fileID: 7115308962525485353, guid: 11eece6e230b85f43ab1209ee2760455, type: 3}
+  LightGreenGageItemPrefab: {fileID: 7115308962525485353, guid: 7ec9d713ef22d064dbdd533e326717f8, type: 3}
   LightGreenGageContainer: {fileID: 3568941816777922471}
   GreenGageItemPrefab: {fileID: 4243714581421961510, guid: 7da1684fbbf33d049b9f4fa972b4ba46, type: 3}
   GreenGageContainer: {fileID: 5080633379337027735}
   PinkGageItemPrefab: {fileID: 30718901735116279, guid: 2639c508eb980c24d953025d040a093c, type: 3}
   PinkGageContainer: {fileID: 5052277373672086791}
-  BlueGageItemPrefab: {fileID: 1583720658311584664, guid: 8e78dc155a64e084aac58dfa55958138, type: 3}
+  BlueGageItemPrefab: {fileID: 1583720658311584664, guid: 21a0399f05aea554db5b6a18eac17af6, type: 3}
   BlueGageContainer: {fileID: 6102444250454062777}
 --- !u!114 &6989076730405147585
 MonoBehaviour:
@@ -2069,8 +2069,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4797089067421019822}
-  - {fileID: 8134081477771889273}
   - {fileID: 991726909172089952}
+  - {fileID: 34224629795915132}
   m_Father: {fileID: 530027907065896682}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

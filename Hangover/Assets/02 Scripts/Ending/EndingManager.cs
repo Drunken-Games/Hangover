@@ -11,8 +11,7 @@ public class EndingManager : MonoBehaviour
     public GameObject[] endingImages; // 엔딩 이미지를 담은 게임 오브젝트 배열
     public CreditManager creditManager; // CreditManager 스크립트의 참조
 
-    [SerializeField]
-    private int endingIndex = 5; // 표시할 엔딩 번호 (외부에서 설정 가능하도록 SerializeField 사용)
+    private int endingIndex; // 표시할 엔딩 번호 (외부에서 설정 가능하도록 SerializeField 사용)
 
     public Image fadeImage; // 화면 전체를 덮을 투명한 이미지 (검은색)
     public Image fadeImage2; // 페이드 아웃 전용 이미지
@@ -29,6 +28,9 @@ public class EndingManager : MonoBehaviour
 
     void Start()
     {
+        endingIndex = GameManager.instance.endingNumber;
+        Debug.Log("endingIndex: " + endingIndex);
+
         // 마무리 문구 초기화
         InitializeFinalMessages();
 
@@ -115,7 +117,6 @@ public class EndingManager : MonoBehaviour
     public void SetEndingIndex(int index)
     {
         endingIndex = index;
-        ShowEnding(endingIndex); // 설정된 번호에 맞는 엔딩을 즉시 표시
     }
 
     // 특정 엔딩 이미지를 활성화하고 크레딧을 표시하는 함수
@@ -127,6 +128,7 @@ public class EndingManager : MonoBehaviour
             image.SetActive(false);
         }
 
+        Debug.Log("endingIndex: " + endingIndex + ", endingImages.Length: " + endingImages.Length);
         // 유효한 인덱스일 때만 선택한 엔딩 이미지를 활성화
         if (endingIndex >= 0 && endingIndex < endingImages.Length)
         {

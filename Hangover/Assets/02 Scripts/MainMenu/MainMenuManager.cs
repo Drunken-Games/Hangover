@@ -56,7 +56,7 @@ public class MainMenuManager : MonoBehaviour
         currentPopup = Instantiate(popupPrefab, Vector3.zero, Quaternion.identity);
 
         // Canvas의 자식으로 설정
-        currentPopup.transform.SetParent(GameObject.Find("Canvas").transform, false);
+        currentPopup.transform.SetParent(GameObject.Find("MainMenu").transform, false);
 
         // 중앙에 배치하기
         RectTransform rectTransform = currentPopup.GetComponent<RectTransform>();

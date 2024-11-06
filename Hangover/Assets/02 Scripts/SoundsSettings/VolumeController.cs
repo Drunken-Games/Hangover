@@ -21,7 +21,7 @@ public class VolumeController : MonoBehaviour
     private void Awake()
     {
         ColorUtility.TryParseHtmlString("#00B757", out toggleOnColor);
-        ColorUtility.TryParseHtmlString("#FF0000", out toggleOffColor); // 빨간색 예시
+        ColorUtility.TryParseHtmlString("#778899", out toggleOffColor); // 빨간색 예시
     }
     
     

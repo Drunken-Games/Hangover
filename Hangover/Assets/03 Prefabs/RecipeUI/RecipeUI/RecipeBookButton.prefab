@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 8507122635292201384}
   - component: {fileID: 6083105941115950756}
   - component: {fileID: 2613633211303771652}
-  - component: {fileID: 4155554635933145234}
+  - component: {fileID: 7890963513347739530}
   m_Layer: 5
   m_Name: RecipeBookButton
   m_TagString: Untagged
@@ -322,7 +322,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4155554635933145234
+--- !u!114 &7890963513347739530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -331,8 +331,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6566584041363197396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371c87cafb19c4d07bb1670ac037c92a, type: 3}
+  m_Script: {fileID: 11500000, guid: f773f79c890fc4c448fdc72ef740d791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pressedSound: {fileID: 8300000, guid: 37b1cc23ccd6d4382a26dd64daa12be1, type: 3}
-  rolloverSound: {fileID: 8300000, guid: 08b21a5c0723e41c293613e9d37f9902, type: 3}

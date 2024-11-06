@@ -44,7 +44,7 @@ public class DayResultManager : MonoBehaviour
         string saveDateTime = DateTime.Now.ToString(); // 저장일시
 
         // SaveGame 메서드 호출
-        saveSystem.SaveGame(dayResultData.dayNum, dayResultData.afterMoney, dayResultData.playerName, dayResultData.branchIdx, saveDateTime);
+        saveSystem.SaveGame(dayResultData.dayNum, dayResultData.afterMoney, dayResultData.playerName, dayResultData.endingTrigger, saveDateTime);
     }
 
 }

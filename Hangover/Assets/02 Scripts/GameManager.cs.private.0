@@ -169,7 +169,7 @@ public class GameManager : MonoBehaviour
             netProfit = 2705,
             afterMoney = 2705,
             playerName = "봉균",
-            branchIdx = 0 
+            endingTrigger = 0 
         };
         // */
 

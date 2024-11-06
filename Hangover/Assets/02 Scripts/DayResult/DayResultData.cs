@@ -10,5 +10,8 @@ public class DayResultData
     public int netProfit; // 순 수익
     public int afterMoney; // 일차 후  총 자산
     public string playerName; // 플레이어 이름
-    public int branchIdx; // 분기 인덱스
+    public int endingTrigger; // 분기 인덱스
+
+    public int fireCount; // 해고 엔딩을 위한 int, 초기값 0
+    public int robotCount; // SNS 엔딩을 위한 int, 초기값 0
 }

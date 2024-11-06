@@ -623,11 +623,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 680709628647975124}
-  - component: {fileID: 4140770012357952720}
   - component: {fileID: 2893601536948385821}
   - component: {fileID: 8895544463139276844}
   - component: {fileID: 3450634984658187988}
   - component: {fileID: 7070020358400724181}
+  - component: {fileID: 212152149560520450}
   m_Layer: 5
   m_Name: PopUpCloseButton
   m_TagString: Untagged
@@ -655,20 +655,6 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: 658}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4140770012357952720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6873498900331925541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371c87cafb19c4d07bb1670ac037c92a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pressedSound: {fileID: 8300000, guid: c201f1dfd9d8345c7913a8662735c920, type: 3}
-  rolloverSound: {fileID: 8300000, guid: 15abc1bdbe56f480baf05b728882ca96, type: 3}
 --- !u!82 &2893601536948385821
 AudioSource:
   m_ObjectHideFlags: 0
@@ -848,8 +834,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 212152149560520450}
+        m_TargetAssemblyTypeName: ButtonSoundPlay, Assembly-CSharp
+        m_MethodName: PlayClickSound
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: siuu
+          m_BoolArgument: 0
+        m_CallState: 2
   recipeBookUI: {fileID: 0}
   buttonUI: {fileID: 0}
+--- !u!114 &212152149560520450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6873498900331925541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f773f79c890fc4c448fdc72ef740d791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6945756066893101618
 GameObject:
   m_ObjectHideFlags: 0

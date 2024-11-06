@@ -18,22 +18,9 @@ public class SaveSystem : MonoBehaviour
 
     }
 
-
-    // 데이터를 저장하는 함수 1
-    // public void SaveGame()
-    // {
-    //     int dayNum = 2; // 예시: 현재 일차
-    //     int nowMoney = 20000; // 예시: 현재 금액
-    //     string playerName = "Player"; // 예시: 플레이어 이름
-    //     int branchIdx = 0; // 예시: 분기 인덱스
-    //     string saveDateTime = DateTime.Now.ToString(); // 예시: 저장일시
-
-    //     SaveGame(dayNum, nowMoney, playerName, branchIdx, saveDateTime);
-    // }
-
  
-    // 데이터를 저장하는 함수 2
-    public void SaveGame(int dayNum, int nowMoney, string playerName, int branchIdx, string saveDateTime)
+    // 데이터를 저장하는 함수
+    public void SaveGame(int dayNum, int nowMoney, string playerName, int fireCount, int robotCount, int endingTrigger, string saveDateTime)
     {
         // SaveData 객체 생성 및 값 할당
         SaveData saveData = new SaveData
@@ -41,7 +28,9 @@ public class SaveSystem : MonoBehaviour
             dayNum = dayNum,
             nowMoney = nowMoney,
             playerName = playerName,
-            branchIdx = branchIdx,
+            fireCount = fireCount,
+            robotCount = robotCount,
+            endingTrigger = endingTrigger,
             saveDateTime = saveDateTime
         };
 
@@ -61,14 +50,17 @@ public class SaveSystem : MonoBehaviour
         {
             // 파일에서 JSON 문자열 읽기
             string json = File.ReadAllText(saveFilePath);
+            
             // JSON 문자열을 SaveData 객체로 변환
             SaveData saveData = JsonUtility.FromJson<SaveData>(json);
             Debug.Log("게임 로드 완료: " + saveFilePath);
 
-            GameManager.instance.dayResultData.dayNum = saveData.dayNum + 1;
+            GameManager.instance.dayResultData.dayNum = saveData.dayNum + 1; // 이전 완료한 일차은 다음으로 진행하기 위해 +1
             GameManager.instance.dayResultData.beforeMoney = saveData.nowMoney;
-            GameManager.instance.dayResultData.playerName = saveData.playerName;
-            GameManager.instance.dayResultData.branchIdx = saveData.branchIdx;
+            GameManager.instance.dayResultData.playerName = saveData.playerName;   
+            GameManager.instance.dayResultData.fireCount = saveData.fireCount;
+            GameManager.instance.dayResultData.robotCount = saveData.robotCount;
+            GameManager.instance.dayResultData.endingTrigger = saveData.endingTrigger;
 
             return saveData;
         }
@@ -94,7 +86,7 @@ public class SaveSystem : MonoBehaviour
             string result = "일\t차:\t" + loadedData.dayNum + "\n" + 
                 "자\t산:\t" + loadedData.nowMoney + "\n" + 
                 "플레이어:\t" + loadedData.playerName + "\n" +
-                "분\t기:\t" + loadedData.branchIdx + "\n" +
+                "분\t기:\t" + loadedData.endingTrigger + "\n" +
                 "저장일시: " + loadedData.saveDateTime ;
             
             // ResultText 테스트 출력

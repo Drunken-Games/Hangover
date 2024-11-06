@@ -80,10 +80,11 @@ public class CocktailDataLoader : MonoBehaviour
             if (string.IsNullOrEmpty(trimmedRow)) continue;
 
             string[] columns = trimmedRow.Split(',');
-            if (columns.Length < 11) continue;
+            if (columns.Length < 12) continue;
 
             CocktailData cocktailData = ScriptableObject.CreateInstance<CocktailData>();
             
+            cocktailData.id = int.Parse(columns[0]);
             cocktailData.icon = spriteList[int.Parse(columns[0])-1];
             cocktailData.cocktailName = columns[1];
             cocktailData.sweet = int.Parse(columns[2]);
@@ -95,6 +96,7 @@ public class CocktailDataLoader : MonoBehaviour
             cocktailData.taste = columns[8];
             cocktailData.description = columns[9];
             cocktailData.method = int.Parse(columns[10]);
+            cocktailData.price = int.Parse(columns[11]);
 
             database.cocktails.Add(cocktailData);
         }

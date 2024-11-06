@@ -3474,7 +3474,7 @@ MonoBehaviour:
     netProfit: 0
     afterMoney: 0
     playerName: 
-    branchIdx: 0
+    endingTrigger: 0
   dayText: {fileID: 39252736}
   beforeMoneyText: {fileID: 1865956999}
   totalProfitText: {fileID: 1617902338}

@@ -1,4 +1,4 @@
-using UnityEditor.ShaderKeywordFilter;
+// using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public DayResultData dayResultData;
 
     public string playerName; // 유저 이름 저장 변수 추가
-    public GameObject nameInputPanel;         // NameInput UI 오브젝트 참조
+    public GameObject nameInputPanel; // NameInput UI 오브젝트 참조
 
     // 대화 상태 저장 변수
     public int currentDialogueIndex; // 현재 대화 인덱스
@@ -38,13 +38,18 @@ public class GameManager : MonoBehaviour
     private int completedRecipeId = -1; // -1은 실패하거나 없을 경우
 
     private SaveSystem saveSystem;
-    private int[] dialogueIndices = { 0, 43, 94, 138, 192 }; // 일차별 대사 인덱스
+    public int[] dialogueIndices = { 0, 44, 96, 141, 198 }; // 일차별 대사 인덱스
 
     // 엔딩 분기 배열
     public int endingTrigger;
     public int fireCount;
     public int robotCount;
+    public int branchIdx;
+    public int endingNumber;
     //
+    // 특수 분기를 처리할 임시 변수
+    public int tempSpecialBranch = -1; // null로 초기화, 필요 시 설정
+
 
     private void Awake()
     {
@@ -108,6 +113,38 @@ public class GameManager : MonoBehaviour
             Debug.LogError("DialogueDatabase.asset 파일을 찾을 수 없습니다. 경로와 파일 이름을 확인해주세요.");
         }
     }
+    // 특수 분기를 처리하는 메서드
+    public void ProcessSpecialBranch()
+    {
+        if (tempSpecialBranch != -1) // -1이 아닐 때만 분기 처리
+        {
+            // 특수 분기 처리 로직
+            int branchId = tempSpecialBranch;
+
+            if (branchId == 1)
+            {
+                SceneManager.LoadScene("SpecialScene1");
+            }
+            else if (branchId == 2)
+            {
+                SceneManager.LoadScene("SpecialScene2");
+            }
+
+            // 특수 분기 처리가 끝나면 변수 초기화
+            ClearSpecialBranch();
+        }
+        else
+        {
+            Debug.Log("특수 분기가 설정되지 않았습니다.");
+        }
+    }
+
+    // 특수 분기 초기화 메서드
+    public void ClearSpecialBranch()
+    {
+        tempSpecialBranch = -1;
+        Debug.Log("특수 분기 변수가 초기화되었습니다.");
+    }
 
 
     // 유저 이름을 설정하는 메서드 추가
@@ -149,13 +186,15 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"OnSceneLoaded 호출됨 - 현재 씬: {scene.name}, 이전 씬: {previousSceneName}");
         // BuildScene에서 GameScene으로 이동한 경우 현재 칵테일 ID 출력
-        if (previousSceneName == "CreaftingResultScene" && scene.name == "GameScene")
+        if (scene.name == "GameScene")
         {
-            int currentRecipeId = GetRecipeId();
-            Debug.Log($"BuildScene에서 GameScene으로 돌아왔습니다. 현재 칵테일 ID: {currentRecipeId}");
-            
-            // GameScene에서 대화 진행 플래그 설정
-            GameSceneNeedsProceed = true;
+            ProcessSpecialBranch();
+            if (previousSceneName == "CreaftingResultScene")
+            {
+                int currentRecipeId = GetRecipeId();
+                Debug.Log($"BuildScene에서 GameScene으로 돌아왔습니다. 현재 칵테일 ID: {currentRecipeId}");
+                GameSceneNeedsProceed = true;
+            }
         }
         //if(previousSceneName == "DayResultScene" && scene.name == "GameScene")
         //{
@@ -214,7 +253,7 @@ public class GameManager : MonoBehaviour
             netProfit = 2705,
             afterMoney = 2705,
             playerName = "봉균",
-            branchIdx = 0 
+            endingTrigger = 0 
         };
         // */
 
@@ -275,11 +314,27 @@ public class GameManager : MonoBehaviour
 
         if (saveData != null)
         {
-            int dayNum = saveData.dayNum + 1;
+            int dayNum = saveData.dayNum;
+            Debug.Log(saveData);
+            int beforeMoney = saveData.beforeMoney;
+            int totalProfit = saveData.totalProfit;
+            int tip = saveData.tip;
+            int refund = saveData.refund;
+            int materials = saveData.materials;
+            int netProfit = saveData.netProfit;
+            int afterMoney = saveData.afterMoney;
 
-            if (dayNum >= 0 && dayNum < dialogueIndices.Length)
+            string playerName = saveData.playerName;
+            int endingTrigger = saveData.endingTrigger;
+            int fireCount = saveData.fireCount;
+            int robotCount = saveData.robotCount;
+
+
+            int dayNumIdx = dayNum - 1;
+
+            if (dayNumIdx >= 0 && dayNumIdx < dialogueIndices.Length)
             {
-                currentDialogueIndex = dialogueIndices[dayNum];
+                currentDialogueIndex = dialogueIndices[dayNumIdx];
                 Debug.Log($"대사 인덱스 설정됨: Day {dayNum}, Index {currentDialogueIndex}");
             }
             else
