@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq; // System.Linq 추가
 using System.Threading.Tasks;
 using UnityEngine;
@@ -32,7 +33,11 @@ public class GameSence : MonoBehaviour
     private GameObject notificationPanel; // NotificationPanel 오브젝트
 
     [SerializeField] private CocktailCal cocktailCal; // CocktailCal 인스턴스
+    private bool isUpdateComplete = false;
 
+    private Coroutine currentCoroutine;
+
+    private bool check_build = false;
     void Start()
     {
         Canvas canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
@@ -82,7 +87,7 @@ public class GameSence : MonoBehaviour
             Debug.LogError("NameInputPanel 또는 그 하위 요소들을 찾을 수 없습니다. 이름을 다시 확인해 주세요.");
             return;
         }
-        
+
         cocktailCal = GameObject.FindObjectOfType<CocktailCal>();
         if (cocktailCal == null)
         {
@@ -110,7 +115,7 @@ public class GameSence : MonoBehaviour
         // 대화 인덱스 확인하여 이름 입력 패널 표시
         GameManager.instance.CheckDialogueForNameInput();
 
-        
+
 
     }
 
@@ -120,7 +125,7 @@ public class GameSence : MonoBehaviour
     {
         // nameInputField의 텍스트를 GameManager의 playerName에 저장
         GameManager.instance.dayResultData.playerName = nameInputField.text;
-        if (nameInputField.text!=null)
+        if (nameInputField.text != null)
         {
             Debug.Log($"Player name saved: {GameManager.instance.dayResultData.playerName}");
             nameInputPanel.SetActive(false);
@@ -129,7 +134,7 @@ public class GameSence : MonoBehaviour
             // nextButton 활성화를 위한 코루틴 실행
             StartCoroutine(WaitForNextButtonActivation());
         }
-        
+
     }
     // nextButton이 활성화될 때까지 기다리는 코루틴
     private System.Collections.IEnumerator WaitForNextButtonActivation()
@@ -149,7 +154,7 @@ public class GameSence : MonoBehaviour
     // GameManager의 currentDialogueIndex를 기반으로 현재 대화 항목 가져오기
     DialogueEntry GetCurrentDialogueEntry()
     {
-        
+
         int currentDialogueIndex = GameManager.instance.currentDialogueIndex;
         Debug.Log(currentDialogueIndex);
         // 현재 대화 인덱스를 기준으로 대화 리스트에서 해당 인덱스를 반환
@@ -167,7 +172,94 @@ public class GameSence : MonoBehaviour
         }
         return dialogueEntry;
     }
-   
+    IEnumerator HandleDialogueProcessing()
+    {
+        DialogueEntry currentDialogue = GetCurrentDialogueEntry();
+        int currentRecipeId = GameManager.instance.GetRecipeId();
+        int price = cocktailCal.GetCocktailPrice(currentRecipeId);
+        Debug.Log("hi");
+        if (currentDialogue.nextDialogueIds.Count > 1)
+        {
+            if (currentDialogue.text.Contains("{Build}") && currentDialogue.id != 78)
+            {
+                Debug.Log(1);
+                int firstNextDialogueId = currentDialogue.nextDialogueIds[0];
+                int secondNextDialogueId = currentDialogue.nextDialogueIds[1];
+                Debug.Log($"currentRecipeId: {currentRecipeId}, currentDialogue.cocktailId: {currentDialogue.cocktailIds}");
+
+                // 현재 대사의 칵테일 ID와 현재 선택된 칵테일 ID가 일치하는지 확인
+                bool foundMatchingId = true;
+
+                for (int i = 0; i < currentDialogue.cocktailIds.Count; i++)
+                {
+                    if (currentRecipeId == currentDialogue.cocktailIds[i])
+                    {
+                        foundMatchingId = false;
+                        Debug.Log(currentRecipeId);
+                        break; // 일치하는 ID를 찾으면 루프 종료
+                    }
+                }
+
+                if (foundMatchingId && currentRecipeId != 0)
+                {
+                    int nextDialogueIndex = dialogues.FindIndex(d => d.id == firstNextDialogueId);
+                    if (nextDialogueIndex != -1)
+                    {
+                        GameManager.instance.currentDialogueIndex = firstNextDialogueId;
+                        Debug.Log($"첫 번째 다음 대사로 이동합니다. 다음 대사 ID: {firstNextDialogueId}");
+                    }
+                }
+                else
+                {
+                    GameManager.instance.currentDialogueIndex = secondNextDialogueId;
+                    Debug.Log($"두 번째 다음 대사로 이동합니다. 다음 대사 ID: {secondNextDialogueId}");
+
+                    // 성공 시 Total Profit에 특정 가격 추가
+                    GameManager.instance.dayResultData.totalProfit += price; // 예시로 100 추가
+                    Debug.Log("성공하여 Total Profit이 증가했습니다.");
+                }
+            }
+            else if (currentDialogue.id == 78)
+            {
+                if (currentRecipeId == 9)
+                {
+                    GameManager.instance.currentDialogueIndex = 83;
+                    GameManager.instance.dayResultData.totalProfit += price; // 예시로 100 추가
+                    Debug.Log("성공하여 Total Profit이 증가했습니다.");
+                }
+                else if (currentRecipeId == 1 || currentRecipeId == 15)
+                {
+                    GameManager.instance.currentDialogueIndex = 80;
+                    GameManager.instance.dayResultData.totalProfit += price; // 예시로 100 추가
+                    Debug.Log("성공하여 Total Profit이 증가했습니다.");
+                }
+                else
+                {
+                    GameManager.instance.currentDialogueIndex = 79;
+                }
+            }
+        }
+        else if (currentDialogue.nextDialogueIds.Count == 1)
+        {
+            int firstNextDialogueId = currentDialogue.nextDialogueIds[0];
+            GameManager.instance.currentDialogueIndex = firstNextDialogueId;
+            Debug.Log($"첫 번째 다음 대사로 이동합니다. 다음 대사 ID: {firstNextDialogueId}");
+            GameManager.instance.dayResultData.totalProfit += price; // 예시로 100 추가
+            Debug.Log("성공하여 Total Profit이 증가했습니다.");
+        }
+
+
+        // 돌아왔을 때 해당 대화 ID와 칵테일 ID 비교하여, 성공여부 판정, 성공 시 Total Profit 에 특정 가격을 올리기
+        // 성공 여부와 관계없이 materials에 재료 비용 추가
+        int[] cocktailParameters = GameManager.instance.GetCocktailParameters();
+        int materialCost = cocktailCal.CalculateMaterialCost(cocktailParameters);
+        GameManager.instance.dayResultData.materials += materialCost;
+        Debug.Log($"재료 비용 {materialCost}이 materials에 추가되었습니다. {currentRecipeId} {currentDialogue.cocktailIds}");
+        SoundsManager.instance.StopAllSFX();
+        Debug.Log(GameManager.instance.currentDialogueIndex);
+        yield break; // 비동기 메서드 종료
+
+    }
 
     void Update()
     {
@@ -193,86 +285,30 @@ public class GameSence : MonoBehaviour
             //price=Assets/04 Resources/CocktailData/CocktailDatabase 에서 currentDialogue.cocktailId와 일치하는 칵테일 Id를 찾아서 그 것의 pirce를 넣어둔다
             // price 값 설정
             int price = cocktailCal.GetCocktailPrice(currentRecipeId);
-           
-            if (currentDialogue.nextDialogueIds.Count > 1)
+
+            //if (currentDialogue.nextDialogueIds.Count > 1)
+            //{
+            StartCoroutine(HandleDialogueProcessing());
+            SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
+            dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TextMeshProUGUI>();
+            while (dialogueText.text != GetCurrentDialogueEntry().text)
             {
-                if (currentDialogue.text.Contains("{build}") && currentDialogue.id!=78)
-                {
-                    int firstNextDialogueId = currentDialogue.nextDialogueIds[0];
-                    int secondNextDialogueId = currentDialogue.nextDialogueIds[1];
-                    Debug.Log($"currentRecipeId: {currentRecipeId}, currentDialogue.cocktailId: {currentDialogue.cocktailIds}");
-
-                    // 현재 대사의 칵테일 ID와 현재 선택된 칵테일 ID가 일치하는지 확인
-                    bool foundMatchingId = false;
-
-                    for (int i = 0; i < currentDialogue.cocktailIds.Count; i++)
-                    {
-                        if (currentRecipeId == currentDialogue.cocktailIds[i])
-                        {
-                            foundMatchingId = true;
-                            break; // 일치하는 ID를 찾으면 루프 종료
-                        }
-                    }
-
-                    if (!foundMatchingId && currentRecipeId != 0)
-                    {
-                        int nextDialogueIndex = dialogues.FindIndex(d => d.id == firstNextDialogueId);
-                        if (nextDialogueIndex != -1)
-                        {
-                            GameManager.instance.currentDialogueIndex = firstNextDialogueId;
-                            Debug.Log($"첫 번째 다음 대사로 이동합니다. 다음 대사 ID: {firstNextDialogueId}");
-                        }
-                    }
-                    else
-                    {
-                        //int nextDialogueIndex = dialogues.FindIndex(d => d.id == secondNextDialogueId);
-                        //if (nextDialogueIndex != -1)
-                        //{
-                            GameManager.instance.currentDialogueIndex = secondNextDialogueId;
-                            Debug.Log($"두 번째 다음 대사로 이동합니다. 다음 대사 ID: {secondNextDialogueId}");
-
-                            // 성공 시 Total Profit에 특정 가격 추가
-                            GameManager.instance.dayResultData.totalProfit += price; // 예시로 100 추가
-                            Debug.Log("성공하여 Total Profit이 증가했습니다.");
-                        //}
-                    }
-                }
-                else if (currentDialogue.id==78)
-                {
-                    if(currentRecipeId == 9)
-                    {
-                        GameManager.instance.currentDialogueIndex = 83;
-                        GameManager.instance.dayResultData.totalProfit += price; // 예시로 100 추가
-                        Debug.Log("성공하여 Total Profit이 증가했습니다.");
-                    }
-                    else if (currentRecipeId == 1 || currentRecipeId == 15)
-                    {
-                        GameManager.instance.currentDialogueIndex = 80;
-                        GameManager.instance.dayResultData.totalProfit += price; // 예시로 100 추가
-                        Debug.Log("성공하여 Total Profit이 증가했습니다.");
-                    }
-                    else
-                    {
-                        GameManager.instance.currentDialogueIndex = 79;
-                    }
-                }
-                // 돌아왔을 때 해당 대화 ID와 칵테일 ID 비교하여, 성공여부 판정, 성공시 Total Profit 에 특정 가격을 올리기
-                // 성공 여부와 관계없이 materials에 재료 비용 추가
-                int[] cocktailParameters = GameManager.instance.GetCocktailParameters();
-                int materialCost = cocktailCal.CalculateMaterialCost(cocktailParameters);
-                GameManager.instance.dayResultData.materials += materialCost;
-                Debug.Log($"재료 비용 {materialCost}이 materials에 추가되었습니다.{currentRecipeId}{currentDialogue.cocktailIds}");
-                SoundsManager.instance.StopAllSFX();
-                Debug.Log( GameManager.instance.currentDialogueIndex);
-                SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
                 DisplayDialogue(GetCurrentDialogueEntry());
             }
+            //}
+            //else if(currentDialogue.nextDialogueIds.Count==1)
+            //{
+
+            //}
         }
+
+        isUpdateComplete = true;
+        Debug.Log(isUpdateComplete);
     }
     // 특수 분기 처리를 위한 메서드
     void HandleSpecialBranch(int branchId)
     {
-        if(branchId != -1)
+        if (branchId != -1)
         {
             switch (branchId)
             {
@@ -292,8 +328,9 @@ public class GameSence : MonoBehaviour
     }
 
     // 텍스트의 모든 플레이스홀더를 처리하고 제거하는 메서드
-    async Task<string> ProcessDialogueText(string text)
+    IEnumerator ProcessDialogueText(string text, System.Action<string> callback)
     {
+
         string processedText = text;
 
         if (processedText.Contains("{playerName}"))
@@ -308,10 +345,10 @@ public class GameSence : MonoBehaviour
 
         if (processedText.Contains("{Build}"))
         {
-            await HandleOpenDrinkBuildScene(processedText);
+            yield return StartCoroutine(HandleOpenDrinkBuildScene(processedText));
             processedText = processedText.Replace("{Build}", "");
         }
-            
+
 
         if (processedText.Contains("{fireCount}"))
             processedText = processedText.Replace("{fireCount}", HandleFireCount());
@@ -327,7 +364,7 @@ public class GameSence : MonoBehaviour
             processedText = processedText.Replace("{select}", HandleSelectPanel());
             processedText = "";
         }
-            
+
 
         if (processedText.Contains("{branchIdx}"))
             processedText = processedText.Replace("{branchIdx}", HandleBranchIdx());
@@ -347,8 +384,8 @@ public class GameSence : MonoBehaviour
         }
 
 
-        Debug.Log(processedText);
-        return processedText;
+        callback?.Invoke(processedText);
+        yield break;
     }
 
     // HandleOpenName 메서드
@@ -359,7 +396,7 @@ public class GameSence : MonoBehaviour
             nameInputPanel.SetActive(true);
             nameInputField.interactable = true;
             submitButton.gameObject.SetActive(true);
-            
+
             nextButton.gameObject.SetActive(false);
         }
         return "";  // 필요 시 반환 값을 변경할 수 있음
@@ -391,22 +428,32 @@ public class GameSence : MonoBehaviour
 
         return "";
     }
-    
 
 
-    async Task HandleOpenDrinkBuildScene(string processedText)
+
+    IEnumerator HandleOpenDrinkBuildScene(string processedText)
     {
-        if (!GameManager.instance.GameSceneNeedsProceed)
+        if (!GameManager.instance.GameSceneNeedsProceed && processedText == "{Build}")
         {
-            //GameManager.instance.GameSceneNeedsProceed = true; // 플래그 초기화
-            await SceneManager.LoadSceneAsync("BuildScene").AsTask();
-            return; // 메서드 종료
+            // BuildScene을 비동기로 로드
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("BuildScene");
+            while (!asyncLoad.isDone)
+            {
+                yield return null; // 비동기 로드가 완료될 때까지 대기
+            }
+            StopAllCoroutines(); // 현재 MonoBehaviour의 모든 코루틴 중지
+            this.enabled = false;
+            yield break; // 메서드 종료
         }
-        else if (processedText == "{build}")
+        else if (!GameManager.instance.GameSceneNeedsProceed)
         {
-            ProceedToNextDialogue();
-            return;
+            check_build = true;
         }
+        //else if (processedText == "{build}")
+        //{
+        //    ProceedToNextDialogue();
+        //    return;
+        //}
         //
         ///SceneManager.LoadScene("BuildScene");
         //GameManager.instance.tempSpecialBranch = 1;
@@ -440,7 +487,7 @@ public class GameSence : MonoBehaviour
 
     private System.Collections.IEnumerator SCShowSelectPanel()
     {
-        while(!notificationPanel.gameObject.activeSelf)
+        while (!notificationPanel.gameObject.activeSelf)
         {
             notificationPanel.SetActive(true);
             yield return null;
@@ -502,28 +549,30 @@ public class GameSence : MonoBehaviour
         SceneManager.LoadScene("EndingScene");
         return "";
     }
-    async void DisplayDialogue(DialogueEntry entry)
+    void DisplayDialogue(DialogueEntry entry)
     {
         if (dialogueText == null)
         {
             dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TextMeshProUGUI>();
             if (dialogueText == null) return;
         }
-        
-        string processedText = await ProcessDialogueText(entry.text);
-        Debug.Log($"GameSence.cs - DisplayDialogue() - processedText : {processedText}");
-        dialogueText.text = processedText;
-        Debug.Log($"GameSence.cs - DisplayDialogue() - dialogueText : {dialogueText.text}");
-        // GameManager.instance.dayResultData.playerName 값이 null이 아니고 빈 문자열이 아닐 때 주인공 이름으로 치환
-        if (!string.IsNullOrEmpty(GameManager.instance.dayResultData.playerName) && entry.character=="주인공")
+
+        StartCoroutine(ProcessDialogueText(entry.text, processedText =>
         {
-            characterNameText.text = GameManager.instance.dayResultData.playerName;
-        }
-        else
-        {
-            characterNameText.text = entry.character; // 기본 캐릭터 이름
-        }
-        dayText.text = "Day " + entry.day;
+            if (processedText == "") return;
+            dialogueText.text = processedText;
+
+            if (!string.IsNullOrEmpty(GameManager.instance.dayResultData.playerName) && entry.character == "주인공")
+            {
+                characterNameText.text = GameManager.instance.dayResultData.playerName;
+            }
+            else
+            {
+                characterNameText.text = entry.character;
+            }
+            dayText.text = "Day " + entry.day;
+        }));
+        Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
     }
     // 다음 대화로 이동하기
     void ProceedToNextDialogue()
@@ -546,19 +595,23 @@ public class GameSence : MonoBehaviour
         Debug.Log(nextDialogueId);
         //if (currentDialogue.nextDialogueIds.Count > 1)
         //{
-            
+
 
         //}
-        if (currentDialogue.nextDialogueIds.Count == 1 && nextDialogueId != -1)
+        if (check_build == true)
+        {
+            SceneManager.LoadScene("BuildScene");
+        }
+        else if (currentDialogue.nextDialogueIds.Count == 1 && nextDialogueId != -1)
         {
             // 다음 대화 ID가 하나인 경우 바로 해당 ID로 이동
             //int nextDialogueId = currentDialogue.nextDialogueIds[0];
             //int nextDialogueIndex = dialogues.FindIndex(d => d.id == nextDialogueId);
             //if (nextDialogueIndex != -1)
             //{
-                GameManager.instance.currentDialogueIndex = nextDialogueId;
-                    //nextDialogueIndex;
-                Debug.Log(GameManager.instance.currentDialogueIndex);
+            GameManager.instance.currentDialogueIndex = nextDialogueId;
+            //nextDialogueIndex;
+            Debug.Log(GameManager.instance.currentDialogueIndex);
             SoundsManager.instance.StopAllSFX();
             SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
             DisplayDialogue(GetCurrentDialogueEntry());
@@ -607,96 +660,5 @@ public class GameSence : MonoBehaviour
             nextButton.interactable = false;               // 다음 버튼 비활성화
         }
     }
+
 }
-//void ShowChoiceDialogue(string dialogue)
-//{
-//    if (choiceHandler == null)
-//    {
-//        Debug.LogError("NotificationPanel에 ChoiceHandler 스크립트가 없습니다.");
-//        return;
-//    }
-//    // select 뒤의 대사와 , 구분자를 기준으로 선택지 파싱
-//    string[] splitDialogue = dialogue.Substring("select".Length).Split(new string[] { "," }, System.StringSplitOptions.RemoveEmptyEntries);
-
-//    if(splitDialogue.Length>=2)
-//    {
-//        string choice1 = splitDialogue[0].Trim().Trim('"');
-//        string choice2 = splitDialogue[1].Trim().Trim('"');
-
-//        choiceHandler.ShowChoices(choice1, choice2, choiceIndex =>
-//        {
-//            if (choiceIndex == 1 && GetCurrentDialogueEntry().nextDialogueIds.Count > 0)
-//            {
-//                GameManager.instance.currentDialogueIndex = GetCurrentDialogueEntry().nextDialogueIds[0];
-//            }
-//            else if (choiceIndex == 2 && GetCurrentDialogueEntry().nextDialogueIds.Count > 1)
-//            {
-//                GameManager.instance.currentDialogueIndex = GetCurrentDialogueEntry().nextDialogueIds[1];
-//            }
-
-//            // 선택에 따라 다음 대사를 표시
-//            DisplayDialogue(GetCurrentDialogueEntry());
-//        });
-//    }
-
-//}
-// Resources 폴더에서 모든 CocktailData ScriptableObject 로드
-//private void LoadCocktailData()
-//{
-//    cocktails = Resources.LoadAll<CocktailData>("DialogueDataAssets/CocktailDatabase").ToList();
-//    for (int i = 0; i < cocktails.Count; i++)
-//    {
-//        // 칵테일 데이터의 각 속성을 출력
-//        Debug.Log($"Index {i}: id:{cocktails[i].id}, Name: {cocktails[i].cocktailName}, Price: {cocktails[i].price}, Sweet: {cocktails[i].sweet}, Sour: {cocktails[i].sour}, Bitter: {cocktails[i].bitter}, Spice: {cocktails[i].spice}, Spirit: {cocktails[i].spirit}, AlcoholContent: {cocktails[i].alcoholContent}, Taste: {cocktails[i].taste}, Description: {cocktails[i].description}, Method: {cocktails[i].method}");
-//    }
-//    Debug.Log("칵테일 데이터 로드 완료");
-//}
-
-//// 특정 칵테일 ID로 가격 가져오기
-//private int GetCocktailPrice(int cocktailId)
-//{
-//    for (int i = 0; i < cocktails.Count; i++)
-//    {
-//        // 칵테일 데이터의 각 속성을 출력
-//        Debug.Log($"Index {i}: id:{cocktails[i].id}, Name: {cocktails[i].cocktailName}, Price: {cocktails[i].price}, Sweet: {cocktails[i].sweet}, Sour: {cocktails[i].sour}, Bitter: {cocktails[i].bitter}, Spice: {cocktails[i].spice}, Spirit: {cocktails[i].spirit}, AlcoholContent: {cocktails[i].alcoholContent}, Taste: {cocktails[i].taste}, Description: {cocktails[i].description}, Method: {cocktails[i].method}");
-//        if (cocktails[i].id == cocktailId)
-//        {
-
-//            return cocktails[i].price;
-//        }
-//    }
-//    return 0;
-//}
-//private int CalculateMaterialCost()
-//{
-//    int[] cocktailParameters = GameManager.instance.GetCocktailParameters();
-//    int materialCost = 0;
-
-//    // 재료마다 10의 비용으로 가정하고 계산 (예시)
-//    for (int i = 0; i < cocktailParameters.Length - 1; i++) // 마지막 항목은 제조방법이므로 제외
-//    {
-//        if (i == 0)
-//        {
-//            materialCost += 1 * cocktailParameters[i];
-//        }
-//        else if (i == 1)
-//        {
-//            materialCost += 2 * cocktailParameters[i];
-//        }
-//        else if (i == 2)
-//        {
-//            materialCost += 3 * cocktailParameters[i];
-//        }
-//        else if (i == 3)
-//        {
-//            materialCost += 4 * cocktailParameters[i];
-//        }
-//        else
-//        {
-//            materialCost += 2 * cocktailParameters[i];
-//        }
-
-//    }
-
-//    return materialCost;
-//}

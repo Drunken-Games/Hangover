@@ -359,7 +359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8256835676363826967, guid: 551c5d2bc6dc04fceb4daa4cc4d6ac10, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: open
+      value: startgame
       objectReference: {fileID: 0}
     - target: {fileID: 8256835676363826967, guid: 551c5d2bc6dc04fceb4daa4cc4d6ac10, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -797,7 +797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8256835676363826967, guid: cf975cda10ade464d84082a760f8175f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: open
+      value: startgame
       objectReference: {fileID: 0}
     - target: {fileID: 8256835676363826967, guid: cf975cda10ade464d84082a760f8175f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
