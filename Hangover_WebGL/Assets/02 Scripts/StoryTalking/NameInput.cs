@@ -26,6 +26,9 @@ public class NameInput : MonoBehaviour, IPointerDownHandler
     {
         nameInputField.Select();
         nameInputField.ActivateInputField(); // 모바일 키보드 강제 활성화
+
+        // 모바일 환경에서 키보드를 강제로 열도록 추가
+        TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
     }
 }
 //public class NameInput : MonoBehaviour

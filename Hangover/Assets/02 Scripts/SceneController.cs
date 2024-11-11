@@ -67,6 +67,10 @@ public class SceneController : MonoBehaviour
     // 특정 씬 이름으로 전환
     public void LoadSceneByName(string sceneName)
     {
+        if(GameManager.instance.ArcadeStory == true &&sceneName == "GameScene")
+        {
+            sceneName = "ArcadeScene";
+        }
         // GameManager 생성 또는 찾기
         GameManager gameManager = FindObjectOfType<GameManager>();
         

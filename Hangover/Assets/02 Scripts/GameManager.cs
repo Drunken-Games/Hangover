@@ -10,8 +10,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
     
     // New global variables for Arcade Mode
-    public int NPC_ID = -1; // Global storage for NPC ID generated in Arcade Mode
-    public List<int> Correct_ID = new List<int>(); // Global storage for Correct_ID list generated in Arcade Mode
+    public int NPC_ID = -1; // 아케이드 모드 NPC id
+    public List<int> Correct_ID = new List<int>(); // 아케이드 모드 주문 술
+    public bool isReactionPhase = false; // 아케이드 모드 단계
     // 씬 매니저들
     public string previousSceneName = ""; // 이전 씬 이름을 저장할 변수
     public bool GameSceneNeedsProceed { get; set; } = false; // GameScene에서 진행 여부 플래그
@@ -53,6 +54,9 @@ public class GameManager : MonoBehaviour
     //
     // 특수 분기를 처리할 임시 변수
     public int tempSpecialBranch = -1; // null로 초기화, 필요 시 설정
+
+    // 아케이드 스토리모드 여부
+    public bool ArcadeStory = false;
 
 
     private void Awake()
@@ -318,8 +322,7 @@ public class GameManager : MonoBehaviour
 
         if (saveData != null)
         {
-            int dayNum = saveData.dayNum;
-            Debug.Log(saveData);
+            int dayNum = saveData.dayNum + 1;
             int beforeMoney = saveData.beforeMoney;
             int totalProfit = saveData.totalProfit;
             int tip = saveData.tip;

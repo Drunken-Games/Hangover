@@ -31,6 +31,17 @@ public class MainMenuManager : MonoBehaviour
             sceneController.LoadSceneByName("GameScene");
         }
     }
+    
+    
+    public void OnButtonClick2()
+    {
+        GameManager.instance.ArcadeStory = true;
+        Debug.Log(GameManager.instance.ArcadeStory);
+        sceneController.LoadSceneByName("ArcadeScene");
+    }
+    
+    
+    
 
     public void ClosePopup() 
     {
@@ -71,5 +82,9 @@ public class MainMenuManager : MonoBehaviour
         GameManager.instance.LoadSaveDataAndSetDialogueIndex();
         sceneController.LoadSceneByName("GameScene");
     }
+
+    
+    
+    
 }
 

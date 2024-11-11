@@ -27,6 +27,13 @@ public class SaveSystem : MonoBehaviour
         {
             dayNum = dayNum,
             nowMoney = nowMoney,
+            beforeMoney = 0,
+            totalProfit = 0,
+            tip = 0,
+            refund = 0,
+            materials = 0,
+            netProfit = 0,
+            afterMoney = 0,
             playerName = playerName,
             fireCount = fireCount,
             robotCount = robotCount,

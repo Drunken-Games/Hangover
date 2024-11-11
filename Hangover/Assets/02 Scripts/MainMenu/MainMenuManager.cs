@@ -35,15 +35,9 @@ public class MainMenuManager : MonoBehaviour
     
     public void OnButtonClick2()
     {
-        // 저장 파일이 있을 경우
-        if (currentData != null)
-        {
-            ShowPopup(); // 팝업 띄우기
-        }
-        else
-        {
-            sceneController.LoadSceneByName("ArcadeScene");
-        }
+        GameManager.instance.ArcadeStory = true;
+        Debug.Log(GameManager.instance.ArcadeStory);
+        sceneController.LoadSceneByName("ArcadeScene");
     }
     
     

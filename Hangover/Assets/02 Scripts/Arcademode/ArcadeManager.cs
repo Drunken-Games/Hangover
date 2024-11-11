@@ -34,6 +34,16 @@ public class ArcadeManager : MonoBehaviour
         // 타이머 초기화 (5초)
         timer = 5f;
         isTimerEnded = false;
+
+        // ArcadeDialogue 초기화 호출
+        if (arcadeDialogue != null)
+        {
+            arcadeDialogue.InitializePhase();  // ArcadeDialogue에서 단계 결정
+        }
+        else
+        {
+            Debug.LogError("ArcadeDialogue 참조가 설정되지 않았습니다.");
+        }
     }
 
     // Update is called once per frame
@@ -59,19 +69,5 @@ public class ArcadeManager : MonoBehaviour
         int minutes = Mathf.FloorToInt(timer / 60);
         int seconds = Mathf.FloorToInt(timer % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    
-    }
-    
-    private void StartOrderPhase()
-    {
-        // ArcadeDialogue에서 주문 단계 초기화
-        if (arcadeDialogue != null)
-        {
-            arcadeDialogue.InitializeOrderPhase();
-        }
-        else
-        {
-            Debug.LogError("ArcadeDialogue 참조가 설정되지 않았습니다.");
-        }
     }
 }
