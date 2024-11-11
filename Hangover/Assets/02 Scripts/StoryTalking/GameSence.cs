@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
+
 public static class AsyncOperationExtensions
 {
     public static Task AsTask(this AsyncOperation asyncOperation)
@@ -16,6 +17,7 @@ public static class AsyncOperationExtensions
         return tcs.Task;
     }
 }
+
 public class GameSence : MonoBehaviour
 {
     public TextMeshProUGUI dialogueText;       // 대화 텍스트 UI
@@ -291,10 +293,10 @@ public class GameSence : MonoBehaviour
             StartCoroutine(HandleDialogueProcessing());
             SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
             dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TextMeshProUGUI>();
-            while (dialogueText.text != GetCurrentDialogueEntry().text)
-            {
+            //while (dialogueText.text != GetCurrentDialogueEntry().text)
+            //{
                 DisplayDialogue(GetCurrentDialogueEntry());
-            }
+            //}
             //}
             //else if(currentDialogue.nextDialogueIds.Count==1)
             //{
@@ -448,7 +450,9 @@ public class GameSence : MonoBehaviour
         else if (!GameManager.instance.GameSceneNeedsProceed)
         {
             check_build = true;
+            yield break;
         }
+        yield break;
         //else if (processedText == "{build}")
         //{
         //    ProceedToNextDialogue();
@@ -530,14 +534,15 @@ public class GameSence : MonoBehaviour
 
     string HandleCheckTrigger1Dialogue()
     {
-        int dialogueId = GameManager.instance.endingTrigger == 0 ? 147 : 173;
+        int dialogueId = GameManager.instance.endingTrigger == 0 ? 149 : 175;
         GameManager.instance.currentDialogueIndex = dialogueId;
+        Debug.Log(dialogueId);
         return "";
     }
 
     string HandleCheckTrigger2Dialogue()
     {
-        int dialogueId = GameManager.instance.endingTrigger == 0 ? 204 : 223;
+        int dialogueId = GameManager.instance.endingTrigger == 0 ? 206 : 225;
         GameManager.instance.currentDialogueIndex = dialogueId;
         return dialogueId.ToString();
     }
@@ -560,8 +565,9 @@ public class GameSence : MonoBehaviour
         StartCoroutine(ProcessDialogueText(entry.text, processedText =>
         {
             if (processedText == "") return;
+            if (entry.text.Contains("{Build}")) return;
             dialogueText.text = processedText;
-
+            Debug.Log(dialogueText.text);
             if (!string.IsNullOrEmpty(GameManager.instance.dayResultData.playerName) && entry.character == "주인공")
             {
                 characterNameText.text = GameManager.instance.dayResultData.playerName;
@@ -572,11 +578,18 @@ public class GameSence : MonoBehaviour
             }
             dayText.text = "Day " + entry.day;
         }));
+        Debug.Log("HI");
         Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
     }
     // 다음 대화로 이동하기
     void ProceedToNextDialogue()
     {
+        if (check_build == true)
+        {
+            dialogueText = null;
+            SceneManager.LoadScene("BuildScene");
+            return;
+        }
         DialogueEntry currentDialogue = GetCurrentDialogueEntry();
 
         if (GameManager.instance.tempSpecialBranch != -1)
@@ -598,11 +611,8 @@ public class GameSence : MonoBehaviour
 
 
         //}
-        if (check_build == true)
-        {
-            SceneManager.LoadScene("BuildScene");
-        }
-        else if (currentDialogue.nextDialogueIds.Count == 1 && nextDialogueId != -1)
+        
+         if (currentDialogue.nextDialogueIds.Count == 1 && nextDialogueId != -1)
         {
             // 다음 대화 ID가 하나인 경우 바로 해당 ID로 이동
             //int nextDialogueId = currentDialogue.nextDialogueIds[0];

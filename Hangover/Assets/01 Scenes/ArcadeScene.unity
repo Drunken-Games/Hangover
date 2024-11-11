@@ -1301,29 +1301,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1286185642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 460fa4ab7765a1444aaa2c35e4cc157e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Made_ID: 0
-  Ingredient_Arr: 
-  Ingredient_Cost: 0
-  Ingredient_Total_Cost: 0
-  Sale_Cost: 0
-  Sale_Total_Cost: 0
-  Gold: 0
-  Life: 0
-  timerText: {fileID: 1574617803}
-  arcadeDialogue: {fileID: 1286185644}
---- !u!114 &1286185644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1286185642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ba1d52a722214244a368aa5b95e4bdf, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ebbfe4e31ebdf44280e0252bb0876d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Npc_ID: 0
@@ -1343,32 +1321,32 @@ MonoBehaviour:
   - {fileID: 2032458578}
   - {fileID: 260221839}
   Order_List:
-  - "{\uB79C\uB364 \uC74C\uB8CC} \uC8FC\uC138\uC694!"
-  - "{\uB79C\uB364 \uC74C\uB8CC}\uB85C \uD560\uAC8C\uC694. \uAE30\uB300\uB429\uB2C8\uB2E4!"
-  - "\uC624\uB298\uC740 {\uB79C\uB364 \uC74C\uB8CC}\uAC00 \uB531\uC77C \uAC83 \uAC19\uC544\uC694.
-    \uBD80\uD0C1\uB4DC\uB824\uC694."
-  - "{\uB79C\uB364 \uC74C\uB8CC} \uD558\uB098 \uC8FC\uC138\uC694. \uAD81\uAE08\uD558\uB124\uC694"
-  - "\uBA38\uB9AC\uAC00 \uAE68\uC9C8\uC815\uB3C4\uB85C \uB2EC\uCF64\uD55C\uAC70 \uC8FC\uC138\uC694"
-  - "\uB2EC\uB2EC\uD55C \uC74C\uB8CC \uD55C \uC794 \uC8FC\uC138\uC694. \uC624\uB298\uC740
-    \uB2EC\uB2EC\uD568\uC774 \uD544\uC694\uD574\uC694"
-  - "\uC800\uB294 \uB2E8 \uC74C\uB8CC\uB294 \uBCC4\uB85C \uC548 \uC88B\uC544\uD574\uC694"
-  - "\uC2DC\uD07C\uD55C \uB9DB\uC774 \uB098\uB294 \uAC78\uB85C \uBD80\uD0C1\uB4DC\uB824\uC694"
-  - "\uC880 \uB35C \uC2E0 \uAC78\uB85C \uBD80\uD0C1\uD574\uC694. \uB108\uBB34 \uC790\uADF9\uC801\uC774\uBA74
-    \uD798\uB4E4\uC5B4\uC694"
-  - "\uC4F4\uB9DB\uC774 \uC81C\uB300\uB85C \uB290\uAEF4\uC9C0\uB294 \uC74C\uB8CC\uB85C
+  - "{\uB79C\uB364 \uC74C\uB8CC} \n \uC8FC\uC138\uC694!"
+  - "{\uB79C\uB364 \uC74C\uB8CC}\uB85C \uD560\uAC8C\uC694. \n \uAE30\uB300\uB429\uB2C8\uB2E4!"
+  - "\uC624\uB298\uC740 {\uB79C\uB364 \uC74C\uB8CC}\uAC00 \n \uB531\uC77C \uAC83
+    \uAC19\uC544\uC694. \n \uBD80\uD0C1\uB4DC\uB824\uC694."
+  - "{\uB79C\uB364 \uC74C\uB8CC} \n \uD558\uB098 \uC8FC\uC138\uC694. \n \uAD81\uAE08\uD558\uB124\uC694"
+  - "\uBA38\uB9AC\uAC00 \uAE68\uC9C8\uC815\uB3C4\uB85C \n \uB2EC\uCF64\uD55C\uAC70
+    \uC8FC\uC138\uC694"
+  - "\uB2EC\uB2EC\uD55C \uC74C\uB8CC \n \uD55C \uC794 \uC8FC\uC138\uC694. \n \uC624\uB298\uC740
+    \uB2EC\uB2EC\uD568\uC774 \n \uD544\uC694\uD574\uC694"
+  - "\uC800\uB294 \uB2E8 \uC74C\uB8CC\uB294 \n \uBCC4\uB85C \uC548 \uC88B\uC544\uD574\uC694"
+  - "\uC2DC\uD07C\uD55C \uB9DB\uC774 \n \uB098\uB294 \uAC78\uB85C \uBD80\uD0C1\uB4DC\uB824\uC694"
+  - "\uC880 \uB35C \uC2E0 \uAC78\uB85C \n \uBD80\uD0C1\uD574\uC694. \n \uB108\uBB34
+    \uC790\uADF9\uC801\uC774\uBA74 \uD798\uB4E4\uC5B4\uC694"
+  - "\uC4F4\uB9DB\uC774 \uC81C\uB300\uB85C \n \uB290\uAEF4\uC9C0\uB294 \uC74C\uB8CC\uB85C
     \uC8FC\uC138\uC694"
   - "\uC800\uB294 \uC4F4\uB9DB\uC774 \uC2EB\uC5B4\uC694"
-  - "\uBE14\uB80C\uB4DC \uD5A5\uC774 \uC62C\uB77C\uC624\uB294 \uADF8\uB7F0 \uC220\uB85C
-    \uBD80\uD0C1\uD574\uC694"
-  - "\uCE58\uC57D\uAC19\uC740\uAC70 \uC8FC\uC9C0\uB9C8\uC138\uC694"
-  - "\uC5EC\uAE30\uC11C \uAC00\uC7A5 \uB3C5\uD55C \uC220\uB85C \uC8FC\uC138\uC694.
-    \uBE68\uB9AC \uAE30\uC5B5\uC744 \uC78A\uC5B4\uC57C \uD574\uC694!"
-  - "\uB3C5\uD55C \uAC78\uB85C \uD55C \uC794 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.
-    \uAC00\uB054\uC740 \uAC15\uD55C \uAC8C \uC88B\uC796\uC544\uC694"
-  - "\uB3C5\uD558\uC9C0 \uC54A\uC740 \uAC78\uB85C \uBD80\uD0C1\uB4DC\uB824\uC694,
-    \uC624\uB298\uC740 \uCC9C\uCC9C\uD788 \uC990\uAE30\uACE0 \uC2F6\uC5B4\uC694"
-  - "\uBB50\uB4E0 \uAD1C\uCC2E\uC544\uC694. \uD55C \uC794 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4"
-  - "\uBBFC\uD2B8\uCD08\uCF54\uC2E4\uB860\uD2F0\uC9C0\uCF54 \uC8FC\uC138\uC694"
+  - "\uB9E4\uC6B4 \uB9DB\uC774 \uB290\uAEF4\uC9C0\uB294 \n \uC220\uB85C \uBD80\uD0C1\uD574\uC694"
+  - "\uB9E4\uC6B4 \uAC74 \uBCC4\uB85C\uC5D0\uC694"
+  - "\uC5EC\uAE30\uC11C \uAC00\uC7A5 \uB3C5\uD55C \uC220\uB85C \n \uC8FC\uC138\uC694.
+    \n \uBE68\uB9AC \uAE30\uC5B5\uC744 \uC78A\uC5B4\uC57C \uD574\uC694!"
+  - "\uB3C5\uD55C \uAC78\uB85C \uD55C \uC794 \n \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.
+    \n \uAC00\uB054\uC740 \uAC15\uD55C \uAC8C \uC88B\uC796\uC544\uC694"
+  - "\uB3C5\uD558\uC9C0 \uC54A\uC740 \uAC78\uB85C \n \uBD80\uD0C1\uB4DC\uB824\uC694,
+    \n \uC624\uB298\uC740 \uCC9C\uCC9C\uD788 \uC990\uAE30\uACE0 \uC2F6\uC5B4\uC694"
+  - "\uBB50\uB4E0 \uAD1C\uCC2E\uC544\uC694. \n \uD55C \uC794 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4"
+  - "\uBBFC\uD2B8\uCD08\uCF54\uC2E4\uB860\uD2F0\uC9C0\uCF54 \n \uC8FC\uC138\uC694"
   Success_Dialogues:
   - "\uC774 \uCE75\uD14C\uC77C\uC740 \uC774\uBE10\uD558\uAC8C \uB9DB\uC788\uB124\uC694"
   - "\uC640\uC6B0, \uC774\uAC70 \uC9C4\uC9DC \uAD1C\uCC2E\uC740\uB370\uC694"
@@ -1405,6 +1383,28 @@ MonoBehaviour:
   - "\uBC14"
   - "\uC0AC"
   - "\uC544"
+--- !u!114 &1286185644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1286185642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b27a4b070e01b24cbe7a1db0f06b5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Made_ID: 0
+  Ingredient_Arr: 
+  Ingredient_Cost: 0
+  Ingredient_Total_Cost: 0
+  Sale_Cost: 0
+  Sale_Total_Cost: 0
+  Gold: 0
+  Life: 0
+  timerText: {fileID: 1574617803}
+  arcadeDialogue: {fileID: 1286185643}
 --- !u!4 &1286185645
 Transform:
   m_ObjectHideFlags: 0
@@ -1996,7 +1996,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1994458525}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1286185643}
+        m_TargetAssemblyTypeName: ArcadeDialogue, Assembly-CSharp
+        m_MethodName: LoadBuildScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1994458525
 MonoBehaviour:
   m_ObjectHideFlags: 0

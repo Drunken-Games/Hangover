@@ -8,8 +8,12 @@ public class GameManager : MonoBehaviour
 
     // Singleton Instance
     public static GameManager instance { get; private set; }
+    
+    // New global variables for Arcade Mode
+    public int NPC_ID = -1; // Global storage for NPC ID generated in Arcade Mode
+    public List<int> Correct_ID = new List<int>(); // Global storage for Correct_ID list generated in Arcade Mode
     // 씬 매니저들
-    private string previousSceneName = ""; // 이전 씬 이름을 저장할 변수
+    public string previousSceneName = ""; // 이전 씬 이름을 저장할 변수
     public bool GameSceneNeedsProceed { get; set; } = false; // GameScene에서 진행 여부 플래그
     public bool DayResultProceed { get; set; } = false; // DayResultScene에서 진행 여부 플래그
     private DayResultManager dayResultManager;

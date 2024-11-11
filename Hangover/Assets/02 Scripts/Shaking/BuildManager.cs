@@ -218,13 +218,14 @@ public class BuildManager : MonoBehaviour
     // 제조 방법 설정
     public void SetMakingMethod(string value)
     {
-        if(value == "Build")
+        if (value == "Build")
             currentMethod = 0;
         else if (value == "Stir")
             currentMethod = 1;
-        else if(value == "Shake")
+        else if (value == "Shake")
             currentMethod = 2;
-
+        else if (value == "Blend")
+            currentMethod = 3;
         // Debug.Log($"BuildManager.cs - SetMakingMethod() - {GetParameters()[0]}, {GetParameters()[1]}, {GetParameters()[2]}, {GetParameters()[3]}, {GetParameters()[4]}, {GetParameters()[5]}");
     }
 

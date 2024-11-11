@@ -90,7 +90,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
@@ -269,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8208817731965250893, guid: cb89eecb351837d4a849def28034660f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 8208817731965250893, guid: cb89eecb351837d4a849def28034660f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

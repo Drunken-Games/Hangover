@@ -31,6 +31,23 @@ public class MainMenuManager : MonoBehaviour
             sceneController.LoadSceneByName("GameScene");
         }
     }
+    
+    
+    public void OnButtonClick2()
+    {
+        // 저장 파일이 있을 경우
+        if (currentData != null)
+        {
+            ShowPopup(); // 팝업 띄우기
+        }
+        else
+        {
+            sceneController.LoadSceneByName("ArcadeScene");
+        }
+    }
+    
+    
+    
 
     public void ClosePopup() 
     {
@@ -71,5 +88,9 @@ public class MainMenuManager : MonoBehaviour
         GameManager.instance.LoadSaveDataAndSetDialogueIndex();
         sceneController.LoadSceneByName("GameScene");
     }
+
+    
+    
+    
 }
 

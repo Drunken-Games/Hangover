@@ -59,7 +59,19 @@ public class DialogueDataImporter : EditorWindow
             int day = int.TryParse(columns[1], out int parsedDay) ? parsedDay : -1;
             string character = !string.IsNullOrWhiteSpace(columns[2]) ? columns[2] : "Unknown";
             string text = !string.IsNullOrWhiteSpace(columns[6]) ? columns[6] : "내용 없음";
-            int cocktailId = int.TryParse(columns[7], out int parsedCocktailId) ? parsedCocktailId : -1;
+            // `cocktailIds` 리스트 생성
+            List<int> cocktailIds = new List<int>();
+            if (!string.IsNullOrWhiteSpace(columns[7]))
+            {
+                string[] cocktailIdStrings = columns[7].Split(',');
+                foreach (string idStr in cocktailIdStrings)
+                {
+                    if (int.TryParse(idStr.Trim(), out int cocktailId))
+                    {
+                        cocktailIds.Add(cocktailId);
+                    }
+                }
+            }
 
             // 다음 대화 ID 리스트 설정, 비어있으면 -1 추가
             List<int> nextDialogueIds = new List<int>();
@@ -84,7 +96,7 @@ public class DialogueDataImporter : EditorWindow
             }
 
             // DialogueData 생성 및 Database에 추가
-            DialogueData1 dialogueData = CreateDialogueData(id, day, character, text, cocktailId, nextDialogueIds);
+            DialogueData1 dialogueData = CreateDialogueData(id, day, character, text, cocktailIds, nextDialogueIds);
             database.dialogues.Add(dialogueData);
 
             // Database 에셋에 개별 DialogueData 추가
@@ -98,7 +110,7 @@ public class DialogueDataImporter : EditorWindow
     }
 
 
-    private static DialogueData1 CreateDialogueData(int id, int day, string character, string text, int cocktailId, List<int> nextDialogueIds)
+    private static DialogueData1 CreateDialogueData(int id, int day, string character, string text, List<int> cocktailIds, List<int> nextDialogueIds)
     {
         DialogueData1 dialogueData = ScriptableObject.CreateInstance<DialogueData1>();
         dialogueData.name = $"Dialogue_{id}";
@@ -108,7 +120,8 @@ public class DialogueDataImporter : EditorWindow
         typeof(DialogueData1).GetField("day", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(dialogueData, day);
         typeof(DialogueData1).GetField("character", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(dialogueData, character);
         typeof(DialogueData1).GetField("text", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(dialogueData, text);
-        typeof(DialogueData1).GetField("cocktailId", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(dialogueData, cocktailId);
+        // `cocktailId`를 `List<int>`에 추가 후 설정
+        typeof(DialogueData1).GetField("cocktailIds", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(dialogueData, cocktailIds);
         typeof(DialogueData1).GetField("nextDialogueIds", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance).SetValue(dialogueData, nextDialogueIds);
 
         return dialogueData;

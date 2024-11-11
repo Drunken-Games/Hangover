@@ -314,8 +314,7 @@ public class GameManager : MonoBehaviour
 
         if (saveData != null)
         {
-            int dayNum = saveData.dayNum;
-            Debug.Log(saveData);
+            int dayNum = saveData.dayNum + 1; // 이전 완료한 일차는 다음으로 진행하기 위해 +1
             int beforeMoney = saveData.beforeMoney;
             int totalProfit = saveData.totalProfit;
             int tip = saveData.tip;
@@ -331,6 +330,7 @@ public class GameManager : MonoBehaviour
 
 
             int dayNumIdx = dayNum - 1;
+            Debug.Log(dayNumIdx);
 
             if (dayNumIdx >= 0 && dayNumIdx < dialogueIndices.Length)
             {
