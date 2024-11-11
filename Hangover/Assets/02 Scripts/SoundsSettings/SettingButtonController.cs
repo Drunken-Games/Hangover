@@ -18,6 +18,7 @@ public class SettingButtonController : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        GameManager.instance.ArcadeStory = false;
         SceneManager.LoadScene("MainMenuScene");
     }
 

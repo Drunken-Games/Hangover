@@ -305,6 +305,11 @@ public class GameSence : MonoBehaviour
         }
 
         isUpdateComplete = true;
+        Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
+        if (dialogueText.text != GetCurrentDialogueEntry().text)
+        {
+            DisplayDialogue(GetCurrentDialogueEntry());
+        }
         Debug.Log(isUpdateComplete);
     }
     // 특수 분기 처리를 위한 메서드
@@ -378,7 +383,7 @@ public class GameSence : MonoBehaviour
             processedText = processedText.Replace("{checkTrigger2}", HandleCheckTrigger2Dialogue());
 
         // {openEnding} 뒤에 숫자가 있을 경우 처리
-        Match match = Regex.Match(processedText, @"\{openEnding\s+(\d+)\}");
+        Match match = Regex.Match(processedText, @"\{openEnding}\s+(\d+)");
         if (match.Success)
         {
             int endingNumber = int.Parse(match.Groups[1].Value);
@@ -505,7 +510,7 @@ public class GameSence : MonoBehaviour
         // NotificationPanel에서 PrimaryActionButton 및 SecondaryActionButton을 가져옴
         Button primaryActionButton = notificationPanel.transform.Find("PrimaryActionButton")?.GetComponent<Button>();
         Button secondaryActionButton = notificationPanel.transform.Find("SecondaryActionButton")?.GetComponent<Button>();
-
+        
         if (primaryActionButton != null && secondaryActionButton != null)
         {
             // PrimaryActionButton 클릭 시 endingTrigger를 0으로 설정하고 패널을 숨긴 후 다음 대화로 이동
@@ -550,7 +555,7 @@ public class GameSence : MonoBehaviour
     // HandleOpenEndingScene 메서드
     string HandleOpenEndingScene(int endingNumber)
     {
-        GameManager.instance.endingNumber = endingNumber;
+        GameManager.instance.endingNumber = endingNumber-1;
         SceneManager.LoadScene("EndingScene");
         return "";
     }
@@ -561,11 +566,11 @@ public class GameSence : MonoBehaviour
             dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TextMeshProUGUI>();
             if (dialogueText == null) return;
         }
-
+        Debug.Log("HI");
         StartCoroutine(ProcessDialogueText(entry.text, processedText =>
         {
             if (processedText == "") return;
-            if (entry.text.Contains("{Build}")) return;
+            //if (entry.text.Contains("{Build}")) return;
             dialogueText.text = processedText;
             Debug.Log(dialogueText.text);
             if (!string.IsNullOrEmpty(GameManager.instance.dayResultData.playerName) && entry.character == "주인공")
@@ -580,6 +585,7 @@ public class GameSence : MonoBehaviour
         }));
         Debug.Log("HI");
         Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
+        return;
     }
     // 다음 대화로 이동하기
     void ProceedToNextDialogue()
@@ -591,7 +597,7 @@ public class GameSence : MonoBehaviour
             return;
         }
         DialogueEntry currentDialogue = GetCurrentDialogueEntry();
-
+        Debug.Log("596");
         if (GameManager.instance.tempSpecialBranch != -1)
         {
             Debug.Log(GameManager.instance.tempSpecialBranch);

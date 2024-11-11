@@ -105,15 +105,17 @@ public class ArcadeDialogue : MonoBehaviour
             Debug.LogError("CocktailCal 인스턴스를 찾을 수 없습니다.");
         }
 
-        // 랜덤으로 NPC ID 할당
-        Npc_ID = Random.Range(0, Npc_Names.Count);
+        do
+        {
+            Npc_ID = Random.Range(0, Npc_Names.Count);
+        } while (Npc_ID == GameManager.instance.NPC_ID);
 
         // 캐릭터 이미지 활성화
         ActivateCharacterImage(Npc_ID);
 
         // 랜덤으로 Order ID 할당
         Order_ID = Random.Range(0, Order_List.Count);
-
+        
         // NPC 이름 표시
         if (npcNameText != null)
         {
@@ -145,8 +147,189 @@ public class ArcadeDialogue : MonoBehaviour
                     selectedOrder = selectedOrder.Replace("{랜덤 음료}", "아무거나");
                 }
             }
-            // 다른 Order_ID에 따른 로직 생략 (유사한 방식 적용)
-
+             else if (Order_ID == 4)
+            {
+                // "머리가 깨질정도로 달콤한거 주세요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sweet >= 4)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 5)
+            {
+                // "달달한 음료 한 잔 주세요. 오늘은 달달함이 필요해요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sweet >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 6)
+            {
+                // "저는 단 음료는 별로 안 좋아해요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sweet <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 7)
+            {
+                // "시큼한 맛이 나는 걸로 부탁드려요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sour >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 8)
+            {
+                // "좀 덜 신 걸로 부탁해요. 너무 자극적이면 힘들어요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sour <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 9)
+            {
+                // "쓴맛이 제대로 느껴지는 음료로 주세요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.bitter >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 10)
+            {
+                // "저는 쓴맛이 싫어요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.bitter <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 11)
+            {
+                // "매운 맛이 느껴지는 술로 부탁해요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spice >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 12)
+            {
+                // "매운 건 별로에요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spice <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 13)
+            {
+                // "여기서 가장 독한 술로 주세요. 빨리 기억을 잊어야 해요!"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spirit >= 5)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 14)
+            {
+                // "독한 걸로 한 잔 부탁드립니다. 가끔은 강한 게 좋잖아요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spirit >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 15)
+            {
+                // "독하지 않은 걸로 부탁드려요, 오늘은 천천히 즐기고 싶어요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spirit <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 16)
+            {
+                // "뭐든 괜찮아요. 한 잔 부탁드립니다"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        Correct_ID.Add(cocktail.id);
+                    }
+                }
+            }
+            else if (Order_ID == 17)
+            {
+                Correct_ID.Add(-1);
+            }
             // 주문 대사 텍스트 설정
             orderText.text = selectedOrder;
         }
@@ -164,12 +347,42 @@ public class ArcadeDialogue : MonoBehaviour
         }
     }
 
-// 반응 단계 초기화 메서드
     public void InitializeReactionPhase()
     {
+        Reaction_ID = 0;
         if (orderText != null)
         {
-            orderText.text = "맛있네요";  // 임시 대사 표시
+            Reaction_ID = Random.Range(0, 10);
+            Npc_ID = GameManager.instance.NPC_ID;
+            ActivateCharacterImage(Npc_ID);
+            npcNameText.text = Npc_Names[Npc_ID];
+
+            // GameManager 인스턴스가 존재하는지 확인
+            if (GameManager.instance != null)
+            {
+                // Correct_ID 리스트 출력
+                Debug.Log("Correct_ID 리스트: " + string.Join(", ", GameManager.instance.Correct_ID));
+
+                // 사용자가 만든 술 ID 출력
+                Debug.Log("사용자가 만든 completedRecipeId: " + GameManager.instance.completedRecipeId);
+                
+                // completedRecipeId를 Correct_ID 리스트에서 확인
+                if (GameManager.instance.Correct_ID.Contains(GameManager.instance.completedRecipeId))
+                {
+                    Debug.Log("Correct_ID 리스트에 completedRecipeId가 포함되어 있습니다.");
+                    orderText.text = Success_Dialogues[Reaction_ID];
+                }
+                else
+                {
+                    Debug.Log("Correct_ID 리스트에 completedRecipeId가 포함되어 있지 않습니다.");
+                    orderText.text = Fail_Dialogues[Reaction_ID];
+                }
+            }
+            else
+            {
+                Debug.LogWarning("GameManager 인스턴스가 없습니다.");
+            }
+
             Debug.Log("반응 단계가 시작되었습니다.");
             GameManager.instance.isReactionPhase = true;  // 반응 단계임을 표시
         }
@@ -200,7 +413,7 @@ public class ArcadeDialogue : MonoBehaviour
         }
     }
 
-// 버튼 클릭 시 호출될 메서드
+    // 버튼 클릭 시 호출될 메서드
     public void OnButtonClick()
     {
         if (GameManager.instance != null)

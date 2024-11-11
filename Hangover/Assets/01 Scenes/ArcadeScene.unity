@@ -1999,7 +1999,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1286185643}
         m_TargetAssemblyTypeName: ArcadeDialogue, Assembly-CSharp
-        m_MethodName: LoadBuildScene
+        m_MethodName: OnButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

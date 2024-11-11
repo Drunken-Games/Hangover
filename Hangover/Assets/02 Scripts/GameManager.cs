@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int NPC_ID = -1; // 아케이드 모드 NPC id
     public List<int> Correct_ID = new List<int>(); // 아케이드 모드 주문 술
     public bool isReactionPhase = false; // 아케이드 모드 단계
+    
     // 씬 매니저들
     public string previousSceneName = ""; // 이전 씬 이름을 저장할 변수
     public bool GameSceneNeedsProceed { get; set; } = false; // GameScene에서 진행 여부 플래그
@@ -38,9 +39,8 @@ public class GameManager : MonoBehaviour
     private CocktailCheck cocktailCheck;
 
     // 이전에 찾은 칵테일 ID 목록
-    [SerializeField]
-    private List<int> foundCocktailIds = new List<int>();
-    private int completedRecipeId = -1; // -1은 실패하거나 없을 경우
+    public List<int> foundCocktailIds = new List<int>();
+    public int completedRecipeId = -1; // -1은 실패하거나 없을 경우
 
     private SaveSystem saveSystem;
     public int[] dialogueIndices = { 0, 42, 94, 139, 193 }; // 일차별 대사 인덱스
