@@ -18,7 +18,19 @@ public class SettingButtonController : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
+        
+        GameManager.instance.NPC_ID = 0; // 아케이드 모드 NPC id
+        GameManager.instance.Correct_ID = new List<int>(); // 아케이드 모드 주문 술
+        GameManager.instance.isReactionPhase = false; // 아케이드 모드 단계
+        GameManager.instance.ArcadeGold = 0; // 아케이드 모드 골드 
+        // 타이머 초기화 및 정지
+        GameManager.instance.StopArcadeTimer(); // 타이머 정지
+        GameManager.instance.arcadeTimer = 0; // 타이머 초기화
+        GameManager.instance.hasTimerEnded = false; // 타이머 종료 상태 확인 변수
+        GameManager.instance.ArcadeStory = false;
+        GameManager.instance.life = 3;
         SceneManager.LoadScene("MainMenuScene");
+        
     }
 
 }

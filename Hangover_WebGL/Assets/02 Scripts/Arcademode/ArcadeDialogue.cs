@@ -19,6 +19,11 @@ public class ArcadeDialogue : MonoBehaviour
     public List<GameObject> characterImages; // 캐릭터 UI 이미지들을 담을 리스트
 
     private CocktailCal cocktailCal; // CocktailCal 인스턴스
+    private bool timeOut = false;
+    private bool waitingForTouchAfterTimeout = false; // 시간 초과 후 대기 상태
+    [SerializeField] private GameObject popupPrefab; // 띄울 팝업 prefab
+    private GameObject currentPopup; // 현재 띄워진 팝업
+
     
     #region 대사집
     public List<string> Order_List = new List<string>
@@ -105,22 +110,25 @@ public class ArcadeDialogue : MonoBehaviour
             Debug.LogError("CocktailCal 인스턴스를 찾을 수 없습니다.");
         }
 
-        // 랜덤으로 NPC ID 할당
-        Npc_ID = Random.Range(0, Npc_Names.Count);
+        do
+        {
+            Npc_ID = Random.Range(0, Npc_Names.Count);
+        } while (Npc_ID == GameManager.instance.NPC_ID);
 
         // 캐릭터 이미지 활성화
         ActivateCharacterImage(Npc_ID);
 
         // 랜덤으로 Order ID 할당
         Order_ID = Random.Range(0, Order_List.Count);
-
+        
         // NPC 이름 표시
         if (npcNameText != null)
         {
             npcNameText.text = Npc_Names[Npc_ID];
         }
 
-        // 주문 대사 표시 로직
+        #region 주문 대사 표시 로직
+        
         if (orderText != null)
         {
             string selectedOrder = Order_List[Order_ID];
@@ -145,12 +153,195 @@ public class ArcadeDialogue : MonoBehaviour
                     selectedOrder = selectedOrder.Replace("{랜덤 음료}", "아무거나");
                 }
             }
-            // 다른 Order_ID에 따른 로직 생략 (유사한 방식 적용)
-
+             else if (Order_ID == 4)
+            {
+                // "머리가 깨질정도로 달콤한거 주세요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sweet >= 4)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 5)
+            {
+                // "달달한 음료 한 잔 주세요. 오늘은 달달함이 필요해요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sweet >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 6)
+            {
+                // "저는 단 음료는 별로 안 좋아해요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sweet <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 7)
+            {
+                // "시큼한 맛이 나는 걸로 부탁드려요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sour >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 8)
+            {
+                // "좀 덜 신 걸로 부탁해요. 너무 자극적이면 힘들어요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.sour <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 9)
+            {
+                // "쓴맛이 제대로 느껴지는 음료로 주세요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.bitter >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 10)
+            {
+                // "저는 쓴맛이 싫어요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.bitter <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 11)
+            {
+                // "매운 맛이 느껴지는 술로 부탁해요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spice >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 12)
+            {
+                // "매운 건 별로에요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spice <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 13)
+            {
+                // "여기서 가장 독한 술로 주세요. 빨리 기억을 잊어야 해요!"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spirit >= 5)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 14)
+            {
+                // "독한 걸로 한 잔 부탁드립니다. 가끔은 강한 게 좋잖아요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spirit >= 3)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 15)
+            {
+                // "독하지 않은 걸로 부탁드려요, 오늘은 천천히 즐기고 싶어요"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        if (cocktail.spirit <= 2)
+                        {
+                            Correct_ID.Add(cocktail.id);
+                        }
+                    }
+                }
+            }
+            else if (Order_ID == 16)
+            {
+                // "뭐든 괜찮아요. 한 잔 부탁드립니다"
+                if (cocktailCal != null && cocktailCal.cocktails != null)
+                {
+                    foreach (var cocktail in cocktailCal.cocktails)
+                    {
+                        Correct_ID.Add(cocktail.id);
+                    }
+                }
+            }
+            else if (Order_ID == 17)
+            {
+                Correct_ID.Add(-1);
+            }
+            
             // 주문 대사 텍스트 설정
             orderText.text = selectedOrder;
         }
-
+        #endregion
+        
         if (GameManager.instance != null)
         {
             GameManager.instance.NPC_ID = Npc_ID;
@@ -164,12 +355,53 @@ public class ArcadeDialogue : MonoBehaviour
         }
     }
 
-// 반응 단계 초기화 메서드
     public void InitializeReactionPhase()
     {
+        Reaction_ID = 0;
         if (orderText != null)
         {
-            orderText.text = "맛있네요";  // 임시 대사 표시
+            Reaction_ID = Random.Range(0, 10);
+            Npc_ID = GameManager.instance.NPC_ID;
+            ActivateCharacterImage(Npc_ID);
+            npcNameText.text = Npc_Names[Npc_ID];
+            
+            // 칵테일 비용 가져오기
+            int materialCost = 0;
+            materialCost = cocktailCal.CalculateMaterialCost(GameManager.instance.cocktailParameters);
+            
+            // GameManager 인스턴스가 존재하는지 확인
+            if (GameManager.instance != null)
+            {
+                // Correct_ID 리스트 출력
+                Debug.Log("Correct_ID 리스트: " + string.Join(", ", GameManager.instance.Correct_ID));
+
+                // 사용자가 만든 술 ID 출력
+                Debug.Log("사용자가 만든 completedRecipeId: " + GameManager.instance.completedRecipeId);
+                
+                FindObjectOfType<ArcadeManager>().DeductMaterialCost(materialCost);
+                
+                // completedRecipeId를 Correct_ID 리스트에서 확인
+                if (GameManager.instance.Correct_ID.Contains(GameManager.instance.completedRecipeId))
+                {
+                    Debug.Log("Correct_ID 리스트에 completedRecipeId가 포함되어 있습니다.");
+                    orderText.text = Success_Dialogues[Reaction_ID];
+                    int price = cocktailCal != null ? cocktailCal.GetCocktailPrice(GameManager.instance.completedRecipeId) : 0;
+
+                    FindObjectOfType<ArcadeManager>().AddGold(price); // 골드 증가 함수 호출
+                }
+                else
+                {
+                    Debug.Log("Correct_ID 리스트에 completedRecipeId가 포함되어 있지 않습니다.");
+                    orderText.text = Fail_Dialogues[Reaction_ID];
+                    --GameManager.instance.life;
+                    Debug.Log($"목숨 : {GameManager.instance.life}");
+                }
+            }
+            else
+            {
+                Debug.LogWarning("GameManager 인스턴스가 없습니다.");
+            }
+
             Debug.Log("반응 단계가 시작되었습니다.");
             GameManager.instance.isReactionPhase = true;  // 반응 단계임을 표시
         }
@@ -200,21 +432,78 @@ public class ArcadeDialogue : MonoBehaviour
         }
     }
 
-// 버튼 클릭 시 호출될 메서드
+    // 버튼 클릭 시 호출될 메서드
     public void OnButtonClick()
     {
         if (GameManager.instance != null)
         {
-            if (GameManager.instance.isReactionPhase)
+
+
+
+            if (GameManager.instance.life <= 0)
             {
-                // 반응 단계일 경우, 주문 단계로 전환
-                GameManager.instance.isReactionPhase = false;
-                InitializeOrderPhase();
+                if (!waitingForTouchAfterTimeout)
+                {
+                    // 모든 이미지를 비활성화
+                    foreach (GameObject image in characterImages)
+                    {
+                        image.SetActive(false);
+                    }
+
+                    npcNameText.text = "점장";
+                    
+                    orderText.text = gameOverDialogue;
+                    waitingForTouchAfterTimeout = true; // 첫 번째 클릭 후 대기 상태로 전환
+                }
+                else
+                {
+                    // SceneManager.LoadScene("NicknameScene"); // 두 번째 클릭 시 종료 씬으로 이동
+                    ShowPopup();
+                }
+            }
+            // 시간 초과 시 종료 대사 표시 후 대기 상태로 전환
+            else if (timeOut)
+            {
+                
+                if (!waitingForTouchAfterTimeout)
+                {
+                    // 모든 이미지를 비활성화
+                    foreach (GameObject image in characterImages)
+                    {
+                        image.SetActive(false);
+                    }
+
+                    npcNameText.text = "점장";
+                    
+                    orderText.text = timeOverDialogue;
+                    waitingForTouchAfterTimeout = true; // 첫 번째 클릭 후 대기 상태로 전환
+                }
+                else
+                {
+                    // SceneManager.LoadScene("NicknameScene"); // 두 번째 클릭 시 종료 씬으로 이동
+                    ShowPopup();
+                }
+                return;
+            }
+
+            // 반응 단계 처리
+            else if (GameManager.instance.isReactionPhase)
+            {
+                if (GameManager.instance.GetRemainingArcadeTime() <= 0) // 타이머 시간이 0 이하면
+                {
+                    timeOut = true; // 시간 초과 상태 설정
+                    return;
+                }
+                else
+                {
+                    GameManager.instance.isReactionPhase = false;
+                    InitializeOrderPhase();
+                }
             }
             else
             {
-                // 주문 단계일 경우 빌드 씬으로 이동
-                GameManager.instance.isReactionPhase = true;  // 다음 단계는 반응 단계로 설정
+                // 주문 단계에서 빌드 씬으로 이동
+                GameManager.instance.isReactionPhase = true;
                 LoadBuildScene();
             }
         }
@@ -223,17 +512,19 @@ public class ArcadeDialogue : MonoBehaviour
             Debug.LogError("GameManager 인스턴스를 찾을 수 없습니다.");
         }
     }
-    
     // 씬 전환 메서드
     public void LoadBuildScene()
     {
         SceneManager.LoadScene("BuildScene");
     }
 
+    
     // Start 메서드
     void Start()
     {
-        InitializePhase();  // 단계 초기화 메서드 호출
+        
+        cocktailCal = FindObjectOfType<CocktailCal>();
+        // InitializePhase();  // 단계 초기화 메서드 호출
     }
 
     // Update 메서드
@@ -241,4 +532,38 @@ public class ArcadeDialogue : MonoBehaviour
     {
         // 필요 시 업데이트 로직 추가
     }
+
+    
+    // 팝업을 닫는 메소드
+    public void ClosePopup() 
+    {
+        Object popup = GameObject.Find("NicknameInputPopupPrefab(Clone)");
+        // 이미 팝업이 열려 있다면 이전 팝업을 삭제
+        if (popup != null)
+        {
+            Destroy(popup);
+        }
+    }
+
+    // 팝업을 띄우는 메소드
+    // 버튼 클릭 시 호출되는 메소드
+    private void ShowPopup()
+    {
+        // 이미 팝업이 열려 있다면 이전 팝업을 삭제
+        if (currentPopup != null)
+        {
+            Destroy(currentPopup);
+        }
+
+        // 팝업 prefab을 인스턴스화
+        currentPopup = Instantiate(popupPrefab, Vector3.zero, Quaternion.identity);
+
+        // Canvas의 자식으로 설정
+        currentPopup.transform.SetParent(GameObject.Find("Canvas").transform, false);
+
+        // 중앙에 배치하기
+        RectTransform rectTransform = currentPopup.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = Vector2.zero; // 중앙 위치로 설정
+    }
+    
 }

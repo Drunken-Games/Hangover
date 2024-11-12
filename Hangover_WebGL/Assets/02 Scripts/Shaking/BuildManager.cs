@@ -24,7 +24,11 @@ public class BuildManager : MonoBehaviour
     [Header("References")]
     [SerializeField] private RectTransform containerRect;
     [SerializeField] private VerticalLayoutGroup verticalLayout;
-    [SerializeField] private IngredientButton[] ingredientButtons; // 버튼 배열 추가
+    [SerializeField] private IngredientButton[] ingredientButtons;
+    
+    [Header("Sound Settings")]
+    [SerializeField] private float soundFadeInDuration = 0.2f;
+    [SerializeField] private float soundFadeOutDuration = 0.3f;
     
     private Dictionary<IngredientType, Color> ingredientColors;
     private List<RectTransform> activeItems = new List<RectTransform>();
@@ -32,6 +36,7 @@ public class BuildManager : MonoBehaviour
     private bool isProcessing = false;
     private float currentContainerHeight;
     private int currentMethod;
+    private bool isPlayingSound = false;
     
     public event System.Action<int> OnIngredientsChanged;
     
@@ -41,6 +46,16 @@ public class BuildManager : MonoBehaviour
         currentContainerHeight = initialContainerHeight;
         InitializeContainer();
         InitializeIngredientColors();
+    }
+
+    private void OnDisable()
+    {
+        StopPouringSound();
+    }
+
+    private void OnDestroy()
+    {
+        StopPouringSound();
     }
     
     private void InitializeContainer()
@@ -73,6 +88,7 @@ public class BuildManager : MonoBehaviour
         if (isProcessing || objectPool == null) return false;
         
         isProcessing = true;
+        PlayPouringSound();
         
         GameObject newItem = objectPool.GetPooledObject();
         if (newItem == null) return false;
@@ -80,26 +96,20 @@ public class BuildManager : MonoBehaviour
         RectTransform itemRect = newItem.GetComponent<RectTransform>();
         IngredientLayer ingredientLayer = newItem.GetComponent<IngredientLayer>();
         
-        // 재료 타입 설정 추가
         ingredientLayer.SetIngredientType(ingredient);
         
-        // 아이템을 비활성화된 상태로 부모 설정
         newItem.SetActive(false);
         newItem.transform.SetParent(containerRect);
         newItem.transform.localScale = Vector3.one;
         
-        // 기본 위치와 크기 설정
         itemRect.anchoredPosition = Vector2.zero;
         itemRect.sizeDelta = new Vector2(0, currentContainerHeight / (activeItems.Count + 1));
         
-        // 이제 활성화
         newItem.SetActive(true);
         activeItems.Add(itemRect);
         
-        // 컨테이너 크기 조정
         UpdateContainerSize();
         
-        // 색상 설정 및 애니메이션
         if (ingredientColors.TryGetValue(ingredient, out Color color))
         {
             ingredientLayer.SetColor(color);
@@ -109,11 +119,30 @@ public class BuildManager : MonoBehaviour
         
         DOVirtual.DelayedCall(animationDuration, () => {
             isProcessing = false;
+            StopPouringSound();
             LayoutRebuilder.ForceRebuildLayoutImmediate(containerRect);
-            OnIngredientsChanged?.Invoke(activeItems.Count);  // 이벤트 발생
+            OnIngredientsChanged?.Invoke(activeItems.Count);
         });
         
         return true;
+    }
+
+    private void PlayPouringSound()
+    {
+        if (!isPlayingSound && SoundsManager.instance != null)
+        {
+            SoundsManager.instance.PlaySFXWithFade("pouring", soundFadeInDuration);
+            isPlayingSound = true;
+        }
+    }
+
+    private void StopPouringSound()
+    {
+        if (isPlayingSound && SoundsManager.instance != null)
+        {
+            SoundsManager.instance.StopSFXWithFade("pouring", soundFadeOutDuration);
+            isPlayingSound = false;
+        }
     }
     
     private void UpdateContainerSize()
@@ -126,7 +155,6 @@ public class BuildManager : MonoBehaviour
                 (float)activeItems.Count / progressiveGrowthLimit
             );
             
-            // 컨테이너 크기 즉시 설정 후 애니메이션
             containerRect.sizeDelta = new Vector2(containerRect.sizeDelta.x, currentContainerHeight);
             containerRect.DOSizeDelta(
                 new Vector2(containerRect.sizeDelta.x, targetHeight),
@@ -139,10 +167,8 @@ public class BuildManager : MonoBehaviour
     
     private void AnimateNewItem(RectTransform itemRect)
     {
-        // 시작 상태 설정
         itemRect.localScale = Vector3.zero;
         
-        // 스케일 애니메이션
         itemRect.DOScale(Vector3.one, animationDuration)
             .SetEase(Ease.OutBack);
     }
@@ -152,7 +178,6 @@ public class BuildManager : MonoBehaviour
         if (isProcessing) return;
         isProcessing = true;
 
-        // 진행 중인 모든 애니메이션 중지
         DOTween.Kill(containerRect);
         foreach (var item in activeItems)
         {
@@ -162,13 +187,11 @@ public class BuildManager : MonoBehaviour
             }
         }
         
-        // 컨테이너 크기 초기화
         containerRect.DOSizeDelta(
             new Vector2(containerRect.sizeDelta.x, initialContainerHeight),
             animationDuration
         ).SetEase(Ease.InQuad);
         
-        // 아이템 제거
         foreach (var itemRect in activeItems.ToArray())
         {
             if (itemRect != null && itemRect.gameObject.activeInHierarchy)
@@ -181,7 +204,6 @@ public class BuildManager : MonoBehaviour
             }
         }
         
-        // 모든 버튼 리셋
         foreach (var button in ingredientButtons)
         {
             if (button != null)
@@ -202,7 +224,7 @@ public class BuildManager : MonoBehaviour
             objectPool.ResetAllObjects();
             isProcessing = false;
             LayoutRebuilder.ForceRebuildLayoutImmediate(containerRect);
-            OnIngredientsChanged?.Invoke(0);  // 이벤트 발생
+            OnIngredientsChanged?.Invoke(0);
         });
     }
     
@@ -212,10 +234,9 @@ public class BuildManager : MonoBehaviour
         {
             return color;
         }
-        return Color.white; // 기본 색상
+        return Color.white;
     }
 
-    // 제조 방법 설정
     public void SetMakingMethod(string value)
     {
         if (value == "Build")
@@ -226,15 +247,12 @@ public class BuildManager : MonoBehaviour
             currentMethod = 2;
         else if (value == "Blend")
             currentMethod = 3;
-        // Debug.Log($"BuildManager.cs - SetMakingMethod() - {GetParameters()[0]}, {GetParameters()[1]}, {GetParameters()[2]}, {GetParameters()[3]}, {GetParameters()[4]}, {GetParameters()[5]}");
     }
 
-    // 파라미터 가져오기
     public int[] GetParameters()
     {
-        int[] parameters = new int[6]; // 5개 재료 + 1개 제조방법
+        int[] parameters = new int[6];
         
-        // 재료 카운트
         foreach (var itemRect in activeItems)
         {
             if (itemRect != null && itemRect.gameObject.activeInHierarchy)
@@ -251,7 +269,6 @@ public class BuildManager : MonoBehaviour
             }
         }
         
-        // 제조 방법 저장
         parameters[5] = (int)currentMethod;
         
         return parameters;

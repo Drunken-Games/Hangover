@@ -19,6 +19,11 @@ public class ArcadeDialogue : MonoBehaviour
     public List<GameObject> characterImages; // 캐릭터 UI 이미지들을 담을 리스트
 
     private CocktailCal cocktailCal; // CocktailCal 인스턴스
+    private bool timeOut = false;
+    private bool waitingForTouchAfterTimeout = false; // 시간 초과 후 대기 상태
+    [SerializeField] private GameObject popupPrefab; // 띄울 팝업 prefab
+    private GameObject currentPopup; // 현재 띄워진 팝업
+
     
     #region 대사집
     public List<string> Order_List = new List<string>
@@ -122,7 +127,8 @@ public class ArcadeDialogue : MonoBehaviour
             npcNameText.text = Npc_Names[Npc_ID];
         }
 
-        // 주문 대사 표시 로직
+        #region 주문 대사 표시 로직
+        
         if (orderText != null)
         {
             string selectedOrder = Order_List[Order_ID];
@@ -330,10 +336,12 @@ public class ArcadeDialogue : MonoBehaviour
             {
                 Correct_ID.Add(-1);
             }
+            
             // 주문 대사 텍스트 설정
             orderText.text = selectedOrder;
         }
-
+        #endregion
+        
         if (GameManager.instance != null)
         {
             GameManager.instance.NPC_ID = Npc_ID;
@@ -356,7 +364,11 @@ public class ArcadeDialogue : MonoBehaviour
             Npc_ID = GameManager.instance.NPC_ID;
             ActivateCharacterImage(Npc_ID);
             npcNameText.text = Npc_Names[Npc_ID];
-
+            
+            // 칵테일 비용 가져오기
+            int materialCost = 0;
+            materialCost = cocktailCal.CalculateMaterialCost(GameManager.instance.cocktailParameters);
+            
             // GameManager 인스턴스가 존재하는지 확인
             if (GameManager.instance != null)
             {
@@ -366,16 +378,23 @@ public class ArcadeDialogue : MonoBehaviour
                 // 사용자가 만든 술 ID 출력
                 Debug.Log("사용자가 만든 completedRecipeId: " + GameManager.instance.completedRecipeId);
                 
+                FindObjectOfType<ArcadeManager>().DeductMaterialCost(materialCost);
+                
                 // completedRecipeId를 Correct_ID 리스트에서 확인
                 if (GameManager.instance.Correct_ID.Contains(GameManager.instance.completedRecipeId))
                 {
                     Debug.Log("Correct_ID 리스트에 completedRecipeId가 포함되어 있습니다.");
                     orderText.text = Success_Dialogues[Reaction_ID];
+                    int price = cocktailCal != null ? cocktailCal.GetCocktailPrice(GameManager.instance.completedRecipeId) : 0;
+
+                    FindObjectOfType<ArcadeManager>().AddGold(price); // 골드 증가 함수 호출
                 }
                 else
                 {
                     Debug.Log("Correct_ID 리스트에 completedRecipeId가 포함되어 있지 않습니다.");
                     orderText.text = Fail_Dialogues[Reaction_ID];
+                    --GameManager.instance.life;
+                    Debug.Log($"목숨 : {GameManager.instance.life}");
                 }
             }
             else
@@ -418,16 +437,73 @@ public class ArcadeDialogue : MonoBehaviour
     {
         if (GameManager.instance != null)
         {
-            if (GameManager.instance.isReactionPhase)
+
+
+
+            if (GameManager.instance.life <= 0)
             {
-                // 반응 단계일 경우, 주문 단계로 전환
-                GameManager.instance.isReactionPhase = false;
-                InitializeOrderPhase();
+                if (!waitingForTouchAfterTimeout)
+                {
+                    // 모든 이미지를 비활성화
+                    foreach (GameObject image in characterImages)
+                    {
+                        image.SetActive(false);
+                    }
+
+                    npcNameText.text = "점장";
+                    
+                    orderText.text = gameOverDialogue;
+                    waitingForTouchAfterTimeout = true; // 첫 번째 클릭 후 대기 상태로 전환
+                }
+                else
+                {
+                    // SceneManager.LoadScene("NicknameScene"); // 두 번째 클릭 시 종료 씬으로 이동
+                    ShowPopup();
+                }
+            }
+            // 시간 초과 시 종료 대사 표시 후 대기 상태로 전환
+            else if (timeOut)
+            {
+                
+                if (!waitingForTouchAfterTimeout)
+                {
+                    // 모든 이미지를 비활성화
+                    foreach (GameObject image in characterImages)
+                    {
+                        image.SetActive(false);
+                    }
+
+                    npcNameText.text = "점장";
+                    
+                    orderText.text = timeOverDialogue;
+                    waitingForTouchAfterTimeout = true; // 첫 번째 클릭 후 대기 상태로 전환
+                }
+                else
+                {
+                    // SceneManager.LoadScene("NicknameScene"); // 두 번째 클릭 시 종료 씬으로 이동
+                    ShowPopup();
+                }
+                return;
+            }
+
+            // 반응 단계 처리
+            else if (GameManager.instance.isReactionPhase)
+            {
+                if (GameManager.instance.GetRemainingArcadeTime() <= 0) // 타이머 시간이 0 이하면
+                {
+                    timeOut = true; // 시간 초과 상태 설정
+                    return;
+                }
+                else
+                {
+                    GameManager.instance.isReactionPhase = false;
+                    InitializeOrderPhase();
+                }
             }
             else
             {
-                // 주문 단계일 경우 빌드 씬으로 이동
-                GameManager.instance.isReactionPhase = true;  // 다음 단계는 반응 단계로 설정
+                // 주문 단계에서 빌드 씬으로 이동
+                GameManager.instance.isReactionPhase = true;
                 LoadBuildScene();
             }
         }
@@ -436,17 +512,19 @@ public class ArcadeDialogue : MonoBehaviour
             Debug.LogError("GameManager 인스턴스를 찾을 수 없습니다.");
         }
     }
-    
     // 씬 전환 메서드
     public void LoadBuildScene()
     {
         SceneManager.LoadScene("BuildScene");
     }
 
+    
     // Start 메서드
     void Start()
     {
-        InitializePhase();  // 단계 초기화 메서드 호출
+        
+        cocktailCal = FindObjectOfType<CocktailCal>();
+        // InitializePhase();  // 단계 초기화 메서드 호출
     }
 
     // Update 메서드
@@ -454,4 +532,38 @@ public class ArcadeDialogue : MonoBehaviour
     {
         // 필요 시 업데이트 로직 추가
     }
+
+    
+    // 팝업을 닫는 메소드
+    public void ClosePopup() 
+    {
+        Object popup = GameObject.Find("RankingNickNamePopUp(Clone)");
+        // 이미 팝업이 열려 있다면 이전 팝업을 삭제
+        if (popup != null)
+        {
+            Destroy(popup);
+        }
+    }
+
+    // 팝업을 띄우는 메소드
+    // 버튼 클릭 시 호출되는 메소드
+    private void ShowPopup()
+    {
+        // 이미 팝업이 열려 있다면 이전 팝업을 삭제
+        if (currentPopup != null)
+        {
+            Destroy(currentPopup);
+        }
+
+        // 팝업 prefab을 인스턴스화
+        currentPopup = Instantiate(popupPrefab, Vector3.zero, Quaternion.identity);
+
+        // Canvas의 자식으로 설정
+        currentPopup.transform.SetParent(GameObject.Find("Canvas").transform, false);
+
+        // 중앙에 배치하기
+        RectTransform rectTransform = currentPopup.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = Vector2.zero; // 중앙 위치로 설정
+    }
+    
 }

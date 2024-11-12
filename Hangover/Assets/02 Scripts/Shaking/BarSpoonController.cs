@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class BarSpoonController : MonoBehaviour
 {
@@ -17,11 +18,13 @@ public class BarSpoonController : MonoBehaviour
     [SerializeField] private float shakeDetectionInterval = 0.05f;
     
     [Header("효과 설정")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip stirSound;
-    [SerializeField] private float soundVolume = 0.7f;
+    [SerializeField] private TextMeshPro textMeshProObject;
     [SerializeField] private bool useVibration = true;
     [SerializeField] private float effectCooldown = 0.1f;
+    [SerializeField] private float soundFadeInDuration = 0.2f;
+    [SerializeField] private float soundFadeOutDuration = 0.3f;
+    [SerializeField] private float sceneTransitionSoundFadeTime = 0.5f;
+    [SerializeField] private float soundFadeStartOffset = 0.2f;
 
     [Header("씬 전환 설정")]
     [SerializeField] private float requiredStirTime = 1.5f;     
@@ -41,6 +44,8 @@ public class BarSpoonController : MonoBehaviour
     private float currentTouchTime = 0f;    
     private bool isStirring = false;        
     private SceneController sceneController;
+    private bool isPlayingSound = false;
+    private bool isFadingOut = false;
     
     private Vector3[] accelerationBuffer = new Vector3[10];
     private int bufferIndex = 0;
@@ -58,7 +63,6 @@ public class BarSpoonController : MonoBehaviour
             return;
         }
 
-        SetupAudioSource();
         InitializeSceneController();
         
         originalPosition = transform.position;
@@ -84,25 +88,23 @@ public class BarSpoonController : MonoBehaviour
         }
     }
 
-    private void SetupAudioSource()
-    {
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
-        
-        audioSource.clip = stirSound;
-        audioSource.loop = false;
-        audioSource.volume = soundVolume;
-        audioSource.playOnAwake = false;
-    }
-
     private void Update()
     {
         HandleTouchInput();
+        UpdateTextTransparency();
         if (!isDragging)
         {
             CheckStirMovement();
+        }
+
+        // 씬 전환 전 페이드아웃 체크
+        if (isStirring && !isFadingOut)
+        {
+            float remainingTime = requiredStirTime - currentStirTime;
+            if (remainingTime <= sceneTransitionSoundFadeTime + soundFadeStartOffset)
+            {
+                StartTransitionFade();
+            }
         }
 
         if (showDebugInfo)
@@ -115,6 +117,19 @@ public class BarSpoonController : MonoBehaviour
             {
                 Debug.Log($"터치 홀드 진행도: {currentTouchTime:F2}/{touchHoldTime:F2}");
             }
+        }
+    }
+
+    private void StartTransitionFade()
+    {
+        if (isPlayingSound && !isFadingOut)
+        {
+            isFadingOut = true;
+            if (SoundsManager.instance != null)
+            {
+                SoundsManager.instance.StopSFXWithFade("stirring", sceneTransitionSoundFadeTime);
+            }
+            isPlayingSound = false;
         }
     }
 
@@ -134,6 +149,7 @@ public class BarSpoonController : MonoBehaviour
                         isDragging = true;
                         currentTouchTime = 0f;
                         lastTouchPosition = touchWorldPos;
+                        PlayStirEffect();
                     }
                     break;
 
@@ -174,6 +190,7 @@ public class BarSpoonController : MonoBehaviour
                 case TouchPhase.Canceled:
                     isDragging = false;
                     currentTouchTime = 0f;
+                    StopStirEffect();
                     break;
             }
         }
@@ -204,11 +221,6 @@ public class BarSpoonController : MonoBehaviour
 
         float movementMagnitude = horizontalMovement.magnitude;
 
-        if (showDebugInfo)
-        {
-            // Debug.Log($"Movement: {movementMagnitude:F3}, X: {horizontalMovement.x:F3}, Z: {horizontalMovement.z:F3}");
-        }
-
         if (movementMagnitude > shakeThreshold)
         {
             if (Time.time - lastEffectTime > MOVEMENT_RESET_TIME)
@@ -233,6 +245,10 @@ public class BarSpoonController : MonoBehaviour
             }
             
             lastEffectTime = Time.time;
+        }
+        else
+        {
+            StopStirEffect();
         }
 
         prevFilteredAcceleration = filteredAcceleration;
@@ -264,12 +280,14 @@ public class BarSpoonController : MonoBehaviour
             {
                 isStirring = false;
                 validMovementCount = 0;
+                StopStirEffect();
             }
         }
     }
 
     private void LoadNextScene()
     {
+        StopStirEffect();
         if (sceneController != null)
         {
             if (!string.IsNullOrEmpty(nextSceneName))
@@ -305,9 +323,19 @@ public class BarSpoonController : MonoBehaviour
 
     private void PlayStirEffect()
     {
-        if (audioSource != null && stirSound != null && !audioSource.isPlaying)
+        if (!isPlayingSound && !isFadingOut && SoundsManager.instance != null)
         {
-            audioSource.Play();
+            SoundsManager.instance.PlaySFXWithFade("stirring", soundFadeInDuration);
+            isPlayingSound = true;
+        }
+    }
+
+    private void StopStirEffect()
+    {
+        if (isPlayingSound && !isFadingOut && SoundsManager.instance != null)
+        {
+            SoundsManager.instance.StopSFXWithFade("stirring", soundFadeOutDuration);
+            isPlayingSound = false;
         }
     }
 
@@ -319,9 +347,34 @@ public class BarSpoonController : MonoBehaviour
         Handheld.Vibrate();
         #endif
     }
+    
+    private void UpdateTextTransparency()
+    {
+        // Check if textMeshProObject is assigned
+        if (textMeshProObject == null)
+        {
+            Debug.LogWarning("TextMeshPro object is not assigned!");
+            return;
+        }
+
+        // Get the current color
+        Color color = textMeshProObject.color;
+
+        // Set alpha to 0 if either isBeingTouched or isShaking is true, otherwise set it to full opacity
+        color.a = (isDragging || isStirring) ? 0 : 1;
+        
+        // Apply the updated color back to the text object
+        textMeshProObject.color = color;
+    }
+
+    private void OnDisable()
+    {
+        StopStirEffect();
+    }
 
     private void OnDestroy()
     {
+        StopStirEffect();
         currentShakeTween?.Kill();
     }
 

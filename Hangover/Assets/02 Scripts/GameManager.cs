@@ -9,10 +9,60 @@ public class GameManager : MonoBehaviour
     // Singleton Instance
     public static GameManager instance { get; private set; }
     
+    
+    #region 아케이드 모드용 전역 변수
     // New global variables for Arcade Mode
     public int NPC_ID = -1; // 아케이드 모드 NPC id
     public List<int> Correct_ID = new List<int>(); // 아케이드 모드 주문 술
     public bool isReactionPhase = false; // 아케이드 모드 단계
+    public int ArcadeGold = 0; // 아케이드 모드 골드
+    public float arcadeTimer; // 아케이드 모드 타이머
+    public bool isArcadeTimerRunning; // 아케이드 모드 타이머 실행 여부
+    public bool hasTimerEnded = false; // 타이머 종료 상태 확인 변수
+    public int life = 3;
+    
+    // 타이머 시작 메서드
+    public void StartArcadeTimer(float time)
+    {
+        arcadeTimer = time;
+        isArcadeTimerRunning = true;
+    }
+
+    // 타이머 정지 메서드
+    public void StopArcadeTimer()
+    {
+        isArcadeTimerRunning = false;
+    }
+
+    // 남은 타이머 시간 가져오기
+    public float GetRemainingArcadeTime()
+    {
+        return arcadeTimer;
+    }
+
+    // Update 메서드에서 타이머 관리
+        private void Update()
+        {
+            if (isArcadeTimerRunning && arcadeTimer > 0)
+            {
+                arcadeTimer -= Time.deltaTime;
+                if (arcadeTimer <= 0)
+                {
+                    arcadeTimer = 0;
+                    isArcadeTimerRunning = false;
+                    hasTimerEnded = true; // 타이머 종료 상태 설정
+                    Debug.Log("Arcade Timer has ended.");
+                }
+            }
+        }
+
+// 타이머가 종료되었는지 여부를 확인하는 메서드
+    public bool HasArcadeTimerEnded()
+    {
+        return hasTimerEnded;
+    }
+    
+    #endregion
     
     // 씬 매니저들
     public string previousSceneName = ""; // 이전 씬 이름을 저장할 변수
@@ -46,10 +96,10 @@ public class GameManager : MonoBehaviour
     public int[] dialogueIndices = { 0, 42, 94, 139, 193 }; // 일차별 대사 인덱스
 
     // 엔딩 분기 배열
-    public int endingTrigger;
-    public int fireCount;
-    public int robotCount;
-    public int branchIdx;
+    //public int endingTrigger;
+    //public int fireCount;
+    //public int robotCount;
+    //public int branchIdx;
     public int endingNumber;
     //
     // 특수 분기를 처리할 임시 변수
@@ -204,10 +254,11 @@ public class GameManager : MonoBehaviour
                 GameSceneNeedsProceed = true;
             }
         }
-        //if(previousSceneName == "DayResultScene" && scene.name == "GameScene")
-        //{
-        //    DayResultProceed = true;
-        //}
+        if (previousSceneName == "DayResultScene" && scene.name == "GameScene")
+        {
+            DayResultProceed = true;
+            Debug.Log("BYE");
+        }
         previousSceneName = scene.name; // 현재 씬 이름을 이전 씬 이름으로 저장
 
         // 씬이 DayResult 씬인 경우에만 매니저 찾기
@@ -234,7 +285,6 @@ public class GameManager : MonoBehaviour
             if (buildManager != null)
             {
                 Debug.Log("BuildManager 참조 완료");
-                InitializeDayResultScene();
             }
             else
             {
@@ -352,6 +402,22 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            dayResultData.dayNum = 0;
+            dayResultData.beforeMoney = 0;
+            dayResultData.totalProfit = 0;
+            dayResultData.tip = 0;
+            dayResultData.refund = 0;
+            dayResultData.materials = 0;
+            dayResultData.netProfit = 0;
+            dayResultData.afterMoney = 0;
+
+            dayResultData.playerName = null;
+            dayResultData.endingTrigger = 0;
+            dayResultData.fireCount = 0;
+            dayResultData.robotCount = 0;
+
+
+            int dayNumIdx = 0;
             Debug.LogWarning("저장 데이터를 찾을 수 없습니다.");
             currentDialogueIndex = 0; // 기본값으로 초기화
         }

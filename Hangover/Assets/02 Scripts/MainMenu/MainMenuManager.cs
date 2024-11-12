@@ -28,7 +28,7 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            sceneController.LoadSceneByName("GameScene");
+            NewStartGameScene();
         }
     }
     
@@ -83,7 +83,33 @@ public class MainMenuManager : MonoBehaviour
         sceneController.LoadSceneByName("GameScene");
     }
 
-    
+    public void NewStartGameScene()
+    {
+        //gameObject.SetActive(true);  // GameObject를 활성화
+        //if (!gameObject.activeInHierarchy)
+        //{
+        //    Debug.LogWarning("MainMenuManager GameObject가 비활성화되어 있습니다.");
+        //    return;
+        //}
+
+        //if (saveSystem == null)
+        //{
+        //    Debug.LogError("SaveSystem이 초기화되지 않았습니다.");
+        //    return;
+        //}
+        saveSystem = gameObject.AddComponent<SaveSystem>(); // SaveSystem 인스턴스 초기화
+        if (sceneController == null)
+        {
+            Debug.LogError("SceneController가 할당되지 않았습니다.");
+            return;
+        }
+        // 다른 활성화된 객체에서 코루틴 호출
+        GameManager.instance.StartCoroutine(saveSystem.DeleteSaveDataCoroutine());
+        GameManager.instance.LoadSaveDataAndSetDialogueIndex();
+ 
+        sceneController.LoadSceneByName("GameScene");
+        
+    }
     
     
 }

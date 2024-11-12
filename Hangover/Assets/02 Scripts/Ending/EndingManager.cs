@@ -25,7 +25,9 @@ public class EndingManager : MonoBehaviour
 
     private bool isShowingFinalMessages = false; // 마무리 문구 표시 중인지 여부
     private bool fadeCompleted = false; // 페이드 효과가 완료되었는지 여부
-
+    private SaveSystem saveSystem;
+    // sceneController를 추가하여 참조할 수 있도록 만듭니다.
+    public SceneController sceneController;
     void Start()
     {
         endingIndex = GameManager.instance.endingNumber;
@@ -269,6 +271,16 @@ public class EndingManager : MonoBehaviour
 
             yield return null;
         }
+
+
+        //세이브 삭제
+        saveSystem = gameObject.AddComponent<SaveSystem>(); // SaveSystem 인스턴스 초기화
+        // if (sceneController == null)
+        // {
+        //     Debug.LogError("SceneController가 할당되지 않았습니다.");
+        //     yield break;
+        // }
+        GameManager.instance.StartCoroutine(saveSystem.DeleteSaveDataCoroutine());
 
         // 페이드 아웃이 완료된 후 씬 전환
         SceneManager.LoadScene("IntroScene");

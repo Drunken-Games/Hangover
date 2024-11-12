@@ -150,7 +150,7 @@ public class Shaker : MonoBehaviour
             return;
         }
 
-        HandleMouseInput(); // 터치 입력 대신 마우스 입력 처리
+        HandleTouchInput();
         ProcessShakeInput();
         UpdateSoundState();
 
@@ -251,47 +251,55 @@ public class Shaker : MonoBehaviour
         }
     }
 
-    private void HandleMouseInput()
+    private void HandleTouchInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0)
         {
-            isBeingTouched = true;
-            currentTouchTime = 0f;
-            lastTouchPosition = Input.mousePosition;
-
-            StartMovement();
-            SoundsManager.instance.PlaySFX("shaker");
-        }
-
-        if (isBeingTouched)
-        {
-            currentTouchTime += Time.deltaTime;
-
-            if (currentTouchTime >= touchHoldTime)
+            Touch touch = Input.GetTouch(0);
+        
+            switch (touch.phase)
             {
-                LoadNextScene();
-                return;
-            }
+                case TouchPhase.Began:
+                    isBeingTouched = true;
+                    currentTouchTime = 0f;
+                    lastTouchPosition = touch.position;
 
-            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 
-                mainCamera.WorldToScreenPoint(transform.position).z);
-            Vector3 worldPos = mainCamera.ScreenToWorldPoint(mousePos);
+                    // Start moving and playing sound immediately
+                    StartMovement();
+                    SoundsManager.instance.PlaySFX("shaker"); // Play sound on touch
+                    break;
+
+                case TouchPhase.Moved:
+                case TouchPhase.Stationary:
+                    currentTouchTime += Time.deltaTime;
                 
-            transform.position = ClampPosition(worldPos);
+                    if (currentTouchTime >= touchHoldTime)
+                    {
+                        LoadNextScene();
+                        return;
+                    }
 
-            if (Vector2.Distance(lastTouchPosition, Input.mousePosition) > 5f)
-            {
-                UpdateMovement();
-                lastTouchPosition = Input.mousePosition;
+                    Vector3 touchPos = new Vector3(touch.position.x, touch.position.y, 
+                        mainCamera.WorldToScreenPoint(transform.position).z);
+                    Vector3 worldPos = mainCamera.ScreenToWorldPoint(touchPos);
+                
+                    transform.position = ClampPosition(worldPos);
+
+                    if (Vector2.Distance(lastTouchPosition, touch.position) > 5f)
+                    {
+                        UpdateMovement();
+                        lastTouchPosition = touch.position;
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                    isBeingTouched = false;
+                    currentTouchTime = 0f;
+                    ReturnToOriginalPosition();
+                    break;
             }
         }
 
-        if (Input.GetMouseButtonUp(0))
-        {
-            isBeingTouched = false;
-            currentTouchTime = 0f;
-            ReturnToOriginalPosition();
-        }
     }
 
     private Vector3 ClampPosition(Vector3 position)
@@ -336,7 +344,7 @@ public class Shaker : MonoBehaviour
         }
     }
     
-      private void PlaySoundWithFade()
+    private void PlaySoundWithFade()
     {
         if (!isPlayingSound || Time.time - lastSoundTime >= soundInterval)
         {

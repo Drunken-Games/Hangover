@@ -440,6 +440,10 @@ PrefabInstance:
       propertyPath: nextSceneName
       value: CreaftingResultScene
       objectReference: {fileID: 0}
+    - target: {fileID: 7701977100729512748, guid: bc9dada9c9f83b94182e602b5db2e396, type: 3}
+      propertyPath: uiTextMeshProObject
+      value: 
+      objectReference: {fileID: 2104737316}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -502,7 +506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC250\uC774\uCEE4\uB97C  \uC6C0\uC9C1\uC774\uAC70\uB098\n \uD754\uB4E4\uC5B4\uC8FC\uC138\uC694!"
+  m_text: "\uC250\uC774\uCEE4\uB97C\n \uD754\uB4E4\uC5B4\uC8FC\uC138\uC694!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59f3926a1e4439c499d42c803b0a51fe, type: 2}
   m_sharedMaterial: {fileID: -2813515832677878731, guid: 59f3926a1e4439c499d42c803b0a51fe, type: 2}

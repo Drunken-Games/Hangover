@@ -16,18 +16,37 @@ public class CreaftingResultManager : MonoBehaviour
     [Header("Animation Settings")]
     [SerializeField] private float spawnAnimationDuration = 1f;
     [SerializeField] private float rotationSpeed = 30f;
+
+    [Header("Sound Settings")]
+    [SerializeField] private float soundFadeInDuration = 0.2f;
+    [SerializeField] private float soundFadeOutDuration = 0.3f;
     
     private Dictionary<int, (string name, int[] ingredients, int mixMethod)> recipeData 
         = new Dictionary<int, (string name, int[] ingredients, int mixMethod)>();
     private GameManager gameManager;
     private GameObject currentResultObject;
     private bool isAnimating = false;
+    private bool isPlayingSound = false;
 
     private void Start()
     {
         Initialize();
         LoadRecipes();
         CheckResult();
+    }
+
+    private void OnDisable()
+    {
+        StopResultSound();
+    }
+
+    private void OnDestroy()
+    {
+        if (currentResultObject != null)
+        {
+            DOTween.Kill(currentResultObject.transform);
+        }
+        StopResultSound();
     }
 
     private void Initialize()
@@ -37,6 +56,24 @@ public class CreaftingResultManager : MonoBehaviour
         {
             Debug.LogError("GameManager instance not found!");
             return;
+        }
+    }
+
+    private void PlayResultSound()
+    {
+        if (!isPlayingSound && SoundsManager.instance != null)
+        {
+            SoundsManager.instance.PlaySFXWithFade("startgame", soundFadeInDuration);
+            isPlayingSound = true;
+        }
+    }
+
+    private void StopResultSound()
+    {
+        if (isPlayingSound && SoundsManager.instance != null)
+        {
+            SoundsManager.instance.StopSFXWithFade("startgame", soundFadeOutDuration);
+            isPlayingSound = false;
         }
     }
 
@@ -54,7 +91,7 @@ public class CreaftingResultManager : MonoBehaviour
             if (string.IsNullOrEmpty(line)) continue;
 
             string[] data = line.Split(',');
-            if (data.Length < 11) continue; // ID부터 제조방법까지 총 11개 컬럼 필요
+            if (data.Length < 11) continue;
 
             try 
             {
@@ -63,14 +100,14 @@ public class CreaftingResultManager : MonoBehaviour
                 
                 int[] ingredients = new int[5]
                 {
-                    int.Parse(data[2]), // sweet
-                    int.Parse(data[3]), // sour
-                    int.Parse(data[4]), // bitter
-                    int.Parse(data[5]), // spicy
-                    int.Parse(data[6])  // spirit
+                    int.Parse(data[2]),
+                    int.Parse(data[3]),
+                    int.Parse(data[4]),
+                    int.Parse(data[5]),
+                    int.Parse(data[6])
                 };
 
-                int mixMethod = int.Parse(data[10].Trim()); // 마지막 컬럼의 제조방법
+                int mixMethod = int.Parse(data[10].Trim());
 
                 recipeData.Add(id, (name, ingredients, mixMethod));
                 Debug.Log($"Loaded recipe: {id}, {name}, Method: {mixMethod}");
@@ -143,9 +180,11 @@ public class CreaftingResultManager : MonoBehaviour
             Destroy(currentResultObject);
         }
 
-        // 시작 위치와 회전 설정
         Vector3 startPosition = resultSpawnPoint.position + new Vector3(0, -2, 0);
         Quaternion startRotation = Quaternion.Euler(15, -200, 0);
+
+        // 오브젝트 생성 전에 사운드 재생
+        PlayResultSound();
 
         if (isSuccess)
         {
@@ -161,14 +200,9 @@ public class CreaftingResultManager : MonoBehaviour
         }
     
         currentResultObject.transform.SetParent(resultSpawnPoint);
-    
-        // 초기 스케일을 0으로 설정
         currentResultObject.transform.localScale = Vector3.zero;
 
-        // 애니메이션 시퀀스
         Sequence spawnSequence = DOTween.Sequence();
-    
-        // 목표 스케일을 20으로 설정
         Vector3 targetScale = Vector3.one * 20f;
     
         spawnSequence.Append(currentResultObject.transform
@@ -177,7 +211,6 @@ public class CreaftingResultManager : MonoBehaviour
 
         if (rotationSpeed > 0)
         {
-            // Y축 회전만 적용
             currentResultObject.transform
                 .DORotate(new Vector3(15, 360, 0), rotationSpeed, RotateMode.FastBeyond360)
                 .SetEase(Ease.Linear)
@@ -186,10 +219,11 @@ public class CreaftingResultManager : MonoBehaviour
 
         spawnSequence.OnComplete(() => {
             isAnimating = false;
+            // 애니메이션이 끝나면 사운드도 정지
+            StopResultSound();
         });
     }
 
-    // 디버깅을 위한 메소드
     public void PrintCurrentRecipes()
     {
         foreach (var recipe in recipeData)
@@ -197,14 +231,6 @@ public class CreaftingResultManager : MonoBehaviour
             Debug.Log($"ID: {recipe.Key}, Name: {recipe.Value.name}, " +
                      $"Method: {recipe.Value.mixMethod}, " +
                      $"Ingredients: {string.Join(", ", recipe.Value.ingredients)}");
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (currentResultObject != null)
-        {
-            DOTween.Kill(currentResultObject.transform);
         }
     }
 }

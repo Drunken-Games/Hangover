@@ -40,6 +40,8 @@ public class GameSence : MonoBehaviour
     private Coroutine currentCoroutine;
 
     private bool check_build = false;
+    private bool is_RCOPEN = false;
+    private int nextid = -1;
     void Start()
     {
         Canvas canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
@@ -112,6 +114,7 @@ public class GameSence : MonoBehaviour
         // GameManager의 currentDialogueIndex로 첫 번째 대화 표시
         SoundsManager.instance.StopAllSFX();
         SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
+        Debug.Log("Start");
         DisplayDialogue(GetCurrentDialogueEntry());
 
         // 대화 인덱스 확인하여 이름 입력 패널 표시
@@ -306,9 +309,11 @@ public class GameSence : MonoBehaviour
 
         isUpdateComplete = true;
         Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
-        if (dialogueText.text != GetCurrentDialogueEntry().text)
+        if (is_RCOPEN==false&& dialogueText.text != GetCurrentDialogueEntry().text)
         {
+            Debug.Log("Update");
             DisplayDialogue(GetCurrentDialogueEntry());
+            is_RCOPEN = true;
         }
         Debug.Log(isUpdateComplete);
     }
@@ -470,28 +475,28 @@ public class GameSence : MonoBehaviour
 
     string HandleFireCount()
     {
-        GameManager.instance.fireCount++;
+        GameManager.instance.dayResultData.fireCount++;
         return "";
     }
 
     string HandleRobotCount()
     {
-        GameManager.instance.robotCount++;
+        GameManager.instance.dayResultData.robotCount++;
         return "";
     }
 
     string HandleBranchIdx()
     {
-        GameManager.instance.branchIdx++;
+        //GameManager.instance.branchIdx++;
         return "";
     }
 
     string HandleCheckRobotCount()
     {
-        int dialogueId = GameManager.instance.robotCount == 2 ? 196 :
-                         GameManager.instance.robotCount == 1 ? 201 : 199;
-        GameManager.instance.currentDialogueIndex = dialogueId;
-        return dialogueId.ToString();
+        int dialogueId = GameManager.instance.dayResultData.robotCount == 2 ? 198 :
+                         GameManager.instance.dayResultData.robotCount == 1 ? 201 : 203;
+        nextid = dialogueId;
+        return "";
     }
 
     private System.Collections.IEnumerator SCShowSelectPanel()
@@ -516,7 +521,7 @@ public class GameSence : MonoBehaviour
             // PrimaryActionButton 클릭 시 endingTrigger를 0으로 설정하고 패널을 숨긴 후 다음 대화로 이동
             primaryActionButton.onClick.AddListener(() =>
             {
-                GameManager.instance.endingTrigger = 0;
+                GameManager.instance.dayResultData.endingTrigger = 0;
                 notificationPanel.SetActive(false);
                 ProceedToNextDialogue();
             });
@@ -524,7 +529,7 @@ public class GameSence : MonoBehaviour
             // SecondaryActionButton 클릭 시 endingTrigger를 1로 설정하고 패널을 숨긴 후 다음 대화로 이동
             secondaryActionButton.onClick.AddListener(() =>
             {
-                GameManager.instance.endingTrigger = 1;
+                GameManager.instance.dayResultData.endingTrigger = 1;
                 notificationPanel.SetActive(false);
                 ProceedToNextDialogue();
             });
@@ -539,16 +544,16 @@ public class GameSence : MonoBehaviour
 
     string HandleCheckTrigger1Dialogue()
     {
-        int dialogueId = GameManager.instance.endingTrigger == 0 ? 149 : 175;
-        GameManager.instance.currentDialogueIndex = dialogueId;
+        int dialogueId = GameManager.instance.dayResultData.endingTrigger == 0 ? 149 : 175;
+        nextid = dialogueId;
         Debug.Log(dialogueId);
         return "";
     }
 
     string HandleCheckTrigger2Dialogue()
     {
-        int dialogueId = GameManager.instance.endingTrigger == 0 ? 206 : 225;
-        GameManager.instance.currentDialogueIndex = dialogueId;
+        int dialogueId = GameManager.instance.dayResultData.endingTrigger == 0 ? 206 : 225;
+        nextid = dialogueId;
         return dialogueId.ToString();
     }
 
@@ -590,69 +595,93 @@ public class GameSence : MonoBehaviour
     // 다음 대화로 이동하기
     void ProceedToNextDialogue()
     {
-        if (check_build == true)
+        if (nextid == -1)
         {
-            dialogueText = null;
-            SceneManager.LoadScene("BuildScene");
-            return;
-        }
-        DialogueEntry currentDialogue = GetCurrentDialogueEntry();
-        Debug.Log("596");
-        if (GameManager.instance.tempSpecialBranch != -1)
-        {
-            Debug.Log(GameManager.instance.tempSpecialBranch);
-            HandleSpecialBranch(GameManager.instance.tempSpecialBranch);
-            GameManager.instance.ClearSpecialBranch(); // 분기 처리 후 초기화
-            return;
-        }
+            if (check_build == true)
+            {
+                dialogueText = null;
+                SceneManager.LoadScene("BuildScene");
+                return;
+            }
+            DialogueEntry currentDialogue = GetCurrentDialogueEntry();
+            Debug.Log("596");
+            if (GameManager.instance.tempSpecialBranch != -1)
+            {
+                Debug.Log(GameManager.instance.tempSpecialBranch);
+                HandleSpecialBranch(GameManager.instance.tempSpecialBranch);
+                GameManager.instance.ClearSpecialBranch(); // 분기 처리 후 초기화
+                return;
+            }
 
-        //string processedText = ProcessDialogueText(currentDialogue.text);
-        //dialogueText.text = processedText;
+            //string processedText = ProcessDialogueText(currentDialogue.text);
+            //dialogueText.text = processedText;
 
-        int currentRecipeId = GameManager.instance.GetRecipeId(); // 현재 레시피 ID 가져오기
-        int nextDialogueId = currentDialogue.nextDialogueIds[0];
-        Debug.Log(nextDialogueId);
-        //if (currentDialogue.nextDialogueIds.Count > 1)
-        //{
-
-
-        //}
-        
-         if (currentDialogue.nextDialogueIds.Count == 1 && nextDialogueId != -1)
-        {
-            // 다음 대화 ID가 하나인 경우 바로 해당 ID로 이동
-            //int nextDialogueId = currentDialogue.nextDialogueIds[0];
-            //int nextDialogueIndex = dialogues.FindIndex(d => d.id == nextDialogueId);
-            //if (nextDialogueIndex != -1)
+            int currentRecipeId = GameManager.instance.GetRecipeId(); // 현재 레시피 ID 가져오기
+            int nextDialogueId = currentDialogue.nextDialogueIds[0];
+            Debug.Log(nextDialogueId);
+            //if (currentDialogue.nextDialogueIds.Count > 1)
             //{
-            GameManager.instance.currentDialogueIndex = nextDialogueId;
-            //nextDialogueIndex;
-            Debug.Log(GameManager.instance.currentDialogueIndex);
-            SoundsManager.instance.StopAllSFX();
-            SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
-            DisplayDialogue(GetCurrentDialogueEntry());
-            //}
-        }
-        else if (GameManager.instance.DayResultProceed == false)
-        {
-            // 다음 대화 ID가 없는 경우 DayResultScene으로 이동
-            Debug.Log("대화가 종료되었습니다. DayResultScene으로 이동합니다.");
-            // 다음 대화 ID가 없는 경우
-            // DayResultScene으로 이동 후 돌아온 후에
-            // 그 다음 MoveToDialogueOrNextDay(); 실행
-            //MoveToDialogueOrNextDay();
 
-            // 현재 대사의 day 값을 GameManager의 DayNum에 저장
-            GameManager.instance.dayResultData.dayNum = currentDialogue.day;
-            Debug.LogError("{currentDialogue.day}");
-            // 다음 대화로 이동하기 위해 플래그 설정
-            GameManager.instance.DayResultProceed = true;
-            SceneManager.LoadScene("DayResultScene");
+
+            //}
+            if (GameManager.instance.currentDialogueIndex==97&&nextDialogueId == 97)
+            {
+                Debug.Log(GameManager.instance.currentDialogueIndex);
+            }
+            if (currentDialogue.nextDialogueIds.Count == 1 && nextDialogueId != -1)
+            {
+                // 다음 대화 ID가 하나인 경우 바로 해당 ID로 이동
+                //int nextDialogueId = currentDialogue.nextDialogueIds[0];
+                //int nextDialogueIndex = dialogues.FindIndex(d => d.id == nextDialogueId);
+                //if (nextDialogueIndex != -1)
+                //{
+                GameManager.instance.currentDialogueIndex = nextDialogueId;
+                //nextDialogueIndex;
+                Debug.Log(GameManager.instance.currentDialogueIndex);
+                SoundsManager.instance.StopAllSFX();
+                SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
+                Debug.Log("ProceedToNextDialogue");
+                DisplayDialogue(GetCurrentDialogueEntry());
+                //}
+            }
+            else if (GameManager.instance.DayResultProceed == false)
+            {
+                // 다음 대화 ID가 없는 경우 DayResultScene으로 이동
+                Debug.Log("대화가 종료되었습니다. DayResultScene으로 이동합니다.");
+                // 다음 대화 ID가 없는 경우
+                // DayResultScene으로 이동 후 돌아온 후에
+                // 그 다음 MoveToDialogueOrNextDay(); 실행
+                //MoveToDialogueOrNextDay();
+
+                // 현재 대사의 day 값을 GameManager의 DayNum에 저장
+                GameManager.instance.dayResultData.dayNum = currentDialogue.day;
+                Debug.LogError("{currentDialogue.day}");
+                // 다음 대화로 이동하기 위해 플래그 설정
+                GameManager.instance.DayResultProceed = true;
+                SceneManager.LoadScene("DayResultScene");
+            }
+            else if(GameManager.instance.currentDialogueIndex==41 || GameManager.instance.currentDialogueIndex==93 || GameManager.instance.currentDialogueIndex == 138 || GameManager.instance.currentDialogueIndex == 174 || GameManager.instance.currentDialogueIndex ==192)
+            {
+                GameManager.instance.dayResultData.beforeMoney = 0;
+                GameManager.instance.dayResultData.totalProfit = 0;
+                GameManager.instance.dayResultData.tip = 0;
+                GameManager.instance.dayResultData.materials = 0;
+                GameManager.instance.dayResultData.netProfit = 0;
+                GameManager.instance.dayResultData.afterMoney = 0;
+                GameManager.instance.DayResultProceed = false;
+                Debug.Log(GameManager.instance.currentDialogueIndex);
+                MoveToDialogueOrNextDay();
+            }
         }
         else
         {
-            GameManager.instance.DayResultProceed = false;
-            MoveToDialogueOrNextDay();
+            GameManager.instance.currentDialogueIndex = nextid;
+            Debug.Log(GameManager.instance.currentDialogueIndex);
+            SoundsManager.instance.StopAllSFX();
+            SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
+            Debug.Log("ProceedToNextDialogue");
+            DisplayDialogue(GetCurrentDialogueEntry());
+            nextid = -1;
         }
     }
 
@@ -662,19 +691,31 @@ public class GameSence : MonoBehaviour
         int currentDialogueIndex = GameManager.instance.currentDialogueIndex;
         int nextDay = dialogues[currentDialogueIndex].day + 1;
 
-        int nextDayDialogueIndex = dialogues.FindIndex(d => d.day == nextDay);
-        if (nextDayDialogueIndex != -1)
+        // nextDay에 해당하는 첫 번째 대화 항목을 찾고, id 값을 가져옵니다.
+        // nextDay에 해당하는 첫 번째 대화 항목을 찾고, id 값을 가져옵니다.
+        var nextDialogue = dialogues.FirstOrDefault(d => d.day == nextDay);
+
+        // 기본값과 비교하여 nextDialogue의 존재 여부 확인
+        int nextDayDialogueIndex = (nextDialogue.Equals(default(DialogueEntry))) ? -1 : nextDialogue.id;
+        if (nextDayDialogueIndex == 41 || nextDayDialogueIndex == 93 || nextDayDialogueIndex == 138 || nextDayDialogueIndex == 174 || nextDayDialogueIndex == 192)
         {
-            GameManager.instance.currentDialogueIndex = nextDayDialogueIndex;
-            SoundsManager.instance.StopAllSFX();
-            SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
-            DisplayDialogue(GetCurrentDialogueEntry());
-        }
-        else
-        {
-            dialogueText.text = "더 이상 대화가 없습니다."; // 대화가 없을 때 메시지 표시
-            nextButton.interactable = false;               // 다음 버튼 비활성화
+            if (nextDayDialogueIndex != -1)
+            {
+                GameManager.instance.currentDialogueIndex = nextDayDialogueIndex;
+                SoundsManager.instance.StopAllSFX();
+                SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
+                Debug.Log("MoveToDialogueOrNextDay");
+                Debug.Log(nextDayDialogueIndex);
+                Debug.Log(currentDialogueIndex);
+                DisplayDialogue(GetCurrentDialogueEntry());
+            }
+            else
+            {
+                dialogueText.text = "더 이상 대화가 없습니다."; // 대화가 없을 때 메시지 표시
+                nextButton.interactable = false;               // 다음 버튼 비활성화
+            }
         }
     }
+        
 
 }

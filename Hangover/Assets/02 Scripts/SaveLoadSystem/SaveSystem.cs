@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.SceneManagement; // SceneManager를 사용하기 위한 네임스페이스 추가
+using System.Collections;
 
 
 public class SaveSystem : MonoBehaviour
@@ -106,4 +107,56 @@ public class SaveSystem : MonoBehaviour
             Debug.Log("로드된 데이터가 없습니다.");
         }
     }
+
+    // SaveData를 삭제하는 메서드
+    public IEnumerator DeleteSaveDataCoroutine()
+    {
+        // 저장 파일 경로가 초기화되지 않았으면 초기화
+        if (string.IsNullOrEmpty(saveFilePath))
+        {
+            saveFilePath = Path.Combine(Application.persistentDataPath, "saveFile.json");
+            Debug.Log("저장 경로 초기화: " + saveFilePath);
+        }
+
+        // 경로 초기화가 완료될 때까지 대기
+        
+
+        Debug.Log("삭제할 파일 경로: " + saveFilePath);
+
+        // 파일 로드 및 존재 여부 확인
+        SaveData loadedData = LoadGame();
+        Debug.Log("로드된 데이터: " + loadedData);
+        if (loadedData != null)
+        {
+            // 로드된 데이터를 JSON 문자열로 변환
+            string json = JsonUtility.ToJson(loadedData, true);
+            Debug.Log("로드된 데이터: " + json); // JSON 출력
+
+            string result = "일\t차:\t" + loadedData.dayNum + "\n" +
+                "자\t산:\t" + loadedData.nowMoney + "\n" +
+                "플레이어:\t" + loadedData.playerName + "\n" +
+                "분\t기:\t" + loadedData.endingTrigger + "\n" +
+                "저장일시: " + loadedData.saveDateTime;
+
+            // ResultText 테스트 출력
+            //resultText.text = result;
+            // GameScene으로 전환
+            //SceneManager.LoadScene("GameScene");
+        }
+        else
+        {
+            Debug.Log("로드된 데이터가 없습니다.");
+        }
+        if (loadedData != null && File.Exists(saveFilePath))
+        {
+            File.Delete(saveFilePath);
+            Debug.Log("저장 파일이 삭제되었습니다: " + saveFilePath);
+        }
+        else
+        {
+            Debug.LogWarning("삭제할 저장 파일이 존재하지 않습니다.");
+        }
+        yield return new WaitForEndOfFrame(); // 또는 필요한 대기 방식
+    }
 }
+

@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.Networking; // HTTP 요청을 위한 네임스페이스
 using UnityEngine.UI; // UI 관련 네임스페이스 추가
-using System.Collections; // 코루틴을 사용하기 위한 네임스페이스
+using System.Collections;
+using System.Collections.Generic; // 코루틴을 사용하기 위한 네임스페이스
 using System.Text; // 문자열 인코딩을 위한 네임스페이스
 using TMPro; // TextMesh Pro 관련 네임스페이스 추가
+using UnityEngine.SceneManagement;
 
 public class RankManager : MonoBehaviour
 {
@@ -14,6 +16,7 @@ public class RankManager : MonoBehaviour
     [SerializeField] private GameObject textPrefab; // UI 텍스트 Prefab
     [SerializeField] private Transform content; // Grid Layout Group의 Content
     [SerializeField] private GameObject itemPrefab;
+
 
     private void Start() 
     {
@@ -50,11 +53,27 @@ public class RankManager : MonoBehaviour
     public void RegisterRank()
     {
         string userNickname = nicknameInput.text; // 입력된 닉네임 가져오기
-        int finalMoney = 1000; // 예시 값, 실제 값으로 대체 필요
-        int finalDay = 5; // 예시 값, 실제 값으로 대체 필요
+        int finalMoney = GameManager.instance.ArcadeGold * 100; // 예시 값, 실제 값으로 대체 필요
+        int finalDay = 1; // 예시 값, 실제 값으로 대체 필요
         Debug.Log("요청" + userNickname + ", " + finalMoney + ", " + finalDay);
         StartCoroutine(PostRank(userNickname, finalMoney, finalDay));
         Debug.Log("성공" + userNickname + ", " + finalMoney + ", " + finalDay);
+        
+        GameManager.instance.NPC_ID = 0; // 아케이드 모드 NPC id
+        GameManager.instance.Correct_ID = new List<int>(); // 아케이드 모드 주문 술
+        GameManager.instance.isReactionPhase = false; // 아케이드 모드 단계
+        GameManager.instance.ArcadeGold = 0; // 아케이드 모드 골드 
+        // 타이머 초기화 및 정지
+        GameManager.instance.StopArcadeTimer(); // 타이머 정지
+        GameManager.instance.arcadeTimer = 0; // 타이머 초기화
+        GameManager.instance.hasTimerEnded = false; // 타이머 종료 상태 확인 변수
+        GameManager.instance.ArcadeStory = false;
+        GameManager.instance.life = 3;
+        SceneManager.LoadScene("RankScene");
+        
+        
+        
+        
     }
 
     // 랭킹 정보를 등록하는 메서드 2
@@ -141,12 +160,12 @@ public class RankManager : MonoBehaviour
              TMP_Text[] texts = item.GetComponentsInChildren<TMP_Text>(); // 아이템 내의 모든 Text 컴포넌트 가져오기
              
             // 각각의 텍스트에 값 설정
-            if (texts.Length >= 4)
+            if (texts.Length >= 3)
             {
-                texts[0].text = "#" + (i + 1).ToString(); // 등수
+                texts[0].text = (i + 1).ToString(); // 등수
                 texts[1].text = rank.userNickname; // 닉네임 설정
                 texts[2].text = rank.finalMoney.ToString(); // 최종 금액 설정
-                texts[3].text = rank.finalDay.ToString(); // 최종 일수 설정
+                // texts[3].text = rank.finalDay.ToString(); // 최종 일수 설정
             }
         }
     }

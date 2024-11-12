@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using TMPro;
 
 public class Shaker : MonoBehaviour
 {
@@ -42,6 +43,9 @@ public class Shaker : MonoBehaviour
     [SerializeField] private float soundFadeOutDuration = 0.3f;
     private bool isPlayingSound = false;
     private Tween currentSoundFade;
+    
+    [Header("UI Settings")]
+    [SerializeField] private TextMeshProUGUI uiTextMeshProObject;
 
     private Vector3 originalPosition;
     private Vector3 lastAcceleration;
@@ -65,7 +69,7 @@ public class Shaker : MonoBehaviour
     {
         InitializeComponents();
     }
-
+    
     private void InitializeComponents()
     {
         if (isInitialized) return;
@@ -153,6 +157,7 @@ public class Shaker : MonoBehaviour
         HandleTouchInput();
         ProcessShakeInput();
         UpdateSoundState();
+        UpdateTextTransparency();
 
         if (showDebugInfo)
         {
@@ -429,6 +434,27 @@ public class Shaker : MonoBehaviour
         currentMoveTween = transform.DOMove(originalPosition, returnSpeed)
             .SetEase(returnEase);
     }
+    
+    
+    private void UpdateTextTransparency()
+    {
+        // Check if uiTextMeshProObject is assigned
+        if (uiTextMeshProObject == null)
+        {
+            Debug.LogWarning("TextMeshPro - Text (UI) object is not assigned!");
+            return;
+        }
+
+        // Get the current color
+        Color color = uiTextMeshProObject.color;
+
+        // Set alpha to 0 if either isBeingTouched or isShaking is true, otherwise set it to full opacity
+        color.a = (isBeingTouched || isShaking) ? 0 : 1;
+
+        // Apply the updated color back to the TextMeshPro object
+        uiTextMeshProObject.color = color;
+    }
+    
 
     private void KillTweens(bool killSound = true)
     {

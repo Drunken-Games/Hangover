@@ -17,11 +17,12 @@ public class BarSpoonController : MonoBehaviour
     [SerializeField] private float shakeDetectionInterval = 0.05f;
     
     [Header("효과 설정")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip stirSound;
-    [SerializeField] private float soundVolume = 0.7f;
     [SerializeField] private bool useVibration = true;
     [SerializeField] private float effectCooldown = 0.1f;
+    [SerializeField] private float soundFadeInDuration = 0.2f;
+    [SerializeField] private float soundFadeOutDuration = 0.3f;
+    [SerializeField] private float sceneTransitionSoundFadeTime = 0.5f;
+    [SerializeField] private float soundFadeStartOffset = 0.2f;
 
     [Header("씬 전환 설정")]
     [SerializeField] private float requiredStirTime = 1.5f;     
@@ -41,6 +42,8 @@ public class BarSpoonController : MonoBehaviour
     private float currentTouchTime = 0f;    
     private bool isStirring = false;        
     private SceneController sceneController;
+    private bool isPlayingSound = false;
+    private bool isFadingOut = false;
     
     private Vector3[] accelerationBuffer = new Vector3[10];
     private int bufferIndex = 0;
@@ -58,7 +61,6 @@ public class BarSpoonController : MonoBehaviour
             return;
         }
 
-        SetupAudioSource();
         InitializeSceneController();
         
         originalPosition = transform.position;
@@ -84,25 +86,22 @@ public class BarSpoonController : MonoBehaviour
         }
     }
 
-    private void SetupAudioSource()
-    {
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
-        
-        audioSource.clip = stirSound;
-        audioSource.loop = false;
-        audioSource.volume = soundVolume;
-        audioSource.playOnAwake = false;
-    }
-
     private void Update()
     {
-        HandleInput();
+        HandleTouchInput();
         if (!isDragging)
         {
             CheckStirMovement();
+        }
+
+        // 씬 전환 전 페이드아웃 체크
+        if (isStirring && !isFadingOut)
+        {
+            float remainingTime = requiredStirTime - currentStirTime;
+            if (remainingTime <= sceneTransitionSoundFadeTime + soundFadeStartOffset)
+            {
+                StartTransitionFade();
+            }
         }
 
         if (showDebugInfo)
@@ -118,54 +117,85 @@ public class BarSpoonController : MonoBehaviour
         }
     }
 
-    private void HandleInput()
+    private void StartTransitionFade()
     {
-        // 마우스 클릭이 감지되면 입력을 처리합니다.
-        if (Input.GetMouseButton(0)) // 마우스 왼쪽 버튼 클릭 감지
+        if (isPlayingSound && !isFadingOut)
         {
-            Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -mainCamera.transform.position.z));
-
-            // 드래그 시작
-            if (!isDragging)
+            isFadingOut = true;
+            if (SoundsManager.instance != null)
             {
-                float touchDistance = Mathf.Abs(mouseWorldPos.x - transform.position.x);
-                if (touchDistance < 1f) // 객체와의 거리 체크
-                {
-                    isDragging = true; // 드래깅 상태로 변경
-                    currentTouchTime = 0f;
-                    lastTouchPosition = mouseWorldPos; // 마지막 위치 저장
-                }
+                SoundsManager.instance.StopSFXWithFade("stirring", sceneTransitionSoundFadeTime);
             }
-            else // 드래그 중
-            {
-                currentTouchTime += Time.deltaTime; // 드래그 시간 증가
-                if (currentTouchTime >= touchHoldTime)
-                {
-                    LoadNextScene(); // 드래그 시간이 충분하면 다음 씬 로드
-                    return;
-                }
-
-                float deltaX = mouseWorldPos.x - lastTouchPosition.x; // 마우스 이동 거리 계산
-                if (Mathf.Abs(deltaX) > 0.1f) // 이동 거리가 임계값을 초과하면
-                {
-                    MoveSpoon(deltaX * touchSensitivity); // 스푼 이동
-                    lastTouchPosition = mouseWorldPos; // 마지막 위치 업데이트
-                    PlayStirEffect(); // 혼합 효과 재생
-                    UpdateStirProgress(); // 혼합 진행도 업데이트
-                }
-            }
-        }
-        else // 마우스 버튼이 눌리지 않으면
-        {
-            if (isDragging) // 드래그 중이었다면
-            {
-                isDragging = false; // 드래깅 상태 해제
-                currentTouchTime = 0f; // 드래그 시간 초기화
-            }
-            ResetStirProgress(); // 혼합 진행도 초기화
+            isPlayingSound = false;
         }
     }
 
+    private void HandleTouchInput()
+    {
+        if (Input.touchCount > 0)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector3 touchWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, -mainCamera.transform.position.z));
+
+            switch (touch.phase)
+            {
+                case TouchPhase.Began:
+                    float touchDistance = Mathf.Abs(touchWorldPos.x - transform.position.x);
+                    if (touchDistance < 1f)
+                    {
+                        isDragging = true;
+                        currentTouchTime = 0f;
+                        lastTouchPosition = touchWorldPos;
+                        PlayStirEffect();
+                    }
+                    break;
+
+                case TouchPhase.Moved:
+                    if (isDragging)
+                    {
+                        currentTouchTime += Time.deltaTime;
+                        if (currentTouchTime >= touchHoldTime)
+                        {
+                            LoadNextScene();
+                            return;
+                        }
+
+                        float deltaX = touchWorldPos.x - lastTouchPosition.x;
+                        if (Mathf.Abs(deltaX) > 0.1f)
+                        {
+                            MoveSpoon(deltaX * touchSensitivity);
+                            lastTouchPosition = touchWorldPos;
+                            PlayStirEffect();
+                            UpdateStirProgress();
+                        }
+                    }
+                    break;
+
+                case TouchPhase.Stationary:
+                    if (isDragging)
+                    {
+                        currentTouchTime += Time.deltaTime;
+                        if (currentTouchTime >= touchHoldTime)
+                        {
+                            LoadNextScene();
+                            return;
+                        }
+                    }
+                    break;
+
+                case TouchPhase.Ended:
+                case TouchPhase.Canceled:
+                    isDragging = false;
+                    currentTouchTime = 0f;
+                    StopStirEffect();
+                    break;
+            }
+        }
+        else
+        {
+            ResetStirProgress();
+        }
+    }
 
     private void CheckStirMovement()
     {
@@ -187,11 +217,6 @@ public class BarSpoonController : MonoBehaviour
         );
 
         float movementMagnitude = horizontalMovement.magnitude;
-
-        if (showDebugInfo)
-        {
-            // Debug.Log($"Movement: {movementMagnitude:F3}, X: {horizontalMovement.x:F3}, Z: {horizontalMovement.z:F3}");
-        }
 
         if (movementMagnitude > shakeThreshold)
         {
@@ -217,6 +242,10 @@ public class BarSpoonController : MonoBehaviour
             }
             
             lastEffectTime = Time.time;
+        }
+        else
+        {
+            StopStirEffect();
         }
 
         prevFilteredAcceleration = filteredAcceleration;
@@ -248,12 +277,14 @@ public class BarSpoonController : MonoBehaviour
             {
                 isStirring = false;
                 validMovementCount = 0;
+                StopStirEffect();
             }
         }
     }
 
     private void LoadNextScene()
     {
+        StopStirEffect();
         if (sceneController != null)
         {
             if (!string.IsNullOrEmpty(nextSceneName))
@@ -289,9 +320,19 @@ public class BarSpoonController : MonoBehaviour
 
     private void PlayStirEffect()
     {
-        if (audioSource != null && stirSound != null && !audioSource.isPlaying)
+        if (!isPlayingSound && !isFadingOut && SoundsManager.instance != null)
         {
-            audioSource.Play();
+            SoundsManager.instance.PlaySFXWithFade("stirring", soundFadeInDuration);
+            isPlayingSound = true;
+        }
+    }
+
+    private void StopStirEffect()
+    {
+        if (isPlayingSound && !isFadingOut && SoundsManager.instance != null)
+        {
+            SoundsManager.instance.StopSFXWithFade("stirring", soundFadeOutDuration);
+            isPlayingSound = false;
         }
     }
 
@@ -304,8 +345,14 @@ public class BarSpoonController : MonoBehaviour
         #endif
     }
 
+    private void OnDisable()
+    {
+        StopStirEffect();
+    }
+
     private void OnDestroy()
     {
+        StopStirEffect();
         currentShakeTween?.Kill();
     }
 
