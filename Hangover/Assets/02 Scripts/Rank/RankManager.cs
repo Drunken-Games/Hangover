@@ -6,8 +6,9 @@ using System.Collections.Generic; // 코루틴을 사용하기 위한 네임스�
 using System.Text; // 문자열 인코딩을 위한 네임스페이스
 using TMPro; // TextMesh Pro 관련 네임스페이스 추가
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
-public class RankManager : MonoBehaviour
+public class RankManager : MonoBehaviour, IPointerDownHandler
 {
     private const string baseUrl = "https://k11c205.p.ssafy.io/hangover/api/v1/rank"; // API 기본 URL
 
@@ -16,12 +17,44 @@ public class RankManager : MonoBehaviour
     [SerializeField] private GameObject textPrefab; // UI 텍스트 Prefab
     [SerializeField] private Transform content; // Grid Layout Group의 Content
     [SerializeField] private GameObject itemPrefab;
+    private TouchScreenKeyboard keyboard; // 모바일 키보드 변수
 
 
     private void Start() 
     {
         StartCoroutine(GetRanks());
+         // TMP_InputField가 활성화될 때 포커스를 자동으로 설정하도록 리스너 추가
+        nicknameInput.onSelect.AddListener(delegate { ActivateKeyboard(); });
+
+         // 입력이 끝났을 때 RegisterRank 메서드 호출
+        nicknameInput.onEndEdit.AddListener(delegate { RegisterRank(); });
     }
+
+    private void Update() 
+    {
+        // TouchScreenKeyboard에서 입력한 텍스트를 TMP_InputField에 업데이트
+        if (keyboard != null && keyboard.active)
+        {
+            nicknameInput.text = keyboard.text; // 키보드의 텍스트를 InputField에 반영
+        }
+    } 
+
+    // 사용자가 InputField를 터치했을 때 포커스 설정
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ActivateKeyboard(); // 키보드 활성화
+    }
+
+    private void ActivateKeyboard()
+    {
+        nicknameInput.Select(); // InputField 선택
+        nicknameInput.ActivateInputField(); // 모바일 키보드 강제 활성화
+
+        // 모바일 환경에서 키보드를 강제로 열도록 추가
+        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+    }
+
+
 
       private RankDto[] ParseJsonArray(string json)
     {
@@ -70,10 +103,7 @@ public class RankManager : MonoBehaviour
         GameManager.instance.ArcadeStory = false;
         GameManager.instance.life = 3;
         SceneManager.LoadScene("RankScene");
-        
-        
-        
-        
+
     }
 
     // 랭킹 정보를 등록하는 메서드 2

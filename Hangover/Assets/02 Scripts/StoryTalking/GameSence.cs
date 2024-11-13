@@ -7,6 +7,8 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
+using UnityEngine.EventSystems;
+
 
 public static class AsyncOperationExtensions
 {
@@ -18,7 +20,7 @@ public static class AsyncOperationExtensions
     }
 }
 
-public class GameSence : MonoBehaviour
+public class GameSence : MonoBehaviour, IPointerDownHandler
 {
     public TextMeshProUGUI dialogueText;       // 대화 텍스트 UI
     public TextMeshProUGUI characterNameText;  // 캐릭터 이름 텍스트 UI
@@ -30,6 +32,7 @@ public class GameSence : MonoBehaviour
     private GameObject nameInputPanel;  // NameInputPanel 오브젝트
     private TMP_InputField nameInputField;  // NameInputField 오브젝트
     private Button submitButton;  // 이름 제출 버튼
+    private TouchScreenKeyboard keyboard; // 모바일 키보드 변수
 
     public ChoiceHandler choiceHandler;
     private GameObject notificationPanel; // NotificationPanel 오브젝트
@@ -42,6 +45,7 @@ public class GameSence : MonoBehaviour
     private bool check_build = false;
     private bool is_RCOPEN = false;
     private int nextid = -1;
+
     void Start()
     {
         Canvas canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
@@ -120,10 +124,86 @@ public class GameSence : MonoBehaviour
         // 대화 인덱스 확인하여 이름 입력 패널 표시
         GameManager.instance.CheckDialogueForNameInput();
 
+        // TMP_InputField가 활성화될 때 포커스를 자동으로 설정하도록 리스너 추가
+        nameInputField.onSelect.AddListener(delegate { ActivateKeyboard(); });
 
-
+         // 입력이 끝났을 때 SavePlayerName 메서드 호출
+        nameInputField.onEndEdit.AddListener(delegate { SavePlayerName(); });
     }
 
+    void Update()
+    {
+        // BuildScene에서 돌아왔을 때 특정 조건에 따라 다음 대사로 이동
+        if (GameManager.instance.GameSceneNeedsProceed)
+        {
+            // 추가 로그 확인
+            if (cocktailCal.cocktails == null || cocktailCal.cocktails.Count == 0)
+            {
+                Debug.LogError("GameSence에서 cocktailCal의 cocktails 리스트가 null이거나 비어 있습니다.");
+            }
+            else
+            {
+                Debug.Log("GameSence에서 cocktailCal의 cocktails 리스트가 정상적으로 참조되었습니다.");
+            }
+            // 플래그를 false로 설정하여 반복 실행 방지
+            GameManager.instance.GameSceneNeedsProceed = false;
+
+            // ProceedToNextDialogue의 특정 부분 실행
+            DialogueEntry currentDialogue = GetCurrentDialogueEntry();
+            int currentRecipeId = GameManager.instance.GetRecipeId();
+            //
+            //price=Assets/04 Resources/CocktailData/CocktailDatabase 에서 currentDialogue.cocktailId와 일치하는 칵테일 Id를 찾아서 그 것의 pirce를 넣어둔다
+            // price 값 설정
+            int price = cocktailCal.GetCocktailPrice(currentRecipeId);
+
+            //if (currentDialogue.nextDialogueIds.Count > 1)
+            //{
+            StartCoroutine(HandleDialogueProcessing());
+            SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
+            dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TextMeshProUGUI>();
+            //while (dialogueText.text != GetCurrentDialogueEntry().text)
+            //{
+                DisplayDialogue(GetCurrentDialogueEntry());
+            //}
+            //}
+            //else if(currentDialogue.nextDialogueIds.Count==1)
+            //{
+
+            //}
+        }
+
+        isUpdateComplete = true;
+        Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
+        if (is_RCOPEN==false&& dialogueText.text != GetCurrentDialogueEntry().text)
+        {
+            Debug.Log("Update");
+            DisplayDialogue(GetCurrentDialogueEntry());
+            is_RCOPEN = true;
+        }
+        Debug.Log(isUpdateComplete);
+
+         // TouchScreenKeyboard에서 입력한 텍스트를 TMP_InputField에 업데이트
+        if (keyboard != null && keyboard.active)
+        {
+            nameInputField.text = keyboard.text; // 키보드의 텍스트를 InputField에 반영
+        }
+    }
+
+
+    // 사용자가 InputField를 터치했을 때 포커스 설정
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ActivateKeyboard(); // 키보드 활성화
+    }
+
+    private void ActivateKeyboard()
+    {
+        nameInputField.Select(); // InputField 선택
+        nameInputField.ActivateInputField(); // 모바일 키보드 강제 활성화
+
+        // 모바일 환경에서 키보드를 강제로 열도록 추가
+        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
+    }
 
     // 이름 저장 및 패널 비활성화 메서드
     private void SavePlayerName()
@@ -266,57 +346,7 @@ public class GameSence : MonoBehaviour
 
     }
 
-    void Update()
-    {
-        // BuildScene에서 돌아왔을 때 특정 조건에 따라 다음 대사로 이동
-        if (GameManager.instance.GameSceneNeedsProceed)
-        {
-            // 추가 로그 확인
-            if (cocktailCal.cocktails == null || cocktailCal.cocktails.Count == 0)
-            {
-                Debug.LogError("GameSence에서 cocktailCal의 cocktails 리스트가 null이거나 비어 있습니다.");
-            }
-            else
-            {
-                Debug.Log("GameSence에서 cocktailCal의 cocktails 리스트가 정상적으로 참조되었습니다.");
-            }
-            // 플래그를 false로 설정하여 반복 실행 방지
-            GameManager.instance.GameSceneNeedsProceed = false;
-
-            // ProceedToNextDialogue의 특정 부분 실행
-            DialogueEntry currentDialogue = GetCurrentDialogueEntry();
-            int currentRecipeId = GameManager.instance.GetRecipeId();
-            //
-            //price=Assets/04 Resources/CocktailData/CocktailDatabase 에서 currentDialogue.cocktailId와 일치하는 칵테일 Id를 찾아서 그 것의 pirce를 넣어둔다
-            // price 값 설정
-            int price = cocktailCal.GetCocktailPrice(currentRecipeId);
-
-            //if (currentDialogue.nextDialogueIds.Count > 1)
-            //{
-            StartCoroutine(HandleDialogueProcessing());
-            SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
-            dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TextMeshProUGUI>();
-            //while (dialogueText.text != GetCurrentDialogueEntry().text)
-            //{
-                DisplayDialogue(GetCurrentDialogueEntry());
-            //}
-            //}
-            //else if(currentDialogue.nextDialogueIds.Count==1)
-            //{
-
-            //}
-        }
-
-        isUpdateComplete = true;
-        Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
-        if (is_RCOPEN==false&& dialogueText.text != GetCurrentDialogueEntry().text)
-        {
-            Debug.Log("Update");
-            DisplayDialogue(GetCurrentDialogueEntry());
-            is_RCOPEN = true;
-        }
-        Debug.Log(isUpdateComplete);
-    }
+    
     // 특수 분기 처리를 위한 메서드
     void HandleSpecialBranch(int branchId)
     {
@@ -660,7 +690,7 @@ public class GameSence : MonoBehaviour
                 GameManager.instance.DayResultProceed = true;
                 SceneManager.LoadScene("DayResultScene");
             }
-            else if(GameManager.instance.currentDialogueIndex==41 || GameManager.instance.currentDialogueIndex==93 || GameManager.instance.currentDialogueIndex == 138 || GameManager.instance.currentDialogueIndex == 174 || GameManager.instance.currentDialogueIndex ==192)
+            else if(GameManager.instance.DayResultProceed == true&&GameManager.instance.currentDialogueIndex==41 || GameManager.instance.currentDialogueIndex==93 || GameManager.instance.currentDialogueIndex == 138 || GameManager.instance.currentDialogueIndex == 174 || GameManager.instance.currentDialogueIndex ==192)
             {
                 GameManager.instance.dayResultData.beforeMoney = 0;
                 GameManager.instance.dayResultData.totalProfit = 0;
