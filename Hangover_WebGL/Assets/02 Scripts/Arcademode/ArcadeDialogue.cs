@@ -80,7 +80,7 @@ public class ArcadeDialogue : MonoBehaviour
     public string timeOverDialogue = "마감 했습니다~~!!";  // 타임 오버 대사
 
     // NPC 이름 리스트 추가
-    public List<string> Npc_Names = new List<string> { "가", "나", "다", "라", "마", "바", "사", "아" };  // 임시 NPC 이름 리스트
+    private List<string> Npc_Names = new List<string> { "날두호", "스벤", "아미트", "안토넬라", "알파사란", "웨이청", "암스트롱", "카밀라", "흑곰" }; 
 
     #endregion
 
@@ -537,7 +537,7 @@ public class ArcadeDialogue : MonoBehaviour
     // 팝업을 닫는 메소드
     public void ClosePopup() 
     {
-        Object popup = GameObject.Find("NicknameInputPopupPrefab(Clone)");
+        Object popup = GameObject.Find("RankingNickNamePopUp(Clone)");
         // 이미 팝업이 열려 있다면 이전 팝업을 삭제
         if (popup != null)
         {

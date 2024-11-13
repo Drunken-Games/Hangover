@@ -80,7 +80,7 @@ public class ArcadeDialogue : MonoBehaviour
     public string timeOverDialogue = "마감 했습니다~~!!";  // 타임 오버 대사
 
     // NPC 이름 리스트 추가
-    public List<string> Npc_Names = new List<string> { "가", "나", "다", "라", "마", "바", "사", "아" };  // 임시 NPC 이름 리스트
+    private List<string> Npc_Names = new List<string> { "날두호", "스벤", "아미트", "안토넬라", "알파사란", "웨이청", "암스트롱", "카밀라", "흑곰" }; 
 
     #endregion
 

@@ -431,11 +431,13 @@ MonoBehaviour:
   shakePower: 3
   shakeEase: 1
   shakeDetectionInterval: 0.05
-  audioSource: {fileID: 0}
-  stirSound: {fileID: 0}
-  soundVolume: 0.7
+  textMeshProObject: {fileID: 1389365136}
   useVibration: 1
   effectCooldown: 0.1
+  soundFadeInDuration: 0.2
+  soundFadeOutDuration: 0.3
+  sceneTransitionSoundFadeTime: 0.5
+  soundFadeStartOffset: 0.2
   requiredStirTime: 1.5
   touchHoldTime: 2
   nextSceneName: CreaftingResultScene
@@ -524,8 +526,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1
-  m_fontSizeBase: 1
+  m_fontSize: 0.8
+  m_fontSizeBase: 0.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

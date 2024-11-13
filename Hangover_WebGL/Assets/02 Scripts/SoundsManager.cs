@@ -25,9 +25,15 @@ public class SoundsManager : MonoBehaviour
     public int currentBGMIndex = 0; // 현재 재생 중인 BGM 인덱스
     private string previousSceneName = "IntroScene";
     
+    // 뒤로가기 종료
+    private float timeOfLastPress = 0f; // 마지막 버튼 눌린 시간
+    private float timeToExit = 2f; // 두 번째 눌러야 종료되는 시간 (초)
+    private bool isBackPressedOnce = false; 
+    
     // 페이드 관련 설정
     private const float DEFAULT_FADE_DURATION = 0.1f;
     private Dictionary<AudioSource, Tween> activeFades = new Dictionary<AudioSource, Tween>();
+    
 
     private void Awake()
     {
@@ -42,6 +48,31 @@ public class SoundsManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
+        }
+    }
+    
+    private void Update()
+    {
+        // 뒤로 가기 버튼이 눌렸을 때
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (isBackPressedOnce)
+            {
+                // 두 번째 눌렀을 때 어플리케이션 종료
+                Application.Quit();
+            }
+            else
+            {
+                // 첫 번째 눌림: 상태 변경
+                isBackPressedOnce = true;
+                timeOfLastPress = Time.time;
+            }
+        }
+
+        // 두 번째 클릭을 기다리는 시간 (timeToExit 동안 두 번 눌리지 않으면 리셋)
+        if (isBackPressedOnce && Time.time - timeOfLastPress > timeToExit)
+        {
+            isBackPressedOnce = false; // 시간이 지나면 첫 번째 눌림 상태 리셋
         }
     }
     

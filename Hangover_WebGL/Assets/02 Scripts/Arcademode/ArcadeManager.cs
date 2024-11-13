@@ -18,7 +18,7 @@ public class ArcadeManager : MonoBehaviour
         // 타이머가 이미 실행 중이고 종료되지 않은 경우에만 타이머 시작
         if (!GameManager.instance.isArcadeTimerRunning && !GameManager.instance.hasTimerEnded)
         {
-            GameManager.instance.StartArcadeTimer(180f); // 예시로 3분 (180초) 타이머 설정
+            GameManager.instance.StartArcadeTimer(300f); // 예시로 3분 (180초) 타이머 설정
         }
 
         // ArcadeDialogue 초기화 호출

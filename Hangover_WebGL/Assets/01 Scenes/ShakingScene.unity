@@ -440,6 +440,10 @@ PrefabInstance:
       propertyPath: nextSceneName
       value: CreaftingResultScene
       objectReference: {fileID: 0}
+    - target: {fileID: 7701977100729512748, guid: bc9dada9c9f83b94182e602b5db2e396, type: 3}
+      propertyPath: uiTextMeshProObject
+      value: 
+      objectReference: {fileID: 2104737316}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

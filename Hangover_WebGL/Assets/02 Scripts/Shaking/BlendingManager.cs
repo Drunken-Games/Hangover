@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class BlendingManager : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class BlendingManager : MonoBehaviour
     [Header("진동 설정")]
     [SerializeField] private bool useVibration = true;
     [SerializeField] private float vibrationInterval = 0.1f;
+    
+    [Header("UI 설정")]
+    [SerializeField] private TextMeshProUGUI uiTextMeshProObject; 
+    
     
     private bool isPlaying = false;
     private bool isPlayingSound = false;
@@ -57,6 +62,7 @@ public class BlendingManager : MonoBehaviour
         {
             UpdateBlendProgress();
             UpdateEffects();
+            UpdateTextTransparency();
         }
         else
         {
@@ -202,6 +208,25 @@ public class BlendingManager : MonoBehaviour
                 sceneController.LoadNextScene();
             }
         }
+    }
+    
+    private void UpdateTextTransparency()
+    {
+        // Check if uiTextMeshProObject is assigned
+        if (uiTextMeshProObject == null)
+        {
+            Debug.LogWarning("TextMeshPro - Text (UI) object is not assigned!");
+            return;
+        }
+
+        // Get the current color
+        Color color = uiTextMeshProObject.color;
+
+        // Set alpha to 0 if either isBeingTouched or isShaking is true, otherwise set it to full opacity
+        color.a = (isPlaying) ? 0 : 1;
+
+        // Apply the updated color back to the TextMeshPro object
+        uiTextMeshProObject.color = color;
     }
 
     private void OnDisable()

@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using TMPro;
 
 public class Shaker : MonoBehaviour
 {
@@ -42,6 +43,9 @@ public class Shaker : MonoBehaviour
     [SerializeField] private float soundFadeOutDuration = 0.3f;
     private bool isPlayingSound = false;
     private Tween currentSoundFade;
+    
+    [Header("UI Settings")]
+    [SerializeField] private TextMeshProUGUI uiTextMeshProObject;
 
     private Vector3 originalPosition;
     private Vector3 lastAcceleration;
@@ -65,7 +69,7 @@ public class Shaker : MonoBehaviour
     {
         InitializeComponents();
     }
-
+    
     private void InitializeComponents()
     {
         if (isInitialized) return;
@@ -150,9 +154,10 @@ public class Shaker : MonoBehaviour
             return;
         }
 
-        HandleTouchInput();
+        HandleMouseInput();
         ProcessShakeInput();
         UpdateSoundState();
+        UpdateTextTransparency();
 
         if (showDebugInfo)
         {
@@ -251,56 +256,49 @@ public class Shaker : MonoBehaviour
         }
     }
 
-    private void HandleTouchInput()
+    private void HandleMouseInput()
     {
-        if (Input.touchCount > 0)
+        if (Input.GetMouseButtonDown(0))
         {
-            Touch touch = Input.GetTouch(0);
-        
-            switch (touch.phase)
+            isBeingTouched = true;
+            currentTouchTime = 0f;
+            lastTouchPosition = Input.mousePosition;
+
+            StartMovement();
+            SoundsManager.instance.PlaySFX("shaker");
+        }
+
+        if (isBeingTouched)
+        {
+            currentTouchTime += Time.deltaTime;
+
+            if (currentTouchTime >= touchHoldTime)
             {
-                case TouchPhase.Began:
-                    isBeingTouched = true;
-                    currentTouchTime = 0f;
-                    lastTouchPosition = touch.position;
+                LoadNextScene();
+                return;
+            }
 
-                    // Start moving and playing sound immediately
-                    StartMovement();
-                    SoundsManager.instance.PlaySFX("shaker"); // Play sound on touch
-                    break;
-
-                case TouchPhase.Moved:
-                case TouchPhase.Stationary:
-                    currentTouchTime += Time.deltaTime;
+            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 
+                mainCamera.WorldToScreenPoint(transform.position).z);
+            Vector3 worldPos = mainCamera.ScreenToWorldPoint(mousePos);
                 
-                    if (currentTouchTime >= touchHoldTime)
-                    {
-                        LoadNextScene();
-                        return;
-                    }
+            transform.position = ClampPosition(worldPos);
 
-                    Vector3 touchPos = new Vector3(touch.position.x, touch.position.y, 
-                        mainCamera.WorldToScreenPoint(transform.position).z);
-                    Vector3 worldPos = mainCamera.ScreenToWorldPoint(touchPos);
-                
-                    transform.position = ClampPosition(worldPos);
-
-                    if (Vector2.Distance(lastTouchPosition, touch.position) > 5f)
-                    {
-                        UpdateMovement();
-                        lastTouchPosition = touch.position;
-                    }
-                    break;
-
-                case TouchPhase.Ended:
-                    isBeingTouched = false;
-                    currentTouchTime = 0f;
-                    ReturnToOriginalPosition();
-                    break;
+            if (Vector2.Distance(lastTouchPosition, Input.mousePosition) > 5f)
+            {
+                UpdateMovement();
+                lastTouchPosition = Input.mousePosition;
             }
         }
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            isBeingTouched = false;
+            currentTouchTime = 0f;
+            ReturnToOriginalPosition();
+        }
     }
+
 
     private Vector3 ClampPosition(Vector3 position)
     {
@@ -429,6 +427,27 @@ public class Shaker : MonoBehaviour
         currentMoveTween = transform.DOMove(originalPosition, returnSpeed)
             .SetEase(returnEase);
     }
+    
+    
+    private void UpdateTextTransparency()
+    {
+        // Check if uiTextMeshProObject is assigned
+        if (uiTextMeshProObject == null)
+        {
+            Debug.LogWarning("TextMeshPro - Text (UI) object is not assigned!");
+            return;
+        }
+
+        // Get the current color
+        Color color = uiTextMeshProObject.color;
+
+        // Set alpha to 0 if either isBeingTouched or isShaking is true, otherwise set it to full opacity
+        color.a = (isBeingTouched || isShaking) ? 0 : 1;
+
+        // Apply the updated color back to the TextMeshPro object
+        uiTextMeshProObject.color = color;
+    }
+    
 
     private void KillTweens(bool killSound = true)
     {
