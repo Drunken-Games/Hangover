@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
 using UnityEngine.EventSystems;
-
+using Febucci.UI.Core;
 
 public static class AsyncOperationExtensions
 {
@@ -22,7 +22,7 @@ public static class AsyncOperationExtensions
 
 public class GameSence : MonoBehaviour, IPointerDownHandler
 {
-    public TextMeshProUGUI dialogueText;       // 대화 텍스트 UI
+    public TypewriterCore dialogueText;       // 대화 텍스트 UI
     public TextMeshProUGUI characterNameText;  // 캐릭터 이름 텍스트 UI
     public TextMeshProUGUI dayText;            // 현재 Day 텍스트 UI
     public Button nextButton;                  // 다음 버튼 UI
@@ -70,7 +70,7 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
             return;
         }
         // Canvas 안의 UI 요소 찾기
-        dialogueText = dialogueImageTransform.transform.Find("DialogueText")?.GetComponent<TextMeshProUGUI>();
+        dialogueText = dialogueImageTransform.transform.Find("DialogueText")?.GetComponent<TypewriterCore>();
         characterNameText = dialogueImageTransform.transform.Find("CharacterNameText")?.GetComponent<TextMeshProUGUI>();
         dayText = canvas.transform.Find("DayText")?.GetComponent<TextMeshProUGUI>();
         nextButton = dialogueImageTransform.transform.Find("NextButton")?.GetComponent<Button>();
@@ -160,7 +160,7 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
             //{
             StartCoroutine(HandleDialogueProcessing());
             SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
-            dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TextMeshProUGUI>();
+            dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TypewriterCore>();
             //while (dialogueText.text != GetCurrentDialogueEntry().text)
             //{
                 DisplayDialogue(GetCurrentDialogueEntry());
@@ -173,8 +173,8 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
         }
 
         isUpdateComplete = true;
-        Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
-        if (is_RCOPEN==false&& dialogueText.text != GetCurrentDialogueEntry().text)
+        // Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
+        if (is_RCOPEN==false&& dialogueText.ToString() != GetCurrentDialogueEntry().text)
         {
             Debug.Log("Update");
             DisplayDialogue(GetCurrentDialogueEntry());
@@ -189,21 +189,6 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
         }
     }
 
-
-    // 사용자가 InputField를 터치했을 때 포커스 설정
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        ActivateKeyboard(); // 키보드 활성화
-    }
-
-    private void ActivateKeyboard()
-    {
-        nameInputField.Select(); // InputField 선택
-        nameInputField.ActivateInputField(); // 모바일 키보드 강제 활성화
-
-        // 모바일 환경에서 키보드를 강제로 열도록 추가
-        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
-    }
 
     // 이름 저장 및 패널 비활성화 메서드
     private void SavePlayerName()
@@ -220,6 +205,22 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
             StartCoroutine(WaitForNextButtonActivation());
         }
 
+    }
+
+
+    // 사용자가 InputField를 터치했을 때 포커스 설정
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        ActivateKeyboard(); // 키보드 활성화
+    }
+
+    private void ActivateKeyboard()
+    {
+        nameInputField.Select(); // InputField 선택
+        nameInputField.ActivateInputField(); // 모바일 키보드 강제 활성화
+
+        // 모바일 환경에서 키보드를 강제로 열도록 추가
+        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
     }
     // nextButton이 활성화될 때까지 기다리는 코루틴
     private System.Collections.IEnumerator WaitForNextButtonActivation()
@@ -345,8 +346,6 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
         yield break; // 비동기 메서드 종료
 
     }
-
-    
     // 특수 분기 처리를 위한 메서드
     void HandleSpecialBranch(int branchId)
     {
@@ -598,7 +597,7 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
     {
         if (dialogueText == null)
         {
-            dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TextMeshProUGUI>();
+            dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TypewriterCore>();
             if (dialogueText == null) return;
         }
         Debug.Log("HI");
@@ -606,8 +605,8 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
         {
             if (processedText == "") return;
             //if (entry.text.Contains("{Build}")) return;
-            dialogueText.text = processedText;
-            Debug.Log(dialogueText.text);
+            dialogueText.ShowText(processedText);
+            // Debug.Log(dialogueText.text);
             if (!string.IsNullOrEmpty(GameManager.instance.dayResultData.playerName) && entry.character == "주인공")
             {
                 characterNameText.text = GameManager.instance.dayResultData.playerName;
@@ -619,7 +618,8 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
             dayText.text = "Day " + entry.day;
         }));
         Debug.Log("HI");
-        Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
+        // Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
+        GameManager.instance.DialoguesLog.Add(new GameManager.DialogueLog(GameManager.instance.currentDialogueIndex, dialogueText.ToString()));
         return;
     }
     // 다음 대화로 이동하기
@@ -741,7 +741,7 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
             }
             else
             {
-                dialogueText.text = "더 이상 대화가 없습니다."; // 대화가 없을 때 메시지 표시
+                dialogueText.ShowText("더 이상 대화가 없습니다."); // 대화가 없을 때 메시지 표시
                 nextButton.interactable = false;               // 다음 버튼 비활성화
             }
         }

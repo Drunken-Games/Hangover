@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01 Scenes/DayResultScene.unity
     guid: be121f51f4029a9439ab3b43db31f02e
+  - enabled: 0
+    path: Assets/01 Scenes/NicknameScene.unity
+    guid: 3f5188bfcc7ddcb479287b8ae574eef2
   - enabled: 1
     path: Assets/01 Scenes/TestSaveScene.unity
     guid: 337d56c878deff4408d9d831bf36bb3f

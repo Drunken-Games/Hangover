@@ -53,27 +53,27 @@ public class SoundsManager : MonoBehaviour
     
     private void Update()
     {
-        // 뒤로 가기 버튼이 눌렸을 때
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isBackPressedOnce)
-            {
-                // 두 번째 눌렀을 때 어플리케이션 종료
-                Application.Quit();
-            }
-            else
-            {
-                // 첫 번째 눌림: 상태 변경
-                isBackPressedOnce = true;
-                timeOfLastPress = Time.time;
-            }
-        }
-
-        // 두 번째 클릭을 기다리는 시간 (timeToExit 동안 두 번 눌리지 않으면 리셋)
-        if (isBackPressedOnce && Time.time - timeOfLastPress > timeToExit)
-        {
-            isBackPressedOnce = false; // 시간이 지나면 첫 번째 눌림 상태 리셋
-        }
+        // // 뒤로 가기 버튼이 눌렸을 때
+        // if (Input.GetKeyDown(KeyCode.Escape))
+        // {
+        //     if (isBackPressedOnce)
+        //     {
+        //         // 두 번째 눌렀을 때 어플리케이션 종료
+        //         Application.Quit();
+        //     }
+        //     else
+        //     {
+        //         // 첫 번째 눌림: 상태 변경
+        //         isBackPressedOnce = true;
+        //         timeOfLastPress = Time.time;
+        //     }
+        // }
+        //
+        // // 두 번째 클릭을 기다리는 시간 (timeToExit 동안 두 번 눌리지 않으면 리셋)
+        // if (isBackPressedOnce && Time.time - timeOfLastPress > timeToExit)
+        // {
+        //     isBackPressedOnce = false; // 시간이 지나면 첫 번째 눌림 상태 리셋
+        // }
     }
     
     

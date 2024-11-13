@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,29 @@ public class SceneController : MonoBehaviour
         // 현재 씬에 맞는 BGM을 초기화
         OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
     }
+
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.Escape))
+    //     {
+    //         if (SceneManager.GetActiveScene().buildIndex == 1)
+    //         {
+    //             LoadSceneByName("IntroScene");
+    //         }
+    //         else if (SceneManager.GetActiveScene().buildIndex == 2)
+    //         {
+    //             LoadSceneByName("MainMenuScene");
+    //         }
+    //         else if ((SceneManager.GetActiveScene().buildIndex == 4) || (SceneManager.GetActiveScene().buildIndex != 5) || (SceneManager.GetActiveScene().buildIndex != 6) )
+    //         {
+    //             LoadSceneByName("BuildScene");
+    //         }
+    //         else if (SceneManager.GetActiveScene().buildIndex == 8)
+    //         {
+    //             LoadSceneByName("MainMenuScene");
+    //         }
+    //     }
+    // }
 
     private void OnDestroy()
     {
@@ -67,7 +91,7 @@ public class SceneController : MonoBehaviour
     // 특정 씬 이름으로 전환
     public void LoadSceneByName(string sceneName)
     {
-        if(GameManager.instance.ArcadeStory == true &&sceneName == "GameScene")
+        if(GameManager.instance.ArcadeStory == true && sceneName == "GameScene")
         {
             sceneName = "ArcadeScene";
         }

@@ -7,6 +7,7 @@ using System.Text; // 문자열 인코딩을 위한 네임스페이스
 using TMPro; // TextMesh Pro 관련 네임스페이스 추가
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using Febucci.UI.Core;
 
 public class RankManager : MonoBehaviour, IPointerDownHandler
 {
@@ -17,8 +18,10 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
     [SerializeField] private GameObject textPrefab; // UI 텍스트 Prefab
     [SerializeField] private Transform content; // Grid Layout Group의 Content
     [SerializeField] private GameObject itemPrefab;
-    private TouchScreenKeyboard keyboard; // 모바일 키보드 변수
+    [SerializeField] private TMP_Text resultTextObject;
 
+    // public TypewriterCore resultText;  
+    private TouchScreenKeyboard keyboard; // 모바일 키보드 변수
 
     private void Start() 
     {
@@ -28,6 +31,9 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
 
          // 입력이 끝났을 때 RegisterRank 메서드 호출
         nicknameInput.onEndEdit.AddListener(delegate { RegisterRank(); });
+
+        resultTextObject.text = "<wave>" + (GameManager.instance.ArcadeGold * 100).ToString() + "</wave>";
+        // resultText.ShowText((GameManager.instance.ArcadeGold * 100).ToString());
     }
 
     private void Update() 
@@ -56,7 +62,7 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
 
 
 
-      private RankDto[] ParseJsonArray(string json)
+    private RankDto[] ParseJsonArray(string json)
     {
         // JSON 배열에서 대괄호 제거
         json = json.TrimStart('[').TrimEnd(']');
