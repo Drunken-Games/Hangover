@@ -5,8 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class SettingButtonController : MonoBehaviour
 {
+    // Singleton 인스턴스
+    public static SettingButtonController Instance { get; private set; }
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            Debug.Log("SettingButtonController Instance Initialized"); // 초기화 확인
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     public void ExitGame()
     {
+        Debug.Log("Exit");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_ANDROID

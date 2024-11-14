@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -67,7 +68,7 @@ public class SceneController : MonoBehaviour
     // 특정 씬 이름으로 전환
     public void LoadSceneByName(string sceneName)
     {
-        if(GameManager.instance.ArcadeStory == true &&sceneName == "GameScene")
+        if(GameManager.instance.ArcadeStory == true && sceneName == "GameScene")
         {
             sceneName = "ArcadeScene";
         }

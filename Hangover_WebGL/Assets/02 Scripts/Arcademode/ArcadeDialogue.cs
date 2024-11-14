@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Febucci.UI.Core;
 using UnityEngine;
 using TMPro;  // TextMeshPro 사용을 위해 추가
 using UnityEngine.SceneManagement;  // 씬 관리를 위해 추가
@@ -12,7 +13,7 @@ public class ArcadeDialogue : MonoBehaviour
     public int Reaction_ID;  // 반응 대사
     public List<int> Correct_ID; // 정답 술 리스트를 저장하기 위한 배열
 
-    public TextMeshProUGUI orderText;  // 주문 대사를 표시할 TextMeshProUGUI 변수
+    public TypewriterCore orderText;  // 주문 대사를 표시할 TextMeshProUGUI 변수
     public TextMeshProUGUI npcNameText;  // NPC 이름을 표시할 TextMeshProUGUI 변수
 
     // 캐릭터 이미지를 참조하기 위한 리스트
@@ -129,7 +130,7 @@ public class ArcadeDialogue : MonoBehaviour
 
         #region 주문 대사 표시 로직
         
-        if (orderText != null)
+        if (orderText.ToString() != null)
         {
             string selectedOrder = Order_List[Order_ID];
 
@@ -338,10 +339,10 @@ public class ArcadeDialogue : MonoBehaviour
             }
             
             // 주문 대사 텍스트 설정
-            orderText.text = selectedOrder;
+            orderText.ShowText(selectedOrder);
+            GameManager.instance.DialoguesLog.Add(new GameManager.DialogueLog(Order_ID, selectedOrder));
         }
         #endregion
-        
         if (GameManager.instance != null)
         {
             GameManager.instance.NPC_ID = Npc_ID;
@@ -358,7 +359,7 @@ public class ArcadeDialogue : MonoBehaviour
     public void InitializeReactionPhase()
     {
         Reaction_ID = 0;
-        if (orderText != null)
+        if (orderText.ToString() != null)
         {
             Reaction_ID = Random.Range(0, 10);
             Npc_ID = GameManager.instance.NPC_ID;
@@ -384,7 +385,7 @@ public class ArcadeDialogue : MonoBehaviour
                 if (GameManager.instance.Correct_ID.Contains(GameManager.instance.completedRecipeId))
                 {
                     Debug.Log("Correct_ID 리스트에 completedRecipeId가 포함되어 있습니다.");
-                    orderText.text = Success_Dialogues[Reaction_ID];
+                    orderText.ShowText(Success_Dialogues[Reaction_ID]);
                     int price = cocktailCal != null ? cocktailCal.GetCocktailPrice(GameManager.instance.completedRecipeId) : 0;
 
                     FindObjectOfType<ArcadeManager>().AddGold(price); // 골드 증가 함수 호출
@@ -392,7 +393,7 @@ public class ArcadeDialogue : MonoBehaviour
                 else
                 {
                     Debug.Log("Correct_ID 리스트에 completedRecipeId가 포함되어 있지 않습니다.");
-                    orderText.text = Fail_Dialogues[Reaction_ID];
+                    orderText.ShowText(Fail_Dialogues[Reaction_ID]);
                     --GameManager.instance.life;
                     Debug.Log($"목숨 : {GameManager.instance.life}");
                 }
@@ -452,7 +453,7 @@ public class ArcadeDialogue : MonoBehaviour
 
                     npcNameText.text = "점장";
                     
-                    orderText.text = gameOverDialogue;
+                    orderText.ShowText(gameOverDialogue);
                     waitingForTouchAfterTimeout = true; // 첫 번째 클릭 후 대기 상태로 전환
                 }
                 else
@@ -475,7 +476,7 @@ public class ArcadeDialogue : MonoBehaviour
 
                     npcNameText.text = "점장";
                     
-                    orderText.text = timeOverDialogue;
+                    orderText.ShowText(timeOverDialogue);
                     waitingForTouchAfterTimeout = true; // 첫 번째 클릭 후 대기 상태로 전환
                 }
                 else

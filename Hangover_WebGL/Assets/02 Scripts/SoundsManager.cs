@@ -1,7 +1,8 @@
-using System;
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
+using System.IO;
 using DG.Tweening;
 
 public class SoundsManager : MonoBehaviour
@@ -13,90 +14,63 @@ public class SoundsManager : MonoBehaviour
 
     [SerializeField] private Dictionary<string, AudioClip> bgmClips;
     [SerializeField] private Dictionary<string, AudioClip> sfxClips;
-    
-    private const string VolumeKey = "AudioVolume"; // 저장할 키
-    public AudioListener audioListener;
+
     private float bgmVolume = 1f;
     private float sfxVolume = 1f;
-    private float masterVolume;
-    
+    private float masterVolume = 1f;
+
+    private bool isMasterMuted = false;
+    private bool isBGMMuted = false;
+    private bool isSFXMuted = false;
+
+    private float lastMasterVolume = 1f;
+    private float lastBGMVolume = 1f;
+    private float lastSFXVolume = 1f;
+
     private const int MAX_SFX_SOURCES = 5;
-    private List<AudioClip> bgmList; // BGM 리스트
-    public int currentBGMIndex = 0; // 현재 재생 중인 BGM 인덱스
+    private List<AudioClip> bgmList;
+    public int currentBGMIndex = 0;
     private string previousSceneName = "IntroScene";
-    
-    // 뒤로가기 종료
-    private float timeOfLastPress = 0f; // 마지막 버튼 눌린 시간
-    private float timeToExit = 2f; // 두 번째 눌러야 종료되는 시간 (초)
-    private bool isBackPressedOnce = false; 
-    
-    // 페이드 관련 설정
+
     private const float DEFAULT_FADE_DURATION = 0.1f;
     private Dictionary<AudioSource, Tween> activeFades = new Dictionary<AudioSource, Tween>();
-    
 
     private void Awake()
     {
-        masterVolume = AudioListener.volume;
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            // 기본값 설정
+            masterVolume = 1f;
+            bgmVolume = 1f;
+            sfxVolume = 1f;
+            lastMasterVolume = 1f;
+            lastBGMVolume = 1f;
+            lastSFXVolume = 1f;
+
+            // SoundSaveSystem 컴포넌트 추가
+            if (GetComponent<SoundSaveSystem>() == null)
+            {
+                gameObject.AddComponent<SoundSaveSystem>();
+            }
+
             InitializeSoundManager();
+
+            // 설정 로드
+            SoundSaveSystem.LoadSoundSettings();
         }
         else
         {
             Destroy(gameObject);
-            return;
         }
     }
-    
-    private void Update()
-    {
-        // 뒤로 가기 버튼이 눌렸을 때
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isBackPressedOnce)
-            {
-                // 두 번째 눌렀을 때 어플리케이션 종료
-                Application.Quit();
-            }
-            else
-            {
-                // 첫 번째 눌림: 상태 변경
-                isBackPressedOnce = true;
-                timeOfLastPress = Time.time;
-            }
-        }
-
-        // 두 번째 클릭을 기다리는 시간 (timeToExit 동안 두 번 눌리지 않으면 리셋)
-        if (isBackPressedOnce && Time.time - timeOfLastPress > timeToExit)
-        {
-            isBackPressedOnce = false; // 시간이 지나면 첫 번째 눌림 상태 리셋
-        }
-    }
-    
-    
-    public float GetMasterVolume()
-    {
-        return masterVolume * 100f; // 현재 BGM 볼륨 반환
-    }
-    
-    public float GetBGMVolume()
-    {
-        return bgmVolume * 100f; // 현재 BGM 볼륨 반환
-    }
-
-    public float GetSFXVolume()
-    {
-        return sfxVolume * 100f; // 현재 SFX 볼륨 반환
-    }
-
 
     private void InitializeSoundManager()
     {
         bgmSource = gameObject.AddComponent<AudioSource>();
-        bgmSource.loop = false; // BGM이 끝나면 자동으로 루프하지 않도록 설정
+        bgmSource.loop = false;
 
         sfxSources = new List<AudioSource>();
         for (int i = 0; i < MAX_SFX_SOURCES; i++)
@@ -110,8 +84,8 @@ public class SoundsManager : MonoBehaviour
         sfxClips = new Dictionary<string, AudioClip>();
 
         LoadAudioClips();
-        bgmList = new List<AudioClip>(bgmClips.Values); // BGM 클립 목록 초기화
-        PlayNextBGM(previousSceneName); // 첫 번째 BGM 재생
+        bgmList = new List<AudioClip>(bgmClips.Values);
+        PlayNextBGM(previousSceneName);
     }
 
     private void LoadAudioClips()
@@ -129,39 +103,84 @@ public class SoundsManager : MonoBehaviour
         }
     }
 
+    // Volume Getters
+    public float GetMasterVolume() => masterVolume * 100f;
+    public float GetBGMVolume() => bgmVolume * 100f;
+    public float GetSFXVolume() => sfxVolume * 100f;
+    public float GetLastMasterVolume() => lastMasterVolume * 100f;
+    public float GetLastBGMVolume() => lastBGMVolume * 100f;
+    public float GetLastSFXVolume() => lastSFXVolume * 100f;
+
+    // Mute State Getters
+    public bool IsMasterMuted() => isMasterMuted;
+    public bool IsBGMMuted() => isBGMMuted;
+    public bool IsSFXMuted() => isSFXMuted;
 
     public void SetMasterVolume(float volume)
     {
-        masterVolume = Mathf.Clamp01(volume);
+        volume = Mathf.Clamp01(volume);
+        masterVolume = volume;
+        lastMasterVolume = volume;
         UpdateVolumes();
+        SoundSaveSystem.SaveSoundSettings();
     }
-    
-    
+
     public void SetBGMVolume(float volume)
     {
-        bgmVolume = Mathf.Clamp01(volume);
+        volume = Mathf.Clamp01(volume);
+        bgmVolume = volume;
+        lastBGMVolume = volume;
         UpdateVolumes();
+        SoundSaveSystem.SaveSoundSettings();
     }
 
     public void SetSFXVolume(float volume)
     {
-        sfxVolume = Mathf.Clamp01(volume);
+        volume = Mathf.Clamp01(volume);
+        sfxVolume = volume;
+        lastSFXVolume = volume;
         UpdateVolumes();
+        SoundSaveSystem.SaveSoundSettings();
+    }
+
+    public void SetMasterMute(bool mute)
+    {
+        isMasterMuted = mute;
+        UpdateVolumes();
+        SoundSaveSystem.SaveSoundSettings();
+    }
+
+    public void SetBGMMute(bool mute)
+    {
+        isBGMMuted = mute;
+        UpdateVolumes();
+        SoundSaveSystem.SaveSoundSettings();
+    }
+
+    public void SetSFXMute(bool mute)
+    {
+        isSFXMuted = mute;
+        UpdateVolumes();
+        SoundSaveSystem.SaveSoundSettings();
     }
 
     private void UpdateVolumes()
     {
-        AudioListener.volume = masterVolume;
-        bgmSource.volume = bgmVolume;
+        AudioListener.volume = isMasterMuted ? 0f : masterVolume;
+
+        if (bgmSource != null)
+        {
+            bgmSource.volume = (isMasterMuted || isBGMMuted) ? 0f : bgmVolume;
+        }
+
         foreach (AudioSource sfxSource in sfxSources)
         {
-            sfxSource.volume = sfxVolume;
+            sfxSource.volume = (isMasterMuted || isSFXMuted) ? 0f : sfxVolume;
         }
     }
 
     public void PlayNextBGM(string sceneName)
     {
-        Debug.Log($"currentIdx = {currentBGMIndex}");
         if (bgmList.Count > 0)
         {
             if (sceneName == "IntroScene")
@@ -180,15 +199,14 @@ public class SoundsManager : MonoBehaviour
                 }
             }
 
-            // 현재 인덱스에 해당하는 BGM 클립 재생
             bgmSource.clip = bgmList[currentBGMIndex];
             if (bgmSource.isPlaying == false)
             {
                 bgmSource.Play();
             }
+
             Debug.Log($"BGM 재생 시작: {bgmList[currentBGMIndex].name}");
 
-            // 인덱스를 증가시키고 리스트의 길이로 모듈로 연산
             if (currentBGMIndex >= 2)
             {
                 currentBGMIndex = UnityEngine.Random.Range(2, bgmList.Count);
@@ -197,22 +215,17 @@ public class SoundsManager : MonoBehaviour
             {
                 currentBGMIndex = (currentBGMIndex + 1) % bgmList.Count;
             }
+
             previousSceneName = sceneName;
 
-            // BGM이 끝날 때 다음 BGM을 재생하는 코루틴 호출
             StartCoroutine(WaitForBGMToEnd());
-        }
-        else
-        {
-            Debug.LogWarning("BGM 목록이 비어 있습니다.");
         }
     }
 
     private System.Collections.IEnumerator WaitForBGMToEnd()
     {
-        // 현재 BGM이 재생 중인지 확인
         yield return new WaitUntil(() => !bgmSource.isPlaying);
-        PlayNextBGM(previousSceneName); // 다음 BGM 재생
+        PlayNextBGM(previousSceneName);
     }
 
     public void StopBGM()
@@ -229,37 +242,7 @@ public class SoundsManager : MonoBehaviour
             {
                 availableSource.clip = clip;
                 availableSource.Play();
-                Debug.Log($"효과음 재생: {sfxName}");
             }
-            else
-            {
-                Debug.LogWarning("모든 효과음 채널이 사용 중입니다!");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"효과음을 찾을 수 없음: {sfxName}");
-        }
-    }
-    
-    public void StopSFX(string sfxName)
-    {
-        if (sfxClips.TryGetValue(sfxName, out AudioClip clip))
-        {
-            AudioSource sourceToStop = sfxSources.Find(source => source.clip == clip && source.isPlaying);
-            if (sourceToStop != null)
-            {
-                sourceToStop.Stop();
-                Debug.Log($"효과음 정지: {sfxName}");
-            }
-            else
-            {
-                Debug.LogWarning($"정지할 수 있는 효과음이 없습니다: {sfxName}");
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"효과음을 찾을 수 없음: {sfxName}");
         }
     }
 
@@ -270,7 +253,7 @@ public class SoundsManager : MonoBehaviour
             sfxSource.Stop();
         }
     }
-    
+
     public void PlaySFXWithFade(string sfxName, float fadeInDuration = DEFAULT_FADE_DURATION)
     {
         if (sfxClips.TryGetValue(sfxName, out AudioClip clip))
@@ -292,10 +275,8 @@ public class SoundsManager : MonoBehaviour
                 // 페이드 인 시작
                 Tween fadeTween = availableSource.DOFade(sfxVolume, fadeInDuration)
                     .SetEase(Ease.OutQuad)
-                    .OnComplete(() => {
-                        activeFades.Remove(availableSource);
-                    });
-                
+                    .OnComplete(() => { activeFades.Remove(availableSource); });
+
                 activeFades.Add(availableSource, fadeTween);
                 Debug.Log($"효과음 페이드 인 시작: {sfxName}");
             }
@@ -327,12 +308,13 @@ public class SoundsManager : MonoBehaviour
                 // 페이드 아웃 시작
                 Tween fadeTween = sourceToStop.DOFade(0f, fadeOutDuration)
                     .SetEase(Ease.InQuad)
-                    .OnComplete(() => {
+                    .OnComplete(() =>
+                    {
                         sourceToStop.Stop();
                         sourceToStop.volume = sfxVolume; // 볼륨 초기화
                         activeFades.Remove(sourceToStop);
                     });
-                
+
                 activeFades.Add(sourceToStop, fadeTween);
                 Debug.Log($"효과음 페이드 아웃 시작: {sfxName}");
             }
@@ -346,7 +328,7 @@ public class SoundsManager : MonoBehaviour
             Debug.LogWarning($"효과음을 찾을 수 없음: {sfxName}");
         }
     }
-    
+
     public void StopAllSFXWithFade(float fadeOutDuration = DEFAULT_FADE_DURATION)
     {
         foreach (AudioSource sfxSource in sfxSources)
@@ -363,17 +345,18 @@ public class SoundsManager : MonoBehaviour
                 // 페이드 아웃 시작
                 Tween fadeTween = sfxSource.DOFade(0f, fadeOutDuration)
                     .SetEase(Ease.InQuad)
-                    .OnComplete(() => {
+                    .OnComplete(() =>
+                    {
                         sfxSource.Stop();
                         sfxSource.volume = sfxVolume; // 볼륨 초기화
                         activeFades.Remove(sfxSource);
                     });
-                
+
                 activeFades.Add(sfxSource, fadeTween);
             }
         }
     }
-    
+
     private void OnDestroy()
     {
         // 모든 활성 페이드 제거
@@ -381,6 +364,22 @@ public class SoundsManager : MonoBehaviour
         {
             tween.Kill();
         }
+
         activeFades.Clear();
+    }
+
+// 앱 종료시 설정 저장
+    private void OnApplicationQuit()
+    {
+        SoundSaveSystem.SaveSoundSettings();
+    }
+
+// 앱 일시정지시 설정 저장 (모바일 환경 대응)
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus)
+        {
+            SoundSaveSystem.SaveSoundSettings();
+        }
     }
 }

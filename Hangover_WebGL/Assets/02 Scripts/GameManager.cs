@@ -107,13 +107,27 @@ public class GameManager : MonoBehaviour
 
     // 아케이드 스토리모드 여부
     public bool ArcadeStory = false;
+    [System.Serializable]
+    public class DialogueLog
+    {
+        public int Id;
+        public string Text;
 
+        public DialogueLog(int id, string text) 
+        {
+            Id = id;
+            Text = text;
+        }
+    }
+    public List<DialogueLog> DialoguesLog=new List<DialogueLog>();
 
     private void Awake()
     {
-
+        // DialoguesLog 리스트에 새 항목 추가
+        //DialoguesLog.Add(new DialogueLog(1, "test"));
+        //Debug.Log(DialoguesLog[0]);
         // Singleton 설정
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);

@@ -13,29 +13,6 @@ public class SceneController : MonoBehaviour
         OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
     }
 
-    // private void Update()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.Escape))
-    //     {
-    //         if (SceneManager.GetActiveScene().buildIndex == 1)
-    //         {
-    //             LoadSceneByName("IntroScene");
-    //         }
-    //         else if (SceneManager.GetActiveScene().buildIndex == 2)
-    //         {
-    //             LoadSceneByName("MainMenuScene");
-    //         }
-    //         else if ((SceneManager.GetActiveScene().buildIndex == 4) || (SceneManager.GetActiveScene().buildIndex != 5) || (SceneManager.GetActiveScene().buildIndex != 6) )
-    //         {
-    //             LoadSceneByName("BuildScene");
-    //         }
-    //         else if (SceneManager.GetActiveScene().buildIndex == 8)
-    //         {
-    //             LoadSceneByName("MainMenuScene");
-    //         }
-    //     }
-    // }
-
     private void OnDestroy()
     {
         SceneManager.activeSceneChanged -= OnSceneChanged;

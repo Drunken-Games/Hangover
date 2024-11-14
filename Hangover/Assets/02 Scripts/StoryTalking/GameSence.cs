@@ -22,6 +22,7 @@ public static class AsyncOperationExtensions
 
 public class GameSence : MonoBehaviour, IPointerDownHandler
 {
+    private TextMeshProUGUI checkText;
     public TypewriterCore dialogueText;       // 대화 텍스트 UI
     public TextMeshProUGUI characterNameText;  // 캐릭터 이름 텍스트 UI
     public TextMeshProUGUI dayText;            // 현재 Day 텍스트 UI
@@ -71,6 +72,7 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
         }
         // Canvas 안의 UI 요소 찾기
         dialogueText = dialogueImageTransform.transform.Find("DialogueText")?.GetComponent<TypewriterCore>();
+        checkText= dialogueImageTransform.transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
         characterNameText = dialogueImageTransform.transform.Find("CharacterNameText")?.GetComponent<TextMeshProUGUI>();
         dayText = canvas.transform.Find("DayText")?.GetComponent<TextMeshProUGUI>();
         nextButton = dialogueImageTransform.transform.Find("NextButton")?.GetComponent<Button>();
@@ -114,7 +116,6 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
 
         // GameManager의 대화 데이터를 불러오기
         dialogues = GameManager.instance.dialogues;
-
         // GameManager의 currentDialogueIndex로 첫 번째 대화 표시
         SoundsManager.instance.StopAllSFX();
         SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
@@ -173,8 +174,9 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
         }
 
         isUpdateComplete = true;
-        // Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
-        if (is_RCOPEN==false&& dialogueText.ToString() != GetCurrentDialogueEntry().text)
+        Debug.Log($"{GetCurrentDialogueEntry().text},{characterNameText.text},{dayText.text}");
+        Debug.Log(checkText.text);
+        if (is_RCOPEN==false&& checkText.text != GetCurrentDialogueEntry().text)
         {
             Debug.Log("Update");
             DisplayDialogue(GetCurrentDialogueEntry());
@@ -619,7 +621,7 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
         }));
         Debug.Log("HI");
         // Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
-        GameManager.instance.DialoguesLog.Add(new GameManager.DialogueLog(GameManager.instance.currentDialogueIndex, dialogueText.ToString()));
+        GameManager.instance.DialoguesLog.Add(new GameManager.DialogueLog(GameManager.instance.currentDialogueIndex, checkText.text));
         return;
     }
     // 다음 대화로 이동하기
