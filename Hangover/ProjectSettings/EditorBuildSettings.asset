@@ -18,6 +18,33 @@ EditorBuildSettings:
     path: Assets/01 Scenes/BuildScene.unity
     guid: 95df90302926b1744a6ddadd6c1cd4f7
   - enabled: 1
+    path: Assets/01 Scenes/StirringScene.unity
+    guid: 8e0fab7a3ec1237489cd230c96a02745
+  - enabled: 1
+    path: Assets/01 Scenes/ShakingScene.unity
+    guid: fd6bf6604ffec7942a9ed34301f0296c
+  - enabled: 1
+    path: Assets/01 Scenes/BlendingScene.unity
+    guid: 83198d8bcd463cc4e8393593bcafab0d
+  - enabled: 1
+    path: Assets/01 Scenes/CreaftingResultScene.unity
+    guid: fd9087ca3c2b34944be82fd72b8eca68
+  - enabled: 1
     path: Assets/01 Scenes/RankScene.unity
     guid: f8c2a2517427056479d00727e67a0c60
+  - enabled: 1
+    path: Assets/01 Scenes/DayResultScene.unity
+    guid: be121f51f4029a9439ab3b43db31f02e
+  - enabled: 0
+    path: Assets/01 Scenes/NicknameScene.unity
+    guid: 3f5188bfcc7ddcb479287b8ae574eef2
+  - enabled: 1
+    path: Assets/01 Scenes/TestSaveScene.unity
+    guid: 337d56c878deff4408d9d831bf36bb3f
+  - enabled: 1
+    path: Assets/01 Scenes/EndingScene.unity
+    guid: 4ac89969db616c248bf2bfc65993fa7f
+  - enabled: 1
+    path: Assets/01 Scenes/ArcadeScene.unity
+    guid: 504d5b6ce7fc4d348bd63d2af914f595
   m_configObjects: {}

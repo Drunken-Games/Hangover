@@ -123,11 +123,12 @@ MonoBehaviour:
   maxDistanceFromOrigin: 1
   returnSpeed: 0.5
   returnEase: 24
-  shakeThreshold: 0.15
-  shakePower: 5
+  shakeThreshold: 20
+  shakePower: 10
   verticalMultiplier: 1.5
   verticalRange: {x: -3, y: 3}
   shakeEase: 9
+  accelerationSmoothness: 10
   audioSource: {fileID: 0}
   moveSound: {fileID: 8300000, guid: 7e671537ef5fe5b4ba702a474c60394e, type: 3}
   soundFadeOutTime: 0.3

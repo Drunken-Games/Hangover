@@ -270,6 +270,13 @@ public class GameManager : MonoBehaviour
         }
         if (previousSceneName == "DayResultScene" && scene.name == "GameScene")
         {
+            GameManager.instance.dayResultData.beforeMoney = 0;
+            GameManager.instance.dayResultData.totalProfit = 0;
+            GameManager.instance.dayResultData.tip = 0;
+            GameManager.instance.dayResultData.materials = 0;
+            GameManager.instance.dayResultData.netProfit = 0;
+            GameManager.instance.dayResultData.afterMoney = 0;
+            Debug.Log("Update");
             DayResultProceed = true;
             Debug.Log("BYE");
         }

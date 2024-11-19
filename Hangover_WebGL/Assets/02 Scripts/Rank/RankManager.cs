@@ -23,27 +23,49 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
     // public TypewriterCore resultText;  
     private TouchScreenKeyboard keyboard; // 모바일 키보드 변수
 
-    private void Start() 
+    private void Start()
     {
         StartCoroutine(GetRanks());
-         // TMP_InputField가 활성화될 때 포커스를 자동으로 설정하도록 리스너 추가
-        nicknameInput.onSelect.AddListener(delegate { ActivateKeyboard(); });
 
-         // 입력이 끝났을 때 RegisterRank 메서드 호출
-        nicknameInput.onEndEdit.AddListener(delegate { RegisterRank(); });
+        // TMP_InputField 이벤트 리스너 추가
+        if (nicknameInput != null)
+        {
+            nicknameInput.onSelect.AddListener(delegate { ActivateKeyboard(); });
+            nicknameInput.onEndEdit.AddListener(delegate { RegisterRank(); });
+        }
+        else
+        {
+            Debug.LogError("nicknameInput is null. Please assign it in the Inspector.");
+        }
 
-        resultTextObject.text = "<wave>" + (GameManager.instance.ArcadeGold * 100).ToString() + "</wave>";
-        // resultText.ShowText((GameManager.instance.ArcadeGold * 100).ToString());
+        // resultTextObject 및 GameManager null 체크
+        if (resultTextObject != null && GameManager.instance != null)
+        {
+            resultTextObject.text = "<wave>" + (GameManager.instance.ArcadeGold * 100).ToString() + "</wave>";
+        }
+        else
+        {
+            if (resultTextObject == null)
+            {
+                Debug.LogError("resultTextObject is null. Please assign it in the Inspector.");
+            }
+
+            if (GameManager.instance == null)
+            {
+                Debug.LogError("GameManager.instance is null. Ensure GameManager is in the scene.");
+            }
+        }
     }
 
-    private void Update() 
+
+    private void Update()
     {
         // TouchScreenKeyboard에서 입력한 텍스트를 TMP_InputField에 업데이트
         if (keyboard != null && keyboard.active)
         {
             nicknameInput.text = keyboard.text; // 키보드의 텍스트를 InputField에 반영
         }
-    } 
+    }
 
     // 사용자가 InputField를 터치했을 때 포커스 설정
     public void OnPointerDown(PointerEventData eventData)
@@ -97,7 +119,7 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
         Debug.Log("요청" + userNickname + ", " + finalMoney + ", " + finalDay);
         StartCoroutine(PostRank(userNickname, finalMoney, finalDay));
         Debug.Log("성공" + userNickname + ", " + finalMoney + ", " + finalDay);
-        
+
         GameManager.instance.NPC_ID = 0; // 아케이드 모드 NPC id
         GameManager.instance.Correct_ID = new List<int>(); // 아케이드 모드 주문 술
         GameManager.instance.isReactionPhase = false; // 아케이드 모드 단계
@@ -155,7 +177,7 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
     }
 
     // 랭킹 목록을 GET 요청으로 조회하는 코루틴
-    private IEnumerator GetRanks() 
+    private IEnumerator GetRanks()
     {
         using (UnityWebRequest www = UnityWebRequest.Get(baseUrl + "/list"))
         {
@@ -185,7 +207,7 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
         }
 
         // 데이터 추가
-        for(int i = 0; i < userRanks.Length; i++)
+        for (int i = 0; i < userRanks.Length; i++)
         {
             RankDto rank = userRanks[i];
 
@@ -193,8 +215,8 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
             GameObject item = Instantiate(itemPrefab, content); // content의 자식으로 설정하면서 클론 생성
 
             // 아이템 내의 텍스트 설정
-             TMP_Text[] texts = item.GetComponentsInChildren<TMP_Text>(); // 아이템 내의 모든 Text 컴포넌트 가져오기
-             
+            TMP_Text[] texts = item.GetComponentsInChildren<TMP_Text>(); // 아이템 내의 모든 Text 컴포넌트 가져오기
+
             // 각각의 텍스트에 값 설정
             if (texts.Length >= 3)
             {
