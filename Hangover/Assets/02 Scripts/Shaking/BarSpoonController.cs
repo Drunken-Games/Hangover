@@ -1,58 +1,34 @@
 using UnityEngine;
 using DG.Tweening;
-using TMPro;
 
 public class BarSpoonController : MonoBehaviour
 {
     [Header("이동 설정")]
-    [SerializeField] private float maxXPosition = 2f;  
-    [SerializeField] private float minXPosition = -2f; 
+    [SerializeField] private float maxXPosition = 2f;  // X축 최대 이동 범위
+    [SerializeField] private float minXPosition = -2f; // X축 최소 이동 범위
     
     [Header("터치 설정")]
     [SerializeField] private float touchSensitivity = 1f;
     
     [Header("흔들기 설정")]
-    [SerializeField] private float shakeThreshold = 0.15f;
+    [SerializeField] private float shakeThreshold = 0.2f;
     [SerializeField] private float shakePower = 1f;
     [SerializeField] private Ease shakeEase = Ease.OutQuad;
-    [SerializeField] private float shakeDetectionInterval = 0.05f;
     
     [Header("효과 설정")]
-    [SerializeField] private TextMeshPro textMeshProObject;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip stirSound;
+    [SerializeField] private float soundVolume = 0.7f;
     [SerializeField] private bool useVibration = true;
     [SerializeField] private float effectCooldown = 0.1f;
-    [SerializeField] private float soundFadeInDuration = 0.2f;
-    [SerializeField] private float soundFadeOutDuration = 0.3f;
-    [SerializeField] private float sceneTransitionSoundFadeTime = 0.5f;
-    [SerializeField] private float soundFadeStartOffset = 0.2f;
-
-    [Header("씬 전환 설정")]
-    [SerializeField] private float requiredStirTime = 1.5f;     
-    [SerializeField] private float touchHoldTime = 2f;          
-    [SerializeField] private string nextSceneName = "GameScene";
-    [SerializeField] private bool showDebugInfo = true;         
 
     private Vector3 originalPosition;
     private Vector3 lastAcceleration;
     private float lastEffectTime;
-    private float lastShakeCheckTime;
     private Camera mainCamera;
     private Vector2 lastTouchPosition;
     private Tween currentShakeTween;
     private bool isDragging = false;
-    private float currentStirTime = 0f;     
-    private float currentTouchTime = 0f;    
-    private bool isStirring = false;        
-    private SceneController sceneController;
-    private bool isPlayingSound = false;
-    private bool isFadingOut = false;
-    
-    private Vector3[] accelerationBuffer = new Vector3[10];
-    private int bufferIndex = 0;
-    private int validMovementCount = 0;
-    private const int REQUIRED_MOVEMENT_COUNT = 3;
-    private const float MOVEMENT_RESET_TIME = 0.5f;
-    private Vector3 prevFilteredAcceleration;
 
     private void Start()
     {
@@ -63,73 +39,32 @@ public class BarSpoonController : MonoBehaviour
             return;
         }
 
-        InitializeSceneController();
+        SetupAudioSource();
         
         originalPosition = transform.position;
         lastAcceleration = Input.acceleration;
         lastEffectTime = Time.time;
-        lastShakeCheckTime = Time.time;
-        
-        for (int i = 0; i < accelerationBuffer.Length; i++)
-        {
-            accelerationBuffer[i] = Input.acceleration;
-        }
-        prevFilteredAcceleration = Input.acceleration;
     }
 
-    private void InitializeSceneController()
+    private void SetupAudioSource()
     {
-        sceneController = FindObjectOfType<SceneController>();
-        if (sceneController == null)
+        if (audioSource == null)
         {
-            Debug.LogWarning("SceneController를 찾을 수 없습니다! 새로 추가합니다...");
-            GameObject controllerObject = new GameObject("SceneController");
-            sceneController = controllerObject.AddComponent<SceneController>();
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
+        
+        audioSource.clip = stirSound;
+        audioSource.loop = false;
+        audioSource.volume = soundVolume;
+        audioSource.playOnAwake = false;
     }
 
     private void Update()
     {
         HandleTouchInput();
-        UpdateTextTransparency();
         if (!isDragging)
         {
-            CheckStirMovement();
-        }
-
-        // 씬 전환 전 페이드아웃 체크
-        if (isStirring && !isFadingOut)
-        {
-            float remainingTime = requiredStirTime - currentStirTime;
-            if (remainingTime <= sceneTransitionSoundFadeTime + soundFadeStartOffset)
-            {
-                StartTransitionFade();
-            }
-        }
-
-        if (showDebugInfo)
-        {
-            if (isStirring)
-            {
-                Debug.Log($"저어지는 진행도: {currentStirTime:F2}/{requiredStirTime:F2}, 움직임 카운트: {validMovementCount}/{REQUIRED_MOVEMENT_COUNT}");
-            }
-            if (isDragging)
-            {
-                Debug.Log($"터치 홀드 진행도: {currentTouchTime:F2}/{touchHoldTime:F2}");
-            }
-        }
-    }
-
-    private void StartTransitionFade()
-    {
-        if (isPlayingSound && !isFadingOut)
-        {
-            isFadingOut = true;
-            if (SoundsManager.instance != null)
-            {
-                SoundsManager.instance.StopSFXWithFade("stirring", sceneTransitionSoundFadeTime);
-            }
-            isPlayingSound = false;
+            CheckShakeInput();
         }
     }
 
@@ -143,162 +78,53 @@ public class BarSpoonController : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
+                    // 터치 위치가 오브젝트 근처인지 확인
                     float touchDistance = Mathf.Abs(touchWorldPos.x - transform.position.x);
-                    if (touchDistance < 1f)
+                    if (touchDistance < 1f) // 터치 인식 범위 설정
                     {
                         isDragging = true;
-                        currentTouchTime = 0f;
                         lastTouchPosition = touchWorldPos;
-                        PlayStirEffect();
                     }
                     break;
 
                 case TouchPhase.Moved:
                     if (isDragging)
                     {
-                        currentTouchTime += Time.deltaTime;
-                        if (currentTouchTime >= touchHoldTime)
-                        {
-                            LoadNextScene();
-                            return;
-                        }
-
                         float deltaX = touchWorldPos.x - lastTouchPosition.x;
-                        if (Mathf.Abs(deltaX) > 0.1f)
-                        {
-                            MoveSpoon(deltaX * touchSensitivity);
-                            lastTouchPosition = touchWorldPos;
-                            PlayStirEffect();
-                            UpdateStirProgress();
-                        }
-                    }
-                    break;
-
-                case TouchPhase.Stationary:
-                    if (isDragging)
-                    {
-                        currentTouchTime += Time.deltaTime;
-                        if (currentTouchTime >= touchHoldTime)
-                        {
-                            LoadNextScene();
-                            return;
-                        }
+                        MoveSpoon(deltaX * touchSensitivity);
+                        lastTouchPosition = touchWorldPos;
+                        PlayStirEffect();
                     }
                     break;
 
                 case TouchPhase.Ended:
                 case TouchPhase.Canceled:
                     isDragging = false;
-                    currentTouchTime = 0f;
-                    StopStirEffect();
                     break;
             }
         }
-        else
-        {
-            ResetStirProgress();
-        }
     }
 
-    private void CheckStirMovement()
+    private void CheckShakeInput()
     {
-        if (Time.time - lastShakeCheckTime < shakeDetectionInterval) return;
+        Vector3 acceleration = Input.acceleration;
+        Vector3 accelerationDelta = acceleration - lastAcceleration;
+        float shakeMagnitude = accelerationDelta.magnitude;
 
-        accelerationBuffer[bufferIndex] = Input.acceleration;
-        bufferIndex = (bufferIndex + 1) % accelerationBuffer.Length;
-
-        Vector3 filteredAcceleration = Vector3.zero;
-        foreach (Vector3 acc in accelerationBuffer)
+        if (shakeMagnitude > shakeThreshold)
         {
-            filteredAcceleration += acc;
-        }
-        filteredAcceleration /= accelerationBuffer.Length;
-
-        Vector2 horizontalMovement = new Vector2(
-            filteredAcceleration.x - prevFilteredAcceleration.x,
-            filteredAcceleration.z - prevFilteredAcceleration.z
-        );
-
-        float movementMagnitude = horizontalMovement.magnitude;
-
-        if (movementMagnitude > shakeThreshold)
-        {
-            if (Time.time - lastEffectTime > MOVEMENT_RESET_TIME)
-            {
-                validMovementCount = 0;
-            }
-
-            validMovementCount++;
-            
-            float moveDirection = Mathf.Sign(horizontalMovement.x);
-            ApplyShake(moveDirection);
+            float shakeDirection = Mathf.Sign(accelerationDelta.x);
+            ApplyShake(shakeDirection);
             
             if (useVibration && Time.time - lastEffectTime > effectCooldown)
             {
                 TriggerVibration();
                 PlayStirEffect();
+                lastEffectTime = Time.time;
             }
-            
-            if (validMovementCount >= REQUIRED_MOVEMENT_COUNT)
-            {
-                UpdateStirProgress();
-            }
-            
-            lastEffectTime = Time.time;
-        }
-        else
-        {
-            StopStirEffect();
         }
 
-        prevFilteredAcceleration = filteredAcceleration;
-        lastShakeCheckTime = Time.time;
-    }
-
-    private void UpdateStirProgress()
-    {
-        isStirring = true;
-        currentStirTime += Time.deltaTime * 1.5f;
-        
-        if (showDebugInfo)
-        {
-            Debug.Log($"UpdateStirProgress - Current Time: {currentStirTime:F2}");
-        }
-        
-        if (currentStirTime >= requiredStirTime)
-        {
-            LoadNextScene();
-        }
-    }
-
-    private void ResetStirProgress()
-    {
-        if (isStirring && Time.time - lastEffectTime > MOVEMENT_RESET_TIME)
-        {
-            currentStirTime = Mathf.Max(0, currentStirTime - (Time.deltaTime * 0.5f));
-            if (currentStirTime <= 0)
-            {
-                isStirring = false;
-                validMovementCount = 0;
-                StopStirEffect();
-            }
-        }
-    }
-
-    private void LoadNextScene()
-    {
-        StopStirEffect();
-        if (sceneController != null)
-        {
-            if (!string.IsNullOrEmpty(nextSceneName))
-            {
-                sceneController.LoadSceneByName(nextSceneName);
-            }
-            else
-            {
-                sceneController.LoadNextScene();
-            }
-        }
+        lastAcceleration = acceleration;
     }
 
     private void MoveSpoon(float deltaX)
@@ -323,19 +149,9 @@ public class BarSpoonController : MonoBehaviour
 
     private void PlayStirEffect()
     {
-        if (!isPlayingSound && !isFadingOut && SoundsManager.instance != null)
+        if (audioSource != null && stirSound != null && !audioSource.isPlaying)
         {
-            SoundsManager.instance.PlaySFXWithFade("stirring", soundFadeInDuration);
-            isPlayingSound = true;
-        }
-    }
-
-    private void StopStirEffect()
-    {
-        if (isPlayingSound && !isFadingOut && SoundsManager.instance != null)
-        {
-            SoundsManager.instance.StopSFXWithFade("stirring", soundFadeOutDuration);
-            isPlayingSound = false;
+            audioSource.Play();
         }
     }
 
@@ -347,39 +163,15 @@ public class BarSpoonController : MonoBehaviour
         Handheld.Vibrate();
         #endif
     }
-    
-    private void UpdateTextTransparency()
-    {
-        // Check if textMeshProObject is assigned
-        if (textMeshProObject == null)
-        {
-            Debug.LogWarning("TextMeshPro object is not assigned!");
-            return;
-        }
-
-        // Get the current color
-        Color color = textMeshProObject.color;
-
-        // Set alpha to 0 if either isBeingTouched or isShaking is true, otherwise set it to full opacity
-        color.a = (isDragging || isStirring) ? 0 : 1;
-        
-        // Apply the updated color back to the text object
-        textMeshProObject.color = color;
-    }
-
-    private void OnDisable()
-    {
-        StopStirEffect();
-    }
 
     private void OnDestroy()
     {
-        StopStirEffect();
         currentShakeTween?.Kill();
     }
 
     private void OnDrawGizmos()
     {
+        // 터치 가능 영역 시각화 (디버그용)
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position, new Vector3(2f, 1f, 1f));
     }

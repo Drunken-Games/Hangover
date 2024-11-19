@@ -1,15 +1,11 @@
 using UnityEngine;
 using UnityEngine.Networking; // HTTP 요청을 위한 네임스페이스
 using UnityEngine.UI; // UI 관련 네임스페이스 추가
-using System.Collections;
-using System.Collections.Generic; // 코루틴을 사용하기 위한 네임스페이스
+using System.Collections; // 코루틴을 사용하기 위한 네임스페이스
 using System.Text; // 문자열 인코딩을 위한 네임스페이스
 using TMPro; // TextMesh Pro 관련 네임스페이스 추가
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
-using Febucci.UI.Core;
 
-public class RankManager : MonoBehaviour, IPointerDownHandler
+public class RankManager : MonoBehaviour
 {
     private const string baseUrl = "https://k11c205.p.ssafy.io/hangover/api/v1/rank"; // API 기본 URL
 
@@ -17,52 +13,13 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
     [SerializeField] private TMP_Text rankText; // Unity에서 설정할 Text UI 요소
     [SerializeField] private GameObject textPrefab; // UI 텍스트 Prefab
     [SerializeField] private Transform content; // Grid Layout Group의 Content
-    [SerializeField] private GameObject itemPrefab;
-    [SerializeField] private TMP_Text resultTextObject;
-
-    // public TypewriterCore resultText;  
-    private TouchScreenKeyboard keyboard; // 모바일 키보드 변수
 
     private void Start() 
     {
         StartCoroutine(GetRanks());
-         // TMP_InputField가 활성화될 때 포커스를 자동으로 설정하도록 리스너 추가
-        nicknameInput.onSelect.AddListener(delegate { ActivateKeyboard(); });
-
-         // 입력이 끝났을 때 RegisterRank 메서드 호출
-        nicknameInput.onEndEdit.AddListener(delegate { RegisterRank(); });
-
-        resultTextObject.text = "<wave>" + (GameManager.instance.ArcadeGold * 100).ToString() + "</wave>";
-        // resultText.ShowText((GameManager.instance.ArcadeGold * 100).ToString());
     }
 
-    private void Update() 
-    {
-        // TouchScreenKeyboard에서 입력한 텍스트를 TMP_InputField에 업데이트
-        if (keyboard != null && keyboard.active)
-        {
-            nicknameInput.text = keyboard.text; // 키보드의 텍스트를 InputField에 반영
-        }
-    } 
-
-    // 사용자가 InputField를 터치했을 때 포커스 설정
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        ActivateKeyboard(); // 키보드 활성화
-    }
-
-    private void ActivateKeyboard()
-    {
-        nicknameInput.Select(); // InputField 선택
-        nicknameInput.ActivateInputField(); // 모바일 키보드 강제 활성화
-
-        // 모바일 환경에서 키보드를 강제로 열도록 추가
-        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
-    }
-
-
-
-    private RankDto[] ParseJsonArray(string json)
+      private RankDto[] ParseJsonArray(string json)
     {
         // JSON 배열에서 대괄호 제거
         json = json.TrimStart('[').TrimEnd(']');
@@ -92,24 +49,11 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
     public void RegisterRank()
     {
         string userNickname = nicknameInput.text; // 입력된 닉네임 가져오기
-        int finalMoney = GameManager.instance.ArcadeGold * 100; // 예시 값, 실제 값으로 대체 필요
-        int finalDay = 1; // 예시 값, 실제 값으로 대체 필요
+        int finalMoney = 1000; // 예시 값, 실제 값으로 대체 필요
+        int finalDay = 5; // 예시 값, 실제 값으로 대체 필요
         Debug.Log("요청" + userNickname + ", " + finalMoney + ", " + finalDay);
         StartCoroutine(PostRank(userNickname, finalMoney, finalDay));
         Debug.Log("성공" + userNickname + ", " + finalMoney + ", " + finalDay);
-        
-        GameManager.instance.NPC_ID = 0; // 아케이드 모드 NPC id
-        GameManager.instance.Correct_ID = new List<int>(); // 아케이드 모드 주문 술
-        GameManager.instance.isReactionPhase = false; // 아케이드 모드 단계
-        GameManager.instance.ArcadeGold = 0; // 아케이드 모드 골드 
-        // 타이머 초기화 및 정지
-        GameManager.instance.StopArcadeTimer(); // 타이머 정지
-        GameManager.instance.arcadeTimer = 0; // 타이머 초기화
-        GameManager.instance.hasTimerEnded = false; // 타이머 종료 상태 확인 변수
-        GameManager.instance.ArcadeStory = false;
-        GameManager.instance.life = 3;
-        SceneManager.LoadScene("RankScene");
-
     }
 
     // 랭킹 정보를 등록하는 메서드 2
@@ -178,31 +122,23 @@ public class RankManager : MonoBehaviour, IPointerDownHandler
 
     private void DisplayRanks(RankDto[] userRanks)
     {
-        // 기존 아이템 제거
+        // 기존 텍스트 제거
         foreach (Transform child in content)
         {
-            Destroy(child.gameObject); // Content의 자식 요소를 모두 제거하여 초기화
+            Destroy(child.gameObject);
         }
 
+        // 헤더 추가
+        CreateText("닉네임");
+        CreateText("최종 금액");
+        CreateText("최종 일수");
+
         // 데이터 추가
-        for(int i = 0; i < userRanks.Length; i++)
+        foreach (RankDto rank in userRanks)
         {
-            RankDto rank = userRanks[i];
-
-            // Item prefab을 클론하여 새로운 아이템 생성
-            GameObject item = Instantiate(itemPrefab, content); // content의 자식으로 설정하면서 클론 생성
-
-            // 아이템 내의 텍스트 설정
-             TMP_Text[] texts = item.GetComponentsInChildren<TMP_Text>(); // 아이템 내의 모든 Text 컴포넌트 가져오기
-             
-            // 각각의 텍스트에 값 설정
-            if (texts.Length >= 3)
-            {
-                texts[0].text = (i + 1).ToString(); // 등수
-                texts[1].text = rank.userNickname; // 닉네임 설정
-                texts[2].text = rank.finalMoney.ToString(); // 최종 금액 설정
-                // texts[3].text = rank.finalDay.ToString(); // 최종 일수 설정
-            }
+            CreateText(rank.userNickname);
+            CreateText(rank.finalMoney.ToString());
+            CreateText(rank.finalDay.ToString());
         }
     }
 

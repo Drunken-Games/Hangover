@@ -2,14 +2,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 public class RecipeItem : MonoBehaviour
 {
     [Header("Cocktail Info Settings")]
     [SerializeField] private Image CocktailImage;
     [SerializeField] private TMP_Text CoctailNameText;
-    [SerializeField] private TMP_Text CoctailMethodText;
     [SerializeField] private string CocktailName;
     [SerializeField] private string CocktailAlcoholContent;
     [SerializeField] private string CocktailTaste;
@@ -30,15 +28,10 @@ public class RecipeItem : MonoBehaviour
     [SerializeField] private Transform BlueGageContainer;
     
 
-    public void SetData(Sprite iconSprite, string name, string sweet, string sour, string bitter, string spice, string spirit, string alcoholContent, string taste, string description, string  method)
+    public void SetData(Sprite iconSprite, string name, string sweet, string sour, string bitter, string spice, string spirit, string alcoholContent, string taste, string description)
     {
-        List<string> MethodList = new List<string> { "빌드", "젓기", "쉐이킹", "블랜딩" };
-
-        
-        
         CocktailImage.sprite = iconSprite;
         CoctailNameText.text = $"{name} ({alcoholContent}%)";
-        CoctailMethodText.text = MethodList[int.Parse(method)];
 
         CocktailName = name;
         CocktailAlcoholContent = alcoholContent;

@@ -1,753 +1,157 @@
-using System.Collections.Generic;
 using System.Collections;
-using System.Linq; // System.Linq ì¶”ê°€
-using System.Threading.Tasks;
+using System.Collections.Generic; // List<T> »ç¿ëÀ» À§ÇÑ ³×ÀÓ½ºÆäÀÌ½º Ãß°¡
+using System.IO; // ÆÄÀÏ ÀĞ±â ¹× ¾²±â ±â´ÉÀ» À§ÇÑ ³×ÀÓ½ºÆäÀÌ½º Ãß°¡
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Text.RegularExpressions;
-using UnityEngine.EventSystems;
-using Febucci.UI.Core;
+//using System.Text.RegularExpressions;
 
-public static class AsyncOperationExtensions
+public class GameSence : MonoBehaviour
 {
-    public static Task AsTask(this AsyncOperation asyncOperation)
-    {
-        var tcs = new TaskCompletionSource<object>();
-        asyncOperation.completed += _ => tcs.SetResult(null);
-        return tcs.Task;
-    }
-}
+    public TextMeshProUGUI dialogueText;       // ´ë»ç ÅØ½ºÆ® UI
+    public TextMeshProUGUI characterNameText;  // Ä³¸¯ÅÍ ÀÌ¸§ ÅØ½ºÆ® UI
+    public TextMeshProUGUI dayText;            // ÇöÀç Day ÅØ½ºÆ® UI
+    public Button nextButton;                  // ´ÙÀ½ ¹öÆ° UI
 
-public class GameSence : MonoBehaviour, IPointerDownHandler
-{
-    private TextMeshProUGUI checkText;
-    public TypewriterCore dialogueText;       // ëŒ€í™” í…ìŠ¤íŠ¸ UI
-    public TextMeshProUGUI characterNameText;  // ìºë¦­í„° ì´ë¦„ í…ìŠ¤íŠ¸ UI
-    public TextMeshProUGUI dayText;            // í˜„ì¬ Day í…ìŠ¤íŠ¸ UI
-    public Button nextButton;                  // ë‹¤ìŒ ë²„íŠ¼ UI
-
-    private List<DialogueEntry> dialogues;     // ëŒ€í™” ë‚´ìš© ë°ì´í„°ë¥¼ ë‹´ì„ ë¦¬ìŠ¤íŠ¸
-
-    private GameObject nameInputPanel;  // NameInputPanel ì˜¤ë¸Œì íŠ¸
-    private TMP_InputField nameInputField;  // NameInputField ì˜¤ë¸Œì íŠ¸
-    private Button submitButton;  // ì´ë¦„ ì œì¶œ ë²„íŠ¼
-    private TouchScreenKeyboard keyboard; // ëª¨ë°”ì¼ í‚¤ë³´ë“œ ë³€ìˆ˜
-
-    public ChoiceHandler choiceHandler;
-    private GameObject notificationPanel; // NotificationPanel ì˜¤ë¸Œì íŠ¸
-
-    [SerializeField] private CocktailCal cocktailCal; // CocktailCal ì¸ìŠ¤í„´ìŠ¤
-    private bool isUpdateComplete = false;
-
-    private Coroutine currentCoroutine;
-
-    private bool check_build = false;
-    private bool is_RCOPEN = false;
-    private int nextid = -1;
+    private List<DialogueEntry> dialogues;     // ¸ğµç ´ë»ç µ¥ÀÌÅÍ¸¦ ´ã´Â ¸®½ºÆ®
+    private int currentDialogueIndex;          // ÇöÀç ´ë»çÀÇ ÀÎµ¦½º
+    public int? nextDialogueId;                // ´ÙÀ½ ´ë»ç ID (nullÀÏ °æ¿ì ´ÙÀ½ Day·Î ÀÌµ¿)
 
     void Start()
     {
         Canvas canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
         if (canvas == null)
         {
-            Debug.LogError("Canvasë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. Canvasê°€ ì¡´ì¬í•˜ëŠ”ì§€ í™•ì¸í•´ ì£¼ì„¸ìš”.");
+            Debug.LogError("Canvas¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù. Canvas°¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎÇÏ¼¼¿ä.");
             return;
         }
-        // Canvas í•˜ìœ„ì˜ ChoiceHandler ì°¾ê¸°
-        notificationPanel = canvas.transform.Find("NotificationPanel")?.gameObject;
-        choiceHandler = notificationPanel?.GetComponent<ChoiceHandler>();
-        if (choiceHandler == null || notificationPanel == null)
-        {
-            Debug.LogError("NotificationPanel ë˜ëŠ” ChoiceHandler ìŠ¤í¬ë¦½íŠ¸ë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
-            return;
-        }
-        // Canvas í•˜ìœ„ì˜ DialogueImageì—ì„œ UI ìš”ì†Œ ì°¾ê¸°
-        Transform dialogueImageTransform = canvas.transform.Find("DialogueImage");
-        if (dialogueImageTransform == null)
-        {
-            Debug.LogError("DialogueImageë¥¼ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
-            return;
-        }
-        // Canvas ì•ˆì˜ UI ìš”ì†Œ ì°¾ê¸°
-        dialogueText = dialogueImageTransform.transform.Find("DialogueText")?.GetComponent<TypewriterCore>();
-        checkText= dialogueImageTransform.transform.Find("DialogueText").GetComponent<TextMeshProUGUI>();
-        characterNameText = dialogueImageTransform.transform.Find("CharacterNameText")?.GetComponent<TextMeshProUGUI>();
-        dayText = canvas.transform.Find("DayText")?.GetComponent<TextMeshProUGUI>();
-        nextButton = dialogueImageTransform.transform.Find("NextButton")?.GetComponent<Button>();
 
-        if (nextButton != null)
+        // Canvas ³»¿¡¼­ UI ¿ä¼Ò¸¦ Ã£¾Æ ¼³Á¤
+        dialogueText = canvas.transform.Find("DialogueText")?.GetComponent<TextMeshProUGUI>();
+        if (dialogueText == null) Debug.LogError("DialogueText¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+
+        characterNameText = canvas.transform.Find("CharacterNameText")?.GetComponent<TextMeshProUGUI>();
+        if (characterNameText == null) Debug.LogError("CharacterNameText¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+
+        dayText = canvas.transform.Find("DayText")?.GetComponent<TextMeshProUGUI>();
+        if (dayText == null) Debug.LogError("DayText¸¦ Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+
+        nextButton = canvas.transform.Find("NextButton")?.GetComponent<Button>();
+        if (nextButton == null) Debug.LogError("NextButtonÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù.");
+        else
         {
             nextButton.onClick.AddListener(ProceedToNextDialogue);
         }
-
-        // NameInputPanel ë° í•˜ìœ„ ìš”ì†Œë“¤ ì°¸ì¡°
-        nameInputPanel = canvas.transform.Find("NameInputPanel")?.gameObject;
-        nameInputField = nameInputPanel?.transform.Find("NameInputField")?.GetComponent<TMP_InputField>();
-        submitButton = nameInputPanel?.transform.Find("SubmitButton")?.GetComponent<Button>();
-
-        if (cocktailCal == null)
-        {
-            Debug.Log("GameSence.cs - Start() - cocktailCal ëª»ì°¾ìŒ");
-        }
-
-        if (nameInputPanel == null || nameInputField == null || submitButton == null)
-        {
-            Debug.LogError("NameInputPanel ë˜ëŠ” ê·¸ í•˜ìœ„ ìš”ì†Œë“¤ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤. ì´ë¦„ì„ ë‹¤ì‹œ í™•ì¸í•´ ì£¼ì„¸ìš”.");
-            return;
-        }
-
-        cocktailCal = GameObject.FindObjectOfType<CocktailCal>();
-        if (cocktailCal == null)
-        {
-            Debug.LogError("CocktailCalì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
-        }
-        else
-        {
-            Debug.Log("CocktailCalì„ ì°¾ì•˜ìŠµë‹ˆë‹¤.");
-        }
-
-
-        // ì‹œì‘ ì‹œ ë¹„í™œì„±í™”
-        nameInputPanel.SetActive(false);
-        // submitButton í´ë¦­ ì‹œ SavePlayerName ë©”ì„œë“œ í˜¸ì¶œ
-        submitButton.onClick.AddListener(SavePlayerName);
-
-        // GameManagerì˜ ëŒ€í™” ë°ì´í„°ë¥¼ ë¶ˆëŸ¬ì˜¤ê¸°
+        // ´ë»ç µ¥ÀÌÅÍ¸¦ ºÒ·¯¿É´Ï´Ù.
         dialogues = GameManager.instance.dialogues;
-        // GameManagerì˜ currentDialogueIndexë¡œ ì²« ë²ˆì§¸ ëŒ€í™” í‘œì‹œ
-        SoundsManager.instance.StopAllSFX();
-        SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
-        Debug.Log("Start");
-        DisplayDialogue(GetCurrentDialogueEntry());
+        //LoadDialogues(Application.dataPath + "/04 Resources/Dialogues.csv");
+        //new List<DialogueEntry>();
 
-        // ëŒ€í™” ì¸ë±ìŠ¤ í™•ì¸í•˜ì—¬ ì´ë¦„ ì…ë ¥ íŒ¨ë„ í‘œì‹œ
-        GameManager.instance.CheckDialogueForNameInput();
+        // ¼¼ÀÌºê µ¥ÀÌÅÍ¿¡¼­ ½ÃÀÛÇÒ ´ë»ç ID ·Îµå (¾øÀ¸¸é Ã³À½ºÎÅÍ)
+        int savedDialogueId = PlayerPrefs.GetInt("SavedDialogueId", 1);
+        currentDialogueIndex = savedDialogueId != -1
+            ? dialogues.FindIndex(d => d.id == savedDialogueId)
+            : 0;
 
-        // TMP_InputFieldê°€ í™œì„±í™”ë  ë•Œ í¬ì»¤ìŠ¤ë¥¼ ìë™ìœ¼ë¡œ ì„¤ì •í•˜ë„ë¡ ë¦¬ìŠ¤ë„ˆ ì¶”ê°€
-        nameInputField.onSelect.AddListener(delegate { ActivateKeyboard(); });
-
-         // ì…ë ¥ì´ ëë‚¬ì„ ë•Œ SavePlayerName ë©”ì„œë“œ í˜¸ì¶œ
-        nameInputField.onEndEdit.AddListener(delegate { SavePlayerName(); });
+        // Ã¹ ¹øÂ° ´ë»ç Ç¥½Ã
+        if (currentDialogueIndex >= 0 && currentDialogueIndex < dialogues.Count)
+            DisplayDialogue(dialogues[currentDialogueIndex]);
+       
     }
-
-    void Update()
+    void ProceedToNextDialogue()
     {
-        // BuildSceneì—ì„œ ëŒì•„ì™”ì„ ë•Œ íŠ¹ì • ì¡°ê±´ì— ë”°ë¼ ë‹¤ìŒ ëŒ€ì‚¬ë¡œ ì´ë™
-        if (GameManager.instance.GameSceneNeedsProceed)
-        {
-            // ì¶”ê°€ ë¡œê·¸ í™•ì¸
-            if (cocktailCal.cocktails == null || cocktailCal.cocktails.Count == 0)
-            {
-                Debug.LogError("GameSenceì—ì„œ cocktailCalì˜ cocktails ë¦¬ìŠ¤íŠ¸ê°€ nullì´ê±°ë‚˜ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤.");
-            }
-            else
-            {
-                Debug.Log("GameSenceì—ì„œ cocktailCalì˜ cocktails ë¦¬ìŠ¤íŠ¸ê°€ ì •ìƒì ìœ¼ë¡œ ì°¸ì¡°ë˜ì—ˆìŠµë‹ˆë‹¤.");
-            }
-            // í”Œë˜ê·¸ë¥¼ falseë¡œ ì„¤ì •í•˜ì—¬ ë°˜ë³µ ì‹¤í–‰ ë°©ì§€
-            GameManager.instance.GameSceneNeedsProceed = false;
+        DialogueEntry currentDialogue = dialogues[currentDialogueIndex];
 
-            // ProceedToNextDialogueì˜ íŠ¹ì • ë¶€ë¶„ ì‹¤í–‰
-            DialogueEntry currentDialogue = GetCurrentDialogueEntry();
-            int currentRecipeId = GameManager.instance.GetRecipeId();
-            //
-            //price=Assets/04 Resources/CocktailData/CocktailDatabase ì—ì„œ currentDialogue.cocktailIdì™€ ì¼ì¹˜í•˜ëŠ” ì¹µí…Œì¼ Idë¥¼ ì°¾ì•„ì„œ ê·¸ ê²ƒì˜ pirceë¥¼ ë„£ì–´ë‘”ë‹¤
-            // price ê°’ ì„¤ì •
-            int price = cocktailCal.GetCocktailPrice(currentRecipeId);
-
-            //if (currentDialogue.nextDialogueIds.Count > 1)
-            //{
-            StartCoroutine(HandleDialogueProcessing());
-            SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
-            dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TypewriterCore>();
-            //while (dialogueText.text != GetCurrentDialogueEntry().text)
-            //{
-                DisplayDialogue(GetCurrentDialogueEntry());
-            //}
-            //}
-            //else if(currentDialogue.nextDialogueIds.Count==1)
-            //{
-
-            //}
-        }
-
-        isUpdateComplete = true;
-        Debug.Log($"{GetCurrentDialogueEntry().text},{characterNameText.text},{dayText.text}");
-        Debug.Log(checkText.text);
-        if (is_RCOPEN==false&& checkText.text != GetCurrentDialogueEntry().text)
-        {
-            Debug.Log("Update");
-            DisplayDialogue(GetCurrentDialogueEntry());
-            is_RCOPEN = true;
-        }
-        Debug.Log(isUpdateComplete);
-
-         // TouchScreenKeyboardì—ì„œ ì…ë ¥í•œ í…ìŠ¤íŠ¸ë¥¼ TMP_InputFieldì— ì—…ë°ì´íŠ¸
-        if (keyboard != null && keyboard.active)
-        {
-            nameInputField.text = keyboard.text; // í‚¤ë³´ë“œì˜ í…ìŠ¤íŠ¸ë¥¼ InputFieldì— ë°˜ì˜
-        }
-    }
-
-
-    // ì´ë¦„ ì €ì¥ ë° íŒ¨ë„ ë¹„í™œì„±í™” ë©”ì„œë“œ
-    private void SavePlayerName()
-    {
-        // nameInputFieldì˜ í…ìŠ¤íŠ¸ë¥¼ GameManagerì˜ playerNameì— ì €ì¥
-        GameManager.instance.dayResultData.playerName = nameInputField.text;
-        if (nameInputField.text != null)
-        {
-            Debug.Log($"Player name saved: {GameManager.instance.dayResultData.playerName}");
-            nameInputPanel.SetActive(false);
-            // ì´ë¦„ ì…ë ¥ íŒ¨ë„ì„ ì œê±°
-            Destroy(nameInputPanel);
-            // nextButton í™œì„±í™”ë¥¼ ìœ„í•œ ì½”ë£¨í‹´ ì‹¤í–‰
-            StartCoroutine(WaitForNextButtonActivation());
-        }
-
-    }
-
-
-    // ì‚¬ìš©ìê°€ InputFieldë¥¼ í„°ì¹˜í–ˆì„ ë•Œ í¬ì»¤ìŠ¤ ì„¤ì •
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        ActivateKeyboard(); // í‚¤ë³´ë“œ í™œì„±í™”
-    }
-
-    private void ActivateKeyboard()
-    {
-        nameInputField.Select(); // InputField ì„ íƒ
-        nameInputField.ActivateInputField(); // ëª¨ë°”ì¼ í‚¤ë³´ë“œ ê°•ì œ í™œì„±í™”
-
-        // ëª¨ë°”ì¼ í™˜ê²½ì—ì„œ í‚¤ë³´ë“œë¥¼ ê°•ì œë¡œ ì—´ë„ë¡ ì¶”ê°€
-        keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default);
-    }
-    // nextButtonì´ í™œì„±í™”ë  ë•Œê¹Œì§€ ê¸°ë‹¤ë¦¬ëŠ” ì½”ë£¨í‹´
-    private System.Collections.IEnumerator WaitForNextButtonActivation()
-    {
-        // nextButtonì˜ SetActive ìƒíƒœê°€ trueê°€ ë  ë•Œê¹Œì§€ ë°˜ë³µ
-        while (!nextButton.gameObject.activeSelf)
-        {
-            nextButton.gameObject.SetActive(true);
-            yield return null;  // í•œ í”„ë ˆì„ì„ ê¸°ë‹¤ë¦½ë‹ˆë‹¤
-        }
-
-        // nextButtonì´ í™œì„±í™”ë˜ë©´ ë‹¤ìŒ ëŒ€í™”ë¡œ ì§„í–‰
-        ProceedToNextDialogue();
-    }
-
-
-    // GameManagerì˜ currentDialogueIndexë¥¼ ê¸°ë°˜ìœ¼ë¡œ í˜„ì¬ ëŒ€í™” í•­ëª© ê°€ì ¸ì˜¤ê¸°
-    DialogueEntry GetCurrentDialogueEntry()
-    {
-
-        int currentDialogueIndex = GameManager.instance.currentDialogueIndex;
-        Debug.Log(currentDialogueIndex);
-        // í˜„ì¬ ëŒ€í™” ì¸ë±ìŠ¤ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ëŒ€í™” ë¦¬ìŠ¤íŠ¸ì—ì„œ í•´ë‹¹ ì¸ë±ìŠ¤ë¥¼ ë°˜í™˜
-        DialogueEntry dialogueEntry = dialogues.FirstOrDefault(d => d.id == currentDialogueIndex);
-
-        if (EqualityComparer<DialogueEntry>.Default.Equals(dialogueEntry, default(DialogueEntry)))
-        {
-            Debug.LogError($"í•´ë‹¹ ID {currentDialogueIndex}ì— ë§ëŠ” ëŒ€í™” í•­ëª©ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
-        }
-
-        else
-        {
-            // ì†ì„±ë“¤ì´ ì˜¬ë°”ë¥´ê²Œ ì¶œë ¥ë˜ë„ë¡ ë¡œê·¸ ì¶”ê°€
-            Debug.Log($"ID: {dialogueEntry.id}, Day: {dialogueEntry.day}, Character: {dialogueEntry.character}, Text: {dialogueEntry.text}, Cocktail ID: {dialogueEntry.cocktailIds}");
-        }
-        return dialogueEntry;
-    }
-    IEnumerator HandleDialogueProcessing()
-    {
-        DialogueEntry currentDialogue = GetCurrentDialogueEntry();
-        int currentRecipeId = GameManager.instance.GetRecipeId();
-        int price = cocktailCal.GetCocktailPrice(currentRecipeId);
-        Debug.Log("hi");
         if (currentDialogue.nextDialogueIds.Count > 1)
         {
-            if (currentDialogue.text.Contains("{Build}") && currentDialogue.id != 78)
-            {
-                Debug.Log(1);
-                int firstNextDialogueId = currentDialogue.nextDialogueIds[0];
-                int secondNextDialogueId = currentDialogue.nextDialogueIds[1];
-                Debug.Log($"currentRecipeId: {currentRecipeId}, currentDialogue.cocktailId: {currentDialogue.cocktailIds}");
+            // ÆÇÁ¤ÀÌ ÇÊ¿äÇÑ °æ¿ì Ä¬Å×ÀÏ SceneÀ¸·Î ÀÌµ¿
+            SceneManager.LoadScene("CocktailScene");
 
-                // í˜„ì¬ ëŒ€ì‚¬ì˜ ì¹µí…Œì¼ IDì™€ í˜„ì¬ ì„ íƒëœ ì¹µí…Œì¼ IDê°€ ì¼ì¹˜í•˜ëŠ”ì§€ í™•ì¸
-                bool foundMatchingId = true;
-
-                for (int i = 0; i < currentDialogue.cocktailIds.Count; i++)
-                {
-                    if (currentRecipeId == currentDialogue.cocktailIds[i])
-                    {
-                        foundMatchingId = false;
-                        Debug.Log(currentRecipeId);
-                        break; // ì¼ì¹˜í•˜ëŠ” IDë¥¼ ì°¾ìœ¼ë©´ ë£¨í”„ ì¢…ë£Œ
-                    }
-                }
-
-                if (foundMatchingId && currentRecipeId != 0)
-                {
-                    int nextDialogueIndex = dialogues.FindIndex(d => d.id == firstNextDialogueId);
-                    if (nextDialogueIndex != -1)
-                    {
-                        GameManager.instance.currentDialogueIndex = firstNextDialogueId;
-                        Debug.Log($"ì²« ë²ˆì§¸ ë‹¤ìŒ ëŒ€ì‚¬ë¡œ ì´ë™í•©ë‹ˆë‹¤. ë‹¤ìŒ ëŒ€ì‚¬ ID: {firstNextDialogueId}");
-                    }
-                }
-                else
-                {
-                    GameManager.instance.currentDialogueIndex = secondNextDialogueId;
-                    Debug.Log($"ë‘ ë²ˆì§¸ ë‹¤ìŒ ëŒ€ì‚¬ë¡œ ì´ë™í•©ë‹ˆë‹¤. ë‹¤ìŒ ëŒ€ì‚¬ ID: {secondNextDialogueId}");
-
-                    // ì„±ê³µ ì‹œ Total Profitì— íŠ¹ì • ê°€ê²© ì¶”ê°€
-                    GameManager.instance.dayResultData.totalProfit += price; // ì˜ˆì‹œë¡œ 100 ì¶”ê°€
-                    Debug.Log("ì„±ê³µí•˜ì—¬ Total Profitì´ ì¦ê°€í–ˆìŠµë‹ˆë‹¤.");
-                }
-            }
-            else if (currentDialogue.id == 78)
-            {
-                if (currentRecipeId == 9)
-                {
-                    GameManager.instance.currentDialogueIndex = 83;
-                    GameManager.instance.dayResultData.totalProfit += price; // ì˜ˆì‹œë¡œ 100 ì¶”ê°€
-                    Debug.Log("ì„±ê³µí•˜ì—¬ Total Profitì´ ì¦ê°€í–ˆìŠµë‹ˆë‹¤.");
-                }
-                else if (currentRecipeId == 1 || currentRecipeId == 15)
-                {
-                    GameManager.instance.currentDialogueIndex = 80;
-                    GameManager.instance.dayResultData.totalProfit += price; // ì˜ˆì‹œë¡œ 100 ì¶”ê°€
-                    Debug.Log("ì„±ê³µí•˜ì—¬ Total Profitì´ ì¦ê°€í–ˆìŠµë‹ˆë‹¤.");
-                }
-                else
-                {
-                    GameManager.instance.currentDialogueIndex = 79;
-                }
-            }
+            // ÆÇÁ¤ °á°ú´Â PlayerPrefs µîÀ» ÅëÇØ¼­ `CocktailScene`¿¡¼­ ¼±ÅÃµÈ ID¸¦ ¹İÈ¯¹Ş¾Æ¾ß ÇÕ´Ï´Ù.
+            // ÀÌÈÄ `SetNextDialogueIdByResult`¿¡¼­ °á°ú¸¦ Ã³¸®ÇÏ¿© ´ÙÀ½ ´ë»ç·Î ÀÌµ¿ÇÕ´Ï´Ù.
         }
         else if (currentDialogue.nextDialogueIds.Count == 1)
         {
-            int firstNextDialogueId = currentDialogue.nextDialogueIds[0];
-            GameManager.instance.currentDialogueIndex = firstNextDialogueId;
-            Debug.Log($"ì²« ë²ˆì§¸ ë‹¤ìŒ ëŒ€ì‚¬ë¡œ ì´ë™í•©ë‹ˆë‹¤. ë‹¤ìŒ ëŒ€ì‚¬ ID: {firstNextDialogueId}");
-            GameManager.instance.dayResultData.totalProfit += price; // ì˜ˆì‹œë¡œ 100 ì¶”ê°€
-            Debug.Log("ì„±ê³µí•˜ì—¬ Total Profitì´ ì¦ê°€í–ˆìŠµë‹ˆë‹¤.");
-        }
-
-
-        // ëŒì•„ì™”ì„ ë•Œ í•´ë‹¹ ëŒ€í™” IDì™€ ì¹µí…Œì¼ ID ë¹„êµí•˜ì—¬, ì„±ê³µì—¬ë¶€ íŒì •, ì„±ê³µ ì‹œ Total Profit ì— íŠ¹ì • ê°€ê²©ì„ ì˜¬ë¦¬ê¸°
-        // ì„±ê³µ ì—¬ë¶€ì™€ ê´€ê³„ì—†ì´ materialsì— ì¬ë£Œ ë¹„ìš© ì¶”ê°€
-        int[] cocktailParameters = GameManager.instance.GetCocktailParameters();
-        int materialCost = cocktailCal.CalculateMaterialCost(cocktailParameters);
-        GameManager.instance.dayResultData.materials += materialCost;
-        Debug.Log($"ì¬ë£Œ ë¹„ìš© {materialCost}ì´ materialsì— ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤. {currentRecipeId} {currentDialogue.cocktailIds}");
-        SoundsManager.instance.StopAllSFX();
-        Debug.Log(GameManager.instance.currentDialogueIndex);
-        yield break; // ë¹„ë™ê¸° ë©”ì„œë“œ ì¢…ë£Œ
-
-    }
-    // íŠ¹ìˆ˜ ë¶„ê¸° ì²˜ë¦¬ë¥¼ ìœ„í•œ ë©”ì„œë“œ
-    void HandleSpecialBranch(int branchId)
-    {
-        if (branchId != -1)
-        {
-            switch (branchId)
-            {
-                case 1:
-                    // ì˜ˆì‹œ: ë¶„ê¸° 1ì— ëŒ€í•œ ì²˜ë¦¬
-                    Debug.Log("íŠ¹ìˆ˜ ë¶„ê¸° 1 ì‹¤í–‰ ì¤‘...");
-                    // ì¶”ê°€ ë¡œì§...
-                    break;
-                case 2:
-                    // ì˜ˆì‹œ: ë¶„ê¸° 2ì— ëŒ€í•œ ì²˜ë¦¬
-                    Debug.Log("íŠ¹ìˆ˜ ë¶„ê¸° 2 ì‹¤í–‰ ì¤‘...");
-                    // ì¶”ê°€ ë¡œì§...
-                    break;
-                    // ë‹¤ë¥¸ ë¶„ê¸°ë“¤ ì¶”ê°€ ê°€ëŠ¥
-            }
-        }
-    }
-
-    // í…ìŠ¤íŠ¸ì˜ ëª¨ë“  í”Œë ˆì´ìŠ¤í™€ë”ë¥¼ ì²˜ë¦¬í•˜ê³  ì œê±°í•˜ëŠ” ë©”ì„œë“œ
-    IEnumerator ProcessDialogueText(string text, System.Action<string> callback)
-    {
-
-        string processedText = text;
-
-        if (processedText.Contains("{playerName}"))
-            processedText = processedText.Replace("{playerName}", GameManager.instance.dayResultData.playerName);
-        if (processedText.Contains("{name"))
-            processedText = processedText.Replace("{name}", HandleOpenName());
-        if (processedText.Contains("{openRecipe}"))
-            processedText = processedText.Replace("{openRecipe}", HandleOpenRecipeBook());
-
-        if (processedText.Contains("{closeRecipe}"))
-            processedText = processedText.Replace("{closeRecipe}", HandleCloseRecipeBook());
-
-        if (processedText.Contains("{Build}"))
-        {
-            yield return StartCoroutine(HandleOpenDrinkBuildScene(processedText));
-            processedText = processedText.Replace("{Build}", "");
-        }
-
-
-        if (processedText.Contains("{fireCount}"))
-            processedText = processedText.Replace("{fireCount}", HandleFireCount());
-
-        if (processedText.Contains("{robotCount}"))
-            processedText = processedText.Replace("{robotCount}", HandleRobotCount());
-
-        if (processedText.Contains("{checkRobot}"))
-            processedText = processedText.Replace("{checkRobot}", HandleCheckRobotCount());
-
-        if (processedText.Contains("{select}"))
-        {
-            processedText = processedText.Replace("{select}", HandleSelectPanel());
-            processedText = "";
-        }
-
-
-        if (processedText.Contains("{branchIdx}"))
-            processedText = processedText.Replace("{branchIdx}", HandleBranchIdx());
-
-        if (processedText.Contains("{checkTrigger1}"))
-            processedText = processedText.Replace("{checkTrigger1}", HandleCheckTrigger1Dialogue());
-
-        if (processedText.Contains("{checkTrigger2}"))
-            processedText = processedText.Replace("{checkTrigger2}", HandleCheckTrigger2Dialogue());
-
-        // {openEnding} ë’¤ì— ìˆ«ìê°€ ìˆì„ ê²½ìš° ì²˜ë¦¬
-        Match match = Regex.Match(processedText, @"\{openEnding}\s+(\d+)");
-        if (match.Success)
-        {
-            int endingNumber = int.Parse(match.Groups[1].Value);
-            processedText = processedText.Replace(match.Value, HandleOpenEndingScene(endingNumber));
-        }
-
-
-        callback?.Invoke(processedText);
-        yield break;
-    }
-
-    // HandleOpenName ë©”ì„œë“œ
-    string HandleOpenName()
-    {
-        if (nameInputPanel != null)
-        {
-            nameInputPanel.SetActive(true);
-            nameInputField.interactable = true;
-            submitButton.gameObject.SetActive(true);
-
-            nextButton.gameObject.SetActive(false);
-        }
-        return "";  // í•„ìš” ì‹œ ë°˜í™˜ ê°’ì„ ë³€ê²½í•  ìˆ˜ ìˆìŒ
-    }
-    // ê°œë³„ í”Œë ˆì´ìŠ¤í™€ë” ì²˜ë¦¬ ë©”ì„œë“œë“¤ (ì˜ˆì œ)
-    string HandleOpenRecipeBook()
-    {
-        // "GameUISet" ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ì€ í›„ ê·¸ í•˜ìœ„ì—ì„œ "RecipeUICanvas" ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ìŒ
-        GameObject gameUISet = GameObject.Find("GameUISet");
-
-        // "RecipeUICanvas" í•˜ìœ„ ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ìŒ
-        GameObject recipeUICanvas = gameUISet.transform.Find("RecipeUICanvas")?.gameObject;
-
-        recipeUICanvas.SetActive(true); // RecipeUICanvas í™œì„±í™”
-
-        return "";
-    }
-
-    string HandleCloseRecipeBook()
-    {
-        // "GameUISet" ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ì€ í›„ ê·¸ í•˜ìœ„ì—ì„œ "RecipeUICanvas" ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ìŒ
-        GameObject gameUISet = GameObject.Find("GameUISet");
-
-        // "RecipeUICanvas" í•˜ìœ„ ì˜¤ë¸Œì íŠ¸ë¥¼ ì°¾ìŒ
-        GameObject recipeUICanvas = gameUISet.transform.Find("RecipeUICanvas")?.gameObject;
-
-        recipeUICanvas.SetActive(false); // RecipeUICanvas ë¹„í™œì„±í™”
-
-
-        return "";
-    }
-
-
-
-    IEnumerator HandleOpenDrinkBuildScene(string processedText)
-    {
-        if (!GameManager.instance.GameSceneNeedsProceed && processedText == "{Build}")
-        {
-            // BuildSceneì„ ë¹„ë™ê¸°ë¡œ ë¡œë“œ
-            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("BuildScene");
-            while (!asyncLoad.isDone)
-            {
-                yield return null; // ë¹„ë™ê¸° ë¡œë“œê°€ ì™„ë£Œë  ë•Œê¹Œì§€ ëŒ€ê¸°
-            }
-            StopAllCoroutines(); // í˜„ì¬ MonoBehaviourì˜ ëª¨ë“  ì½”ë£¨í‹´ ì¤‘ì§€
-            this.enabled = false;
-            yield break; // ë©”ì„œë“œ ì¢…ë£Œ
-        }
-        else if (!GameManager.instance.GameSceneNeedsProceed)
-        {
-            check_build = true;
-            yield break;
-        }
-        yield break;
-        //else if (processedText == "{build}")
-        //{
-        //    ProceedToNextDialogue();
-        //    return;
-        //}
-        //
-        ///SceneManager.LoadScene("BuildScene");
-        //GameManager.instance.tempSpecialBranch = 1;
-    }
-
-    string HandleFireCount()
-    {
-        GameManager.instance.dayResultData.fireCount++;
-        return "";
-    }
-
-    string HandleRobotCount()
-    {
-        GameManager.instance.dayResultData.robotCount++;
-        return "";
-    }
-
-    string HandleBranchIdx()
-    {
-        //GameManager.instance.branchIdx++;
-        return "";
-    }
-
-    string HandleCheckRobotCount()
-    {
-        int dialogueId = GameManager.instance.dayResultData.robotCount == 2 ? 198 :
-                         GameManager.instance.dayResultData.robotCount == 1 ? 201 : 203;
-        nextid = dialogueId;
-        return "";
-    }
-
-    private System.Collections.IEnumerator SCShowSelectPanel()
-    {
-        while (!notificationPanel.gameObject.activeSelf)
-        {
-            notificationPanel.SetActive(true);
-            yield return null;
-        }
-    }
-
-    string HandleSelectPanel()
-    {
-        StartCoroutine(SCShowSelectPanel());
-
-        // NotificationPanelì—ì„œ PrimaryActionButton ë° SecondaryActionButtonì„ ê°€ì ¸ì˜´
-        Button primaryActionButton = notificationPanel.transform.Find("PrimaryActionButton")?.GetComponent<Button>();
-        Button secondaryActionButton = notificationPanel.transform.Find("SecondaryActionButton")?.GetComponent<Button>();
-        
-        if (primaryActionButton != null && secondaryActionButton != null)
-        {
-            // PrimaryActionButton í´ë¦­ ì‹œ endingTriggerë¥¼ 0ìœ¼ë¡œ ì„¤ì •í•˜ê³  íŒ¨ë„ì„ ìˆ¨ê¸´ í›„ ë‹¤ìŒ ëŒ€í™”ë¡œ ì´ë™
-            primaryActionButton.onClick.AddListener(() =>
-            {
-                GameManager.instance.dayResultData.endingTrigger = 0;
-                notificationPanel.SetActive(false);
-                ProceedToNextDialogue();
-            });
-
-            // SecondaryActionButton í´ë¦­ ì‹œ endingTriggerë¥¼ 1ë¡œ ì„¤ì •í•˜ê³  íŒ¨ë„ì„ ìˆ¨ê¸´ í›„ ë‹¤ìŒ ëŒ€í™”ë¡œ ì´ë™
-            secondaryActionButton.onClick.AddListener(() =>
-            {
-                GameManager.instance.dayResultData.endingTrigger = 1;
-                notificationPanel.SetActive(false);
-                ProceedToNextDialogue();
-            });
+            // ´ÙÀ½ ´ë»ç ID°¡ ÇÏ³ªÀÏ °æ¿ì ¹Ù·Î ÇØ´ç ID·Î ÀÌµ¿
+            nextDialogueId = currentDialogue.nextDialogueIds[0];
+            MoveToDialogueOrNextDay();
         }
         else
         {
-            Debug.LogError("NotificationPanel ë‚´ì˜ PrimaryActionButton ë˜ëŠ” SecondaryActionButtonì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+            // ´ÙÀ½ ´ë»ç ID°¡ ¾øÀ» °æ¿ì ´ÙÀ½ Day·Î ÀÌµ¿
+            nextDialogueId = null;
+            MoveToDialogueOrNextDay();
         }
-
-        return "";
     }
 
-    string HandleCheckTrigger1Dialogue()
+    // ÆÇÁ¤ °á°ú¿¡ µû¶ó ´ÙÀ½ ´ë»ç ID¸¦ ¼±ÅÃÇÏ´Â ¸Ş¼­µå
+    void SetNextDialogueIdByResult(int resultIndex)
     {
-        int dialogueId = GameManager.instance.dayResultData.endingTrigger == 0 ? 149 : 175;
-        nextid = dialogueId;
-        Debug.Log(dialogueId);
-        return "";
-    }
-
-    string HandleCheckTrigger2Dialogue()
-    {
-        int dialogueId = GameManager.instance.dayResultData.endingTrigger == 0 ? 206 : 225;
-        nextid = dialogueId;
-        return dialogueId.ToString();
-    }
-
-    // HandleOpenEndingScene ë©”ì„œë“œ
-    string HandleOpenEndingScene(int endingNumber)
-    {
-        GameManager.instance.endingNumber = endingNumber-1;
-        SceneManager.LoadScene("EndingScene");
-        return "";
-    }
-    void DisplayDialogue(DialogueEntry entry)
-    {
-        if (dialogueText == null)
+        DialogueEntry currentDialogue = dialogues[currentDialogueIndex];
+        if (resultIndex >= 0 && resultIndex < currentDialogue.nextDialogueIds.Count)
         {
-            dialogueText = GameObject.Find("Canvas/DialogueImage/DialogueText")?.GetComponent<TypewriterCore>();
-            if (dialogueText == null) return;
-        }
-        Debug.Log("HI");
-        StartCoroutine(ProcessDialogueText(entry.text, processedText =>
-        {
-            if (processedText == "") return;
-            //if (entry.text.Contains("{Build}")) return;
-            dialogueText.ShowText(processedText);
-            // Debug.Log(dialogueText.text);
-            if (!string.IsNullOrEmpty(GameManager.instance.dayResultData.playerName) && entry.character == "ì£¼ì¸ê³µ")
-            {
-                characterNameText.text = GameManager.instance.dayResultData.playerName;
-            }
-            else
-            {
-                characterNameText.text = entry.character;
-            }
-            dayText.text = "Day " + entry.day;
-        }));
-        Debug.Log("HI");
-        // Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
-        GameManager.instance.DialoguesLog.Add(new GameManager.DialogueLog(GameManager.instance.currentDialogueIndex, checkText.text));
-        return;
-    }
-    // ë‹¤ìŒ ëŒ€í™”ë¡œ ì´ë™í•˜ê¸°
-    void ProceedToNextDialogue()
-    {
-        if (nextid == -1)
-        {
-            if (check_build == true)
-            {
-                dialogueText = null;
-                SceneManager.LoadScene("BuildScene");
-                return;
-            }
-            DialogueEntry currentDialogue = GetCurrentDialogueEntry();
-            Debug.Log("596");
-            if (GameManager.instance.tempSpecialBranch != -1)
-            {
-                Debug.Log(GameManager.instance.tempSpecialBranch);
-                HandleSpecialBranch(GameManager.instance.tempSpecialBranch);
-                GameManager.instance.ClearSpecialBranch(); // ë¶„ê¸° ì²˜ë¦¬ í›„ ì´ˆê¸°í™”
-                return;
-            }
-
-            //string processedText = ProcessDialogueText(currentDialogue.text);
-            //dialogueText.text = processedText;
-
-            int currentRecipeId = GameManager.instance.GetRecipeId(); // í˜„ì¬ ë ˆì‹œí”¼ ID ê°€ì ¸ì˜¤ê¸°
-            int nextDialogueId = currentDialogue.nextDialogueIds[0];
-            Debug.Log(nextDialogueId);
-            //if (currentDialogue.nextDialogueIds.Count > 1)
-            //{
-
-
-            //}
-            if (GameManager.instance.currentDialogueIndex==97&&nextDialogueId == 97)
-            {
-                Debug.Log(GameManager.instance.currentDialogueIndex);
-            }
-            if (currentDialogue.nextDialogueIds.Count == 1 && nextDialogueId != -1)
-            {
-                // ë‹¤ìŒ ëŒ€í™” IDê°€ í•˜ë‚˜ì¸ ê²½ìš° ë°”ë¡œ í•´ë‹¹ IDë¡œ ì´ë™
-                //int nextDialogueId = currentDialogue.nextDialogueIds[0];
-                //int nextDialogueIndex = dialogues.FindIndex(d => d.id == nextDialogueId);
-                //if (nextDialogueIndex != -1)
-                //{
-                GameManager.instance.currentDialogueIndex = nextDialogueId;
-                //nextDialogueIndex;
-                Debug.Log(GameManager.instance.currentDialogueIndex);
-                SoundsManager.instance.StopAllSFX();
-                SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
-                Debug.Log("ProceedToNextDialogue");
-                DisplayDialogue(GetCurrentDialogueEntry());
-                //}
-            }
-            else if (GameManager.instance.DayResultProceed == false)
-            {
-                // ë‹¤ìŒ ëŒ€í™” IDê°€ ì—†ëŠ” ê²½ìš° DayResultSceneìœ¼ë¡œ ì´ë™
-                Debug.Log("ëŒ€í™”ê°€ ì¢…ë£Œë˜ì—ˆìŠµë‹ˆë‹¤. DayResultSceneìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤.");
-                // ë‹¤ìŒ ëŒ€í™” IDê°€ ì—†ëŠ” ê²½ìš°
-                // DayResultSceneìœ¼ë¡œ ì´ë™ í›„ ëŒì•„ì˜¨ í›„ì—
-                // ê·¸ ë‹¤ìŒ MoveToDialogueOrNextDay(); ì‹¤í–‰
-                //MoveToDialogueOrNextDay();
-
-                // í˜„ì¬ ëŒ€ì‚¬ì˜ day ê°’ì„ GameManagerì˜ DayNumì— ì €ì¥
-                GameManager.instance.dayResultData.dayNum = currentDialogue.day;
-                Debug.LogError("{currentDialogue.day}");
-                // ë‹¤ìŒ ëŒ€í™”ë¡œ ì´ë™í•˜ê¸° ìœ„í•´ í”Œë˜ê·¸ ì„¤ì •
-                GameManager.instance.DayResultProceed = true;
-                SceneManager.LoadScene("DayResultScene");
-            }
-            else if(GameManager.instance.DayResultProceed == true&&GameManager.instance.currentDialogueIndex==41 || GameManager.instance.currentDialogueIndex==93 || GameManager.instance.currentDialogueIndex == 138 || GameManager.instance.currentDialogueIndex == 174 || GameManager.instance.currentDialogueIndex ==192)
-            {
-                GameManager.instance.dayResultData.beforeMoney = 0;
-                GameManager.instance.dayResultData.totalProfit = 0;
-                GameManager.instance.dayResultData.tip = 0;
-                GameManager.instance.dayResultData.materials = 0;
-                GameManager.instance.dayResultData.netProfit = 0;
-                GameManager.instance.dayResultData.afterMoney = 0;
-                GameManager.instance.DayResultProceed = false;
-                Debug.Log(GameManager.instance.currentDialogueIndex);
-                MoveToDialogueOrNextDay();
-            }
+            nextDialogueId = currentDialogue.nextDialogueIds[resultIndex];
+            MoveToDialogueOrNextDay();
         }
         else
         {
-            GameManager.instance.currentDialogueIndex = nextid;
-            Debug.Log(GameManager.instance.currentDialogueIndex);
-            SoundsManager.instance.StopAllSFX();
-            SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
-            Debug.Log("ProceedToNextDialogue");
-            DisplayDialogue(GetCurrentDialogueEntry());
-            nextid = -1;
+            Debug.LogError("À¯È¿ÇÏÁö ¾ÊÀº ÆÇÁ¤ °á°úÀÔ´Ï´Ù.");
         }
     }
 
-    // ë‹¤ìŒ ëŒ€í™”ë¡œ ì´ë™í•˜ê±°ë‚˜ ë‹¤ìŒ Dayì˜ ì²« ë²ˆì§¸ ëŒ€í™”ë¡œ ì´ë™í•˜ëŠ” ë©”ì„œë“œ
+
+    // ´ÙÀ½ ´ë»ç·Î ÀÌµ¿ÇÏ°Å³ª ´ÙÀ½ DayÀÇ Ã¹ ´ë»ç·Î ÀÌµ¿ÇÏ´Â ¸Ş¼­µå
     void MoveToDialogueOrNextDay()
     {
-        int currentDialogueIndex = GameManager.instance.currentDialogueIndex;
-        int nextDay = dialogues[currentDialogueIndex].day + 1;
-
-        // nextDayì— í•´ë‹¹í•˜ëŠ” ì²« ë²ˆì§¸ ëŒ€í™” í•­ëª©ì„ ì°¾ê³ , id ê°’ì„ ê°€ì ¸ì˜µë‹ˆë‹¤.
-        // nextDayì— í•´ë‹¹í•˜ëŠ” ì²« ë²ˆì§¸ ëŒ€í™” í•­ëª©ì„ ì°¾ê³ , id ê°’ì„ ê°€ì ¸ì˜µë‹ˆë‹¤.
-        var nextDialogue = dialogues.FirstOrDefault(d => d.day == nextDay);
-
-        // ê¸°ë³¸ê°’ê³¼ ë¹„êµí•˜ì—¬ nextDialogueì˜ ì¡´ì¬ ì—¬ë¶€ í™•ì¸
-        int nextDayDialogueIndex = (nextDialogue.Equals(default(DialogueEntry))) ? -1 : nextDialogue.id;
-        if (nextDayDialogueIndex == 41 || nextDayDialogueIndex == 93 || nextDayDialogueIndex == 138 || nextDayDialogueIndex == 174 || nextDayDialogueIndex == 192)
+        if (nextDialogueId.HasValue)
         {
-            if (nextDayDialogueIndex != -1)
-            {
-                GameManager.instance.currentDialogueIndex = nextDayDialogueIndex;
-                SoundsManager.instance.StopAllSFX();
-                SoundsManager.instance.PlaySFX(GameManager.instance.currentDialogueIndex.ToString());
-                Debug.Log("MoveToDialogueOrNextDay");
-                Debug.Log(nextDayDialogueIndex);
-                Debug.Log(currentDialogueIndex);
-                DisplayDialogue(GetCurrentDialogueEntry());
-            }
-            else
-            {
-                dialogueText.ShowText("ë” ì´ìƒ ëŒ€í™”ê°€ ì—†ìŠµë‹ˆë‹¤."); // ëŒ€í™”ê°€ ì—†ì„ ë•Œ ë©”ì‹œì§€ í‘œì‹œ
-                nextButton.interactable = false;               // ë‹¤ìŒ ë²„íŠ¼ ë¹„í™œì„±í™”
-            }
+            // nextDialogueId°¡ ÀÖÀ» °æ¿ì ÇØ´ç IDÀÇ ´ë»ç ÀÎµ¦½º·Î ÀÌµ¿
+            currentDialogueIndex = dialogues.FindIndex(d => d.id == nextDialogueId.Value);
+        }
+        else
+        {
+            // nextDialogueId°¡ ¾øÀ» °æ¿ì ´ÙÀ½ DayÀÇ Ã¹ ¹øÂ° ´ë»ç·Î ÀÌµ¿
+            int nextDay = dialogues[currentDialogueIndex].day + 1;
+            currentDialogueIndex = dialogues.FindIndex(d => d.day == nextDay);
+        }
+
+        // ÇöÀç ÀÎµ¦½º°¡ À¯È¿ÇÑÁö È®ÀÎ ÈÄ, ´ë»ç Ç¥½Ã ¶Ç´Â Á¾·á ¸Ş½ÃÁö Ãâ·Â
+        if (currentDialogueIndex >= 0 && currentDialogueIndex < dialogues.Count)
+        {
+            DisplayDialogue(dialogues[currentDialogueIndex]);
+        }
+        else
+        {
+            dialogueText.text = "´õ ÀÌ»ó ´ë»ç°¡ ¾ø½À´Ï´Ù."; // ´ë»ç°¡ ¸ğµÎ ³¡³µÀ» ¶§ ¸Ş½ÃÁö Ç¥½Ã
+            nextButton.interactable = false;               // ´ÙÀ½ ¹öÆ° ºñÈ°¼ºÈ­
         }
     }
-        
+
+    // UI¿¡ ´ë»ç¿Í Ä³¸¯ÅÍ, Day Á¤º¸¸¦ Ç¥½ÃÇÏ´Â ¸Ş¼­µå
+    void DisplayDialogue(DialogueEntry entry)
+    {
+        if (dialogueText == null || characterNameText == null || dayText == null)
+        {
+            Debug.LogError("UI ¿ä¼Ò°¡ ¼³Á¤µÇÁö ¾Ê¾Ò½À´Ï´Ù.");
+            return;
+        }
+        dialogueText.text = entry.text;              // ´ë»ç ÅØ½ºÆ® ¼³Á¤
+        characterNameText.text = entry.character;    // Ä³¸¯ÅÍ ÀÌ¸§ ¼³Á¤
+        dayText.text = "Day " + entry.day;           // Day ÅØ½ºÆ® ¼³Á¤
+    }
 
 }
+//// Æ¯Á¤ ´ë»ç¿¡ ½ÇÆĞ, ¼º°ø, Æ¯¼ö »óÈ²¿¡ µû¸¥ ID°¡ ¸ğµÎ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+//bool HasMultipleNextIds(DialogueEntry dialogue)
+//{
+//    return GetFailNextId(dialogue.id) != null && GetSuccessNextId(dialogue.id) != null && GetSpecialNextId(dialogue.id) != null;
+//}
+//// ½ÇÆĞ ½Ã ´ÙÀ½ ´ë»ç ID ¹İÈ¯ (ÇÊ¿äÇÑ °æ¿ì ¼³Á¤)
+//int? GetFailNextId(int dialogueId) { /* ½ÇÆĞ ½Ã ´ÙÀ½ ID ·ÎÁ÷ */ return null; }
+
+//// ¼º°ø ½Ã ´ÙÀ½ ´ë»ç ID ¹İÈ¯ (ÇÊ¿äÇÑ °æ¿ì ¼³Á¤)
+//int? GetSuccessNextId(int dialogueId) { /* ¼º°ø ½Ã ´ÙÀ½ ID ·ÎÁ÷ */ return null; }
+
+//// Æ¯¼ö »óÈ² ½Ã ´ÙÀ½ ´ë»ç ID ¹İÈ¯ (ÇÊ¿äÇÑ °æ¿ì ¼³Á¤)
+//int? GetSpecialNextId(int dialogueId) { /* Æ¯¼ö »óÈ² ½Ã ´ÙÀ½ ID ·ÎÁ÷ */ return null; }

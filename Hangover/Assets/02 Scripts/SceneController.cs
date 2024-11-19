@@ -1,49 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    private string previousSceneName = "";
-
-    private void Start()
-    {
-        SceneManager.activeSceneChanged += OnSceneChanged;
-        // 현재 씬에 맞는 BGM을 초기화
-        OnSceneChanged(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.activeSceneChanged -= OnSceneChanged;
-    }
-
-    private void OnSceneChanged(Scene previousScene, Scene newScene)
-    {
-        string newSceneName = newScene.name;
-
-        // IntroScene이나 MainMenuScene으로 전환될 때만 테마곡 변경
-        if (newSceneName.Equals("MainMenuScene") || (newSceneName.Equals("GameScene") && !previousSceneName.Equals("CreaftingResultScene") ))
-        {
-            if (SoundsManager.instance != null)
-            {
-                SoundsManager.instance.PlayNextBGM(newSceneName);
-                Debug.Log(previousSceneName);
-            }
-        }
-        // 이전 씬이 IntroScene 또는 MainMenuScene이었고, 현재 씬이 다른 씬으로 전환된 경우에도 테마곡 유지
-        else if (previousSceneName.Equals("IntroScene") || previousSceneName.Equals("MainMenuScene") || previousSceneName.Equals("CreaftingResultScene"))
-        {
-            if (SoundsManager.instance != null)
-            {
-                SoundsManager.instance.PlayNextBGM("GameScene");
-            }
-        }
-
-        // 이전 씬 이름 갱신
-        previousSceneName = newSceneName;
-    }
-    
     // 다음 씬으로 전환
     public void LoadNextScene()
     {
@@ -68,10 +27,6 @@ public class SceneController : MonoBehaviour
     // 특정 씬 이름으로 전환
     public void LoadSceneByName(string sceneName)
     {
-        if(GameManager.instance.ArcadeStory == true && sceneName == "GameScene")
-        {
-            sceneName = "ArcadeScene";
-        }
         // GameManager 생성 또는 찾기
         GameManager gameManager = FindObjectOfType<GameManager>();
         

@@ -1,3 +1,4 @@
 repository "Hangover@3.35.55.143:8087"
   path "/"
-    smartbranch "/main/develop"
+    br "/main"
+    co "/main"

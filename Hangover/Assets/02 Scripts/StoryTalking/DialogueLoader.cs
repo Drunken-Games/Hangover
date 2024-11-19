@@ -3,31 +3,29 @@ using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
 
-// ëŒ€í™” ë°ì´í„°ë¥¼ ì €ì¥í•  êµ¬ì¡°ì²´ ì •ì˜
+// ´ë»ç Á¤º¸¸¦ ÀúÀåÇÒ ±¸Á¶Ã¼ Á¤ÀÇ
 [System.Serializable]
 public struct DialogueEntry
 {
-    public int id;                  // ëŒ€í™” ID
-    public int day;                 // í˜„ì¬ Day
-    public string character;        // ìºë¦­í„° ì´ë¦„
-    public string text;             // ëŒ€í™” í…ìŠ¤íŠ¸
-    public List<int> cocktailIds;   // ì¹µí…Œì¼ ID ë¦¬ìŠ¤íŠ¸
-    public List<int> nextDialogueIds; // ë‹¤ìŒ ëŒ€í™” ID ë¦¬ìŠ¤íŠ¸ (ì„ íƒì§€ í¬í•¨)
+    public int id;                  // ´ë»ç ID
+    public int day;                 // ÇöÀç Day
+    public string character;        // Ä³¸¯ÅÍ ÀÌ¸§
+    public string text;             // ´ë»ç ÅØ½ºÆ®
+    public List<int> nextDialogueIds; // ´ÙÀ½ ´ë»ç ID ¸®½ºÆ® (º¹¼ö °¡´É)
 
-    public DialogueEntry(int id, int day, string character, string text, List<int> cocktailIds,  List<int> nextDialogueIds)
+    public DialogueEntry(int id, int day, string character, string text, List<int> nextDialogueIds)
     {
         this.id = id;
         this.day = day;
         this.character = character;
         this.text = text;
-        this.cocktailIds = cocktailIds; // null í™•ì¸ í›„ ì´ˆê¸°í™”
         this.nextDialogueIds = nextDialogueIds;
     }
 }
-
 public class DialogueLoader
 {
-    // CSV íŒŒì¼ì—ì„œ ëŒ€í™” ë°ì´í„°ë¥¼ ë¶ˆëŸ¬ì˜¤ëŠ” ë©”ì„œë“œ
+    
+
     public static List<DialogueEntry> LoadDialogues(string filePath)
     {
         List<DialogueEntry> loadedDialogues = new List<DialogueEntry>();
@@ -35,49 +33,31 @@ public class DialogueLoader
         {
             string[] lines = File.ReadAllLines(filePath);
 
-            // CSV êµ¬ë¶„ì íŒ¨í„´: í°ë”°ì˜´í‘œ ì•ˆì— ìˆëŠ” ì½¤ë§ˆë¥¼ ë¬´ì‹œí•˜ê³  êµ¬ë¶„
+            // Á¤±Ô½Ä ÆĞÅÏ: Å«µû¿ÈÇ¥ ¾È¿¡ ÀÖ´Â ½°Ç¥´Â ¹«½ÃÇÏ°í ºĞ¸®
             string pattern = ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)";
 
             for (int i = 1; i < lines.Length; i++)
             {
-                // ê° ì¤„ì„ ë¶„í• 
+                // Á¤±Ô½ÄÀ¸·Î ÁÙÀ» ºĞ¸®
                 string[] columns = Regex.Split(lines[i], pattern);
 
-                // í°ë”°ì˜´í‘œ ì œê±° í›„ ê³µë°± ì œê±°
+                // Å«µû¿ÈÇ¥ Á¦°Å ¹× Æ®¸²
                 for (int j = 0; j < columns.Length; j++)
                 {
                     columns[j] = columns[j].Trim().Trim('"');
                 }
 
-                // ìµœì†Œ 7ê°œì˜ ì—´ì´ í•„ìš”
-                if (columns.Length >= 8)
+                // ÃÖ¼Ò 7°³ÀÇ ÄÃ·³ ÇÊ¿ä
+                if (columns.Length >= 7)
                 {
-                    // IDì™€ Day í•„ë“œê°€ ìœ íš¨í•œì§€ í™•ì¸
+                    // ID¿Í Day ÇÊµå°¡ Á¤¼öÀÎÁö È®ÀÎ
                     if (int.TryParse(columns[0].Trim(), out int id) &&
                         int.TryParse(columns[1].Trim(), out int day))
                     {
                         string character = columns[2].Trim();
                         string text = columns[6].Trim();
 
-                        // ì¹µí…Œì¼ ID íŒŒì‹±
-                        List<int> cocktailIds = new List<int>();
-                        if (!string.IsNullOrEmpty(columns[7].Trim()))
-                        {
-                            string[] cocktailIdStrings = columns[7].Split(',');
-                            foreach (var idString in cocktailIdStrings)
-                            {
-                                if (int.TryParse(idString.Trim(), out int parsedCocktailId))
-                                {
-                                    cocktailIds.Add(parsedCocktailId);
-                                }
-                                else
-                                {
-                                    Debug.LogWarning($"ìœ íš¨í•˜ì§€ ì•Šì€ ì¹µí…Œì¼ ID: '{idString.Trim()}' at line {i + 1}");
-                                }
-                            }
-                        }
-
-                        // ë‹¤ìŒ ëŒ€í™” ID ì²˜ë¦¬
+                        // ´ÙÀ½ ´ë»ç ID Ã³¸®
                         List<int> nextDialogueIds = new List<int>();
                         if (!string.IsNullOrWhiteSpace(columns[5]))
                         {
@@ -92,35 +72,28 @@ public class DialogueLoader
                                 }
                                 else
                                 {
-                                    Debug.LogWarning($"ìœ íš¨í•˜ì§€ ì•Šì€ ë‹¤ìŒ ëŒ€í™” ID: '{idString.Trim()}' at line {i + 1}");
+                                    Debug.LogWarning($"À¯È¿ÇÏÁö ¾ÊÀº ´ÙÀ½ ´ë»ç ID: '{idString.Trim()}' at line {i + 1}");
                                 }
                             }
                         }
 
-                        loadedDialogues.Add(new DialogueEntry(id, day, character, text, cocktailIds, nextDialogueIds));
+                        loadedDialogues.Add(new DialogueEntry(id, day, character, text, nextDialogueIds));
                     }
                     else
                     {
-                        Debug.LogWarning($"ID ë˜ëŠ” Day ê°’ì´ ìœ íš¨í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤: '{columns[0].Trim()}', '{columns[1].Trim()}' at line {i + 1}");
+                        Debug.LogWarning($"ID ¶Ç´Â Day °ªÀÌ À¯È¿ÇÏÁö ¾Ê½À´Ï´Ù: '{columns[0].Trim()}', '{columns[1].Trim()}' at line {i + 1}");
                     }
                 }
                 else
                 {
-                    Debug.LogWarning($"ë°ì´í„° í˜•ì‹ì´ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤. ìµœì†Œ 8ê°œì˜ ì—´ì´ í•„ìš”í•©ë‹ˆë‹¤. at line {i + 1}");
+                    Debug.LogWarning($"µ¥ÀÌÅÍ Çü½ÄÀÌ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù. ÃÖ¼Ò 7°³ÀÇ ÄÃ·³ÀÌ ÇÊ¿äÇÕ´Ï´Ù. at line {i + 1}");
                 }
             }
         }
         else
         {
-            Debug.LogError("CSV íŒŒì¼ì„ ì°¾ì„ ìˆ˜ ì—†ìŠµë‹ˆë‹¤: " + filePath);
+            Debug.LogError("CSV ÆÄÀÏÀ» Ã£À» ¼ö ¾ø½À´Ï´Ù: " + filePath);
         }
-
-        // ë¡œë“œëœ ëŒ€í™” ë¡œê·¸ í™•ì¸ìš©
-        foreach (var dialogue in loadedDialogues)
-        {
-            Debug.Log($"ID: {dialogue.id}, Day: {dialogue.day}, Character: {dialogue.character}, Text: {dialogue.text}, Cocktail IDs: {string.Join(", ", dialogue.cocktailIds)}, Next IDs: {string.Join(", ", dialogue.nextDialogueIds)}");
-        }
-
         return loadedDialogues;
     }
 }
