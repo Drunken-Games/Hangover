@@ -46,7 +46,7 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
     private bool check_build = false;
     private bool is_RCOPEN = false;
     private int nextid = -1;
-    private string textfordia = "";
+
     void Start()
     {
         Canvas canvas = GameObject.Find("Canvas")?.GetComponent<Canvas>();
@@ -176,16 +176,10 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
         isUpdateComplete = true;
         Debug.Log($"{GetCurrentDialogueEntry().text},{characterNameText.text},{dayText.text}");
         Debug.Log(checkText.text);
-        if (GameManager.instance.DialoguesLog.LastOrDefault()?.Text != checkText.text)
-        {
-            GameManager.instance.DialoguesLog.Add(new GameManager.DialogueLog(GameManager.instance.currentDialogueIndex, checkText.text));
-        }
-        
         if (is_RCOPEN==false&& checkText.text != GetCurrentDialogueEntry().text)
         {
             Debug.Log("Update");
             DisplayDialogue(GetCurrentDialogueEntry());
-            GameManager.instance.DialoguesLog.Add(new GameManager.DialogueLog(GameManager.instance.currentDialogueIndex, checkText.text));
             is_RCOPEN = true;
         }
         Debug.Log(isUpdateComplete);
@@ -195,17 +189,6 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
         {
             nameInputField.text = keyboard.text; // 키보드의 텍스트를 InputField에 반영
         }
-        //if (GameManager.instance.DayResultProceed)
-        //{
-        //    GameManager.instance.dayResultData.beforeMoney = 0;
-        //    GameManager.instance.dayResultData.totalProfit = 0;
-        //    GameManager.instance.dayResultData.tip = 0;
-        //    GameManager.instance.dayResultData.materials = 0;
-        //    GameManager.instance.dayResultData.netProfit = 0;
-        //    GameManager.instance.dayResultData.afterMoney = 0;
-        //    GameManager.instance.DayResultProceed = false;
-        //    Debug.Log("Update");
-        //}
     }
 
 
@@ -620,14 +603,11 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
             if (dialogueText == null) return;
         }
         Debug.Log("HI");
-
         StartCoroutine(ProcessDialogueText(entry.text, processedText =>
         {
             if (processedText == "") return;
             //if (entry.text.Contains("{Build}")) return;
             dialogueText.ShowText(processedText);
-            textfordia = processedText;
-            Debug.Log(textfordia);
             // Debug.Log(dialogueText.text);
             if (!string.IsNullOrEmpty(GameManager.instance.dayResultData.playerName) && entry.character == "주인공")
             {
@@ -638,11 +618,10 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
                 characterNameText.text = entry.character;
             }
             dayText.text = "Day " + entry.day;
-            
         }));
         Debug.Log("HI");
-        // Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}"); checkText.text
-        //GameManager.instance.DialoguesLog.Add(new GameManager.DialogueLog(GameManager.instance.currentDialogueIndex, textfordia));
+        // Debug.Log($"{dialogueText.text},{characterNameText.text},{dayText.text}");
+        GameManager.instance.DialoguesLog.Add(new GameManager.DialogueLog(GameManager.instance.currentDialogueIndex, checkText.text));
         return;
     }
     // 다음 대화로 이동하기
@@ -715,13 +694,12 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
             }
             else if(GameManager.instance.DayResultProceed == true&&GameManager.instance.currentDialogueIndex==41 || GameManager.instance.currentDialogueIndex==93 || GameManager.instance.currentDialogueIndex == 138 || GameManager.instance.currentDialogueIndex == 174 || GameManager.instance.currentDialogueIndex ==192)
             {
-                Debug.Log("Result");
-                //GameManager.instance.dayResultData.beforeMoney = 0;
-                //GameManager.instance.dayResultData.totalProfit = 0;
-                //GameManager.instance.dayResultData.tip = 0;
-                //GameManager.instance.dayResultData.materials = 0;
-                //GameManager.instance.dayResultData.netProfit = 0;
-                //GameManager.instance.dayResultData.afterMoney = 0;
+                GameManager.instance.dayResultData.beforeMoney = 0;
+                GameManager.instance.dayResultData.totalProfit = 0;
+                GameManager.instance.dayResultData.tip = 0;
+                GameManager.instance.dayResultData.materials = 0;
+                GameManager.instance.dayResultData.netProfit = 0;
+                GameManager.instance.dayResultData.afterMoney = 0;
                 GameManager.instance.DayResultProceed = false;
                 Debug.Log(GameManager.instance.currentDialogueIndex);
                 MoveToDialogueOrNextDay();
@@ -742,7 +720,6 @@ public class GameSence : MonoBehaviour, IPointerDownHandler
     // 다음 대화로 이동하거나 다음 Day의 첫 번째 대화로 이동하는 메서드
     void MoveToDialogueOrNextDay()
     {
-        Debug.Log("Next");
         int currentDialogueIndex = GameManager.instance.currentDialogueIndex;
         int nextDay = dialogues[currentDialogueIndex].day + 1;
 

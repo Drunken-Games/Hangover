@@ -855,7 +855,6 @@ PlayerSettings:
     PS4: DOTWEEN
     PS5: DOTWEEN
     QNX: DOTWEEN
-    Server: 
     Stadia: DOTWEEN
     Standalone: DOTWEEN
     VisionOS: DOTWEEN

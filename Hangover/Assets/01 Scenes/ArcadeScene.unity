@@ -961,12 +961,13 @@ MonoBehaviour:
   referenceFontSize: 10
   isResettingTimeOnNewText: 1
   useDefaultDatabases: 1
-  databaseBehaviors: {fileID: 11400000, guid: c56ae648063495f4493564aa2ba355b0, type: 2}
-  databaseAppearances: {fileID: 11400000, guid: 14812fc4136d53846b7a3ec1f95650e8, type: 2}
+  databaseBehaviors: {fileID: 0}
+  databaseAppearances: {fileID: 0}
   useDefaultStyleSheet: 1
   styleSheet: {fileID: 0}
-  databaseActions: {fileID: 11400000, guid: d74dfd7613d4bd844938ec6adb8d7eb1, type: 2}
-  defaultAppearancesTags: []
+  databaseActions: {fileID: 0}
+  defaultAppearancesTags:
+  - size
   defaultDisappearancesTags:
   - fade
   defaultBehaviorsTags: []

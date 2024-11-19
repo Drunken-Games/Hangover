@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
             Text = text;
         }
     }
-    public List<DialogueLog> DialoguesLog = new List<DialogueLog>();
+    public List<DialogueLog> DialoguesLog=new List<DialogueLog>();
 
     private void Awake()
     {
@@ -271,13 +271,6 @@ public class GameManager : MonoBehaviour
         if (previousSceneName == "DayResultScene" && scene.name == "GameScene")
         {
             DayResultProceed = true;
-            GameManager.instance.dayResultData.beforeMoney = 0;
-            GameManager.instance.dayResultData.totalProfit = 0;
-            GameManager.instance.dayResultData.tip = 0;
-            GameManager.instance.dayResultData.materials = 0;
-            GameManager.instance.dayResultData.netProfit = 0;
-            GameManager.instance.dayResultData.afterMoney = 0;
-            Debug.Log("Update");
             Debug.Log("BYE");
         }
         previousSceneName = scene.name; // 현재 씬 이름을 이전 씬 이름으로 저장

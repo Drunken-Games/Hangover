@@ -15,6 +15,10 @@ public class SettingButtonController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             Debug.Log("SettingButtonController Instance Initialized"); // 초기화 확인
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
     public void ExitGame()
     {
@@ -41,7 +45,7 @@ public class SettingButtonController : MonoBehaviour
         GameManager.instance.hasTimerEnded = false; // 타이머 종료 상태 확인 변수
         GameManager.instance.ArcadeStory = false;
         GameManager.instance.life = 3;
-        GameManager.instance.DialoguesLog = new List<GameManager.DialogueLog>();
+        GameManager.instance.DialoguesLog = null;
         SceneManager.LoadScene("MainMenuScene");
         
     }

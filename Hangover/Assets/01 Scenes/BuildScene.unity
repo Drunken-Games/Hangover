@@ -511,6 +511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RecipeUISet
       objectReference: {fileID: 0}
+    - target: {fileID: 1531370242830640469, guid: 93691d181cece2b48a977ed95161b4c0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2995389743112762143, guid: 93691d181cece2b48a977ed95161b4c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 540
@@ -551,17 +555,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6633272108895148363, guid: 93691d181cece2b48a977ed95161b4c0, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
+    - target: {fileID: 3599990837125471773, guid: 93691d181cece2b48a977ed95161b4c0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6633272108895148363, guid: 93691d181cece2b48a977ed95161b4c0, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1080
-      objectReference: {fileID: 0}
-    - target: {fileID: 6633272108895148363, guid: 93691d181cece2b48a977ed95161b4c0, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 2400
+    - target: {fileID: 3599990837125471773, guid: 93691d181cece2b48a977ed95161b4c0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3336,7 +3336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6268796895304374976, guid: a44b581e42d76eb4dbd508e10b036300, type: 3}
       propertyPath: m_text
-      value: "\uBE14\uB80C\uB529"
+      value: "\uBE14\uB79C\uB529"
       objectReference: {fileID: 0}
     - target: {fileID: 6425382640548300571, guid: a44b581e42d76eb4dbd508e10b036300, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
