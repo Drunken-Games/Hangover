@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2606349647797910332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2959301174733025659}
+  - component: {fileID: 4603090790320916212}
+  - component: {fileID: 2603720585186442117}
+  m_Layer: 0
+  m_Name: ArcadeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2959301174733025659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606349647797910332}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 974.34357, y: 1569.8271, z: -10.901648}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4603090790320916212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606349647797910332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b27a4b070e01b24cbe7a1db0f06b5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
+  goldText: {fileID: 0}
+  arcadeDialogue: {fileID: 2603720585186442117}
+--- !u!114 &2603720585186442117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2606349647797910332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebbfe4e31ebdf44280e0252bb0876d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Npc_ID: 0
+  Order_ID: 0
+  Reaction_ID: 0
+  Correct_ID: 
+  orderText: {fileID: 0}
+  npcNameText: {fileID: 0}
+  characterImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Order_List:
+  - "{\uB79C\uB364 \uC74C\uB8CC} \n \uC8FC\uC138\uC694!"
+  - "{\uB79C\uB364 \uC74C\uB8CC}\uB85C \uD560\uAC8C\uC694. \n \uAE30\uB300\uB429\uB2C8\uB2E4!"
+  - "\uC624\uB298\uC740 {\uB79C\uB364 \uC74C\uB8CC}\uAC00 \n \uB531\uC77C \uAC83
+    \uAC19\uC544\uC694. \n \uBD80\uD0C1\uB4DC\uB824\uC694."
+  - "{\uB79C\uB364 \uC74C\uB8CC} \n \uD558\uB098 \uC8FC\uC138\uC694. \n \uAD81\uAE08\uD558\uB124\uC694"
+  - "\uBA38\uB9AC\uAC00 \uAE68\uC9C8\uC815\uB3C4\uB85C \n \uB2EC\uCF64\uD55C\uAC70
+    \uC8FC\uC138\uC694"
+  - "\uB2EC\uB2EC\uD55C \uC74C\uB8CC \n \uD55C \uC794 \uC8FC\uC138\uC694. \n \uC624\uB298\uC740
+    \uB2EC\uB2EC\uD568\uC774 \n \uD544\uC694\uD574\uC694"
+  - "\uC800\uB294 \uB2E8 \uC74C\uB8CC\uB294 \n \uBCC4\uB85C \uC548 \uC88B\uC544\uD574\uC694"
+  - "\uC2DC\uD07C\uD55C \uB9DB\uC774 \n \uB098\uB294 \uAC78\uB85C \uBD80\uD0C1\uB4DC\uB824\uC694"
+  - "\uC880 \uB35C \uC2E0 \uAC78\uB85C \n \uBD80\uD0C1\uD574\uC694. \n \uB108\uBB34
+    \uC790\uADF9\uC801\uC774\uBA74 \uD798\uB4E4\uC5B4\uC694"
+  - "\uC4F4\uB9DB\uC774 \uC81C\uB300\uB85C \n \uB290\uAEF4\uC9C0\uB294 \uC74C\uB8CC\uB85C
+    \uC8FC\uC138\uC694"
+  - "\uC800\uB294 \uC4F4\uB9DB\uC774 \uC2EB\uC5B4\uC694"
+  - "\uB9E4\uC6B4 \uB9DB\uC774 \uB290\uAEF4\uC9C0\uB294 \n \uC220\uB85C \uBD80\uD0C1\uD574\uC694"
+  - "\uB9E4\uC6B4 \uAC74 \uBCC4\uB85C\uC5D0\uC694"
+  - "\uC5EC\uAE30\uC11C \uAC00\uC7A5 \uB3C5\uD55C \uC220\uB85C \n \uC8FC\uC138\uC694.
+    \n \uBE68\uB9AC \uAE30\uC5B5\uC744 \uC78A\uC5B4\uC57C \uD574\uC694!"
+  - "\uB3C5\uD55C \uAC78\uB85C \uD55C \uC794 \n \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4.
+    \n \uAC00\uB054\uC740 \uAC15\uD55C \uAC8C \uC88B\uC796\uC544\uC694"
+  - "\uB3C5\uD558\uC9C0 \uC54A\uC740 \uAC78\uB85C \n \uBD80\uD0C1\uB4DC\uB824\uC694,
+    \n \uC624\uB298\uC740 \uCC9C\uCC9C\uD788 \uC990\uAE30\uACE0 \uC2F6\uC5B4\uC694"
+  - "\uBB50\uB4E0 \uAD1C\uCC2E\uC544\uC694. \n \uD55C \uC794 \uBD80\uD0C1\uB4DC\uB9BD\uB2C8\uB2E4"
+  - "\uBBFC\uD2B8\uCD08\uCF54\uC2E4\uB860\uD2F0\uC9C0\uCF54 \n \uC8FC\uC138\uC694"
+  Success_Dialogues:
+  - "\uC774 \uCE75\uD14C\uC77C\uC740 \uC774\uBE10\uD558\uAC8C \uB9DB\uC788\uB124\uC694"
+  - "\uC640\uC6B0, \uC774\uAC70 \uC9C4\uC9DC \uAD1C\uCC2E\uC740\uB370\uC694"
+  - "\uBD80\uB4DC\uB7FD\uACE0 \uAE30\uBD84 \uC88B\uC740 \uB9DB\uC774\uB124\uC694.
+    \uB9C8\uC74C\uC5D0 \uB4E4\uC5B4\uC694"
+  - "\uD55C \uBAA8\uAE08 \uB9C8\uC2DC\uB2C8 \uAE30\uBD84\uC774 \uD655 \uC88B\uC544\uC9C0\uB124\uC694!"
+  - "\uC88B\uC558\uC5B4! \uB0B4\uAC00 \uB531 \uC6D0\uD588\uB358 \uADF8 \uB9DB\uC774\uC57C"
+  - "\uBCC4\uC774 \uB2E4\uC12F\uAC1C !"
+  - "**\uC5C4\uC9C0\uCC99**"
+  - "\uC644\uBCBD\uD574\uC694! \uC640!"
+  - "\uC88B\uC558\uC5B4! \uB0B4\uAC00 \uC8FC\uBB38\uD55C \uB300\uB85C\uAD70\uC694"
+  - "\uC138\uC0C1\uC5D0\uC11C \uAC00\uC7A5 \uC704\uB300\uD55C \uCE75\uD14C\uC77C\uC774\uB124\uC694!"
+  Fail_Dialogues:
+  - "\uC774\uAC70 \uC81C \uCE75\uD14C\uC77C \uC544\uB2CC \uAC83 \uAC19\uC740\uB370\uC694?
+    \uC800\uB294 \uC774\uAC70 \uC548 \uC2DC\uCF30\uC5B4\uC694"
+  - "\uCE75\uD14C\uC77C\uC744 \uBC1C\uB85C \uB9CC\uB4DC\uC168\uB098\uC694..."
+  - "\uC6B0\uC6E9... \uC815\uB9D0 \uBABB \uB9C8\uC2DC\uACA0\uB124\uC694"
+  - "\uC544 \uC774\uAC74 \uC880..."
+  - "\uC5D0 \uD264\uD264\uD264!!!"
+  - "\uB059.....\uC774\uAC8C \uBB34\uC2A8 \uB9DB\uC774\uC8E0?"
+  - "\uD558... \uC800 \uC774\uAC70 \uC8FC\uBB38 \uC548 \uD588\uB294\uB370\uC694?"
+  - "\uC6B0\uB9AC \uC9D1 \uAC15\uC544\uC9C0\uB3C4 \uC774\uAC74 \uC548 \uBA39\uC744
+    \uAC83 \uAC19\uC544\uC694"
+  - "\uC9C0\uAE08 \uB098\uB791 \uC7A5\uB09C\uD574??"
+  - "\uC774\uAC8C \uBB50\uC57C! \uC18C\uBCF4\uC6D0\uC5D0 \uC2E0\uACE0\uD558\uACA0\uC5B4!!"
+  gameOverDialogue: "\uC790\uB128 \uD574\uACE0\uC57C!!"
+  timeOverDialogue: "\uB9C8\uAC10 \uD588\uC2B5\uB2C8\uB2E4~~!!"
+  Npc_Names:
+  - "\uAC00"
+  - "\uB098"
+  - "\uB2E4"
+  - "\uB77C"
+  - "\uB9C8"
+  - "\uBC14"
+  - "\uC0AC"
+  - "\uC544"
